@@ -1,16 +1,12 @@
-import Signup from "../pages/Signup";
-import EmailCertification from "../pages/Signup/EmailCertification";
-import EnterMembersInfo from "../pages/Signup/EnterMembersInfo";
-import SignUpComplete from "../pages/Signup/SignUpComplete";
-import Terms from "../pages/Signup/Terms";
+import Main from "../pages/Main";
 
 export const SignupRouter = {
   path: "signup",
-  element: <Signup />,
+  element: <Main />,
   children: [
-    { path: "terms", element: <Terms /> },
-    { path: "emailCertification", element: <EmailCertification /> },
-    { path: "enterMembersInfo", element: <EnterMembersInfo /> },
-    { path: "signUpComplete", element: <SignUpComplete /> },
+    { path: "terms", element: <Main /> },
+    { path: "emailCertification", element: <Main /> },
+    { path: "enterMembersInfo", element: <Main /> },
+    { path: "signUpComplete", element: <Main /> },
   ],
 };

@@ -1,6 +1,6 @@
-import Signup from "../pages/Signup";
+import Main from "../pages/Main";
 
 export const SettingsRouter = {
   path: "settings",
-  element: <Signup />, //설정 컴포넌트
+  element: <Main />, //설정 컴포넌트
 };
