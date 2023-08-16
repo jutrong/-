@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { ReactComponent as logo } from '../assets/images/svg/logo.svg';
+import { ReactComponent as IconUser } from '../assets/images/svg/ic_user.svg';
 
 export const ChatWrapper = styled.div`
     border: 1px solid black;
 
     width: 390px;
     height: 844px;
+    padding-left: 16px;
+    padding-right: 16px;
+
     box-sizing: border-box;
 `;
 
@@ -20,10 +24,12 @@ export const ChatHeader = styled.div`
     width: 390px;
     height: 50px;
     margin-bottom: 6px;
-    padding-left: 10px;
 
     font-size: 20px;
     font-weight: 700;
+`;
+
+const Logo = styled(logo)`
 `;
 
 const ChatFandomWrapper = styled.div`
@@ -35,7 +41,6 @@ const ChatFandomWrapper = styled.div`
 
     width: 390px;
     height: 70px;
-    padding-left: 10px;
 `;
 
 const FandomImage = styled.img`
@@ -71,13 +76,11 @@ const FandomTitle = styled.p`
     font-weight: bold;
 `;
 
-const MemberIcon = styled.img`
+const MemberIcon = styled(IconUser)`
     width: 16px;
     height: 16px;
     
     margin-right: 2px;
-
-    background-image: url("../assets/images/svg/ic_user.svg");
 `;
 
 const FandomMember = styled.p`
@@ -105,7 +108,7 @@ const ChatContainer = () => {
     return (
         <ChatWrapper>
             <ChatHeader>
-                괴도 손민수(로고)
+                <Logo />
             </ChatHeader>
             <ChatFandomWrapper>
                 <FandomImage />
