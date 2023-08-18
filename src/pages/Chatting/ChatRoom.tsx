@@ -1,19 +1,32 @@
 import React from 'react';
-import styled from 'styled-components';
-import * as ChatList from './ChatList';
-import * as ChatBubble from './ChatBubble';
-import { ReactComponent as IconArrowLeft } from '../../assets/images/svg/ic-arrow-left.svg';
-import { ReactComponent as IconMember } from "../../assets/images/svg/ic-member.svg";
+import styled from 'styled-components'
+import { Link } from 'react-router-dom';
+
+import { MyChat, OtherChat } from './ChatBubble';
+import IconButton, { BackButton } from './IconButton';
+import ChatMember from './ChatMember';
+
 import { ReactComponent as IconImage } from "../../assets/images/svg/ic-image.svg";
 import { ReactComponent as IconCamera } from "../../assets/images/svg/ic-camera.svg";
-import { ReactComponent as IconVideo } from "../../assets/images/svg/ic-video.svg";
-import { ReactComponent as IconSend } from '../../assets/images/svg/ic-send.svg';
+import iconMember from '../../assets/images/svg/ic-member.svg';
+import iconSend from '../../assets/images/svg/ic-send.svg';
 
 
-const ChatHeaderWrapper = styled.div`
+
+const LinkItem = styled(Link)`
+    text-decoration: none;
+    cursor: pointer;
+    
+    &:visited {
+        color: blue;
+    }
+`
+
+
+export const HeaderWrapper = styled.div`
     // background-color: blue;
 
-    width: 390px;
+    width: 100%;
     height: 50px;
     padding-left: 16px;
     padding-right: 16px;
@@ -22,21 +35,12 @@ const ChatHeaderWrapper = styled.div`
     box-sizing: border-box;
 `;
 
-const ChatBack = styled(IconArrowLeft)`
-    margin-right: 14px;
-
-    cursor: pointer;
-`;
-
 const ChatTitle = styled.div`
     width: 100%;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: bold;
 `;
 
-const ChatMember = styled(IconMember)`
-    cursor: pointer;
-`;
 
 
 const ChatWrapper = styled.div`
@@ -52,11 +56,15 @@ const ChatWrapper = styled.div`
 
 
 const ChatBar = styled.div`
-    width: 390px;
+    width: 100%;
     height: 98px;
 
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+
+
     box-shadow: 0 -5px 5px -5px lightgray;
     box-sizing: border-box;
     display: flex;
@@ -64,7 +72,8 @@ const ChatBar = styled.div`
 
 const IconWrapper = styled.div`
     padding-top: 24px;
-    padding-left: 16px;
+
+    display: flex;
 `;
 
 const ChatIconImage = styled(IconImage)`
@@ -77,17 +86,20 @@ const ChatIconCamera = styled(IconCamera)`
     margin-right: 16px;
 `;
 
-const ChatIconVideo = styled(IconVideo)`
-    cursor: pointer;
-    margin-right: 16px;
+const ChatInputWrapper = styled.div`
+    width: 100%;
+    margin-top: 16px;
+
+    display: flex;
+
 `;
 
 const ChatInput = styled.input`
-    width: 189px;
+    min-width: calc(100% - 50px);
     height: 40px;
     
     margin-left: 3px;
-    margin-top: 16px;
+    margin-right: 6px;
     padding-left: 13px;
     padding-right: 13px;
     
@@ -100,45 +112,44 @@ const ChatInput = styled.input`
     font-size: 14px;
 `;
 
-const ChatInputButton = styled(IconSend)`
+const ChatInputButton = styled.button`
     width: 40px;
     height: 40px;
-    margin-left: 6px;
-    margin-top: 16px;
-    padding: 8px;
+    padding: 0;
 
     border: 0;
     border-radius: 10px;
-    background-color: #208DF1;
-    box-sizing: border-box;
+    background: #208DF1 url(${iconSend}) no-repeat center;
     cursor: pointer;
 `;
 
 
 const ChatRoom = () => {
     return (
-        <div>
-            <ChatList.ChatWindow>
-                <ChatHeaderWrapper>
-                    <ChatBack />
+            <>
+                <HeaderWrapper>
+                    <BackButton />
                     <ChatTitle>A.R.M.Y</ChatTitle>
-                    <ChatMember />
-                </ChatHeaderWrapper>
+                    <LinkItem to="/chatting/chatmember">
+                        <IconButton iconName={iconMember} />
+                    </LinkItem>
+                </HeaderWrapper>
                 <ChatWrapper>
-                    <ChatBubble.OtherChat />
-                    <ChatBubble.MyChat />
+                    <OtherChat />
+                    <MyChat />
                 </ChatWrapper>
                 <ChatBar>
                     <IconWrapper>
                         <ChatIconImage />
                         <ChatIconCamera />
-                        <ChatIconVideo /> 
                     </IconWrapper>
-                    <ChatInput placeholder="채팅을 입력해 주세요" />
-                    <ChatInputButton />
+                    <ChatInputWrapper>
+                        <ChatInput placeholder="채팅을 입력해 주세요" />
+                        <ChatInputButton />
+                    </ChatInputWrapper>
                 </ChatBar>
-            </ChatList.ChatWindow>
-        </div>
+            </>
+            
     )
 }
 
