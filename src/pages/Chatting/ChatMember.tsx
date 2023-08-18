@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { HeaderWrapper } from './ChatRoom';
 import IconButton, { BackButton } from './IconButton';
-import UserComponent from './UserComponent';
+import ChatUserInfo from './ChatUserInfo';
 
 import iconSearch from '../../assets/images/svg/ic-search.svg';
 
@@ -43,13 +43,13 @@ const ChatMember = () => {
 
             </FilterWindow>
             <MemberWindow>
-                <UserComponent />
-                <UserComponent />
-                <UserComponent />
-                <UserComponent />
-                <UserComponent />
-                <UserComponent />
-                <UserComponent />
+                <ChatUserInfo />
+                <ChatUserInfo />
+                <ChatUserInfo />
+                <ChatUserInfo />
+                <ChatUserInfo />
+                <ChatUserInfo />
+                <ChatUserInfo />
             </MemberWindow>
         </>
     )
