@@ -1,9 +1,10 @@
-import Main from "../pages/Main";
+import FeedIndex from "../pages/Feed";
+import Feed from "../pages/Feed/Feed";
 
 export const FeedRouter = {
   path: "feed",
-  element: <Main />, //피드 리스트 컴포넌트
+  element: <FeedIndex />, //피드 리스트 컴포넌트
   children: [
-    //   { path: "details", element: <Terms /> }, //피드 상세보기
+    { path: "", element: <Feed /> }, //피드 상세보기
   ],
 };
