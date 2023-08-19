@@ -4,3 +4,4 @@ export * from "./Sonminsoo.route";
 export * from "./Feed.route";
 export * from "./Settings.route";
 export * from "./MyPage.route";
+export * from "./Request.route";
