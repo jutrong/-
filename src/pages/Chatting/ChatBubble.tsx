@@ -85,39 +85,40 @@ const MyChatBubble = styled.p`
     font-size: 14px;
 `;
 
-type Props = {
+export type ChatProps = {
     id: number,
     fandomId: number,
     author: string,
     content: string,
-    profileImage: string,
+    profileImage?: string,
     readCount: number,
     createAt: Date,
 }
 
 
-export const MyChat = () => {
+export const MyChat = ({id, fandomId, author, content, readCount, createAt}: ChatProps) => {
+    console.log();
     return (
         <MyChatWrapper>
-            <MyChatBubble>ㅎ헷 이게 제 삶의 낙인걸요.. 큐큐 ㅋㅋㅋ</MyChatBubble>
+            <MyChatBubble>{content}</MyChatBubble>
             <ChatSubWrapper>
                 <ChatTime>10분전</ChatTime>
-                <ChatReadCount>23</ChatReadCount>
+                <ChatReadCount>{readCount}</ChatReadCount>
             </ChatSubWrapper>
         </MyChatWrapper>
     )
 }
 
-export const OtherChat = () => {
+export const OtherChat = ({id, fandomId, author, content, profileImage, readCount, createAt}: ChatProps) => {
     return (
         <ChatBubbleWrapper>
             <ChatProfileImage />
             <ChatBubbleWrapped>
-                <ChatProfileName>아마추어 손민수</ChatProfileName>
-                <ChatBubble>와아 ㅜㅜ 저도 이거 봤어요!! 꾹이가 리허설 할 때, 입은 연습복 정보도 감사합니당!!</ChatBubble>
+                <ChatProfileName>{author}</ChatProfileName>
+                <ChatBubble>{content}</ChatBubble>
                 <ChatSubWrapper>
                     <ChatTime>10분전</ChatTime>
-                    <ChatReadCount>23</ChatReadCount>
+                    <ChatReadCount>{readCount}</ChatReadCount>
                 </ChatSubWrapper>
             </ChatBubbleWrapped>
         </ChatBubbleWrapper>
