@@ -20,14 +20,60 @@ const FilterWindow = styled.div`
 `;
 
 const MemberWindow = styled.div`
-    // background: pink;
-
     height: calc(100% - 50px);
 
     padding-left: 16px;
     padding-right: 16px;
     box-sizing: border-box;
 `;
+
+
+const UserInfoWrapper = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+type MemberProps = {
+    isBan: boolean,
+}
+
+const UserInfoWithButton = ({isBan}: MemberProps) => {
+
+
+    const BanButton = styled.button`
+        width: 103px;
+        height: 30px;
+
+        background: ${isBan ? '#FC1E6E' : '#EBEEF2'} ;
+        color: ${isBan ? '#FFFFFF' : '#83839F'};
+        font-weight: bold;
+        font-size: 14px;
+    
+        border: 0;
+        border-radius: 4px;
+        // box-sizing: border-box;
+        display: inline;
+        
+        cursor: pointer;
+    `;
+
+    const chatBanText: string = isBan ? '채팅정지 취소' : '채팅정지';
+
+
+    return (
+        <UserInfoWrapper>
+            <ChatUserInfo />
+            <BanButton>{chatBanText}</BanButton>
+        </UserInfoWrapper>
+    )
+}
+
+
+type userInfoProps = {
+    id: number,
+    fandomId: number,
+    
+}
 
 const ChatMember = () => {
 
@@ -43,13 +89,12 @@ const ChatMember = () => {
 
             </FilterWindow>
             <MemberWindow>
-                <ChatUserInfo />
-                <ChatUserInfo />
-                <ChatUserInfo />
-                <ChatUserInfo />
-                <ChatUserInfo />
-                <ChatUserInfo />
-                <ChatUserInfo />
+                <UserInfoWithButton isBan={false} />
+                <UserInfoWithButton isBan={false} />
+                <UserInfoWithButton isBan={false} />
+                <UserInfoWithButton isBan={false} />
+                <UserInfoWithButton isBan={true} />
+                <UserInfoWithButton isBan={true} />
             </MemberWindow>
         </>
     )
