@@ -4,7 +4,7 @@ import { ChatFandom } from './ChatFandom';
 import { Link } from 'react-router-dom';
 import FooterNavBar from '../../components/FooterNavBar';
 
-import { ReactComponent as logo } from '../../assets/images/svg/logo.svg';
+import { ReactComponent as logo } from '../../assets/images/svg/ic-logo.svg';
 
 
 
