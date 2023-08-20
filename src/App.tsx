@@ -1,9 +1,13 @@
 import React from "react";
 import Router from "./Router";
-import { RouterProvider } from "react-router-dom";
+import "./style/reset.css";
 
 const App = () => {
-  return <RouterProvider router={Router} />;
+  return (
+    <div>
+      <Router />
+    </div>
+  );
 };
 
 export default App;
