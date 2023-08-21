@@ -8,8 +8,7 @@ const Wrap = styled.div`
 `;
 const AnswerNumber = styled.p`
   font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   margin-bottom: 16px;
 `;
 

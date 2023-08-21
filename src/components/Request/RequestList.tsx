@@ -24,22 +24,19 @@ const LeftBox = styled.div`
 `;
 const ListTitle = styled.p`
   font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
 `;
 const ListInfo = styled.div`
   display: flex;
 `;
 const ListUserName = styled.p`
   font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   margin-right: 10px;
 `;
 const ListTime = styled.p`
   font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
 `;
 
 const RequestList: React.FC = () => {

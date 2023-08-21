@@ -15,11 +15,7 @@ const Wrap = styled.div`
 const Left = styled.div`
   display: flex;
 `;
-const QuestionSVG = styled.div`
-  width: 55px;
-  height: 55px;
-  background: url(${question}) no-repeat;
-`;
+const QuestionSVG = styled.img``;
 const QuestionTitleBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -27,8 +23,7 @@ const QuestionTitleBox = styled.div`
 `;
 const QuestionTitle = styled.p`
   font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   line-height: 16px;
   margin-bottom: 7px;
 `;
@@ -38,14 +33,12 @@ const QuestionTitleInfo = styled.div`
 `;
 const QuestionUserName = styled.p`
   font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   color: #666;
 `;
 const QuestionDate = styled.p`
   font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   color: #666;
 `;
 const Right = styled.div`
@@ -53,22 +46,14 @@ const Right = styled.div`
   gap: 12px;
   margin-right: 16px;
 `;
-const PushPin = styled.div`
-  width: 24px;
-  height: 24px;
-  background: url(${pushgin}) no-repeat;
-`;
-const More = styled.div`
-  width: 24px;
-  height: 24px;
-  background: url(${more}) no-repeat;
-`;
+const PushPin = styled.img``;
+const More = styled.img``;
 
 const RequestDetailHeader: React.FC = () => {
   return (
     <Wrap>
       <Left>
-        <QuestionSVG />
+        <QuestionSVG src={question} />
         <QuestionTitleBox>
           <QuestionTitle>제발 이것 좀 찾아주세요...</QuestionTitle>
           <QuestionTitleInfo>
@@ -78,8 +63,8 @@ const RequestDetailHeader: React.FC = () => {
         </QuestionTitleBox>
       </Left>
       <Right>
-        <PushPin />
-        <More />
+        <PushPin src={pushgin} />
+        <More src={more} />
       </Right>
     </Wrap>
   );

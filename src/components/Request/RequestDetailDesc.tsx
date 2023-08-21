@@ -12,8 +12,7 @@ const RequestDetailImg = styled.div`
 `;
 const RequestDetailDescText = styled.p`
   font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   line-height: 21px;
   margin: 16px;
 `;

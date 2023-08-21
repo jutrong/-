@@ -13,7 +13,7 @@ const BackBTN = styled.img`
   margin: 13px 10px 13px 16px;
 `;
 const Title = styled.p`
-  font-family: "Pretendard-ExtraBold";
+  font-family: "Pretendard-Bold";
   font-size: 20px;
   line-height: 50px;
   margin: 0 auto 0 0;
