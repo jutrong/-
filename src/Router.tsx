@@ -1,6 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "./pages/Main";
+<<<<<<< Updated upstream
 
+=======
+import Login from "./pages/Login/Login";
+>>>>>>> Stashed changes
 import {
   SignupRouter,
   ChattingRouter,
@@ -24,7 +28,7 @@ const Router = createBrowserRouter([
     path: "hotFandom",
     element: <Main />, //타오르는 팬덤 컴포넌트
   },
-  { path: "login", element: <Main /> },
+  { path: "login", element: <Login /> },
   {
     path: "fandom/:fandomId",
     element: <Main />, //팬덤 상세보기 컴포넌트
