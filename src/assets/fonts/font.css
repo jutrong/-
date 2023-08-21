@@ -31,24 +31,24 @@
 @font-face {
   font-family: "Pretendard-SemiBold";
   font-style: normal;
-  font-weight: 100;
+  font-weight: 600;
   src: url("./Pretendard-SemiBold.woff") format("woff");
 }
 @font-face {
   font-family: "Pretendard-Bold";
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   src: url("./Pretendard-Bold.woff") format("woff");
 }
 @font-face {
   font-family: "Pretendard-ExtraBold";
   font-style: normal;
-  font-weight: 700;
+  font-weight: 800;
   src: url("./Pretendard-ExtraBold.woff") format("woff");
 }
 @font-face {
   font-family: "Pretendard-Black";
   font-style: normal;
-  font-weight: 800;
+  font-weight: 900;
   src: url("./Pretendard-Black.woff") format("woff");
 }
