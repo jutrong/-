@@ -9,8 +9,7 @@ const Button = styled.button`
   background-color: #ebeef2;
   color: #83839f;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
+  font-family: "Pretendard-ExtraBold";
 `;
 
 const BTN: React.FC = () => {

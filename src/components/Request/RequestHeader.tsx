@@ -9,33 +9,25 @@ const Wrap = styled.div`
   display: flex;
   align-items: center;
 `;
-const BackBTN = styled.div`
-  width: 24px;
-  height: 24px;
-  background: url(${arrow}) no-repeat;
+const BackBTN = styled.img`
   margin: 13px 10px 13px 16px;
 `;
 const Title = styled.p`
-  font-family: Pretendard;
+  font-family: "Pretendard-ExtraBold";
   font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
   line-height: 50px;
   margin: 0 auto 0 0;
 `;
-const RequestFormEdit = styled.div`
-  width: 24px;
-  height: 24px;
-  background: url(${edit}) no-repeat;
+const RequestFormEdit = styled.img`
   margin-right: 16px;
 `;
 
 const RequestHeader: React.FC = () => {
   return (
     <Wrap>
-      <BackBTN />
+      <BackBTN src={arrow} />
       <Title>손민수템 의뢰</Title>
-      <RequestFormEdit />
+      <RequestFormEdit src={edit} />
     </Wrap>
   );
 };
