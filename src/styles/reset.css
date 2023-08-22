@@ -123,23 +123,18 @@ table {
   border-spacing: 0;
 }
 
-body {
-  overflow: hidden;
-}
-
-div#root {
-  height: 100vh;
-}
-main#scroll {
-  overflow: scroll;
-}
-
 * {
   box-sizing: border-box;
 }
+button,
+input {
+  all: unset;
+}
+
 button {
   cursor: pointer;
 }
+
 a {
   text-decoration: none;
 }

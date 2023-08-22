@@ -1,10 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "./pages/Main";
-<<<<<<< Updated upstream
+// import Login from "./pages/Login/Login";
 
-=======
-import Login from "./pages/Login/Login";
->>>>>>> Stashed changes
 import {
   SignupRouter,
   ChattingRouter,
