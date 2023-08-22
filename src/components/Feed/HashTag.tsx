@@ -4,39 +4,31 @@ const HashTags = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 305px;
-  margin-left: 6px;
+  margin-left: 16px;
 `;
 const Hash = styled.p`
   font-size: 15px;
-  font-weight: 500;
+  font-family: "Pretendard-Medium";
   color: #6138f8;
-  margin: 8px 0 0 10px;
   cursor: pointer;
+  margin: 8px 10px 0 0;
 `;
 type FeedData = {
-  hashtag: string[];
+  hashTag: string[];
 };
 type FeedHashTagProps = {
   feedData: FeedData;
 };
 const HashTag: React.FC<FeedHashTagProps> = ({ feedData }) => {
-  const [hashTag, setHashTag] = useState<string[]>([
-    "#우리애들절대지켜",
-    "#ARMY",
-    "#정전국",
-    "#유포리아",
-    "#비오는날리허설",
-  ]);
+  const [hashTag, setHashTag] = useState<string[]>([]);
   useEffect(() => {
     if (feedData) {
-      setHashTag(feedData.hashtag);
+      setHashTag(feedData.hashTag);
     }
   }, []);
   return (
     <HashTags>
-      {hashTag.map((tag, index) => (
-        <Hash key={index}>{tag}</Hash>
-      ))}
+      {hashTag && hashTag.map((tag, index) => <Hash key={index}>{tag}</Hash>)}
     </HashTags>
   );
 };

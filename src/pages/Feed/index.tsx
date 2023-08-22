@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import StatusBar from "./StatusBar";
+import StatusBar from "../../components/StatusBar";
 
 const FeedContainer = styled.div`
   width: 390px;
