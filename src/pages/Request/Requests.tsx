@@ -1,8 +1,14 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import RequestList from "../../components/Request/RequestList";
 
 const Requests: React.FC = () => {
-  return <Outlet />;
+  return (
+    <>
+      <RequestList />
+      <RequestList />
+      <RequestList />
+    </>
+  );
 };
 
 export default Requests;

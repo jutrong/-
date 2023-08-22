@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ChatFandom } from './ChatFandom';
+import { ChatFandom } from '../../components/Chatting/ChatFandom';
 import { Link } from 'react-router-dom';
 import FooterNavBar from '../../components/FooterNavBar';
 

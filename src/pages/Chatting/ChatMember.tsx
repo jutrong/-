@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { HeaderWrapper } from './ChatRoom';
-import IconButton, { BackButton } from './IconButton';
-import ChatUserInfo from './ChatUserInfo';
+import IconButton, { BackButton } from '../../components/Chatting/IconButton';
+import ChatUserInfo from '../../components/Chatting/ChatUserInfo';
 
 import iconSearch from '../../assets/images/svg/ic-search.svg';
 
