@@ -25,7 +25,7 @@ const Router = createBrowserRouter([
     path: "hotFandom",
     element: <Main />, //타오르는 팬덤 컴포넌트
   },
-  { path: "login", element: <Login /> },
+  // { path: "login", element: <Login /> }, //로그인 컴포넌트
   {
     path: "fandom/:fandomId",
     element: <Main />, //팬덤 상세보기 컴포넌트
