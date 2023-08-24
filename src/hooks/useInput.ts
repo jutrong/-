@@ -12,7 +12,7 @@ const useInput = (initialValue: string = ""): returnType => {
     setValue(event.target.value);
   };
 
-  return [value, setValue, handler];
+  return [value, handler, setValue];
 };
 
 export default useInput;

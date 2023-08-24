@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import CommentItem from "../Feed/CommentItem";
 import * as S from "../../pages/Feed/style";
-import useInput from "../../hooks/useInput";
 
 type Feed = {
   id: number;
@@ -47,8 +46,12 @@ type FeedProps = {
 };
 
 const Comment: React.FC<FeedProps> = ({ feedData, showModal }) => {
-  const [commentInput, setCommentInput, commendHandler] = useInput("");
+  const [commentInput, setCommentInput] = useState<string>("");
   const [comments, setComments] = useState<Comment[]>(feedData.comments || []);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCommentInput(event.target.value);
+  };
 
   const handleSubmitComment = async (
     event: React.FormEvent<HTMLFormElement>
@@ -93,7 +96,7 @@ const Comment: React.FC<FeedProps> = ({ feedData, showModal }) => {
       <S.CommentInput onSubmit={handleSubmitComment}>
         <S.CommentInputBox
           placeholder="댓글을 입력해 주세요"
-          onChange={commendHandler}
+          onChange={handleInputChange}
           value={commentInput}
         />
         <S.SendBtn type="submit" />
