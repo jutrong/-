@@ -1,6 +1,6 @@
 import * as S from "./style";
-import test from "../../assets/images/svg/SonminsooItem/bookmarkIcon.svg";
 import React from "react";
+
 type props = {
   id: string;
   img: string;

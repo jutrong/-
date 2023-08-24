@@ -20,15 +20,19 @@ export const BucketItemImage = styled.div<{ $url: string; selected: boolean }>`
     props.selected &&
     ` 
     &::after{
-      opacity: 0.7;
+      margin-left: -1px;
+      margin-top: -1px;
       content:'';
       display: block;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(0deg, rgba(30, 92, 216, 0.70) 0%, rgba(30, 92, 216, 0.70) 100%), url(${checked}), lightgray 50% / cover no-repeat;
-    border-radius: 8px;
-    background-repeat: no-repeat;
-  background-position: center;
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      // background: linear-gradient(0deg, rgba(30, 92, 216, 0.7) 0%, rgba(30, 92, 216, 0.7)), url(${checked}), lightgray 50% / cover no-repeat;
+      background-color:rgba(110, 150, 255, 0.6);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url(${checked});
+
   };`}
 `;
 export const BucketItemTitle = styled.div`
