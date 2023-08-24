@@ -9,6 +9,8 @@ const Button = styled.button`
   background-color: white;
   font-size: 16px;
   font-family: "Pretendard-Bold";
+  text-align: center;
+  color: #6138f8;
 `;
 
 const WhiteSpaceBTN: React.FC = () => {
