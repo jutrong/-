@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import * as S from "./style";
+import * as S from "./style/BucketListModal.style";
 import BucketItem from "./BucketItem";
 import { useEffect, useRef, useState } from "react";
 

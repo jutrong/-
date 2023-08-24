@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import * as S from "./style/index";
+import * as S from "./style/AlertModal.style";
 
 type ModalProps = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,7 +9,7 @@ type ModalProps = {
   yesContent: string;
   yesClickHandler: React.MouseEventHandler<HTMLDivElement>;
 };
-const CloseModal: React.FC<ModalProps> = ({
+const AlertModal: React.FC<ModalProps> = ({
   setModalOpen,
   title,
   content,
@@ -55,4 +55,4 @@ const CloseModal: React.FC<ModalProps> = ({
   );
 };
 
-export default CloseModal;
+export default AlertModal;

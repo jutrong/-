@@ -1,4 +1,4 @@
-import * as S from "./style";
+import * as S from "./style/BucketItem.style";
 import React from "react";
 
 type props = {

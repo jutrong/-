@@ -1,7 +1,7 @@
 import logo from "../assets/images/svg/logo.svg";
 import arrowLeft from "../assets/images/svg/ic-arrow-left.svg";
 import { useNavigate } from "react-router-dom";
-import * as S from "./style";
+import * as S from "./style/HeaderBar.style";
 
 type propsType = { BackButton: boolean; title?: string; items?: any[] };
 
