@@ -8,7 +8,7 @@ import LikeBtn from "../../components/Feed/LikeBtn";
 import CommentBtn from "../../components/Feed/CommentBtn";
 import FeedText from "../../components/Feed/FeedText";
 import Comment from "../../components/Feed/Comment";
-import FooterNavBar from "../../components/FooterNavBar";
+import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
 import CloseModal from "../../components/Feed/CloseModal";
 
 //  data type
