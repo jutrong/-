@@ -111,7 +111,6 @@ export const BucketAddBox = styled.div`
   gap: 8px;
   flex-direction: column;
 `;
-
 export const AddIcon = styled.img``;
 export const BucketLabel = styled.p`
   font-size: 13px;
@@ -119,6 +118,7 @@ export const BucketLabel = styled.p`
   color: #1d1b20;
 `;
 export const UserBucketBox = styled.div`
+  position: relative;
   display: flex;
   gap: 8px;
   flex-direction: column;
@@ -136,6 +136,13 @@ export const UserBucketLabel = styled.p`
   text-align: center;
   color: #1d1b20;
   word-wrap: break-word;
+`;
+export const UserBucketDelete = styled.img`
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
 `;
 export const Feed = styled.div`
   display: grid;

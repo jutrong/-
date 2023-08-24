@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./style/MyPage.style";
 import FooterNavBar from "../../components/FooterNavBar";
 import add from "../../assets/images/svg/ic-plus.svg";
+import x from "../../assets/images/svg/ic-x-red.svg";
+import CloseModal from "../../components/CloseModal";
+import NewBucketRegister from "../../components/MyPage/NewBucketRegister";
 
 const MyPage: React.FC = () => {
+  const [hhh, setHHH] = useState(true);
+
+  console.log(hhh);
+
+  const click = () => {
+    console.log("eee");
+  };
   return (
     <>
       <S.UserInfo>
@@ -36,6 +46,7 @@ const MyPage: React.FC = () => {
         <S.UserBucketBox>
           <S.UserBucketImg />
           <S.UserBucketLabel>나의 버킷 리스트</S.UserBucketLabel>
+          <S.UserBucketDelete src={x} />
         </S.UserBucketBox>
       </S.Bucket>
       <S.Feed>
@@ -50,6 +61,18 @@ const MyPage: React.FC = () => {
       </S.Feed>
       {/* <S.NoFeed>작성된 피드가 없습니다</S.NoFeed> */}
       <FooterNavBar />
+      {/* {hhh && (
+        <CloseModal
+          title="채택하기"
+          content="채택하시겠습니까?"
+          yesContent="채택"
+          yesClickHandler={click}
+          setModalOpen={setHHH}
+        />
+      )} */}
+      {hhh && (
+        <NewBucketRegister yesClickHandler={click} setModalOpen={setHHH} />
+      )}
     </>
   );
 };
