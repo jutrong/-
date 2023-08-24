@@ -1,7 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import { styled } from "styled-components";
 
-const Overlay = styled.div`
+export const Overlay = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
@@ -12,7 +11,7 @@ const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.6);
   z-index: 9999;
 `;
-const ModalContainer = styled.div`
+export const ModalContainer = styled.div`
   width: 270px;
   height: 137px;
   background-color: black;
@@ -27,7 +26,7 @@ const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const ModalText = styled.div`
+export const ModalText = styled.div`
   width: 100%;
   height: 74px;
   border-bottom: 0.5px solid rgba(84, 84, 88, 0.65);
@@ -38,19 +37,19 @@ const ModalText = styled.div`
   justify-content: center;
   gap: 2px;
 `;
-const ModalTitle = styled.p`
+export const ModalTitle = styled.p`
   font-family: "Pretendard-Bold";
   font-size: 17px;
   line-height: 22px;
   letter-spacing: -0.408px;
 `;
-const ModalContent = styled.span`
+export const ModalContent = styled.span`
   font-size: 13px;
   font-family: "Pretendard-Regular";
   line-height: 17px;
   letter-spacing: -0.078px;
 `;
-const ModalBtn = styled.div`
+export const ModalBtn = styled.div`
   display: flex;
   width: 100%;
   height: 62px;
@@ -60,7 +59,7 @@ const ModalBtn = styled.div`
   text-align: center;
   line-height: 22px;
 `;
-const ModalNo = styled.div`
+export const ModalNo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,7 +69,8 @@ const ModalNo = styled.div`
   color: rgba(10, 132, 255, 1);
   cursor: pointer;
 `;
-const ModalYes = styled.div<{ warning?: boolean }>`
+
+export const ModalYes = styled.div<{ warning?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,44 +82,3 @@ const ModalYes = styled.div<{ warning?: boolean }>`
       : "color: rgba(10, 132, 255, 1);"}
   cursor: pointer;
 `;
-type ModalProps = {
-  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  title: string;
-  content: string;
-  warning?: boolean;
-  yesContent: string;
-  yesClickHandler: React.MouseEventHandler<HTMLDivElement>;
-};
-const CloseModal: React.FC<ModalProps> = ({
-  setModalOpen,
-  title,
-  content,
-  warning,
-  yesContent,
-  yesClickHandler,
-}) => {
-  return (
-    <Overlay>
-      <ModalContainer>
-        <ModalText>
-          <ModalTitle>{title}</ModalTitle>
-          <ModalContent>{content}</ModalContent>
-        </ModalText>
-        <ModalBtn>
-          <ModalNo
-            onClick={() => {
-              setModalOpen(false);
-            }}
-          >
-            아니오
-          </ModalNo>
-          <ModalYes warning={warning} onClick={yesClickHandler}>
-            {yesContent}
-          </ModalYes>
-        </ModalBtn>
-      </ModalContainer>
-    </Overlay>
-  );
-};
-
-export default CloseModal;

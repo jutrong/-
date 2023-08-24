@@ -8,39 +8,12 @@ import iconChat from "../../assets/images/svg/ic-chat-active.svg";
 import iconChatInActive from "../../assets/images/svg/ic-chat-inactive.svg";
 import iconMypage from "../../assets/images/svg/ic-mypage-active.svg";
 import iconMypageInActive from "../../assets/images/svg/ic-mypage-inactive.svg";
-
 import { styled } from "styled-components";
-
+import * as S from "./style";
 type IconWithTextProps = {
   text: string;
   pathname: string;
 };
-
-const IconGroup = styled.div`
-  width: 50px;
-  height: 40px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const TabIcon = styled.div<{ $iconUrl: string }>`
-  width: 24px;
-  height: 24px;
-  background-image: url(${(props) => props.$iconUrl});
-  background-repeat: no-repeat;
-  background-position: center;
-`;
-
-const IconText = styled.p<{ $active: boolean }>`
-  margin: 0;
-  margin-top: 1px;
-
-  font-size: 10px;
-
-  color: ${(props) => (props.$active ? "#6138F8" : "#A5A8B8")};
-`;
 
 const IconWithText = ({ text, pathname }: IconWithTextProps) => {
   let $active: boolean = false;
@@ -99,10 +72,10 @@ const IconWithText = ({ text, pathname }: IconWithTextProps) => {
   }
 
   return (
-    <IconGroup>
-      <TabIcon $iconUrl={$iconUrl} />
-      <IconText $active={$active}>{text}</IconText>
-    </IconGroup>
+    <S.IconGroup>
+      <S.TabIcon $iconUrl={$iconUrl} />
+      <S.IconText $active={$active}>{text}</S.IconText>
+    </S.IconGroup>
   );
 };
 
