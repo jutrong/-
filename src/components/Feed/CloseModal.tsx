@@ -21,7 +21,7 @@ const ModalContainer = styled.div`
   transform: translate(-50%, -50%);
   z-index: 99;
   border-radius: 14px;
-  background-color: rgba(30, 30, 30, 0.75);
+  background-color: rgba(30, 30, 30, 0.9);
   backdrop-filter: blur(11px);
   display: flex;
   flex-direction: column;

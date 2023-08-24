@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-const HashTags = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  width: 305px;
-  margin-left: 16px;
-`;
-const Hash = styled.p`
-  font-size: 15px;
-  font-family: "Pretendard-Medium";
-  color: #6138f8;
-  cursor: pointer;
-  margin: 8px 10px 0 0;
-`;
+import * as S from "../../pages/Feed/style";
+
 type FeedData = {
   hashTag: string[];
 };
@@ -27,9 +15,10 @@ const HashTag: React.FC<FeedHashTagProps> = ({ feedData }) => {
     }
   }, []);
   return (
-    <HashTags>
-      {hashTag && hashTag.map((tag, index) => <Hash key={index}>{tag}</Hash>)}
-    </HashTags>
+    <S.HashTags>
+      {hashTag &&
+        hashTag.map((tag, index) => <S.Hash key={index}>{tag}</S.Hash>)}
+    </S.HashTags>
   );
 };
 

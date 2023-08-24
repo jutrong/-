@@ -1,50 +1,8 @@
 import React from "react";
-import styled from "styled-components";
-const Item = styled.div<ImageProps>`
-  width: 100px;
-  height: 100px;
-  border: 1px solid black;
-  border-radius: 8px;
-  margin-top: 16px;
-  margin-right: 10px;
-  flex: 0 0 auto;
-  background-image: url(${(props) => props.$imageUrl});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100px;
-  margin-bottom: 8px;
+import * as S from "../../pages/Feed/style";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
-`;
-const ItemWrap = styled.div`
-  overflow: hidden;
-  width: 390px;
-  cursor: pointer;
-  
-`;
-const Items = styled.div`
-  display: flex;
-  width: 2000px;
-  margin-left: 16px;
-`;
-const ProductName = styled.p`
-  font-size: 15px;
-  font-family: "Pretendard-Medium";
-  margin-bottom: 5px;
-  color: #1d1b20;
-  width: 94px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-`;
-const Price = styled.p`
-  margin: 0;
-  font-family: "Pretendard-Bold";
-  color: #6138f8;
-  font-size: 14px;
-`;
-const Won = styled.span`
-  font-size: 12px;
-`;
 type Feed = {
   id: number;
   user: User;
@@ -85,27 +43,28 @@ type Comment = {
 type FeedProps = {
   feedData: Feed;
 };
-type ImageProps = {
-  $imageUrl: string;
-};
 
 const ItemBox: React.FC<FeedProps> = ({ feedData }) => {
+  const swiperParams = {
+    slidesPerView: 3.5,
+    spaceBetween: 10,
+  };
   return (
-    <ItemWrap>
-      <Items>
+    <S.ItemWrap>
+      <Swiper {...swiperParams}>
         {feedData.sonminsuItems &&
           feedData.sonminsuItems.map((item, itemIndex) => (
-            <div key={`${itemIndex}`}>
-              <Item $imageUrl={item.itemImg} />
-              <ProductName>{item.title}</ProductName>
-              <Price>
+            <SwiperSlide key={`${itemIndex}`}>
+              <S.Item src={item.itemImg} />
+              <S.ProductName>{item.title}</S.ProductName>
+              <S.Price>
                 {item.price}
-                <Won>원</Won>
-              </Price>
-            </div>
+                <S.Won>원</S.Won>
+              </S.Price>
+            </SwiperSlide>
           ))}
-      </Items>
-    </ItemWrap>
+      </Swiper>
+    </S.ItemWrap>
   );
 };
 
