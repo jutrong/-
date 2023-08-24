@@ -87,7 +87,7 @@ type ModalProps = {
   title: string;
   content: string;
   warning?: boolean;
-  noContent: string;
+  yesContent: string;
   yesClickHandler: React.MouseEventHandler<HTMLDivElement>;
 };
 const CloseModal: React.FC<ModalProps> = ({
@@ -95,7 +95,7 @@ const CloseModal: React.FC<ModalProps> = ({
   title,
   content,
   warning,
-  noContent,
+  yesContent,
   yesClickHandler,
 }) => {
   return (
@@ -111,10 +111,10 @@ const CloseModal: React.FC<ModalProps> = ({
               setModalOpen(false);
             }}
           >
-            {noContent}
+            아니오
           </ModalNo>
           <ModalYes warning={warning} onClick={yesClickHandler}>
-            네
+            {yesContent}
           </ModalYes>
         </ModalBtn>
       </ModalContainer>
