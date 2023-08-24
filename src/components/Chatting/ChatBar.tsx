@@ -1,90 +1,80 @@
-import React from 'react';
-import styled from 'styled-components';
-import iconSend from '../../assets/images/svg/ic-send.svg';
-import { ReactComponent as IconImage } from "../../assets/images/svg/ic-image.svg";
-import { ReactComponent as IconCamera } from "../../assets/images/svg/ic-camera.svg";
-
-const ChatBaWrapper = styled.div`
-    width: 100%;
-    height: 98px;
-
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    padding-left: 16px;
-    padding-right: 16px;
+import React, { useState, useEffect, useRef } from 'react';
+import iconImage from "../../assets/images/svg/ic-image.svg";
+import iconCamera from "../../assets/images/svg/ic-camera.svg";
+import * as S from './style/ChatBar.style';
 
 
-    box-shadow: 0 -5px 5px -5px lightgray;
-    box-sizing: border-box;
-    display: flex;
-`;
+type Props = {
+    ban: boolean;
+}
 
-const IconWrapper = styled.div`
-    padding-top: 24px;
+type UploadImage = {
+    file: File;
+    thumbnail: string;
+    type: string;
+}
 
-    display: flex;
-`;
 
-const ChatIconImage = styled(IconImage)`
-    cursor: pointer;
-    margin-right: 16px;
-`;
 
-const ChatIconCamera = styled(IconCamera)`
-    cursor: pointer;
-    margin-right: 16px;
-`;
+const ChatBar = ({ban}:Props) => {
 
-const ChatInputWrapper = styled.div`
-    width: 100%;
-    margin-top: 16px;
+    // 채팅 정지 상태에 따른 채팅input placeholder 설정
+    const [placeHolder, SetPlaceHolder] = useState('채팅을 입력해 주세요'); 
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    const [imageFile, setImageFile] = useState<UploadImage>();
 
-    display: flex;
+    // input 파일형식
+    const acceptFormat='image/jpg, image/jpeg, image/png';
 
-`;
 
-const ChatInput = styled.input`
-    min-width: calc(100% - 50px);
-    height: 40px;
+    useEffect(() => {
+        if(ban) {
+            SetPlaceHolder('채팅정지 상태입니다');
+        } else {
+            SetPlaceHolder('채팅을 입력해 주세요');
+        }
+    }, [ban]);
     
-    margin-left: 3px;
-    margin-right: 6px;
-    padding-left: 13px;
-    padding-right: 13px;
-    
-    border: none;
-    border-radius:10px;
-    background-color: #EBEEF2;
-    box-sizing: border-box;
 
-    color: #6C7080;
-    font-size: 14px;
-`;
+    // 이미지 버튼에 input 연결
+    const FileUploadClick = (e: React.MouseEvent<HTMLImageElement>) => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
+        }
+    };
 
-const ChatInputButton = styled.button`
-    width: 40px;
-    height: 40px;
-    padding: 0;
+    const UploadFileHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const fileList = e.target.files;
+        if (fileList && fileList[0]) {
+            const url = URL.createObjectURL(fileList[0]);
+            setImageFile(
+                {
+                    file: fileList[0],
+                    thumbnail: url,
+                    type: fileList[0].type,
+                });
+            }
+    }; 
 
-    border: 0;
-    border-radius: 10px;
-    background: #208DF1 url(${iconSend}) no-repeat center;
-    cursor: pointer;
-`;
-
-const ChatBar = () => {
 
     return (
-        <ChatBaWrapper>
-            <IconWrapper>
-                <ChatIconImage />
-                <ChatIconCamera />
-            </IconWrapper>
-            <ChatInputWrapper>
-                <ChatInput placeholder="채팅을 입력해 주세요" />
-                <ChatInputButton />
-            </ChatInputWrapper>
-        </ChatBaWrapper>
+        <S.ChatBarWrapper>
+            <S.IconWrapper>
+                <S.ChatIconImage src={iconImage} onClick={FileUploadClick} />
+                <input 
+                    type="file" 
+                    accept={acceptFormat}
+                    ref={fileInputRef} 
+                    onChange={UploadFileHandler}
+                    style={{display: 'none'}}
+                />
+                <S.ChatIconImage src={iconCamera} onClick={FileUploadClick} />
+            </S.IconWrapper>
+            <S.ChatInputWrapper>
+                <S.ChatInput placeholder={placeHolder} disabled={ban ? true : false} />
+                <S.ChatInputButton disabled={ban ? true : false} />
+            </S.ChatInputWrapper>
+        </S.ChatBarWrapper>
     )
 }
 

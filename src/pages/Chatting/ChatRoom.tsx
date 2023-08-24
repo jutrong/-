@@ -1,55 +1,12 @@
 import React from 'react';
-import styled from 'styled-components'
-import { Link } from 'react-router-dom';
 import { ChatProps, MyChat, OtherChat } from '../../components/Chatting/ChatBubble';
-import IconButton, { BackButton } from '../../components/Chatting/IconButton';
+import BackButton from '../../components/Chatting/BackButton';
 import ChatBar from '../../components/Chatting/ChatBar';
-import ChatMember from './ChatMember';
 import iconMember from '../../assets/images/svg/ic-member.svg';
+import ChatGridImage from '../../components/Chatting/ChatGridImage';
+import * as S from './styles/ChatRoom.style';
 
 
-
-
-const LinkItem = styled(Link)`
-    text-decoration: none;
-    cursor: pointer;
-    
-    &:visited {
-        color: blue;
-    }
-`
-
-
-export const HeaderWrapper = styled.div`
-    // background-color: blue;
-
-    width: 100%;
-    height: 50px;
-    padding-left: 16px;
-    padding-right: 16px;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-`;
-
-const ChatTitle = styled.div`
-    width: 100%;
-    font-size: 20px;
-    font-weight: bold;
-`;
-
-
-
-const ChatWrapper = styled.div`
-    // background-color: pink;    
-
-    width: 100%;
-    min-height: calc(100% - 148px);
-    padding-left: 16px;
-    padding-right: 16px;
-    
-    box-sizing: border-box;
-`;
 
 const ChatRoom = () => {
 
@@ -72,16 +29,18 @@ const ChatRoom = () => {
         createAt: new Date(),
     }
 
+    const ban: boolean = false;
+
     return (
             <>
-                <HeaderWrapper>
+                <S.ChatHeader>
                     <BackButton />
-                    <ChatTitle>A.R.M.Y</ChatTitle>
-                    <LinkItem to="/chatting/chatmember">
-                        <IconButton iconName={iconMember} />
-                    </LinkItem>
-                </HeaderWrapper>
-                <ChatWrapper>
+                    <S.ChatTitle>A.R.M.Y</S.ChatTitle>
+                    <S.LinkItem to="/chatting/chatmember/1">
+                        <S.IconButton src={iconMember} />
+                    </S.LinkItem>
+                </S.ChatHeader>
+                <S.ChatRoomWindow>
                     <OtherChat 
                          id={chatDataOther.id}
                          fandomId={chatDataOther.fandomId}
@@ -99,8 +58,9 @@ const ChatRoom = () => {
                         readCount={chatData.readCount}
                         createAt={chatData.createAt}
                     />
-                </ChatWrapper>
-                <ChatBar />
+                    <ChatGridImage />
+                </S.ChatRoomWindow>
+                <ChatBar ban={ban} />
             </>
             
     )
