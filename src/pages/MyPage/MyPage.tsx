@@ -4,7 +4,6 @@ import add from "../../assets/images/svg/ic-plus.svg";
 import x from "../../assets/images/svg/ic-x-red.svg";
 import NewBucketRegister from "../../components/MyPage/NewBucketRegister";
 import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
-import AlertModal from "../../components/common/AlertModal/AlertModal";
 
 const MyPage: React.FC = () => {
   const [hhh, setHHH] = useState(true);

@@ -3,7 +3,6 @@ import * as S from "../style/RequestWriterResponse.style";
 import more from "../../../assets/images/svg/ic-more-horizontal.svg";
 import select from "../../../assets/images/svg/ic-select.svg";
 import LinkAttachItem from "../LinkAttachItem";
-import CloseModal from "../../CloseModal";
 
 const RequestWriterResponse: React.FC = () => {
   const [hhh, setHHH] = useState(true);
