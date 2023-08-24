@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import * as S from "./style/MyPage.style";
-import FooterNavBar from "../../components/FooterNavBar";
 import add from "../../assets/images/svg/ic-plus.svg";
 import x from "../../assets/images/svg/ic-x-red.svg";
-import CloseModal from "../../components/CloseModal";
 import NewBucketRegister from "../../components/MyPage/NewBucketRegister";
+import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
+import AlertModal from "../../components/common/AlertModal/AlertModal";
 
 const MyPage: React.FC = () => {
   const [hhh, setHHH] = useState(true);
@@ -62,7 +62,7 @@ const MyPage: React.FC = () => {
       {/* <S.NoFeed>작성된 피드가 없습니다</S.NoFeed> */}
       <FooterNavBar />
       {/* {hhh && (
-        <CloseModal
+        <AlertModal
           title="채택하기"
           content="채택하시겠습니까?"
           yesContent="채택"
