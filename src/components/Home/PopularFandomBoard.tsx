@@ -1,21 +1,14 @@
 import ContentHeader from "./ContentHeader";
 import PopularFandomList from "./PopularFandomList";
-import styled from "styled-components";
 
-const PopularFandomBoarContainer = styled.div`
-    height: 365px;
-    width: 100%;
-    max-width: 390px;
-`;
+import * as S from "./style/PopularFandomBoard.style";
 
-const PopularFandomBoard = () => {
+const PopularFandomBoard: React.FC = () => {
     return (
-        <>
-            <PopularFandomBoarContainer>
-                <ContentHeader />
-                <PopularFandomList />
-            </PopularFandomBoarContainer>
-        </>
+        <S.PopularFandomBoarContainer>
+            <ContentHeader />
+            <PopularFandomList />
+        </S.PopularFandomBoarContainer>
     );
 };
 export default PopularFandomBoard;
