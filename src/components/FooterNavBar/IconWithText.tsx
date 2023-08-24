@@ -11,8 +11,6 @@ import iconMypageInActive from "../../assets/images/svg/ic-mypage-inactive.svg";
 
 import { styled } from "styled-components";
 
-
-
 type IconWithTextProps = {
   text: string;
   pathname: string;
@@ -27,27 +25,26 @@ const IconGroup = styled.div`
   align-items: center;
 `;
 
-const TabIcon = styled.div<{$iconUrl: string}>`
+const TabIcon = styled.div<{ $iconUrl: string }>`
   width: 24px;
   height: 24px;
-  background-image: url(${props => props.$iconUrl});
+  background-image: url(${(props) => props.$iconUrl});
   background-repeat: no-repeat;
   background-position: center;
 `;
 
-const IconText = styled.p<{$active: boolean}>`
+const IconText = styled.p<{ $active: boolean }>`
   margin: 0;
   margin-top: 1px;
 
   font-size: 10px;
 
-  color: ${props => props.$active ? "#6138F8" : "#A5A8B8"};
+  color: ${(props) => (props.$active ? "#6138F8" : "#A5A8B8")};
 `;
 
-
 const IconWithText = ({ text, pathname }: IconWithTextProps) => {
-  let $active:boolean = false;
-  let $iconUrl: string = '';
+  let $active: boolean = false;
+  let $iconUrl: string = "";
 
   switch (text) {
     case "홈":
@@ -100,7 +97,6 @@ const IconWithText = ({ text, pathname }: IconWithTextProps) => {
       }
       break;
   }
-
 
   return (
     <IconGroup>
