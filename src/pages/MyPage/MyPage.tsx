@@ -1,6 +1,7 @@
 import React from "react";
-import FooterNavBar from "../../components/FooterNavBar";
 import * as S from "./style/MyPage.style";
+import FooterNavBar from "../../components/FooterNavBar";
+import add from "../../assets/images/svg/ic-plus.svg";
 
 const MyPage: React.FC = () => {
   return (
@@ -29,9 +30,7 @@ const MyPage: React.FC = () => {
       </S.MyPageInfo>
       <S.Bucket>
         <S.BucketAddBox>
-          <S.BucketAddButton>
-            <S.AddIcon />
-          </S.BucketAddButton>
+          <S.AddIcon src={add} />
           <S.BucketLabel>새 버킷 추가</S.BucketLabel>
         </S.BucketAddBox>
         <S.UserBucketBox>
