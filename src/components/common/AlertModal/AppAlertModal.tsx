@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import * as S from "./style/MobileAlertModal.style";
+import * as S from "./style/AppAlertModal.style";
 
 type ModalProps = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,7 +9,7 @@ type ModalProps = {
   yesContent: string;
   yesClickHandler: React.MouseEventHandler<HTMLDivElement>;
 };
-const MobileAlertModal: React.FC<ModalProps> = ({
+const AppAlertModal: React.FC<ModalProps> = ({
   setModalOpen,
   title,
   content,
@@ -55,4 +55,4 @@ const MobileAlertModal: React.FC<ModalProps> = ({
   );
 };
 
-export default MobileAlertModal;
+export default AppAlertModal;
