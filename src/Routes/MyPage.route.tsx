@@ -7,7 +7,7 @@ import MyProfile from "../pages/MyPage/MyProfile";
 import MyReqeust from "../pages/MyPage/MyReqeust";
 
 export const MyPageRouter = {
-  path: "/myPage",
+  path: "/mypage",
   element: <MyPageRoot />, //마이페이지 컴포넌트
   children: [
     { index: true, element: <MyPage /> },
