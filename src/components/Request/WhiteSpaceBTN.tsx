@@ -8,8 +8,9 @@ const Button = styled.button`
   border-radius: 8px;
   background-color: white;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
+  font-family: "Pretendard-Bold";
+  text-align: center;
+  color: #6138f8;
 `;
 
 const WhiteSpaceBTN: React.FC = () => {
