@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "../../pages/Feed/style";
+import * as S from "./style/Item.style";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 

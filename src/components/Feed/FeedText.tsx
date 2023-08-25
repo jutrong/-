@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as S from "../../pages/Feed/style";
+import * as S from "./style/FeedText.style";
 
 type FeedData = {
   content: string;

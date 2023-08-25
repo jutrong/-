@@ -1,7 +1,7 @@
 import React from "react";
 import more from "../../assets/images/svg/ic-more-horizontal.svg";
 import detailDate from "../../utils/time";
-import * as S from "../../pages/Feed/style";
+import * as S from "./style/FeedHeader.style";
 
 type User = {
   id: number;

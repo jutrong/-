@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import * as S from "./style";
+import {styled} from "styled-components";
+import * as S from "./style/Feed.style";
+import FeedHeaderBar from "../../components/Feed/FeedHeaderBar";
 import FeedHeader from "../../components/Feed/FeedHeader";
 import ItemBox from "../../components/Feed/Item";
 import HashTag from "../../components/Feed/HashTag";
@@ -11,7 +13,14 @@ import Comment from "../../components/Feed/Comment";
 import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
 import CloseModal from "../../components/Feed/CloseModal";
 
-//  data type
+const FeedContainer = styled.div`
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 77px;
+`;
+
 type Feed = {
   id: number;
   user: User;
@@ -49,7 +58,7 @@ type CommentType = {
 };
 type FeedData = Feed[];
 
-const FeedList: React.FC = () => {
+const FeedIndex = () => {
   const [openCommentId, setOpenCommentId] = useState<number | undefined>();
   const [feedData, setFeedData] = useState<FeedData>([]);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -79,7 +88,8 @@ const FeedList: React.FC = () => {
     }
   };
   return (
-    <>
+    <FeedContainer>
+      <FeedHeaderBar />
       {feedData?.map((feed) => (
         <React.Fragment key={feed.id}>
           <FeedHeader feedData={feed} />
@@ -103,7 +113,8 @@ const FeedList: React.FC = () => {
       ))}
       {openCommentId === undefined && <FooterNavBar />}
       {modalOpen && <CloseModal setModalOpen={setModalOpen} />}
-    </>
+    </FeedContainer>
   );
 };
-export default FeedList;
+
+export default FeedIndex;

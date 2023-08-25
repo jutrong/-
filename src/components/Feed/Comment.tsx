@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import CommentItem from "../Feed/CommentItem";
-import * as S from "../../pages/Feed/style";
+import * as S from "./style/Comment.style";
 
 type Feed = {
   id: number;

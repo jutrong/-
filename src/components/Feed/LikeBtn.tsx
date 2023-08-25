@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "../../pages/Feed/style";
+import * as S from "./style/LikeBtn.style";
 import heart from "../../assets/images/svg/ic-heart.svg";
 
 const LikeBtn = () => {

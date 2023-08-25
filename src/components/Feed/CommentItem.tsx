@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import detailDate from "../../utils/time";
-import * as S from "../../pages/Feed/style";
+import * as S from "./style/CommentItem.style";
 import commentmore from "../../assets/images/svg/ic-more-vertical-16.svg";
 
 type CommentData = {
