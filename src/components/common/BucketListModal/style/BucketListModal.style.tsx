@@ -1,4 +1,13 @@
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
+
+const slideUp = keyframes`
+from {
+transform: translateY(100%);
+}
+to {
+transform: translateY(0);
+}
+`;
 
 export const BucketListModalContainer = styled.div`
   width: 100%;
@@ -21,6 +30,7 @@ export const ModalContentContainer = styled.div`
   padding: 15px;
   bottom: 0;
   border-radius: 16px 16px 0px 0px;
+  animation: ${slideUp} 0.5s linear forwards;
 `;
 export const BucketListTitle = styled.div`
   margin: 30px auto;

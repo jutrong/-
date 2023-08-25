@@ -32,7 +32,7 @@ const IconWithText = ({ text, pathname }: IconWithTextProps) => {
       break;
 
     case "피드":
-      if (pathname === "/feed") {
+      if (pathname.includes("feed")) {
         $iconUrl = iconFeed;
         $active = true;
       } else {
@@ -42,7 +42,7 @@ const IconWithText = ({ text, pathname }: IconWithTextProps) => {
       break;
 
     case "손민수템":
-      if (pathname === "/minsooItem") {
+      if (pathname.includes("minsooItem")) {
         $iconUrl = iconItem;
         $active = true;
       } else {
@@ -52,7 +52,7 @@ const IconWithText = ({ text, pathname }: IconWithTextProps) => {
       break;
 
     case "채팅방":
-      if (pathname === "/chatting") {
+      if (pathname.includes("chatting")) {
         $iconUrl = iconChat;
         $active = true;
       } else {
@@ -62,7 +62,7 @@ const IconWithText = ({ text, pathname }: IconWithTextProps) => {
       break;
 
     case "마이페이지":
-      if (pathname === "/myPage") {
+      if (pathname.includes("myPage")) {
         $iconUrl = iconMypage;
         $active = true;
       } else {

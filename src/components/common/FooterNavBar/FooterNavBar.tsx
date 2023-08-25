@@ -1,6 +1,4 @@
-import React from "react";
-import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import IconWithText from "./IconWithText";
 import * as S from "./style/FooterNavBar.style";
 
