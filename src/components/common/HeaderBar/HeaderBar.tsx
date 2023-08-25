@@ -3,12 +3,22 @@ import arrowLeft from "../../../assets/images/svg/ic-arrow-left.svg";
 import { useNavigate } from "react-router-dom";
 import * as S from "./style/HeaderBar.style";
 
-type propsType = { BackButton: boolean; title?: string; items?: any[] };
+type propsType = {
+  BackButton: boolean;
+  title?: string;
+  items?: any[];
+  color?: string;
+};
 
-const HeaderBar = ({ BackButton = false, title = "", items }: propsType) => {
+const HeaderBar = ({
+  BackButton = false,
+  title = "",
+  items,
+  color,
+}: propsType) => {
   const navigation = useNavigate();
   return (
-    <S.Container>
+    <S.Container color={color}>
       {BackButton ? (
         <S.LogoContainer>
           <S.Logo src={arrowLeft} onClick={() => navigation(-1)} />
