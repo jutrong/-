@@ -12,6 +12,7 @@ import {
   MyPageRouter,
   SettingsRouter,
   RequestRouter,
+  FeedWriteRouter
 } from "./Routes";
 
 const Router = createBrowserRouter([
@@ -43,6 +44,7 @@ const Router = createBrowserRouter([
   MyPageRouter,
   SettingsRouter,
   RequestRouter,
+  FeedWriteRouter
 ]);
 
 export default Router;
