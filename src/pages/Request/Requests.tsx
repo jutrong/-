@@ -5,6 +5,7 @@ import document from "../../assets/images/svg/ic-document.svg";
 import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
 import edit from "../../assets/images/svg/ic-edit.svg";
 import Icon from "../../elements/Icon";
+import { Link } from "react-router-dom";
 
 const Requests: React.FC = () => {
   const [request, setRequest] = useState(true); //나중에 ""로 바꾸기
@@ -14,7 +15,12 @@ const Requests: React.FC = () => {
       <HeaderBar
         BackButton={true}
         title="손민수템 의뢰"
-        items={[<Icon src={edit} />]}
+        items={[
+          <Link to="/requests/form">
+            <Icon src={edit} />
+          </Link>,
+        ]}
+        color="#fff"
       />
       <S.Wrap>
         {!request && (

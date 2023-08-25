@@ -1,5 +1,6 @@
 import React from "react";
 import * as S from "./style/RequestLink.style";
+import { useNavigate } from "react-router-dom";
 
 type RequestListProps = {
   title: string;
@@ -8,10 +9,16 @@ type RequestListProps = {
 };
 
 const RequestList: React.FC<RequestListProps> = ({ title, username, date }) => {
+  const navigation = useNavigate();
+
   return (
     <S.Wrap
       onClick={() => {
-        //주소 정보를 props로 받아서 전달하기
+        // if (작성자) {
+        //   navigation("/requests/writer/:requestId");
+        // } else {
+        //   navigation("/requests/nowriter/:requestId");
+        // }
       }}
     >
       <S.ListImg />
