@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import arrow from "../../assets/images/svg/ic-arrow-left.svg";
 import check from "../../assets/images/svg/icon-check.svg";
+import { type } from "os";
 
 const NewFeedHeader = styled.div`
   width: 100%;
@@ -27,11 +29,25 @@ const FeedHeaderCheck = styled.img`
   height: 24px;
   cursor: pointer;
 `;
-const FeedWriteHeader = () => {
+type FeedWriteProps = {
+  $updatePage: boolean;
+};
+const FeedWriteHeader: React.FC<FeedWriteProps> = ({ $updatePage }) => {
+  const navigation = useNavigate();
+
   return (
     <NewFeedHeader>
-      <FeedHeaderArrow src={arrow} />
-      <FeedHeaderText>새 피드 작성</FeedHeaderText>
+      <FeedHeaderArrow
+        src={arrow}
+        onClick={() => {
+          navigation("/feed");
+        }}
+      />
+      {$updatePage ? (
+        <FeedHeaderText>피드 수정</FeedHeaderText>
+      ) : (
+        <FeedHeaderText>새 피드 작성</FeedHeaderText>
+      )}
       <FeedHeaderCheck src={check} />
     </NewFeedHeader>
   );

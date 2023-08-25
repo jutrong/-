@@ -17,9 +17,10 @@ type FeedData = {
 };
 type FeedDataProps = {
   feedData: FeedData;
+  setIsFeedDelete: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const FeedHeader: React.FC<FeedDataProps> = ({ feedData }) => {
+const FeedHeader: React.FC<FeedDataProps> = ({ feedData, setIsFeedDelete }) => {
   return (
     <S.FeedHeaderContainer>
       {feedData && feedData.user ? (
@@ -36,7 +37,7 @@ const FeedHeader: React.FC<FeedDataProps> = ({ feedData }) => {
               </S.Time>
             </S.ContentWrap>
           </S.HeaderContent>
-          <S.MoreBtn src={more} />
+          <S.MoreBtn src={more} onClick={() => setIsFeedDelete(true)} />
         </>
       ) : null}
     </S.FeedHeaderContainer>

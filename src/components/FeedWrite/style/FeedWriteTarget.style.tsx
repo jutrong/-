@@ -1,6 +1,6 @@
-import {styled} from "styled-components"
+import { styled } from "styled-components";
 
-export const TargetContainer = styled.div`
+export const TargetContainer = styled.form`
   padding: 16px;
 `;
 export const Targeting = styled.p`
@@ -26,6 +26,7 @@ export const TargetGroupInput = styled.input`
     font-size: 16px;
     color: #bdbdbd;
   }
+  font-size: 16px;
 `;
 export const TargetArtistInput = styled.input`
   width: 45%;
@@ -39,6 +40,7 @@ export const TargetArtistInput = styled.input`
     font-size: 16px;
     color: #bdbdbd;
   }
+  font-size: 16px;
 `;
 export const TargetLabel = styled.p`
   font-family: "Pretendard-Medium";
@@ -48,3 +50,14 @@ export const TargetLabel = styled.p`
   padding-bottom: 125px;
   margin-right: 18px;
 `;
+
+// export const GroupLimit = styled.p`
+//   font-size: 13px;
+//   color: #bdbdbd;
+//   font-family: "Pretendard-Medium";
+// `;
+// export const ArtistLimit = styled.p`
+//   font-size: 13px;
+//   color: #bdbdbd;
+//   font-family: "Pretendard-Medium";
+// `;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {styled} from "styled-components";
+import styled from "styled-components";
 import * as S from "./style/Feed.style";
 import FeedHeaderBar from "../../components/Feed/FeedHeaderBar";
 import FeedHeader from "../../components/Feed/FeedHeader";
@@ -12,6 +13,7 @@ import FeedText from "../../components/Feed/FeedText";
 import Comment from "../../components/Feed/Comment";
 import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
 import CloseModal from "../../components/Feed/CloseModal";
+import FeedDelete from "../../components/Feed/FeedDelete";
 
 const FeedContainer = styled.div`
   width: 100%;
@@ -62,6 +64,8 @@ const FeedIndex = () => {
   const [openCommentId, setOpenCommentId] = useState<number | undefined>();
   const [feedData, setFeedData] = useState<FeedData>([]);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [isFeedDelete, setIsFeedDelete] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     try {
@@ -92,7 +96,7 @@ const FeedIndex = () => {
       <FeedHeaderBar />
       {feedData?.map((feed) => (
         <React.Fragment key={feed.id}>
-          <FeedHeader feedData={feed} />
+          <FeedHeader feedData={feed} setIsFeedDelete={setIsFeedDelete} />
           <S.FeedImage src={feed.feedImg} />
           <ItemBox feedData={feed} />
           <FeedText feedData={feed} />
@@ -113,6 +117,7 @@ const FeedIndex = () => {
       ))}
       {openCommentId === undefined && <FooterNavBar />}
       {modalOpen && <CloseModal setModalOpen={setModalOpen} />}
+      {isFeedDelete && <FeedDelete setIsFeedDelete={setIsFeedDelete} />}
     </FeedContainer>
   );
 };
