@@ -29,7 +29,20 @@ const ChatRoom = () => {
         createAt: new Date(),
     }
 
+    const imageMock: string[] = [
+        "https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2022/06/17/4a3691f8-a5b9-4705-9c47-44be7988c66a.jpg",
+        "https://jmagazine.joins.com/_data2/photo/2022/08/990874659_M2LfNeRF_3.jpg",
+        "https://cdnweb01.wikitree.co.kr/webdata/editor/202203/20/img_20220320152018_d56ef2d9.webp",
+        "https://image.jtbcplus.kr/data/contents/jam_photo/202209/21/37a8d815-ed8d-4cf5-8cd4-3714f3d8c649.jpg",
+        "https://mblogthumb-phinf.pstatic.net/MjAyMTAyMDRfNzUg/MDAxNjEyMzY5MDQ2ODMw.k6txr5dsICIPp9EzfUknZABzC8RYutPHYkGSIrwbv-sg.Vb8kG_i1p1YpDLQVp7zAlYCdWm2O4aTjekdAOdIzM7wg.JPEG.kisluvme/IMG_2574.JPG?type=w800",
+        "https://dimg.donga.com/wps/SPORTS/IMAGE/2022/01/27/111487379.1.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUURz18LJaYfQPqh2P0EWzvsGXJqZNI3UUA&usqp=CAU",
+        "https://image.bugsm.co.kr/essential/images/500/540/54066.jpg",
+        "https://play-lh.googleusercontent.com/4CyGC7CiaxkyDloyji4IMH07nTPUluhrlV1A0SJ-VkYbobIo--ndgJ1bikONNnr5zN0",
+    ];
+
     const ban: boolean = false;
+
 
     return (
             <>
@@ -58,7 +71,7 @@ const ChatRoom = () => {
                         readCount={chatData.readCount}
                         createAt={chatData.createAt}
                     />
-                    <ChatGridImage />
+                    <ChatGridImage imageList={imageMock} />
                 </S.ChatRoomWindow>
                 <ChatBar ban={ban} />
             </>

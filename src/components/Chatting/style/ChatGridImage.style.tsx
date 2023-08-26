@@ -50,9 +50,9 @@ const gridCombine = () => {
     }`
 }
 
-export const GridImageWrapper = styled.div<{isMe: boolean}>`
+export const GridImageWrapper = styled.div<{$isMe: boolean}>`
     display: flex;
-    justify-content: ${props => props.isMe ? 'flex-end' : 'flex-start'}
+    justify-content: ${props => props.$isMe ? 'flex-end' : 'flex-start'}
 `;
 
 export const GridImageContainer = styled.div<{$imageCount: number}>`
