@@ -1,7 +1,8 @@
 import * as S from "./style/SonMinsooItemInfo.style";
 import bookMark from "../../assets/images/svg/SonminsooItem/bookmarkIcon.svg";
 import activeBookMark from "../../assets/images/svg/SonminsooItem/activebookmarkIcon.svg";
-import { useOutletContext } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
+import { useMemo } from "react";
 
 type bucketList = {
   id: string;
@@ -27,19 +28,27 @@ const SonMinsooItemInfo = ({
     setBucketList: React.Dispatch<React.SetStateAction<bucketList>>;
   }>();
   return (
-    <S.SonminsooItemInfoContainer
-      onClick={() => {
-        setBucketList(bucket);
-        setModalView(true);
-      }}
-    >
-      <S.ItemImage $url={imgURL} />
-      <S.ArtistName>{artistName}</S.ArtistName>
+    <S.SonminsooItemInfoContainer>
+      <Link to={`details/${1}`}>
+        <S.ItemImage $url={imgURL} />
+        <S.ArtistName>{artistName}</S.ArtistName>
+      </Link>
       <S.TitleContainer>
-        <S.ItemTitle>{title}</S.ItemTitle>
-        <S.bookMarkIcon $iconUrl={bookMark} />
+        <Link to={`details/${1}`}>
+          {" "}
+          <S.ItemTitle>{title}</S.ItemTitle>
+        </Link>
+        <S.bookMarkIcon
+          $iconUrl={bookMark}
+          onClick={() => {
+            setBucketList(bucket);
+            setModalView(true);
+          }}
+        />
       </S.TitleContainer>
-      <S.ItemPrice>{price.toLocaleString()}원</S.ItemPrice>
+      <Link to={`details/${1}`}>
+        <S.ItemPrice>{price.toLocaleString()}원</S.ItemPrice>
+      </Link>
     </S.SonminsooItemInfoContainer>
   );
 };

@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import SonMinsooItemInfo from "./SonMinsooItemInfo";
 import EmptyItem from "./EmptyItem";
 import * as S from "./style/SonminsooItemList.style";
+import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
+import Icon from "../../elements/Icon";
+import search from "../../assets/images/svg/SonminsooItem/ic-search.svg";
+import settings from "../../assets/images/svg/SonminsooItem/ic-settings.svg";
 
 type bucketList = {
   id: string;
@@ -173,28 +177,47 @@ const SonminsooItemList = () => {
     },
   ];
   return (
-    <S.SonminsooItemListContainer>
-      <S.SonminsooItemTitle>손민수템</S.SonminsooItemTitle>
-      <button onClick={() => setItems(testData)}>아이템 추가</button>
-      <S.SonminsooItemsContainer>
-        {items.length === 0 ? (
-          <EmptyItem />
-        ) : (
-          testData.map((data, index) => {
-            return (
-              <SonMinsooItemInfo
-                key={index}
-                imgURL={data.imgURL}
-                artistName={data.artistName}
-                title={data.title}
-                bucket={data.bucket}
-                price={data.price}
-              />
-            );
-          })
-        )}
-      </S.SonminsooItemsContainer>
-    </S.SonminsooItemListContainer>
+    <>
+      {useMemo(() => {
+        return (
+          <>
+            <HeaderBar
+              BackButton={false}
+              items={[
+                <Icon key={"search"} src={search} />,
+                <Icon key={"settings"} src={settings} />,
+              ]}
+            />
+            <S.LinkRequestList to="/requests">
+              <span>손민수템 의뢰 리스트</span>
+              <span>&gt;</span>
+            </S.LinkRequestList>
+          </>
+        );
+      }, [])}
+      <S.SonminsooItemListContainer>
+        <S.SonminsooItemTitle>손민수템</S.SonminsooItemTitle>
+        <button onClick={() => setItems(testData)}>아이템 추가</button>
+        <S.SonminsooItemsContainer>
+          {items.length === 0 ? (
+            <EmptyItem />
+          ) : (
+            testData.map((data, index) => {
+              return (
+                <SonMinsooItemInfo
+                  key={index}
+                  imgURL={data.imgURL}
+                  artistName={data.artistName}
+                  title={data.title}
+                  bucket={data.bucket}
+                  price={data.price}
+                />
+              );
+            })
+          )}
+        </S.SonminsooItemsContainer>
+      </S.SonminsooItemListContainer>
+    </>
   );
 };
 export default SonminsooItemList;
