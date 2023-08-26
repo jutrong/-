@@ -3,7 +3,11 @@ import styled from "styled-components";
 //  팬덤 컨테이너
 export const Container = styled.div`
     justify-content: space-between;
+
     align-items: center;
+    margin: 0 auto;
+    max-width: 390px;
+    width: 100%;
     width: 100%;
     max-width: 390px;
 `;

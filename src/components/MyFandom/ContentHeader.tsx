@@ -4,7 +4,7 @@ const ContentHeader = () => {
     return (
         <S.ContentHeaderContainer>
             <S.MyFandomHeaderText>마이 팬덤</S.MyFandomHeaderText>
-            <S.CreateBtn>+ 새 팬덤 만들기</S.CreateBtn>
+            <S.CreateBtn onClick={(e) => e}>+ 새 팬덤 만들기</S.CreateBtn>
         </S.ContentHeaderContainer>
     );
 };

@@ -14,6 +14,7 @@ import {
     SettingsRouter,
     RequestRouter,
     FeedWriteRouter,
+    MyFandomRouter,
 } from "./Routes";
 
 const Router = createBrowserRouter([
@@ -46,6 +47,7 @@ const Router = createBrowserRouter([
     SettingsRouter,
     RequestRouter,
     FeedWriteRouter,
+    MyFandomRouter,
 ]);
 
 export default Router;

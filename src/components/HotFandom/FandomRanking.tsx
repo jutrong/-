@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import * as S from "./style/FandomRanking.style";
 
 type FandomRankData = {
@@ -9,17 +8,12 @@ type FandomRankData = {
     rank: number;
     thumbnailImgUrl: string;
 };
-type FandomData = FandomRankData[];
 
 type FandomdataProps = {
     item: FandomRankData;
 };
 
 const FandomRanking: React.FC<FandomdataProps> = ({ item }) => {
-    console.log("dd", item);
-
-    useEffect(() => {}, []);
-
     return (
         <S.FandomRankingContainer key={item.id}>
             <S.RankingNumberText>{item.rank}</S.RankingNumberText>

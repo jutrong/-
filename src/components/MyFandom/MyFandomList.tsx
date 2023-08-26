@@ -1,7 +1,21 @@
 import * as S from "./style/MyFandomList.style";
-const MyFandomList = () => {
+
+type FandomRankData = {
+    fandomName: string;
+    id: number;
+    lastChatTime: null;
+    memberLength: number;
+    rank: number;
+    thumbnailImgUrl: string;
+};
+
+type FandomdataProps = {
+    item: FandomRankData;
+};
+
+const MyFandomList: React.FC<FandomdataProps> = ({ item }) => {
     return (
-        <S.MyFandomListContainer>
+        <S.MyFandomListContainer key={item.id}>
             <S.CircleImg />
             <S.RnakingTextBox>
                 <S.FandomNameMemberBox>
