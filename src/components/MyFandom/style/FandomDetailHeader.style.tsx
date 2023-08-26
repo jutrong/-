@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { ReactComponent as CheckIcon } from "../../assets/images/svg/ic-check.svg";
+import { ReactComponent as CheckIcon } from "../../../assets/images/svg/ic-check.svg";
 
-import { ReactComponent as LfetArrow } from "../../assets/images/svg/ic-arrow-left.svg";
+import { ReactComponent as LfetArrow } from "../../../assets/images/svg/ic-arrow-left.svg";
 
 // 팬덤 헤더 컨테이너
 export const ContentHeaderContainer = styled.div`

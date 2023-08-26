@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { ReactComponent as ImgIconBlue } from "../../assets/images/svg/ic-image-blue.svg";
+import { ReactComponent as ImgIconBlue } from "../../../assets/images/svg/ic-image-blue.svg";
 //  팬덤 컨테이너
 export const Container = styled.div`
     justify-content: space-between;

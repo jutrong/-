@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { ReactComponent as UserIcon } from "../../assets/images/svg/MyFandom/FandomUserIcon.svg";
+import { ReactComponent as UserIcon } from "../../../assets/images/svg/MyFandom/FandomUserIcon.svg";
 
 export const MyFandomListContainer = styled.div`
     height: 70px;
