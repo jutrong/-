@@ -14,7 +14,7 @@ import {
     SettingsRouter,
     RequestRouter,
     FeedWriteRouter,
-    MyFandomRouter,
+    SearchItemRouter,
 } from "./Routes";
 
 const Router = createBrowserRouter([
@@ -28,7 +28,7 @@ const Router = createBrowserRouter([
     },
     {
         path: "hotFandom",
-        element: <HotFandom />, //타오르는 팬덤 컴포넌트
+        element: <Main />, //타오르는 팬덤 컴포넌트
     },
     // { path: "login", element: <Login /> }, //로그인 컴포넌트
     {
@@ -47,7 +47,7 @@ const Router = createBrowserRouter([
     SettingsRouter,
     RequestRouter,
     FeedWriteRouter,
-    MyFandomRouter,
+    SearchItemRouter,
 ]);
 
 export default Router;
