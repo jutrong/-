@@ -20,7 +20,7 @@ type FeedCommentData = {
   feed_id: number;
   content: string;
   created_at: string;
-  comments?: CommentData[]
+  comments?: CommentData[];
 };
 
 type CommentItemProps = {

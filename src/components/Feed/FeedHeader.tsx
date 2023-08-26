@@ -2,23 +2,7 @@ import React from "react";
 import more from "../../assets/images/svg/ic-more-horizontal.svg";
 import detailDate from "../../utils/time";
 import * as S from "./style/FeedHeader.style";
-
-type User = {
-  id: number;
-  user_id: number;
-  profileImg: string;
-  user_name: string;
-  fandom_name: string;
-};
-type FeedData = {
-  id: number;
-  user: User;
-  created_at: string;
-};
-type FeedDataProps = {
-  feedData: FeedData;
-  setIsFeedDelete: React.Dispatch<React.SetStateAction<boolean>>;
-};
+import { FeedDataProps } from "../../types/feed";
 
 const FeedHeader: React.FC<FeedDataProps> = ({ feedData, setIsFeedDelete }) => {
   return (

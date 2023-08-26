@@ -16,17 +16,18 @@ const FeedHeaderBar = () => {
       fileInputRef.current.click();
     }
   };
-  const handleFileChange = (event: any) => {
-    const file = event.target.files[0];
-    const imageUrl = URL.createObjectURL(file);
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    // Non-null assertion operators
+    const imageUrl = URL.createObjectURL(file!);
 
     if (file) {
       // 파일을 선택했을 때 수행할 작업
       setSelectedImage(imageUrl);
+      navigation("/feedwrite", {
+        state: { isUpdate: false, selectedImage: imageUrl },
+      });
     }
-    navigation("/feedwrite", {
-      state: { isUpdate: false, selectedImage: imageUrl },
-    });
   };
 
   return (

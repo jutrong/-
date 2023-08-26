@@ -1,52 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import * as S from "./style/CommentBtn.style"
+import * as S from "./style/CommentBtn.style";
 import comment from "../../assets/images/svg/ic-message-circle.svg";
 import commentActive from "../../assets/images/svg/ic-message-active.svg";
-
-
-type Feed = {
-  id: number;
-  user: User;
-  feedImg: string;
-  content: string;
-  hashTag: string[];
-  created_at: string;
-  sonminsuItems: SonminsuItem[];
-  comments: CommentType[];
-};
-
-type User = {
-  id: number;
-  user_id: number;
-  profileImg: string;
-  user_name: string;
-  fandom_name: string;
-};
-
-type SonminsuItem = {
-  id: number;
-  itemImg: string;
-  title: string;
-  price: number;
-  url: string;
-};
-type CommentType = {
-  id: number;
-  feed_id: number;
-  user_id: number;
-  profileImg: string;
-  user_name: string;
-  content: string;
-  created_at: string;
-  replies?: CommentType[];
-};
-
-type CommentBtnProps = {
-  commentOpen: () => void;
-  commentClicked: boolean;
-  feedData: Feed;
-};
+import { CommentBtnProps } from "../../types/feed";
 
 const CommentBtn: React.FC<CommentBtnProps> = ({
   commentOpen,

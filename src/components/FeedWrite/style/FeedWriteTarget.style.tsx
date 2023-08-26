@@ -9,13 +9,19 @@ export const Targeting = styled.p`
   color: #1d1b20;
   margin-bottom: 16px;
 `;
-export const TargetingBox = styled.div`
+export const Target = styled.div`
   display: flex;
+  width: 100%;
   gap: 10px;
+`;
+export const TargetingBox = styled.div`
   margin-bottom: 8px;
+  width: 100%;
+  position: relative;
 `;
 export const TargetGroupInput = styled.input`
-  width: 45%;
+  box-sizing: border-box;
+  width: 100%;
   height: 48px;
   border: 1px solid #e8e8e8;
   border-radius: 8px;
@@ -29,8 +35,9 @@ export const TargetGroupInput = styled.input`
   font-size: 16px;
 `;
 export const TargetArtistInput = styled.input`
-  width: 45%;
+  width: 100%;
   height: 48px;
+  box-sizing: border-box;
   background-color: #f6f6f6;
   border: 1px solid #e8e8e8;
   border-radius: 8px;
@@ -47,17 +54,26 @@ export const TargetLabel = styled.p`
   color: rgba(29, 27, 32, 0.5);
   font-size: 14px;
   text-align: right;
-  padding-bottom: 125px;
   margin-right: 18px;
 `;
 
-// export const GroupLimit = styled.p`
-//   font-size: 13px;
-//   color: #bdbdbd;
-//   font-family: "Pretendard-Medium";
-// `;
-// export const ArtistLimit = styled.p`
-//   font-size: 13px;
-//   color: #bdbdbd;
-//   font-family: "Pretendard-Medium";
-// `;
+export const GroupLimit = styled.p`
+  font-size: 13px;
+  color: #bdbdbd;
+  font-family: "Pretendard-Medium";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 16px;
+`;
+export const ArtistLimit = styled.p`
+  font-size: 13px;
+  color: #bdbdbd;
+  font-family: "Pretendard-Medium";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 16px;
+`;
+export const GroupLimitNum = styled.span``;
+export const ArtistLimitNum = styled.span``;

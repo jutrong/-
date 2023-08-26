@@ -2,52 +2,18 @@ import React, { useState } from "react";
 import axios from "axios";
 import CommentItem from "../Feed/CommentItem";
 import * as S from "./style/Comment.style";
+import { Feed, CommentType } from "../../types/feed";
 
-type Feed = {
-  id: number;
-  user: User;
-  feedImg: string;
-  content: string;
-  hashTag: string[];
-  created_at: string;
-  sonminsuItems: SonminsuItem[];
-  comments: Comment[];
-};
-
-type User = {
-  id: number;
-  user_id: number;
-  profileImg: string;
-  user_name: string;
-  fandom_name: string;
-};
-
-type SonminsuItem = {
-  id: number;
-  itemImg: string;
-  title: string;
-  price: number;
-  url: string;
-};
-type Comment = {
-  id: number;
-  feed_id: number;
-  user_id: number;
-  profileImg: string;
-  user_name: string;
-  content: string;
-  created_at: string;
-  replies?: Comment[];
-};
-
-type FeedProps = {
+type FeedCommentProps = {
   feedData: Feed;
   showModal: () => void;
 };
 
-const Comment: React.FC<FeedProps> = ({ feedData, showModal }) => {
+const Comment: React.FC<FeedCommentProps> = ({ feedData, showModal }) => {
   const [commentInput, setCommentInput] = useState<string>("");
-  const [comments, setComments] = useState<Comment[]>(feedData.comments || []);
+  const [comments, setComments] = useState<CommentType[]>(
+    feedData.comments || []
+  );
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCommentInput(event.target.value);

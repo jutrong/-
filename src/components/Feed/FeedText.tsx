@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./style/FeedText.style";
+import { FeedTextProps } from "../../types/feed";
 
-type FeedData = {
-  content: string;
-};
-type FeedTextProps = {
-  feedData: FeedData;
-};
 const Text: React.FC<FeedTextProps> = ({ feedData }) => {
   const [isShowMore, setIsShowMore] = useState<boolean>(false);
   const textLimit: number = 50;
@@ -19,6 +14,7 @@ const Text: React.FC<FeedTextProps> = ({ feedData }) => {
       setFeedText(feedData.content);
     }
   }, []);
+
   return (
     <S.FeedText>
       {displayedComment}
