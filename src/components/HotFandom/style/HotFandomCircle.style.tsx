@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-import { ReactComponent as NumberOneIcon } from "../../assets/images/svg/hotFandom/hotPandomNumberOneIcon.svg";
+import { ReactComponent as NumberOneIcon } from "../../../assets/images/svg/hotFandom/hotPandomNumberOneIcon.svg";
 
 export const PandomCircleContainer = styled.div`
     height: 115px;

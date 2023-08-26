@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
-    max-width: 390px;
+    height: 100%;
 `;
+
+export const HotFandomContainer = styled.div`
+    margin: 0 auto;
+    max-width: 390px;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+`;
+
 export const HeaderBox = styled.div`
     flex-direction: row;
     justify-content: left;

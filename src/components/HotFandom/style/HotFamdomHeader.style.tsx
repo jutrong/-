@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-import { ReactComponent as LeftArrow } from "../../assets/images/svg/hotFandom/hotPandomarrowLeftIcon.svg";
+import { ReactComponent as LeftArrow } from "../../../assets/images/svg/hotFandom/hotPandomarrowLeftIcon.svg";
 
 // 팬덤 헤더 컨테이너
 export const ContentHeaderContainer = styled.div`
