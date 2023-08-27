@@ -5,10 +5,12 @@ import RequestDetaiNoWriterlHeader from "../../components/Request/nowriter/Reque
 import RequestNoWriterResponse from "../../components/Request/nowriter/RequestNoWriterResponse";
 import RequestDetailDesc from "../../components/Request/RequestDetailDesc";
 import RequestResponse from "../../components/Request/writer/RequestWriterResponse";
+import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
 
 const RequestDetailNoWriter: React.FC = () => {
   return (
     <>
+      <HeaderBar BackButton={true} color="#fff" />
       <RequestDetaiNoWriterlHeader />
       <RequestDetailDesc />
       <S.AnswerNumber>답변 1개</S.AnswerNumber>

@@ -43,7 +43,7 @@ export const Date = styled.p`
   font-size: 13px;
 `;
 export const More = styled.img``;
-export const Select = styled.img`
+export const SeleteImg = styled.img`
   position: absolute;
   top: -20px;
   right: 0;

@@ -31,7 +31,12 @@ export const QuestionTitleInput = styled.input`
   width: 100%;
   font-family: "Pretendard-Medium";
   font-size: 15px;
-  color: #6c7080;
+  color: #1D1B20
+  &::placeholder {
+    font-family: "Pretendard-Medium";
+    font-size: 15px;
+    color: #6c7080;
+  }
 `;
 export const QuestionTitleLable = styled.p<{ color: boolean }>`
   font-family: "Pretendard-Medium";
@@ -113,9 +118,10 @@ export const ImgLabel = styled.p`
 `;
 export const UploadImgBox = styled.div`
   position: relative;
+`;
+export const UploadImg = styled.img`
   width: 80px;
   height: 80px;
-  background-color: #f6f6f6;
   border-radius: 8px;
 `;
 export const Delete = styled.img`

@@ -6,12 +6,13 @@ import LinkAttachItem from "../LinkAttachItem";
 import AppAlertModal from "../../common/AlertModal/AppAlertModal";
 
 const RequestWriterResponse: React.FC = () => {
-  const [hhh, setHHH] = useState(true);
-
-  console.log(hhh);
+  const [moreClick, setMoreClick] = useState(false);
+  const [selectClick, setSeleteClick] = useState(false);
+  const [result, setResult] = useState(true);
 
   const click = () => {
-    console.log("eee");
+    setSeleteClick(false);
+    setResult(false);
   };
 
   return (
@@ -26,26 +27,41 @@ const RequestWriterResponse: React.FC = () => {
               <S.Date>10분전</S.Date>
             </S.ResponesInfo>
           </S.ProfileInfo>
-          <S.More src={more} />
-          {/* <SS.elect src={select} /> */}
-          {/* <S.MoreModal>
-          <S.Selete>채택하기</S.Selete>
-          <S.Delete>삭제하기</S.Delete>
-        </S.MoreModal> */}
+          {result && (
+            <S.More
+              src={more}
+              onClick={() => {
+                setMoreClick(true);
+              }}
+            />
+          )}
+          {result && moreClick && (
+            <S.MoreModal>
+              <S.Selete
+                onClick={() => {
+                  setSeleteClick(true);
+                }}
+              >
+                채택하기
+              </S.Selete>
+              <S.Delete>삭제하기</S.Delete>
+            </S.MoreModal>
+          )}
+          {!result && <S.SeleteImg src={select} />}
         </S.ProfileBox>
         <S.ImgsBox>
-          <LinkAttachItem />
+          <LinkAttachItem deletevalue={false} />
         </S.ImgsBox>
       </S.Wrap>
-      {/* {hhh && (
+      {selectClick && (
         <AppAlertModal
           title="채택하기"
           content="채택하시겠습니까?"
           yesContent="채택"
           yesClickHandler={click}
-          setModalOpen={setHHH}
+          setModalOpen={setSeleteClick}
         />
-      )} */}
+      )}
     </>
   );
 };
