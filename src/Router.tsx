@@ -21,7 +21,7 @@ import Requests from "./pages/Request/Requests";
 const Router = createBrowserRouter([
   {
     path: "/",
-    element: <Requests />,
+    element: <Home />,
   },
   {
     path: "home",

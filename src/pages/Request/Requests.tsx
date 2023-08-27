@@ -8,8 +8,19 @@ import Icon from "../../elements/Icon";
 import { Link } from "react-router-dom";
 import axios from "../../api/axios";
 
+type Requests = {
+  title: string;
+  id: number;
+  image: string;
+  user: {
+    id: number;
+    nickName: string;
+  };
+  createAt: string;
+};
+
 const Requests: React.FC = () => {
-  const [requestdata, setRequestData] = useState("");
+  const [requestdata, setRequestData] = useState<Requests[]>([]);
 
   useEffect(() => {
     fetchData();
@@ -46,14 +57,19 @@ const Requests: React.FC = () => {
             <S.NoRequestDesc>새 의뢰를 작성해주세요!</S.NoRequestDesc>
           </S.NoRequest>
         ) : (
-          <Link to="/requests/writer/:requestId">
-            <RequestList
-              title="제발 이것좀 찾아 주세요 ㅜㅜ"
-              username="아마추어 손민수"
-              date="10분전"
-            />
-          </Link>
+          <RequestList
+            title="제발 이것좀 찾아 주세요 ㅜㅜ"
+            username="아마추어 손민수"
+            date="10분전"
+          />
         )}
+        {requestdata.map((request) => (
+          <RequestList
+            title={request.title}
+            username={request.user.nickName}
+            date="10분전"
+          />
+        ))}
       </S.Wrap>
     </>
   );
