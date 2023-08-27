@@ -1,127 +1,11 @@
 import React from 'react';
-import styled from 'styled-components'
-import { Link } from 'react-router-dom';
-
-import { ChatProps, MyChat, OtherChat } from './ChatBubble';
-import IconButton, { BackButton } from './IconButton';
-import ChatMember from './ChatMember';
-
-import { ReactComponent as IconImage } from "../../assets/images/svg/ic-image.svg";
-import { ReactComponent as IconCamera } from "../../assets/images/svg/ic-camera.svg";
+import { ChatProps, MyChat, OtherChat } from '../../components/Chatting/ChatBubble';
+import BackButton from '../../components/Chatting/BackButton';
+import ChatBar from '../../components/Chatting/ChatBar';
 import iconMember from '../../assets/images/svg/ic-member.svg';
-import iconSend from '../../assets/images/svg/ic-send.svg';
+import ChatGridImage from '../../components/Chatting/ChatGridImage';
+import * as S from './styles/ChatRoom.style';
 
-
-
-const LinkItem = styled(Link)`
-    text-decoration: none;
-    cursor: pointer;
-    
-    &:visited {
-        color: blue;
-    }
-`
-
-
-export const HeaderWrapper = styled.div`
-    // background-color: blue;
-
-    width: 100%;
-    height: 50px;
-    padding-left: 16px;
-    padding-right: 16px;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-`;
-
-const ChatTitle = styled.div`
-    width: 100%;
-    font-size: 20px;
-    font-weight: bold;
-`;
-
-
-
-const ChatWrapper = styled.div`
-    // background-color: pink;    
-
-    width: 100%;
-    min-height: calc(100% - 148px);
-    padding-left: 16px;
-    padding-right: 16px;
-    
-    box-sizing: border-box;
-`;
-
-
-const ChatBar = styled.div`
-    width: 100%;
-    height: 98px;
-
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    padding-left: 16px;
-    padding-right: 16px;
-
-
-    box-shadow: 0 -5px 5px -5px lightgray;
-    box-sizing: border-box;
-    display: flex;
-`;
-
-const IconWrapper = styled.div`
-    padding-top: 24px;
-
-    display: flex;
-`;
-
-const ChatIconImage = styled(IconImage)`
-    cursor: pointer;
-    margin-right: 16px;
-`;
-
-const ChatIconCamera = styled(IconCamera)`
-    cursor: pointer;
-    margin-right: 16px;
-`;
-
-const ChatInputWrapper = styled.div`
-    width: 100%;
-    margin-top: 16px;
-
-    display: flex;
-
-`;
-
-const ChatInput = styled.input`
-    min-width: calc(100% - 50px);
-    height: 40px;
-    
-    margin-left: 3px;
-    margin-right: 6px;
-    padding-left: 13px;
-    padding-right: 13px;
-    
-    border: none;
-    border-radius:10px;
-    background-color: #EBEEF2;
-    box-sizing: border-box;
-
-    color: #6C7080;
-    font-size: 14px;
-`;
-
-const ChatInputButton = styled.button`
-    width: 40px;
-    height: 40px;
-    padding: 0;
-
-    border: 0;
-    border-radius: 10px;
-    background: #208DF1 url(${iconSend}) no-repeat center;
-    cursor: pointer;
-`;
 
 
 const ChatRoom = () => {
@@ -145,16 +29,31 @@ const ChatRoom = () => {
         createAt: new Date(),
     }
 
+    const imageMock: string[] = [
+        "https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2022/06/17/4a3691f8-a5b9-4705-9c47-44be7988c66a.jpg",
+        "https://jmagazine.joins.com/_data2/photo/2022/08/990874659_M2LfNeRF_3.jpg",
+        "https://cdnweb01.wikitree.co.kr/webdata/editor/202203/20/img_20220320152018_d56ef2d9.webp",
+        "https://image.jtbcplus.kr/data/contents/jam_photo/202209/21/37a8d815-ed8d-4cf5-8cd4-3714f3d8c649.jpg",
+        "https://mblogthumb-phinf.pstatic.net/MjAyMTAyMDRfNzUg/MDAxNjEyMzY5MDQ2ODMw.k6txr5dsICIPp9EzfUknZABzC8RYutPHYkGSIrwbv-sg.Vb8kG_i1p1YpDLQVp7zAlYCdWm2O4aTjekdAOdIzM7wg.JPEG.kisluvme/IMG_2574.JPG?type=w800",
+        "https://dimg.donga.com/wps/SPORTS/IMAGE/2022/01/27/111487379.1.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUURz18LJaYfQPqh2P0EWzvsGXJqZNI3UUA&usqp=CAU",
+        "https://image.bugsm.co.kr/essential/images/500/540/54066.jpg",
+        "https://play-lh.googleusercontent.com/4CyGC7CiaxkyDloyji4IMH07nTPUluhrlV1A0SJ-VkYbobIo--ndgJ1bikONNnr5zN0",
+    ];
+
+    const ban: boolean = false;
+
+
     return (
             <>
-                <HeaderWrapper>
+                <S.ChatHeader>
                     <BackButton />
-                    <ChatTitle>A.R.M.Y</ChatTitle>
-                    <LinkItem to="/chatting/chatmember">
-                        <IconButton iconName={iconMember} />
-                    </LinkItem>
-                </HeaderWrapper>
-                <ChatWrapper>
+                    <S.ChatTitle>A.R.M.Y</S.ChatTitle>
+                    <S.LinkItem to="/chatting/chatmember/1">
+                        <S.IconButton src={iconMember} />
+                    </S.LinkItem>
+                </S.ChatHeader>
+                <S.ChatRoomWindow>
                     <OtherChat 
                          id={chatDataOther.id}
                          fandomId={chatDataOther.fandomId}
@@ -172,17 +71,9 @@ const ChatRoom = () => {
                         readCount={chatData.readCount}
                         createAt={chatData.createAt}
                     />
-                </ChatWrapper>
-                <ChatBar>
-                    <IconWrapper>
-                        <ChatIconImage />
-                        <ChatIconCamera />
-                    </IconWrapper>
-                    <ChatInputWrapper>
-                        <ChatInput placeholder="채팅을 입력해 주세요" />
-                        <ChatInputButton />
-                    </ChatInputWrapper>
-                </ChatBar>
+                    <ChatGridImage imageList={imageMock} />
+                </S.ChatRoomWindow>
+                <ChatBar ban={ban} />
             </>
             
     )

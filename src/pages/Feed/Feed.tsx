@@ -1,92 +1,93 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import FeedHeader from "./FeedHeader";
-import ItemBox from "./Item";
-import HashTag from "./HashTag";
-import LikeBtn from "./LikeBtn";
-import CommentBtn from "./CommentBtn";
-import FeedText from "./FeedText";
-import Comment from "./Comment";
+import styled from "styled-components";
+import * as S from "./style/Feed.style";
+import FeedHeaderBar from "../../components/Feed/FeedHeaderBar";
+import FeedHeader from "../../components/Feed/FeedHeader";
+import ItemBox from "../../components/Feed/Item";
+import HashTag from "../../components/Feed/HashTag";
+import LikeBtn from "../../components/Feed/LikeBtn";
+import CommentBtn from "../../components/Feed/CommentBtn";
+import FeedText from "../../components/Feed/FeedText";
+import Comment from "../../components/Feed/Comment";
+import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
+import CloseModal from "../../components/Feed/CloseModal";
+import FeedDelete from "../../components/Feed/FeedDelete";
+import AppAlertModal from "../../components/common/AlertModal/AppAlertModal";
+import { Feed } from "../../types/feed";
 
-const FeedImage = styled.div<FeedImgProps>`
-  width: 100%;
-  height: 390px;
-  cursor: pointer;
-  background-image: url(${(props) => props.feedUrl});
-  background-repaet: no-repeat;
-  background-size: cover;
-  background-position: center;
-`;
-
-const BtnWrap = styled.div`
-  display: flex;
-  margin-top: 31px;
-`;
-const Line = styled.div`
-  background-color: #e2e2e2;
-  width: 100%;
-  height: 6px;
-  margin-top: 22px;
-  margin-bottom: 19px;
-`;
-type FeedData = {
-  id: number;
-  user_name: string;
-  fandom_name: string;
-  profileImage: string;
-  feedImgSrc: string;
-  content: string;
-  hashtag: string[];
-};
-type FeedImgProps = {
-  feedUrl: string;
-};
-const Feed: React.FC = () => {
-  const [openCommentId, setCommentId] = useState<number>();
-  const [feedData, setFeedData] = useState<FeedData[]>([]);
+const FeedIndex = () => {
+  const [openComment, setOpenComment] = useState<number | undefined>();
+  const [feedData, setFeedData] = useState<Feed[]>([]);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [isFeedDelete, setIsFeedDelete] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
   }, []);
+
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/feed");
+      const response = await axios.get("http://localhost:5000/feed");
       setFeedData(response.data);
     } catch (error) {
       console.error("Error", error);
     }
   };
-  const toggleComment = (id: number) => {
-    if (openCommentId === id) {
-      setCommentId(undefined);
-    } else {
-      setCommentId(id);
-    }
+
+  const showModal = () => {
+    setModalOpen(true);
   };
 
+  const toggleComment = (id: number) => {
+    if (openComment === id) {
+      setOpenComment(undefined);
+    } else {
+      setOpenComment(id);
+    }
+  };
   return (
-    <>
-      {feedData.map((feed) => (
+    <S.FeedContainer>
+      <FeedHeaderBar />
+      {feedData?.map((feed) => (
         <React.Fragment key={feed.id}>
-          <FeedHeader feedData={feed} />
-          <FeedImage feedUrl={feed.feedImgSrc} />
-          <ItemBox />
+          <FeedHeader feedData={feed} setIsFeedDelete={setIsFeedDelete} />
+          <S.FeedImage src={feed.feedImg} />
+          <ItemBox feedData={feed} />
           <FeedText feedData={feed} />
           <HashTag feedData={feed} />
-          <BtnWrap>
+          <S.BtnWrap>
             <LikeBtn />
             <CommentBtn
               commentOpen={() => toggleComment(feed.id)}
-              commentClicked={openCommentId === feed.id}
+              commentClicked={openComment === feed.id}
+              feedData={feed}
             />
-          </BtnWrap>
-          {openCommentId === feed.id && <Comment />}
-          <Line />
+          </S.BtnWrap>
+          {openComment === feed.id && (
+            <Comment feedData={feed} showModal={showModal} />
+          )}
+          <S.Line />
         </React.Fragment>
       ))}
-    </>
+      {openComment === undefined && <FooterNavBar />}
+      {modalOpen && (
+        <AppAlertModal
+          setModalOpen={setModalOpen}
+          title={"댓글 삭제"}
+          content={"댓글을 삭제하시겠습니까?"}
+          yesContent={"삭제"}
+          warning={true}
+          yesClickHandler={() => {
+            alert("삭제요청, 그리고 alert창 끄기");
+          }}
+        />
+      )}
+      {isFeedDelete && <FeedDelete setIsFeedDelete={setIsFeedDelete} />}
+    </S.FeedContainer>
   );
 };
 
-export default Feed;
+export default FeedIndex;

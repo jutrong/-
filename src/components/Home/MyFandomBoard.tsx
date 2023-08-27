@@ -1,40 +1,23 @@
-import styled from "styled-components";
+import * as S from "./style/MyFandomBoard.style";
 import ContentHeader from "./ContentHeader";
 import FandomCircle from "./FandomCircle";
 
-// 팬덤 서클 리스트 컨테이너
-const MyFandomBoardContainer = styled.div`
-    height: 193px;
-`;
-
-// 서클 리스트 박스
-const FandomCircleListBox = styled.div`
-    height: 144px;
-
-    display: flex;
-    overflow: scroll;
-`;
-
-// PandomCircle 임포트
-
-const MyFandomBoard = () => {
+const MyFandomBoard: React.FC = () => {
     return (
-        <div>
-            <MyFandomBoardContainer>
-                <ContentHeader />
-                <FandomCircleListBox>
-                    <FandomCircle />
+        <S.MyFandomBoardContainer>
+            <ContentHeader />
+            <S.FandomCircleListBox>
+                <FandomCircle />
 
-                    <FandomCircle />
+                <FandomCircle />
 
-                    <FandomCircle />
+                <FandomCircle />
 
-                    <FandomCircle />
+                <FandomCircle />
 
-                    <FandomCircle />
-                </FandomCircleListBox>
-            </MyFandomBoardContainer>
-        </div>
+                <FandomCircle />
+            </S.FandomCircleListBox>
+        </S.MyFandomBoardContainer>
     );
 };
 export default MyFandomBoard;
