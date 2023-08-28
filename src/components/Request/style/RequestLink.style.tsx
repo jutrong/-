@@ -9,11 +9,10 @@ export const Wrap = styled.div`
   padding-top: 7px;
   margin-top: 6px;
 `;
-export const ListImg = styled.div`
+export const ListImg = styled.img`
   width: 56px;
   height: 56px;
   border-radius: 8px;
-  background-color: gray;
   margin-right: 15px;
 `;
 export const LeftBox = styled.div`

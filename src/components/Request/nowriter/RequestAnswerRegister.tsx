@@ -19,7 +19,7 @@ const RequestAnswerRegister: React.FC = () => {
               <S.LinkSVG src={link} />
               <S.LinkRegisterLabel>링크등록</S.LinkRegisterLabel>
             </S.LinkRegister>
-            <LinkAttachItem />
+            {/* <LinkAttachItem /> */}
           </S.LinkBox>
         </S.LinkContents>
         <BTN />

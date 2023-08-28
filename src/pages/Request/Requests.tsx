@@ -7,6 +7,7 @@ import edit from "../../assets/images/svg/ic-edit.svg";
 import Icon from "../../elements/Icon";
 import { Link } from "react-router-dom";
 import axios from "../../api/axios";
+import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
 
 type Requests = {
   title: string;
@@ -57,20 +58,19 @@ const Requests: React.FC = () => {
             <S.NoRequestDesc>새 의뢰를 작성해주세요!</S.NoRequestDesc>
           </S.NoRequest>
         ) : (
-          <RequestList
-            title="제발 이것좀 찾아 주세요 ㅜㅜ"
-            username="아마추어 손민수"
-            date="10분전"
-          />
+          requestdata.map((request) => (
+            <RequestList
+              img={request.image}
+              title={request.title}
+              username={request.user.nickName}
+              date="10분전"
+              userid={request.user.id}
+              requestid={request.id}
+            />
+          ))
         )}
-        {requestdata.map((request) => (
-          <RequestList
-            title={request.title}
-            username={request.user.nickName}
-            date="10분전"
-          />
-        ))}
       </S.Wrap>
+      <FooterNavBar />
     </>
   );
 };

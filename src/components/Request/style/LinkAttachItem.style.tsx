@@ -6,7 +6,7 @@ export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const AttachImg = styled.div`
+export const AttachImg = styled.img`
   position: relative;
   width: 100px;
   height: 100px;

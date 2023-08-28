@@ -50,6 +50,7 @@ export const SeleteImg = styled.img`
 `;
 export const ImgsBox = styled.div`
   display: flex;
+  gap: 10px;
 `;
 export const MoreModal = styled.div`
   position: absolute;

@@ -12,7 +12,7 @@ const RequestDetailNoWriter: React.FC = () => {
     <>
       <HeaderBar BackButton={true} color="#fff" />
       <RequestDetaiNoWriterlHeader />
-      <RequestDetailDesc />
+      {/* <RequestDetailDesc /> */}
       <S.AnswerNumber>답변 1개</S.AnswerNumber>
       <RequestNoWriterResponse />
       <RequestAnswerRegister />

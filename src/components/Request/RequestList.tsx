@@ -3,25 +3,35 @@ import * as S from "./style/RequestLink.style";
 import { useNavigate } from "react-router-dom";
 
 type RequestListProps = {
+  img: string;
   title: string;
   username: string;
   date: string;
+  userid: number;
+  requestid: number;
 };
 
-const RequestList: React.FC<RequestListProps> = ({ title, username, date }) => {
+const RequestList: React.FC<RequestListProps> = ({
+  img,
+  title,
+  username,
+  date,
+  userid,
+  requestid,
+}) => {
   const navigation = useNavigate();
 
   return (
     <S.Wrap
       onClick={() => {
-        // if (작성자) {
-        //   navigation("/requests/writer/:requestId");
-        // } else {
-        //   navigation("/requests/nowriter/:requestId");
-        // }
+        if (userid === 2) {
+          navigation(`/requests/writer/${requestid}`);
+        } else {
+          navigation(`/requests/nowriter/${requestid}`);
+        }
       }}
     >
-      <S.ListImg />
+      <S.ListImg src={img} />
       <S.LeftBox>
         <S.ListTitle>{title}</S.ListTitle>
         <S.ListInfo>

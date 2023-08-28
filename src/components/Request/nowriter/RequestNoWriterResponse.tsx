@@ -15,9 +15,7 @@ const RequestNoWriterResponse: React.FC = () => {
           </S.ResponesInfo>
         </S.ProfileInfo>
       </S.ProfileBox>
-      <S.ImgsBox>
-        <LinkAttachItem />
-      </S.ImgsBox>
+      <S.ImgsBox>{/* <LinkAttachItem /> */}</S.ImgsBox>
     </S.Wrap>
   );
 };
