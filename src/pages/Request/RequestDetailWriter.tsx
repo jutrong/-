@@ -16,6 +16,8 @@ type RequestDescProps = {
   content: string;
   answerCnt: number;
   createdAt: string;
+  groupName: string;
+  artistName: string;
   user: {
     id: number;
     nickName: string;
@@ -45,7 +47,7 @@ type RequestDescProps = {
 };
 
 const RequestDetailWriter: React.FC = () => {
-  let { params } = useParams();
+  let { requestId } = useParams();
   const axiosPrivate = useAxiosPrivate();
 
   const [requestdata, setRequestData] = useState<RequestDescProps>(Object);
@@ -56,7 +58,9 @@ const RequestDetailWriter: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axiosPrivate.get(`/sonminsu-requests/4`);
+      const response = await axiosPrivate.get(
+        `/sonminsu-requests/${requestId}`
+      );
       setRequestData(response.data.data);
       console.log(response.data.data);
     } catch (err) {

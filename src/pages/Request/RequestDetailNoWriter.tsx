@@ -50,7 +50,7 @@ type RequestDescProps = {
 };
 
 const RequestDetailNoWriter: React.FC = () => {
-  let { params } = useParams();
+  let { requestId } = useParams();
   const axiosPrivate = useAxiosPrivate();
 
   const [requestdata, setRequestData] = useState<RequestDescProps>(Object);
@@ -62,7 +62,9 @@ const RequestDetailNoWriter: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axiosPrivate.get(`/sonminsu-requests/3`);
+      const response = await axiosPrivate.get(
+        `/sonminsu-requests/${requestId}`
+      );
       setRequestData(response.data.data);
       //console.log(response.data.data);
     } catch (err) {

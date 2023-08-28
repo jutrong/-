@@ -4,6 +4,7 @@ import close from "../../../assets/images/svg/ic-x.svg";
 import LinkAttachItem from "../LinkAttachItem";
 import SkyBTN from "../SkyBTN";
 import axios, { axiosPrivate } from "../../../api/axios";
+import { useParams } from "react-router-dom";
 
 type RegisterModalProps = {
   setClick: React.Dispatch<React.SetStateAction<boolean>>;
@@ -23,6 +24,8 @@ const RequestLinkRegister: React.FC<RegisterModalProps> = ({
   groupName,
   artistName,
 }) => {
+  let { requestId } = useParams();
+
   const [urlValue, setUrlValue] = useState("");
   const [urlVaild, setUrlVaild] = useState(false);
   const [urlVaildNum, setUrlVaildNum] = useState(false);
@@ -84,9 +87,12 @@ const RequestLinkRegister: React.FC<RegisterModalProps> = ({
     }
 
     try {
-      const response = await axiosPrivate.post("/users/sonminsu-answers/3", {
-        itemIds: urlItem.map((item) => item.id),
-      });
+      const response = await axiosPrivate.post(
+        `/users/sonminsu-answers/${requestId}`,
+        {
+          itemIds: urlItem.map((item) => item.id),
+        }
+      );
       setClick(false);
     } catch (err) {
       console.log(err);

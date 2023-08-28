@@ -1,16 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
-import AppAlertModal from "../../common/AlertModal/AppAlertModal";
 import * as S from "../style/RepuestMoreModal.style";
+import { useNavigate } from "react-router-dom";
 
 type ModalProps = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   deleteClick: () => void;
+  requestid: number;
 };
 
 const RequestMoreModal: React.FC<ModalProps> = ({
   setModalOpen,
   deleteClick,
+  requestid,
 }) => {
+  const navigation = useNavigate();
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,6 +35,7 @@ const RequestMoreModal: React.FC<ModalProps> = ({
           <S.ModifyMenu
             onClick={() => {
               setModalOpen(false);
+              navigation(`/requests/form/modify/${requestid}`);
             }}
           >
             수정하기

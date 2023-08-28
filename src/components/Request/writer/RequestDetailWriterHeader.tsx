@@ -61,6 +61,7 @@ const RequestDetailWriterHeader: React.FC<RequestTitleProps> = ({
           deleteClick={() => {
             setDeleteAlert(true);
           }}
+          requestid={id}
         />
       )}
       {deleteAlert && (
