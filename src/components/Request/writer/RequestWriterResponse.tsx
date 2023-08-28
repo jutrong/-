@@ -4,6 +4,9 @@ import more from "../../../assets/images/svg/ic-more-horizontal.svg";
 import select from "../../../assets/images/svg/ic-select.svg";
 import LinkAttachItem from "../LinkAttachItem";
 import AppAlertModal from "../../common/AlertModal/AppAlertModal";
+import axios, { axiosPrivate } from "../../../api/axios";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
+import detailDate from "../../../utils/time";
 
 type answerItmesType = {
   id: number;
@@ -19,6 +22,7 @@ type RequestAnswerProps = {
   answerUserclearNum: number;
   answerDate: string;
   answerItems: answerItmesType[];
+  answerId: number;
 };
 
 const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
@@ -27,6 +31,7 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
   answerUserclearNum,
   answerDate,
   answerItems,
+  answerId,
 }) => {
   const [moreClick, setMoreClick] = useState(false);
   const [selectClick, setSeleteClick] = useState(false);
@@ -47,12 +52,30 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
     };
   }, []);
 
-  const click = () => {
+  const click = async () => {
     setSeleteClick(false);
     setResult(false);
+
+    try {
+      const response = await axiosPrivate.put(
+        `/sonminsu-answers/${answerId}/choose`
+      );
+    } catch (err) {
+      console.log(err);
+    }
   };
-  const deleteclick = () => {
+
+  const deleteclick = async () => {
     setDeleteClick(false);
+
+    try {
+      const response = await axiosPrivate.delete(
+        `/sonminsu-answers/${answerId}`,
+        { headers: {} }
+      );
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -64,7 +87,7 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
             <S.UserName>{answerUsername}</S.UserName>
             <S.ResponesInfo>
               <S.ClearNumber>채택된 의뢰 {answerUserclearNum}개</S.ClearNumber>
-              <S.Date>{answerDate}</S.Date>
+              <S.Date>{detailDate(answerDate)}</S.Date>
             </S.ResponesInfo>
           </S.ProfileInfo>
           {result && (

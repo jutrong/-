@@ -15,7 +15,7 @@ type RequestDescProps = {
   title: string;
   content: string;
   answerCnt: number;
-  createAt: string;
+  createdAt: string;
   user: {
     id: number;
     nickName: string;
@@ -70,9 +70,11 @@ const RequestDetailWriter: React.FC = () => {
       <RequestDetailWriterHeader
         title={requestdata.title}
         username={requestdata.user?.nickName}
+        date={requestdata.createdAt}
+        id={requestdata.id}
       />
       <RequestDetailDesc desc={requestdata.content} img={requestdata.image} />
-      <S.ResponseNumber>답변 {requestdata.answers?.length}개</S.ResponseNumber>
+      <S.ResponseNumber>답변 {requestdata.answerCnt}개</S.ResponseNumber>
       {requestdata.answers &&
         requestdata.answers.map((answer) => (
           <RequestWriterResponse
@@ -82,6 +84,7 @@ const RequestDetailWriter: React.FC = () => {
             answerUserclearNum={answer.user.choosedCnt}
             answerDate={answer.createdAt}
             answerItems={answer.items}
+            answerId={answer.id}
           />
         ))}
     </>

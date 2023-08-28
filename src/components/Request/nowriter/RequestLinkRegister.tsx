@@ -7,11 +7,26 @@ import axios, { axiosPrivate } from "../../../api/axios";
 
 type RegisterModalProps = {
   setClick: React.Dispatch<React.SetStateAction<boolean>>;
+  groupName: string;
+  artistName: string;
 };
 
-const RequestLinkRegister: React.FC<RegisterModalProps> = ({ setClick }) => {
+type itemtype = {
+  id: number;
+  imgUrl: string;
+  title: string;
+  price: string;
+};
+
+const RequestLinkRegister: React.FC<RegisterModalProps> = ({
+  setClick,
+  groupName,
+  artistName,
+}) => {
   const [urlValue, setUrlValue] = useState("");
   const [urlVaild, setUrlVaild] = useState(false);
+  const [urlVaildNum, setUrlVaildNum] = useState(false);
+  const [urlItem, setUrlItem] = useState<itemtype[]>([]);
 
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -30,6 +45,7 @@ const RequestLinkRegister: React.FC<RegisterModalProps> = ({ setClick }) => {
   const registerUrlInput = (e: any) => {
     setUrlValue(e.target.value);
   };
+
   const registerUrlBTN = async () => {
     let regex =
       /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
@@ -39,16 +55,43 @@ const RequestLinkRegister: React.FC<RegisterModalProps> = ({ setClick }) => {
       setUrlVaild(false);
     }
 
+    if (urlItem.length >= 9) {
+      return setUrlVaildNum(true);
+    } else {
+      setUrlVaildNum(false);
+    }
+
     try {
       const response = await axiosPrivate.post("/users/sonminsu-items", {
         originUrl: urlValue,
-        groupName: "BTN",
-        artistName: "지민",
+        groupName: groupName,
+        artistName: artistName,
       });
-      console.log(response.data);
+      setUrlItem((oldArray) => [...oldArray, response.data.data]);
+      setUrlValue("");
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handleDeleteClick = (id: any) => {
+    setUrlItem(urlItem.filter((item) => item.id !== id));
+  };
+
+  const handleSubmitClick = async () => {
+    if (urlItem.length === 0) {
+      return;
+    }
+
+    try {
+      const response = await axiosPrivate.post("/users/sonminsu-answers/3", {
+        itemIds: urlItem.map((item) => item.id),
+      });
+      setClick(false);
+    } catch (err) {
+      console.log(err);
+    }
+    console.log(urlItem.map((item) => item.id));
   };
 
   return (
@@ -64,8 +107,9 @@ const RequestLinkRegister: React.FC<RegisterModalProps> = ({ setClick }) => {
         <S.LinkRegisterBox>
           <S.LinkRegister
             onChange={registerUrlInput}
-            border={urlVaild}
+            border={urlVaild || urlVaildNum}
             placeholder="링크를 입력해주세요"
+            value={urlValue}
           />
           <S.LinkRegisterBTN onClick={registerUrlBTN}>
             링크 등록
@@ -74,15 +118,24 @@ const RequestLinkRegister: React.FC<RegisterModalProps> = ({ setClick }) => {
         {urlVaild && (
           <S.LinkRegisterAlert>올바른 링크가 아닙니다.</S.LinkRegisterAlert>
         )}
-        <S.LinkAttachItemBox>{/* <LinkAttachItem /> */}</S.LinkAttachItemBox>
-        <S.LinkNumber>링크 1개</S.LinkNumber>
-        <S.FinishBTN
-          onClick={() => {
-            setClick(false);
-          }}
-        >
-          완료
-        </S.FinishBTN>
+        {urlVaildNum && (
+          <S.LinkRegisterAlert>
+            더 이상 링크를 등록할 수 없습니다.
+          </S.LinkRegisterAlert>
+        )}
+        <S.LinkAttachItemBox margintop={urlVaild || urlVaildNum}>
+          {urlItem.map((item) => (
+            <LinkAttachItem
+              deletevalue={true}
+              deleteclick={() => handleDeleteClick(item.id)}
+              itemImg={item.imgUrl}
+              itemName={item.title}
+              itemPrice={item.price}
+            />
+          ))}
+        </S.LinkAttachItemBox>
+        <S.LinkNumber>링크 {urlItem.length}개</S.LinkNumber>
+        <S.FinishBTN onClick={handleSubmitClick}>완료</S.FinishBTN>
       </S.Content>
     </S.Overlay>
   );

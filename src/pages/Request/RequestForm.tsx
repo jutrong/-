@@ -106,6 +106,7 @@ const RequestForm: React.FC = () => {
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
+      navigation(`/requests/`);
     } catch (err) {
       console.log(err);
     }

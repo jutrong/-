@@ -70,9 +70,18 @@ export const LinkRegisterAlert = styled.p`
   color: #fc1e6e;
   margin-top: 4px;
 `;
-export const LinkAttachItemBox = styled.div`
-  height: 142px;
+export const LinkAttachItemBox = styled.div<{ margintop: boolean }>`
+  width: 302px;
+  height: 145px;
+  ${(props) => (props.margintop ? `margin-top: 15px;` : `margin-top: 32px;`)};
+  border-radius: 8px;
   margin-bottom: 19px;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 export const LinkNumber = styled.p`
   font-size: 13px;

@@ -1,13 +1,13 @@
 import { styled } from "styled-components";
 
 export const Wrap = styled.div`
+  position: relative;
   width: 100px;
   height: 142px;
   display: flex;
   flex-direction: column;
 `;
 export const AttachImg = styled.img`
-  position: relative;
   width: 100px;
   height: 100px;
   border-radius: 8px;

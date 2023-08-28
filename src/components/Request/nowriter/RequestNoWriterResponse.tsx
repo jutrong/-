@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "../style/RequestNoWriterResponse.style";
 import LinkAttachItem from "../LinkAttachItem";
+import detailDate from "../../../utils/time";
 
 type answerItmesType = {
   id: number;
@@ -33,7 +34,7 @@ const RequestNoWriterResponse: React.FC<RequestAnswerProps> = ({
           <S.UserName>{answerUsername}</S.UserName>
           <S.ResponesInfo>
             <S.ClearNumber>채택된 의뢰 {answerUserclearNum}개</S.ClearNumber>
-            <S.Date>{answerDate}</S.Date>
+            <S.Date>{detailDate(answerDate)}</S.Date>
           </S.ResponesInfo>
         </S.ProfileInfo>
       </S.ProfileBox>

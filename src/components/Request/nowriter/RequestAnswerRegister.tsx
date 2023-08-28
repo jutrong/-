@@ -6,12 +6,19 @@ import LinkAttachItem from "../LinkAttachItem";
 import WhiteSpaceBTN from "../WhiteSpaceBTN";
 import RequestLinkRegister from "./RequestLinkRegister";
 
-const RequestAnswerRegister: React.FC = () => {
+type RequestAnswerRegisterType = {
+  groupName: string;
+  artistName: string;
+};
+
+const RequestAnswerRegister: React.FC<RequestAnswerRegisterType> = ({
+  groupName,
+  artistName,
+}) => {
   const [modalclick, setModalClick] = useState(false);
 
   return (
     <>
-      {/* <WhiteSpaceBTN /> */}
       <S.Wrap>
         <S.LinkContents>
           <S.LinkTitle>링크</S.LinkTitle>
@@ -28,9 +35,14 @@ const RequestAnswerRegister: React.FC = () => {
             {/* <LinkAttachItem /> */}
           </S.LinkBox>
         </S.LinkContents>
-        <BTN />
       </S.Wrap>
-      {modalclick && <RequestLinkRegister setClick={setModalClick} />}
+      {modalclick && (
+        <RequestLinkRegister
+          setClick={setModalClick}
+          groupName={groupName}
+          artistName={artistName}
+        />
+      )}
     </>
   );
 };

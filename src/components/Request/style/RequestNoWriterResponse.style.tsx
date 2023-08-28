@@ -43,6 +43,7 @@ export const Date = styled.p`
 `;
 export const ImgsBox = styled.div`
   display: flex;
+  gap: 10px;
 `;
 export const ImgItem = styled.div`
   display: flex;
