@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "../style/RequestAnswerRegister.style";
 import link from "../../../assets/images/svg/ic-link.svg";
 import BTN from "../BTN";
@@ -7,6 +7,8 @@ import WhiteSpaceBTN from "../WhiteSpaceBTN";
 import RequestLinkRegister from "./RequestLinkRegister";
 
 const RequestAnswerRegister: React.FC = () => {
+  const [modalclick, setModalClick] = useState(false);
+
   return (
     <>
       {/* <WhiteSpaceBTN /> */}
@@ -15,7 +17,11 @@ const RequestAnswerRegister: React.FC = () => {
           <S.LinkTitle>링크</S.LinkTitle>
           <S.LinkDesc>최대 9개의 링크 업로드 가능</S.LinkDesc>
           <S.LinkBox>
-            <S.LinkRegister>
+            <S.LinkRegister
+              onClick={() => {
+                setModalClick(true);
+              }}
+            >
               <S.LinkSVG src={link} />
               <S.LinkRegisterLabel>링크등록</S.LinkRegisterLabel>
             </S.LinkRegister>
@@ -24,7 +30,7 @@ const RequestAnswerRegister: React.FC = () => {
         </S.LinkContents>
         <BTN />
       </S.Wrap>
-      {/* <RequestLinkRegister /> */}
+      {modalclick && <RequestLinkRegister setClick={setModalClick} />}
     </>
   );
 };

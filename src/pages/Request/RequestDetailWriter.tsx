@@ -73,7 +73,6 @@ const RequestDetailWriter: React.FC = () => {
       />
       <RequestDetailDesc desc={requestdata.content} img={requestdata.image} />
       <S.ResponseNumber>답변 {requestdata.answers?.length}개</S.ResponseNumber>
-
       {requestdata.answers &&
         requestdata.answers.map((answer) => (
           <RequestWriterResponse

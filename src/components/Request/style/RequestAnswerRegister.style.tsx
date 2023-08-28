@@ -37,6 +37,7 @@ export const LinkRegister = styled.div`
   gap: 11px;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
 export const LinkSVG = styled.img``;
 export const LinkRegisterLabel = styled.p`

@@ -13,7 +13,7 @@ const Button = styled.button`
 `;
 
 const SkyBTN = () => {
-  return <Button>링크 등록</Button>;
+  return <Button>완료</Button>;
 };
 
 export default SkyBTN;
