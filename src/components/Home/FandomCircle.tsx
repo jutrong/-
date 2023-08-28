@@ -1,35 +1,15 @@
-import styled from "styled-components";
+import React, { useContext } from "react";
+import { HomeContext } from "../../pages/Home/Home";
+import * as S from "./style/FandomCircle.style";
 
-const FandomCircleContainer = styled.div`
-    width: 84px;
-    height: 110px;
-    margin-left: 16px;
-`;
+const FandomCircle: React.FC = () => {
+    const homeData = useContext(HomeContext);
 
-const FandomShadowCircle = styled.div`
-    width: 84px;
-    height: 84px;
-    border-radius: 50%;
-    border: solid black;
-    box-shadow: 5px 5px;
-    background-color: white;
-    box-sizing: border-box;
-`;
-
-const FandomCircleName = styled.p`
-    font-size: 15px;
-    text-align: center;
-    opacity: 0.5;
-`;
-
-const FandomCircle = () => {
     return (
-        <>
-            <FandomCircleContainer>
-                <FandomShadowCircle />
-                <FandomCircleName>A.R.M.Y</FandomCircleName>
-            </FandomCircleContainer>
-        </>
+        <S.FandomCircleContainer>
+            <S.FandomShadowCircle />
+            <S.FandomCircleName>A.R.M.Y</S.FandomCircleName>
+        </S.FandomCircleContainer>
     );
 };
 export default FandomCircle;
