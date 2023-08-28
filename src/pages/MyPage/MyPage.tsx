@@ -5,6 +5,11 @@ import x from "../../assets/images/svg/ic-x-red.svg";
 import NewBucketRegister from "../../components/MyPage/NewBucketRegister";
 import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
 import AppAlertModal from "../../components/common/AlertModal/AppAlertModal";
+import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
+import { Link } from "react-router-dom";
+import edit from "../../assets/images/svg/ic-edit.svg";
+import menu from "../../assets/images/svg/ic-menu.svg";
+import Icon from "../../elements/Icon";
 
 const MyPage: React.FC = () => {
   const [hhh, setHHH] = useState(true);
@@ -16,6 +21,18 @@ const MyPage: React.FC = () => {
   };
   return (
     <>
+      <HeaderBar
+        BackButton={false}
+        color="#fff"
+        items={[
+          <Link to="/">
+            <Icon src={edit} />
+          </Link>,
+          <Link to="/">
+            <Icon src={menu} />
+          </Link>,
+        ]}
+      />
       <S.UserInfo>
         <S.Img />
         <S.Introduce>
@@ -62,17 +79,8 @@ const MyPage: React.FC = () => {
       {/* <S.NoFeed>작성된 피드가 없습니다</S.NoFeed> */}
       <FooterNavBar />
       {/* {hhh && (
-        <AppAlertModal
-          title="채택하기"
-          content="채택하시겠습니까?"
-          yesContent="채택"
-          yesClickHandler={click}
-          setModalOpen={setHHH}
-        />
-      )} */}
-      {hhh && (
         <NewBucketRegister yesClickHandler={click} setModalOpen={setHHH} />
-      )}
+      )} */}
     </>
   );
 };
