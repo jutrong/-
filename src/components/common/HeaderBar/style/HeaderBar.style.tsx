@@ -33,4 +33,5 @@ export const Items = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 13px 16px;
+  align-items: center;
 `;
