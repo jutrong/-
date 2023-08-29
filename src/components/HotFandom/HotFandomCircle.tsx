@@ -24,7 +24,7 @@ const HotFandomCircle: React.FC<HotFandomCircleProps> = ({ item }) => {
                 <S.PandomShadowCircle src={item?.image} />
                 <S.PandomCircleName>
                     {item && item.fandomName}
-                </S.PandomCircleName>{" "}
+                </S.PandomCircleName>
             </S.ImgContainer>
         </S.PandomCircleContainer>
     );

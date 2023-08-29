@@ -56,5 +56,5 @@ export const LeftArrowIcon = styled(LeftArrow)`
 export const SearchIcon = styled(Search)`
     width: 24px;
     height: 24px;
-    padding-right: 16px;
+    margin-right: 10px;
 `;

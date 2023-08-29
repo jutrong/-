@@ -1,7 +1,7 @@
 import * as S from "./style/FandomDetail.style";
 import React, { useState, useEffect } from "react";
 import axios from "../../api/axios";
-import FandomDetailHeader from "../../components/MyFandom/FandomDetailHeader";
+import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
 import Notice from "../../components/MyFandom/Notice";
 
 import { useParams } from "react-router-dom";
@@ -14,8 +14,6 @@ type Fandom = {
     image: string;
 };
 
-type FandomData = Fandom;
-
 const FandomDetail = () => {
     const { fandomId } = useParams();
 
@@ -27,9 +25,8 @@ const FandomDetail = () => {
 
     const initDataGet = async () => {
         try {
-            const res = await axios.get("fandoms/4");
-            // `fandoms/${fandomId}`
-            console.log("get:", res.data.data);
+            const res = await axios.get(`fandoms/${fandomId}`);
+
             setData(res.data.data);
         } catch (error) {
             console.error("Error", error);
@@ -40,7 +37,12 @@ const FandomDetail = () => {
     return (
         <S.Container>
             <S.HeaderBox>
-                <FandomDetailHeader />
+                <HeaderBar
+                    BackButton={true}
+
+                    // color={}
+                />
+
                 <S.Img src={data?.image} alt="API Img" />
                 <S.FandomJoinBox>
                     <S.FandomName>{data?.fandomName}</S.FandomName>

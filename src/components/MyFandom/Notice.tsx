@@ -3,12 +3,16 @@ import axios from "../../api/axios";
 import detailDate from "../../utils/time";
 
 import * as S from "./style/Notice.style";
+
 const Notice = () => {
-    type noticeType = {
-        author: noticeAuthor;
-        content: string;
-        createdAt: string;
-        id: number;
+    type noticeDataType = {
+        data: {
+            id: 1;
+            author: noticeAuthor;
+            fandom: noticeFandom;
+            content: string;
+            createdAt: string;
+        };
     };
 
     type noticeAuthor = {
@@ -17,50 +21,59 @@ const Notice = () => {
         image: string;
     };
 
-    const [data, setData] = useState<noticeType>();
-    const [author, setAuthor] = useState<noticeAuthor>();
+    type noticeFandom = {
+        fandomName: string;
+    };
 
-    console.log("작성사:", author);
+    const [data, setData] = useState<noticeDataType | null>(null);
+
     useEffect(() => {
         initDataGet();
     }, []);
 
     const initDataGet = async () => {
         try {
-            const res = await axios.get("fandom-announcements/4");
-            console.log("공지get:", res.data.data);
+            const res = await axios.get("fandom-announcements/5");
+
             setData(res.data.data);
-            setAuthor(res.data.data.author);
         } catch (error) {
             console.error("Error", error);
         }
     };
 
     return (
-        <S.NoticeContainer>
-            <S.NoticeHeaderBox key={author?.id}>
-                <S.NoticeHeaderText>공지</S.NoticeHeaderText>
-                <S.ProfileBox>
-                    <S.ProfileImg src={author?.image} />
-                    <S.ProfileTextBox>
-                        <S.NicknameText>{author?.nickName}</S.NicknameText>
-                        <S.FandomNameTimeBox>
-                            <S.NameTimeText>팬덤 이름</S.NameTimeText>
-                            <S.NameTimeText>
-                                {data?.createdAt
-                                    ? detailDate(data?.createdAt)
-                                    : "시간 정보 없음"}
-                            </S.NameTimeText>
-                        </S.FandomNameTimeBox>
-                    </S.ProfileTextBox>
-                    <S.ProfileIcon />
-                </S.ProfileBox>
-            </S.NoticeHeaderBox>
+        <>
+            {data && data.data && (
+                <S.NoticeContainer key={data.data.id}>
+                    <S.NoticeHeaderBox>
+                        <S.NoticeHeaderText>공지</S.NoticeHeaderText>
+                        <S.ProfileBox>
+                            <S.ProfileImg src={data.data.author.image} />
+                            <S.ProfileTextBox>
+                                <S.NicknameText>
+                                    {data.data.author.nickName}
+                                </S.NicknameText>
+                                <S.FandomNameTimeBox>
+                                    <S.NameTimeText>
+                                        {data.data.fandom.fandomName}
+                                    </S.NameTimeText>
+                                    <S.NameTimeText>
+                                        {data.data.createdAt
+                                            ? detailDate(data.data.createdAt)
+                                            : "시간 정보 없음"}
+                                    </S.NameTimeText>
+                                </S.FandomNameTimeBox>
+                            </S.ProfileTextBox>
+                            <S.ProfileIcon />
+                        </S.ProfileBox>
+                    </S.NoticeHeaderBox>
 
-            <S.NoticeTextBox>
-                <S.NoticeText>{data?.content}</S.NoticeText>
-            </S.NoticeTextBox>
-        </S.NoticeContainer>
+                    <S.NoticeTextBox>
+                        <S.NoticeText>{data.data.content}</S.NoticeText>
+                    </S.NoticeTextBox>
+                </S.NoticeContainer>
+            )}
+        </>
     );
 };
 export default Notice;

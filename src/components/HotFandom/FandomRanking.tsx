@@ -1,6 +1,5 @@
-import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "./style/FandomRanking.style";
-import { Button } from "../../elements/Button";
 
 type FandomRankData = {
     fandomName: string;
@@ -10,19 +9,19 @@ type FandomRankData = {
     rank: number;
     image: string;
 };
-type FandomData = FandomRankData[];
 
 type FandomdataProps = {
     item: FandomRankData;
 };
 
 const FandomRanking: React.FC<FandomdataProps> = ({ item }) => {
-    console.log("dd", item);
-
-    useEffect(() => {}, []);
+    const navigate = useNavigate();
+    const handleItemClick = () => {
+        navigate(`/fandom/${item.id}`);
+    };
 
     return (
-        <S.FandomRankingContainer key={item.id}>
+        <S.FandomRankingContainer key={item.id} onClick={handleItemClick}>
             <S.RankingNumberText>{item.rank}</S.RankingNumberText>
             <S.CircleImg src={item?.image} />
             <S.RnakingTextBox>

@@ -1,9 +1,11 @@
 import * as S from "./style/FandomSearch.style";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import useInput from "../../hooks/useInput";
 import MyFandomList from "../../components/MyFandom/MyFandomList";
 
+import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
 type FandomSearchData = {
     fandomName: string;
     id: number;
@@ -19,6 +21,8 @@ type FandomdataProps = {
 };
 
 const FandomSearch = () => {
+    const navigation = useNavigate();
+
     const [inputVal, setInputVal] = useInput("");
     const [resVal, setResVal] = useState<FandomData>([]);
 
@@ -35,23 +39,28 @@ const FandomSearch = () => {
     };
 
     return (
-        <S.Container>
-            <S.HomeContainer>
-                <S.HeaderBox>
-                    <S.InputHeaderBox>
-                        <S.InputIconBox>
-                            <S.LeftArrowIcon />
-                            <S.Input onChange={setInputVal} />
-                            <S.SearchIcon onClick={onClickHandler} />
-                        </S.InputIconBox>
-                    </S.InputHeaderBox>
-                </S.HeaderBox>
+        <>
+            <S.Container>
+                <S.HomeContainer>
+                    <S.HeaderBox>
+                        <S.InputHeaderBox>
+                            <S.InputIconBox>
+                                <S.LeftArrowIcon
+                                    onClick={() => navigation(-1)}
+                                />
+                                <S.Input onChange={setInputVal} />
+                                <S.SearchIcon onClick={onClickHandler} />
+                            </S.InputIconBox>
+                        </S.InputHeaderBox>
+                    </S.HeaderBox>
 
-                {resVal.map((item) => (
-                    <MyFandomList key={item.id} item={item} />
-                ))}
-            </S.HomeContainer>
-        </S.Container>
+                    {resVal.map((item) => (
+                        <MyFandomList key={item.id} item={item} />
+                    ))}
+                </S.HomeContainer>
+            </S.Container>
+            <FooterNavBar />
+        </>
     );
 };
 export default FandomSearch;

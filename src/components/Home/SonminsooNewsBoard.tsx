@@ -37,7 +37,6 @@ const SonminsooNewsBoard: React.FC = () => {
             const res = await axios.get("/feeds");
 
             setData(res.data.data);
-            // console.log("get:", res.data.data);
         } catch (error) {
             console.error("Error", error);
         }

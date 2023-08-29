@@ -12,7 +12,6 @@ export const ContentHeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    //background-color: #f3f3b7;
 `;
 
 // 헤더 마이 팬덤 텍스트 박스
@@ -31,7 +30,7 @@ export const LeftArrowBtn = styled(LfetArrow)`
 export const MyFandomHeaderText = styled.div`
     font-size: 20px;
     font-weight: 700;
-
+    margin-top: 3px;
     margin-left: 10px;
 `;
 
