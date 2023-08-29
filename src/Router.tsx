@@ -5,6 +5,7 @@ import Feed from "./pages/Feed/Feed";
 import Home from "./pages/Home/Home";
 import HotFandom from "./pages/HotFandom/HotFandom";
 import FandomDetail from "./pages/MyFandom/FandomDetail";
+import CreateNewFandom from "./pages/MyFandom/CreateNewFandom";
 
 import {
     SignupRouter,
@@ -39,8 +40,8 @@ const Router = createBrowserRouter([
         element: <FandomDetail />, //팬덤 상세보기 컴포넌트
     },
     {
-        path: "fandom/:fandomId",
-        element: <Main />, //팬덤 상세보기 컴포넌트
+        path: "createfandom",
+        element: <CreateNewFandom />, //팬덤 상세보기 컴포넌트
     },
     SignupRouter,
     ChattingRouter,
