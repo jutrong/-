@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
 
-const ChatImageViewer = ({imageList, setIsViewerOpen}: Chat) => {
+const ChatImageViewer = ({imageList, setIsViewerOpen, startSlideIndex}: Chat) => {
 
     // 사용할 모듈 등록
     SwiperCore.use([Keyboard, FreeMode, Navigation, Thumbs]);
@@ -23,6 +23,7 @@ const ChatImageViewer = ({imageList, setIsViewerOpen}: Chat) => {
     const SwiperParams = {
         onSlideChange: (swiperCore: SwiperCore) => setImageIndex(swiperCore.activeIndex + 1),
         spaceBetween: 10,
+        initialSlide: startSlideIndex,
         navigation: true,
         keyboard: {enabled: true},
         thumbs: {swiper: imageSwiper},
@@ -51,7 +52,7 @@ const ChatImageViewer = ({imageList, setIsViewerOpen}: Chat) => {
                 {imageList.map((image, index) => (
                     
                     <S.SwiperSlide key={index}>
-                        <S.ImageView src={image}></S.ImageView>
+                        <S.ImageView src={image} />
                     </S.SwiperSlide>
                 ))}
             </S.Swiper>

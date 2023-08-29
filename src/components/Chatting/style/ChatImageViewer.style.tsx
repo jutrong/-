@@ -84,7 +84,8 @@ export const SwiperSlide = styled(OriginSwiperSlide)`
 `;
 
 export const ImageView = styled.img`
-    width: 100%;
+    max-width: 100%;
+    max-height: 700px;
 `;
 
 export const ImageViewerThumbs = styled.div`

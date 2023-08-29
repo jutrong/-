@@ -5,18 +5,18 @@ import type { Fandom } from '../../types/chattingType';
 
 
 
-const ChatFandom = ({id, title, memberCount, image, createAt}: Fandom ) => {
+const ChatFandom = ({id, fandomName, memberLength, image, lastCreateTime}: Fandom ) => {
 
     return (
         <S.ChatFandomWrapper>
-            <S.FandomImage />
+            <S.FandomImage src={image} />
             <S.ChatInfo>
                 <S.FandomWrapper>
-                    <S.FandomTitle>{title}</S.FandomTitle>
+                    <S.FandomTitle>{fandomName}</S.FandomTitle>
                     <S.MemberIcon src={iconUser} />
-                    <S.FandomMember>{memberCount}</S.FandomMember>       
+                    <S.FandomMember>{memberLength}</S.FandomMember>       
                 </S.FandomWrapper>
-                <S.FandomActive>채팅활동<span>•</span>10분전</S.FandomActive>
+                <S.FandomActive>채팅활동<span>•</span>{lastCreateTime}</S.FandomActive>
             </S.ChatInfo>
         </S.ChatFandomWrapper>
     )

@@ -20,8 +20,8 @@ const ChatList = () => {
     
     const getData = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/fandom');
-            setFandomData(res.data);
+            const res = await axios.get('http://146.56.143.108/api/v1/fandoms');
+            setFandomData(res.data.data);
         } catch (err) {
             console.log("Error", err);
         }
@@ -38,10 +38,10 @@ const ChatList = () => {
                         <S.LinkItem to={`chatroom/${fandom.id}`}>
                             <ChatFandom 
                                 id={fandom.id}
-                                title={fandom.title} 
-                                memberCount={fandom.memberCount} 
+                                fandomName={fandom.fandomName} 
+                                memberLength={fandom.memberLength} 
                                 image={fandom.image}
-                                createAt={fandom.createAt}
+                                lastCreateTime={fandom.lastCreateTime}
                             />
                         </S.LinkItem>
                     </React.Fragment>

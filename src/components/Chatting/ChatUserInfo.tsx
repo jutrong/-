@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './style/ChatUserInfo.style';
     
 
 
 type MemberProps = {
     $ban: boolean;
+    userName: string;
 }
     
-const ChatUserInfo = ({$ban}:MemberProps) => {
+const ChatUserInfo = ({$ban, userName}:MemberProps) => {
 
-    const chatBanText: string = $ban ? '채팅정지 취소' : '채팅정지';
+    const [banToggle, setBanToggle] = useState($ban);
+    const chatBanText: string = banToggle ? '채팅정지 취소' : '채팅정지';
+
+    const banHandler = () => {
+        banToggle ? setBanToggle(false) : setBanToggle(true);
+    }
 
     return (
         <S.UserInfoWrapper>
             <S.UserWrapper>
                 <S.UserImage />
-                <S.UserName>아마추어 손민수</S.UserName>
+                <S.UserName>{userName}</S.UserName>
             </S.UserWrapper>
-            <S.BanButton $ban={$ban}>{chatBanText}</S.BanButton>
+            <S.BanButton $ban={banToggle} onClick={banHandler}>{chatBanText}</S.BanButton>
         </S.UserInfoWrapper>
     )
 }

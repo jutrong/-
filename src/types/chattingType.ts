@@ -1,12 +1,18 @@
 export type Fandom = {
     id: number;
-    title: string;
-    memberCount: number;
+    fandomName: string;
+    memberLength: number;
     image: string;
-    createAt: string;
+    lastCreateTime: string;
 }
 
 export type Chat = {
     imageList: string[];
     setIsViewerOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+    startSlideIndex?: number;
+}
+
+export type ChatMember = {
+    $ban: boolean;
+    userName: string;
 }

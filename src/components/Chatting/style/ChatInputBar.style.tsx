@@ -12,6 +12,7 @@ export const ChatBarWrapper = styled.div`
     border-top-right-radius: 4px;
     padding: 0 16px;
     box-shadow: 0 -5px 5px -5px lightgray;
+    background-color: #fff;
 
 
     display: flex;

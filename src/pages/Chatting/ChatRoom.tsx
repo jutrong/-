@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChatProps, MyChat, OtherChat } from '../../components/Chatting/ChatBubble';
 import BackButton from '../../components/Chatting/BackButton';
-import ChatBar from '../../components/Chatting/ChatBar';
+import ChatInputBar from '../../components/Chatting/ChatInputBar';
 import iconMember from '../../assets/images/svg/ic-member.svg';
 import ChatGridImage from '../../components/Chatting/ChatGridImage';
 import * as S from './styles/ChatRoom.style';
@@ -10,24 +10,35 @@ import * as S from './styles/ChatRoom.style';
 
 const ChatRoom = () => {
 
-    const chatData: ChatProps = {
-        id: 123,
-        fandomId: 12345,
-        author: "아마추어 손민수",
-        content: "ㅎ헷 이게 제 삶의 낙인걸요.. 큐큐 ㅋㅋㅋ",
-        readCount: 22,
-        createAt: new Date(),
-    }
+    const chatData: ChatProps[] = [
+        {
+            id: 345,
+            fandomId: 12345,
+            author: "아마추어 손민수",
+            content: "와아 ㅜㅜ 저도 이거 봤어요!! 꾹이가 리허설 할 때, 입은 연습복 정보도 감사합니당!! ㅎㅎ",
+            profileImage: '',
+            readCount: 22,
+            createAt: new Date(),
+        },
+        {
+            id: 123,
+            fandomId: 12345,
+            author: "나는야 손민수수",
+            content: "ㅎ헷 이게 제 삶의 낙인걸요.. 큐큐 ㅋㅋㅋ",
+            readCount: 22,
+            createAt: new Date(),
+        },
+        {
+            id: 123,
+            fandomId: 12345,
+            author: "나는야 손민수",
+            content: "또 정보 필요하시면 언제든 말씀하세요!",
+            readCount: 22,
+            createAt: new Date(),
+        },
+    ]
 
-    const chatDataOther: ChatProps = {
-        id: 345,
-        fandomId: 12345,
-        author: "아마추어 손민수",
-        content: "와아 ㅜㅜ 저도 이거 봤어요!! 꾹이가 리허설 할 때, 입은 연습복 정보도 감사합니당!! ㅎㅎ",
-        profileImage: '',
-        readCount: 22,
-        createAt: new Date(),
-    }
+    const myId = 123;
 
     const imageMock: string[] = [
         "https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2022/06/17/4a3691f8-a5b9-4705-9c47-44be7988c66a.jpg",
@@ -54,26 +65,32 @@ const ChatRoom = () => {
                     </S.LinkItem>
                 </S.ChatHeader>
                 <S.ChatRoomWindow>
-                    <OtherChat 
-                         id={chatDataOther.id}
-                         fandomId={chatDataOther.fandomId}
-                         author={chatDataOther.author}
-                         content={chatDataOther.content}
-                         profileImage={chatDataOther.profileImage}
-                         readCount={chatDataOther.readCount}
-                         createAt={chatDataOther.createAt}
-                    />
-                    <MyChat 
-                        id={chatData.id}
-                        fandomId={chatData.fandomId}
-                        author={chatData.author}
-                        content={chatData.content}
-                        readCount={chatData.readCount}
-                        createAt={chatData.createAt}
-                    />
+                    {
+                        chatData.map((message) => (
+                            message.id === myId ?
+                                <MyChat 
+                                    id={message.id}
+                                    fandomId={message.fandomId}
+                                    author={message.author}
+                                    content={message.content}
+                                    createAt={message.createAt}
+                                    readCount={message.readCount}
+                                />
+                                : 
+                                <OtherChat
+                                    id={message.id}
+                                    fandomId={message.fandomId}
+                                    author={message.author}
+                                    content={message.content}
+                                    profileImage={message.profileImage}
+                                    readCount={message.readCount}
+                                    createAt={message.createAt}
+                                />
+                        ))
+                    }
                     <ChatGridImage imageList={imageMock} />
                 </S.ChatRoomWindow>
-                <ChatBar ban={ban} />
+                <ChatInputBar ban={ban} />
             </>
             
     )
