@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 
 import { ReactComponent as LikeIcon } from "../../../assets/images/svg/home/likeIcon.svg";
 import { ReactComponent as CommentIcon } from "../../../assets/images/svg/home/commentIcon.svg";
+
 // 손민수 뉴스 컨텐츠 컨테이너
 export const SonminsooNewsContentsContainer = styled.div`
     width: 254px;
@@ -70,21 +71,27 @@ export const SonminsooNewsImg = styled.img`
 export const SonminsooNewsArticleBox = styled.div`
     height: 108px;
     padding-left: 21px;
+    padding-right: 21px;
 `;
 
 // 손민수 내용 글 박스
 export const SonminsooNewsArticleTextBox = styled.div`
     display: flex;
+    overflow: hidden;
     margin-top: 12px;
 `;
 
 // 손민수 내용 텍스트
 export const SonminsooNewsArticleText = styled.div`
     font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 // 손민수 내용 더보기 버튼
 export const SonminsooNewsArticleViewAllBtn = styled.div`
     font-size: 14px;
+    margin-left: 5px;
     color: rgba(186, 186, 186, 1);
 `;
 

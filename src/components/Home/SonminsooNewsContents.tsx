@@ -1,9 +1,8 @@
 import * as S from "./style/SominsooNewsContents.style";
-
+import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import detailDate from "../../utils/time";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import { useParams } from "react-router-dom";
 
 type NewsType = {
     id: number;
@@ -49,9 +48,12 @@ const SonminsooNewsContents: React.FC<NewsProps> = ({ item }) => {
             console.error("Error", error);
         }
     };
-
+    const navigate = useNavigate();
+    const handleItemClick = () => {
+        navigate("피드상세주소");
+    };
     return (
-        <S.SonminsooNewsContentsContainer>
+        <S.SonminsooNewsContentsContainer key={item.id}>
             <S.SonminsooNewsContentsHeader>
                 <S.SonminsooNewsProfileImg src={item?.author.image} />
                 <S.SonminsooNewsTextBox>
@@ -76,7 +78,7 @@ const SonminsooNewsContents: React.FC<NewsProps> = ({ item }) => {
                     <S.SonminsooNewsArticleText>
                         {item.content}
                     </S.SonminsooNewsArticleText>
-                    <S.SonminsooNewsArticleViewAllBtn>
+                    <S.SonminsooNewsArticleViewAllBtn onClick={handleItemClick}>
                         더보기
                     </S.SonminsooNewsArticleViewAllBtn>
                 </S.SonminsooNewsArticleTextBox>
