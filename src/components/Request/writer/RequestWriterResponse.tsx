@@ -7,6 +7,45 @@ import AppAlertModal from "../../common/AlertModal/AppAlertModal";
 import axios, { axiosPrivate } from "../../../api/axios";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import detailDate from "../../../utils/time";
+import { useParams } from "react-router-dom";
+
+type RequestDescProps = {
+  image: string;
+  id: number;
+  title: string;
+  content: string;
+  answerCnt: number;
+  createdAt: string;
+  groupName: string;
+  artistName: string;
+  user: {
+    id: number;
+    nickName: string;
+    image: string;
+  };
+  answers: [
+    {
+      id: number;
+      createdAt: string;
+      isChoosed: boolean;
+      user: {
+        id: number;
+        image: string;
+        nickName: string;
+        choosedCnt: number;
+      };
+      items: [
+        {
+          id: number;
+          originUrl: string;
+          imgUrl: string;
+          price: string;
+          title: string;
+        }
+      ];
+    }
+  ];
+};
 
 type answerItmesType = {
   id: number;
@@ -23,6 +62,7 @@ type RequestAnswerProps = {
   answerDate: string;
   answerItems: answerItmesType[];
   answerId: number;
+  answerIsChoosed: boolean;
 };
 
 const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
@@ -32,13 +72,31 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
   answerDate,
   answerItems,
   answerId,
+  answerIsChoosed,
 }) => {
+  const axiosPrivate = useAxiosPrivate();
+  let { requestId } = useParams();
+
   const [moreClick, setMoreClick] = useState(false);
   const [selectClick, setSeleteClick] = useState(false);
   const [deleteClick, setDeleteClick] = useState(false);
-  const [result, setResult] = useState(true);
+  const [requestdata, setRequestData] = useState<RequestDescProps>(Object);
 
   const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`/sonminsu-requests/${requestId}`);
+      setRequestData(response.data.data);
+      console.log(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     const clickOutside = (e: any) => {
@@ -52,27 +110,28 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
     };
   }, []);
 
-  const click = async () => {
+  const handleselectClick = async () => {
     setSeleteClick(false);
-    setResult(false);
 
     try {
       const response = await axiosPrivate.put(
         `/sonminsu-answers/${answerId}/choose`
       );
+      window.location.replace(`/requests/writer/${requestId}`);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const deleteclick = async () => {
+  const handledeleteClick = async () => {
     setDeleteClick(false);
+    //console.log(answerId);
 
     try {
       const response = await axiosPrivate.delete(
-        `/sonminsu-answers/${answerId}`,
-        { headers: {} }
+        `/sonminsu-answers/${answerId}`
       );
+      window.location.replace(`/requests/writer/${requestId}`);
     } catch (err) {
       console.log(err);
     }
@@ -90,15 +149,19 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
               <S.Date>{detailDate(answerDate)}</S.Date>
             </S.ResponesInfo>
           </S.ProfileInfo>
-          {result && (
-            <S.More
-              src={more}
-              onClick={() => {
-                setMoreClick(true);
-              }}
-            />
-          )}
-          {result && moreClick && (
+          {!answerIsChoosed &&
+            requestdata.answers &&
+            !requestdata.answers.find(
+              (answer) => answer.isChoosed === true
+            ) && (
+              <S.More
+                src={more}
+                onClick={() => {
+                  setMoreClick(true);
+                }}
+              />
+            )}
+          {!answerIsChoosed && moreClick && (
             <S.MoreModal ref={modalRef}>
               <S.Selete
                 onClick={() => {
@@ -116,7 +179,7 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
               </S.Delete>
             </S.MoreModal>
           )}
-          {!result && <S.SeleteImg src={select} />}
+          {answerIsChoosed && <S.SeleteImg src={select} />}
         </S.ProfileBox>
         <S.ImgsBox>
           {answerItems &&
@@ -136,7 +199,7 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
           title="채택하기"
           content="채택하시겠습니까?"
           yesContent="채택"
-          yesClickHandler={click}
+          yesClickHandler={handleselectClick}
           setModalOpen={setSeleteClick}
         />
       )}
@@ -145,7 +208,7 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
           title="삭제하기"
           content="삭제하시겠습니까?"
           yesContent="삭제"
-          yesClickHandler={deleteclick}
+          yesClickHandler={handledeleteClick}
           setModalOpen={setDeleteClick}
         />
       )}

@@ -4,6 +4,9 @@ export const Wrap = styled.div`
   padding: 16px;
   height: 252px;
   border-bottom: 6px solid #e2e2e2;
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 export const ProfileBox = styled.div`
   position: relative;
@@ -49,8 +52,14 @@ export const SeleteImg = styled.img`
   right: 0;
 `;
 export const ImgsBox = styled.div`
+  width: 374px;
+  height: 145px;
   display: flex;
   gap: 10px;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 export const MoreModal = styled.div`
   position: absolute;

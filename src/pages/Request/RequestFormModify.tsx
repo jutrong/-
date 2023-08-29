@@ -6,6 +6,7 @@ import x from "../../assets/images/svg/ic-x.svg";
 import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
 import { Link } from "react-router-dom";
 import axios, { axiosPrivate } from "../../api/axios";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
@@ -47,6 +48,7 @@ type RequestDescProps = {
 };
 
 const RequestFormModify: React.FC = () => {
+  const axiosPrivate = useAxiosPrivate();
   const navigation = useNavigate();
   let { requestId } = useParams();
 
@@ -58,15 +60,8 @@ const RequestFormModify: React.FC = () => {
   const [descValue, setDescValue] = useState("");
   const [groupCount, setGroupCount] = useState(0);
   const [groupColor, setGroupColor] = useState(true);
-  const [groupValue, setGroupValue] = useState("");
   const [artistCount, setArtistCount] = useState(0);
   const [artistColor, setArtistColor] = useState(true);
-  const [artistValue, setArtistValue] = useState("");
-  // 선택된 이미지의 URL을 저장하기 위한 상태
-  const [selectedImage, setSelectedImage] = useState<string | undefined>(
-    undefined
-  );
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [requestdata, setRequestData] = useState<RequestDescProps>(Object);
 
@@ -80,6 +75,8 @@ const RequestFormModify: React.FC = () => {
         `/sonminsu-requests/${requestId}`
       );
       setRequestData(response.data.data);
+      setTitleValue(response.data.data.title);
+      setDescValue(response.data.data.content);
       setTitleCount(response.data.data.title.length);
       setDescCount(response.data.data.content.length);
       setGroupCount(response.data.data.groupName.length);
@@ -108,64 +105,15 @@ const RequestFormModify: React.FC = () => {
     }
     setDescValue(e.target.value);
   };
-  const handleGroupInput = (e: any) => {
-    setGroupCount(e.target.value.length);
-    if (e.target.value.length >= 10) {
-      setGroupColor(false);
-    } else {
-      setGroupColor(true);
-    }
-    setGroupValue(e.target.value);
-  };
-  const handleArtistInput = (e: any) => {
-    setArtistCount(e.target.value.length);
-    if (e.target.value.length >= 10) {
-      setArtistColor(false);
-    } else {
-      setArtistColor(true);
-    }
-    setArtistValue(e.target.value);
-  };
-
-  // const handleEditIconClick = () => {
-  //   if (fileInputRef.current) {
-  //     fileInputRef.current.click();
-  //   }
-  // };
-
-  // const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const file = event.target.files?.[0];
-
-  //   // Non-null assertion operators
-  //   const imageUrl = URL.createObjectURL(file!);
-
-  //   if (file) {
-  //     // 파일을 선택했을 때 수행할 작업
-  //     setSelectedImage(imageUrl);
-  //   }
-  // };
-
-  // const handleDeleteImg = () => {
-  //   setSelectedImage(undefined);
-  // };
 
   const handelReuquestRegister = async () => {
-    const formData = new FormData();
-    formData.append("title", titleValue);
-    formData.append("content", descValue);
-    formData.append("groupName", groupValue);
-    formData.append("artistName", artistValue);
-    // if (fileInputRef.current?.files?.[0]) {
-    //   formData.append("image", fileInputRef.current?.files?.[0]);
-    // }
-
-    formData.forEach((value, key) => console.log(`${key}: ${value}`));
-
     try {
-      const reponse = await axiosPrivate.post(
+      const reponse = await axiosPrivate.patch(
         `/sonminsu-requests/${requestdata.id}`,
-        formData,
-        { headers: { "Content-Type": "multipart/form-data" } }
+        {
+          title: titleValue,
+          content: descValue,
+        }
       );
       navigation(`/requests/`);
     } catch (err) {
@@ -239,7 +187,8 @@ const RequestFormModify: React.FC = () => {
           <S.QuestionSonBox>
             <S.QuestionGroupInputBox color={groupColor}>
               <S.QuestionGroupInput
-                onChange={handleGroupInput}
+                readOnly
+                // onChange={handleGroupInput}
                 placeholder="그룹명"
                 maxLength={10}
                 defaultValue={requestdata.groupName}
@@ -248,7 +197,8 @@ const RequestFormModify: React.FC = () => {
             </S.QuestionGroupInputBox>
             <S.QuestionArtistInputBox color={artistColor}>
               <S.QuestionArtistInput
-                onChange={handleArtistInput}
+                readOnly
+                // onChange={handleArtistInput}
                 placeholder="아티스트 이름"
                 maxLength={10}
                 defaultValue={requestdata.artistName}

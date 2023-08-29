@@ -24,6 +24,10 @@ export const AttachTitle = styled.p`
   font-family: "Pretendard-Medium";
   color: #1d1b20;
   margin-bottom: 5px;
+  overflow: hidden;
+  width: 90px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 export const AttachPrice = styled.p`
   font-size: 15px;

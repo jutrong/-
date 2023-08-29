@@ -3,6 +3,10 @@ import { styled } from "styled-components";
 export const Wrap = styled.div`
   padding: 16px;
   height: 252px;
+  border-bottom: 6px solid #e2e2e2;
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 export const ProfileBox = styled.div`
   position: relative;
@@ -40,6 +44,11 @@ export const Date = styled.p`
   font-family: "Pretendard-Medium";
   color: #666;
   font-size: 13px;
+`;
+export const SeleteImg = styled.img`
+  position: absolute;
+  top: -20px;
+  right: 0;
 `;
 export const ImgsBox = styled.div`
   display: flex;

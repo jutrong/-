@@ -32,13 +32,13 @@ const Requests: React.FC = () => {
     try {
       const response = await axios.get("/sonminsu-requests");
       setRequestData(response.data.data);
-      return console.log(response.data.data);
+      //return console.log(response.data.data);
     } catch (err) {
       console.log(err);
     }
   };
 
-  console.log("dd", requestdata);
+  //console.log("dd", requestdata);
 
   return (
     <>

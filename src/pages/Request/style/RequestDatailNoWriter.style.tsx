@@ -5,5 +5,6 @@ export const AnswerNumber = styled.p`
   height: 48px;
   font-size: 14px;
   font-family: "Pretendard-Medium";
-  margin-bottom: 16px;
 `;
+
+export const ReponseBox = styled.div``;

@@ -21,9 +21,7 @@ const LinkAttachItem: React.FC<LinkItemType> = ({
     <S.Wrap>
       <S.AttachImg src={itemImg} />
       {deletevalue && <S.Delete src={x} onClick={deleteclick} />}
-      <S.AttachTitle>
-        {itemName.length < 7 ? itemName : itemName.substring(0, 7) + "..."}
-      </S.AttachTitle>
+      <S.AttachTitle>{itemName}</S.AttachTitle>
       <S.AttachPrice>{itemPrice}</S.AttachPrice>
     </S.Wrap>
   );
