@@ -7,7 +7,7 @@ export default axios.create({
 });
 
 export const axiosPrivate = axios.create({
-  baseURL: `${process.env.REACT_APP_URL}`,
+  baseURL: `${process.env.REACT_APP_URL}/users`,
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 });
