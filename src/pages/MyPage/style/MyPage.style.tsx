@@ -101,10 +101,16 @@ export const FollowNum = styled.p`
   color: #1d1b20;
 `;
 export const Bucket = styled.div`
-  padding: 20px 16px;
+  width: 374px;
+  padding: 20px 0;
+  margin-left: 16px;
   height: 140px;
   display: flex;
   gap: 20px;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 export const BucketAddBox = styled.div`
   display: flex;
@@ -113,8 +119,10 @@ export const BucketAddBox = styled.div`
 `;
 export const AddIcon = styled.img``;
 export const BucketLabel = styled.p`
+  width: 64px;
   font-size: 13px;
   font-family: "Pretendard-Medium";
+  text-align: center;
   color: #1d1b20;
 `;
 export const UserBucketBox = styled.div`
@@ -152,6 +160,7 @@ export const FeedImg = styled.img`
   width: 100%;
   height: 128px;
   background-color: gray;
+  border: 1px solid #fff;
 `;
 export const NoFeed = styled.div`
   text-align: center;
