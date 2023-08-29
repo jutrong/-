@@ -1,29 +1,58 @@
 import * as S from "./style/PopularFandomList.style";
+import axios from "../../api/axios";
+
+import React, { useState, useEffect } from "react";
+
+type Fandom = {
+    fandomName: string;
+    id: number;
+    lastChatTime: null;
+    memberLength: number;
+    rank: number;
+    image: string;
+};
+
+type FandomData = Fandom[];
 
 const PopularFandomList: React.FC = () => {
+    const [data, setData] = useState<FandomData>([]);
+
+    useEffect(() => {
+        initDataGet();
+    }, []);
+
+    const initDataGet = async () => {
+        try {
+            const res = await axios.get("fandoms/hot");
+
+            setData(res.data.data);
+            //  console.log("get:", res.data.data);
+        } catch (error) {
+            console.error("Error", error);
+        }
+    };
+
+    const firstRank = data[0] || {};
+    const restRank = data.slice(1);
+
     return (
         <S.PopularFandomListContainer>
             <S.PopularFandomImg>
+                <S.Img src={firstRank?.image} />
                 <S.NumberOneBox>
-                    {" "}
                     <S.NumberOneText>1</S.NumberOneText>
                     <S.NumberOneFandomNameText>
-                        A.R.M.Y
+                        {firstRank.fandomName}
                     </S.NumberOneFandomNameText>
                 </S.NumberOneBox>
             </S.PopularFandomImg>
-            <S.NextNumberFandomBox>
-                <S.RankingText>2</S.RankingText>
-                <S.FandomNameText>팬덤이름</S.FandomNameText>
-            </S.NextNumberFandomBox>
-            <S.NextNumberFandomBox>
-                <S.RankingText>3</S.RankingText>
-                <S.FandomNameText>팬덤이름</S.FandomNameText>
-            </S.NextNumberFandomBox>
-            <S.NextNumberFandomBox>
-                <S.RankingText>4</S.RankingText>
-                <S.FandomNameText>팬덤이름</S.FandomNameText>
-            </S.NextNumberFandomBox>
+
+            {restRank.map((item) => (
+                <S.NextNumberFandomBox key={item.id}>
+                    <S.RankingText>{item.rank}</S.RankingText>
+                    <S.FandomNameText>{item?.fandomName}</S.FandomNameText>
+                </S.NextNumberFandomBox>
+            ))}
         </S.PopularFandomListContainer>
     );
 };

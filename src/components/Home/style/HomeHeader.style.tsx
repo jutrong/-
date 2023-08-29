@@ -7,7 +7,6 @@ import { ReactComponent as SettingIcon } from "../../../assets/images/svg/home/s
 export const HomeHeaderBox = styled.div`
     height: 50px;
     padding-top: 13px;
-    background-color: beige;
 `;
 
 // 홈 헤더 로고

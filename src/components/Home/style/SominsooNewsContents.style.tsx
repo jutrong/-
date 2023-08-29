@@ -9,7 +9,7 @@ export const SonminsooNewsContentsContainer = styled.div`
     margin-left: 15px;
     border-radius: 8px;
     border: solid black;
-
+    background-color: white;
     box-shadow: 4px 4px;
 `;
 
@@ -22,7 +22,7 @@ export const SonminsooNewsContentsHeader = styled.div`
 `;
 
 // 손민수 뉴스 컨텐츠 헤더 서클 이미지
-export const SonminsooNewsProfileImg = styled.div`
+export const SonminsooNewsProfileImg = styled.img`
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -53,6 +53,7 @@ export const SonminsooNewsFandomNameText = styled.p`
     font-size: 13px;
     opacity: 0.5;
     margin: 0;
+    margin-right: 8px;
 `;
 // 손민수 뉴스 헤더 시간 텍스트
 export const SonminsooNewsTimeText = styled.p`
@@ -61,10 +62,9 @@ export const SonminsooNewsTimeText = styled.p`
     margin: 0;
 `;
 // 손민수 뉴스 이미지
-export const SonminsooNewsImg = styled.div`
+export const SonminsooNewsImg = styled.img`
     height: 153px;
     width: 100%;
-    background-color: black;
 `;
 // 손민수 내용 전체 박스
 export const SonminsooNewsArticleBox = styled.div`

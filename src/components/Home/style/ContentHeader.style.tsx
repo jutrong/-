@@ -6,7 +6,6 @@ export const ContentHeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f3f3b7;
 `;
 
 // 헤더 마이 팬덤 텍스트

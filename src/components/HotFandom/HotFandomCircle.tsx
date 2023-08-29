@@ -15,15 +15,17 @@ type HotFandomCircleProps = {
 };
 
 const HotFandomCircle: React.FC<HotFandomCircleProps> = ({ item }) => {
-    //  console.log("item:", item.thumbnailImgUrl);
+    console.log("이미지", item?.image);
+
     return (
         <S.PandomCircleContainer>
-            <S.imgContainer>
+            <S.ImgContainer>
                 <S.NumberOne />
                 <S.PandomShadowCircle src={item?.image} />
-            </S.imgContainer>
-
-            <S.PandomCircleName>{item && item.fandomName}</S.PandomCircleName>
+                <S.PandomCircleName>
+                    {item && item.fandomName}
+                </S.PandomCircleName>{" "}
+            </S.ImgContainer>
         </S.PandomCircleContainer>
     );
 };

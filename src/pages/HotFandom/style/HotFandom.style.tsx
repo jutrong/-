@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import BgBlue from "../../../assets/images/png/background Blue.png";
 
 export const Container = styled.div`
     width: 100%;
@@ -17,6 +18,7 @@ export const HotFandomContainer = styled.div`
 export const HeaderBox = styled.div`
     flex-direction: row;
     justify-content: left;
+    background-image: url(${BgBlue});
     background-color: blue;
     height: 292px;
 `;

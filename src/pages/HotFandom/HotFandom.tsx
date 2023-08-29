@@ -25,9 +25,7 @@ const HotFandom = () => {
 
     const initDataGet = async () => {
         try {
-            const res = await axios.get(
-                "http://146.56.143.108/api/v1/fandoms/hot"
-            );
+            const res = await axios.get("fandoms/hot");
             console.log("get:", res.data.data);
             setData(res.data.data);
         } catch (error) {

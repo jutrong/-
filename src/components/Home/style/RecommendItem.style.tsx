@@ -11,8 +11,7 @@ export const RecommendItemContainer = styled.div`
 `;
 
 // 추천 아이템 이미지
-export const RecommendItemImg = styled.div`
-    background-color: black;
+export const RecommendItemImg = styled.img`
     width: 109px;
     height: 109px;
     border-radius: 8px;
@@ -44,6 +43,11 @@ export const RecommendItemTextIconBox = styled.div`
 export const RecommendItemNameText = styled.div`
     font-size: 15px;
     color: #555;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 109px;
 `;
 // 추천 아이템 아이콘
 export const BookMarkIconSvg = styled(BookMarkIcon)`

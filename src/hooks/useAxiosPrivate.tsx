@@ -10,8 +10,8 @@ const useAxiosPrivate = () => {
     useEffect(() => {
         axiosPrivate.interceptors.request.use((config) => {
             config.headers["authorization"] = auth;
-            console.log(config, "config");
-            console.log(auth, "auth");
+            // console.log(config, "config");
+            // console.log(auth, "auth");
 
             return config;
         });

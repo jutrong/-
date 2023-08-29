@@ -1,20 +1,37 @@
 import * as S from "./style/RecommendItem.style";
 
-const RecommendItem: React.FC = () => {
+type RecommendItem = {
+    id: number;
+    originUrl: string;
+    title: string;
+    price: string;
+    imgUrl: string;
+    groupName: string;
+    artistName: string;
+};
+
+type RecommendItemProps = {
+    item: RecommendItem;
+};
+const RecommendItem: React.FC<RecommendItemProps> = ({ item }) => {
     return (
         <>
             <S.RecommendItemContainer>
-                <S.RecommendItemImg />
+                <S.RecommendItemImg src={item?.imgUrl} />
                 <S.RecommendItemLabelBox>
-                    <S.RecommendItemLabel>전정국</S.RecommendItemLabel>
-                </S.RecommendItemLabelBox>{" "}
+                    <S.RecommendItemLabel>
+                        {item.artistName}
+                    </S.RecommendItemLabel>
+                </S.RecommendItemLabelBox>
                 <S.RecommendItemTextIconBox>
                     <S.RecommendItemNameText>
-                        비행사 우주...
+                        {item.title}
                     </S.RecommendItemNameText>
                     <S.BookMarkIconSvg />
                 </S.RecommendItemTextIconBox>
-                <S.RecommendItemPriceText>12,000원</S.RecommendItemPriceText>
+                <S.RecommendItemPriceText>
+                    {item.price}
+                </S.RecommendItemPriceText>
             </S.RecommendItemContainer>
         </>
     );

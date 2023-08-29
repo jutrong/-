@@ -6,13 +6,13 @@ export const FandomCircleContainer = styled.div`
     margin-left: 16px;
 `;
 
-export const FandomShadowCircle = styled.div`
+export const FandomShadowCircle = styled.img`
     width: 84px;
     height: 84px;
     border-radius: 50%;
     border: solid black;
     box-shadow: 5px 5px;
-    background-color: white;
+
     box-sizing: border-box;
     margin-bottom: 12px;
 `;

@@ -35,7 +35,7 @@ const MyFandom = () => {
 
     const initDataGet = async () => {
         try {
-            const res = await axiosPrivate.get("/users/fandoms");
+            const res = await axiosPrivate.get("/fandoms");
             console.log("get:", res.data.data);
             setData(res.data.data);
         } catch (error) {

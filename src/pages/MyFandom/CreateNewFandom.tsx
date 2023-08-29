@@ -39,11 +39,9 @@ const CreateNewFandom = () => {
 
         if (selectedImage && inputVal) {
             try {
-                const res = await axiosPrivate.post(
-                    "/users/fandoms",
-                    formData,
-                    { headers: { "Content-Type": "multipart/form-data" } }
-                );
+                const res = await axiosPrivate.post("/fandoms", formData, {
+                    headers: { "Content-Type": "multipart/form-data" },
+                });
                 navigation(`/myfandom/`);
                 console.log(res);
             } catch (error) {

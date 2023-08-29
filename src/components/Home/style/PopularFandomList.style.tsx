@@ -7,16 +7,25 @@ export const PopularFandomListContainer = styled.div`
     border: solid black;
     border-radius: 8px;
     margin: 0 auto;
+    background-color: white;
+    position: relative;
 `;
 // 팬덤 이미지 box
 export const PopularFandomImg = styled.div`
     height: 95px;
-    background-color: black;
+    width: 100%;
+`;
+
+export const Img = styled.img`
+    height: 95px;
+    width: 100%;
+    position: absolute;
 `;
 
 export const NumberOneBox = styled.div`
     display: flex;
     padding: 35px 0 35px;
+    position: relative;
 `;
 // 1위 팬덤 텍스트
 export const NumberOneText = styled.div`
