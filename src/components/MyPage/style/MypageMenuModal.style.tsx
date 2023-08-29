@@ -14,7 +14,7 @@ export const Overlay = styled.div`
 
 export const ModalContainer = styled.div`
   width: 100%;
-  height: 195px;
+  height: 142px;
   background-color: black;
   position: fixed;
   bottom: 0;
@@ -37,14 +37,6 @@ export const FandomMenu = styled.div`
   text-align: left;
 `;
 export const RequestMenu = styled.div`
-  margin: 0 auto 0 0;
-  height: 53px;
-  font-size: 16px;
-  color: #1d1b20;
-  font-family: "Pretendard-Bold";
-  text-align: left;
-`;
-export const DeleteMenu = styled.div`
   margin: 0 auto 0 0;
   height: 53px;
   font-size: 16px;

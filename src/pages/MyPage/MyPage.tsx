@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./style/MyPage.style";
 import add from "../../assets/images/svg/ic-plus.svg";
-import x from "../../assets/images/svg/ic-x-red.svg";
 import NewBucketRegister from "../../components/MyPage/NewBucketRegister";
 import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
 import AppAlertModal from "../../components/common/AlertModal/AppAlertModal";
@@ -12,6 +11,7 @@ import menu from "../../assets/images/svg/ic-menu.svg";
 import Icon from "../../elements/Icon";
 import axios, { axiosPrivate } from "../../api/axios";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { useNavigate } from "react-router-dom";
 import MyBucketList from "../../components/MyPage/MyBucketList";
 import MypageMenuModal from "../../components/MyPage/MypageMenuModal";
 
@@ -33,6 +33,7 @@ type FeedData = {
 
 const MyPage: React.FC = () => {
   const axiosPrivate = useAxiosPrivate();
+  const navigation = useNavigate();
 
   //get 데이터
   const [bucketdata, setBucketData] = useState<BucketData[]>([]);
@@ -93,12 +94,20 @@ const MyPage: React.FC = () => {
           <S.FeedTitle>피드</S.FeedTitle>
           <S.FeedNum>{profileNumdata?.feeds}</S.FeedNum>
         </S.FeedInfo>
-        <S.FollowerInfo>
+        <S.FollowerInfo
+          onClick={() => {
+            navigation(`/mypage/follower`);
+          }}
+        >
           <S.FollowerTitle>팔로워</S.FollowerTitle>
           <S.FollowerNum>{profileNumdata?.followers}</S.FollowerNum>
         </S.FollowerInfo>
-        <S.FollowInfo>
-          <S.FollowTitle>팔로우</S.FollowTitle>
+        <S.FollowInfo
+          onClick={() => {
+            navigation(`/mypage/follow`);
+          }}
+        >
+          <S.FollowTitle>팔로잉</S.FollowTitle>
           <S.FollowNum>{profileNumdata?.follows}</S.FollowNum>
         </S.FollowInfo>
       </S.MyPageInfo>

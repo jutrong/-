@@ -1,12 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./style/MyFollowerItem.style";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-const MyFollowerItem: React.FC = () => {
+type MyFollowerAndFollowingType = {
+  id: number;
+  nickName: string;
+  image: string;
+  isFollowing: boolean;
+};
+
+const MyFollowerItem: React.FC<MyFollowerAndFollowingType> = ({
+  id,
+  nickName,
+  image,
+  isFollowing,
+}) => {
+  const axiosPrivate = useAxiosPrivate();
+  const [followValue, setFollowValue] = useState(true);
+
+  const clickFollowBTN = async () => {
+    setFollowValue(false);
+
+    try {
+      const response = await axiosPrivate.put(`/follows/${id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <S.Wrap>
-      <S.FollowerImg />
-      <S.FollowerName>아마추어 손민수</S.FollowerName>
-      <S.FollowerBTN>팔로잉</S.FollowerBTN>
+      <S.FollowerImg src={image} />
+      <S.FollowerName>{nickName}</S.FollowerName>
+      {!isFollowing && (
+        <S.FollowerBTN state={followValue} onClick={clickFollowBTN}>
+          팔로우
+        </S.FollowerBTN>
+      )}
     </S.Wrap>
   );
 };

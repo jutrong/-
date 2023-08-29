@@ -8,32 +8,35 @@ export const Nav = styled.div`
   gap: 11px;
   margin-bottom: 18px;
 `;
-export const MyRequestBTN = styled.div`
+export const MyRequestBTN = styled.div<{ bgcolor: boolean }>`
   width: 87px;
   height: 32px;
   border-radius: 32px;
-  background-color: #6138f8;
-  color: #fff;
+  ${(props) =>
+    props.bgcolor ? `background-color: #6138f8;` : `background: #ebeef2;`};
+  ${(props) => (props.bgcolor ? `color: #fff;` : `color: #83839f;`)};
   text-align: center;
   line-height: 32px;
 `;
-export const MySelectRequestBTN = styled.div`
+export const MySelectRequestBTN = styled.div<{ bgcolor: boolean }>`
   width: 87px;
   height: 32px;
   border-radius: 32px;
-  background: #ebeef2;
-  color: #83839f;
   text-align: center;
   line-height: 32px;
+  ${(props) =>
+    props.bgcolor ? `background-color: #6138f8;` : `background: #ebeef2;`};
+  ${(props) => (props.bgcolor ? `color: #fff;` : `color: #83839f;`)};
 `;
-export const MyClearRequestBTN = styled.div`
-  width: 87px;
+export const MyClearRequestBTN = styled.div<{ bgcolor: boolean }>`
+  width: 101px;
   height: 32px;
   border-radius: 32px;
-  background: #ebeef2;
-  color: #83839f;
   text-align: center;
   line-height: 32px;
+  ${(props) =>
+    props.bgcolor ? `background-color: #6138f8;` : `background: #ebeef2;`};
+  ${(props) => (props.bgcolor ? `color: #fff;` : `color: #83839f;`)};
 `;
 export const RequestList = styled.div`
   display: flex;

@@ -159,7 +159,6 @@ export const Feed = styled.div`
 export const FeedImg = styled.img`
   width: 100%;
   height: 128px;
-  background-color: gray;
   border: 1px solid #fff;
 `;
 export const NoFeed = styled.div`

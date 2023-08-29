@@ -12,8 +12,8 @@ export const ItemImg = styled.img`
   border: 1px solid #1d1b20;
   margin-bottom: 9px;
 `;
-export const Artist = styled.p`
-  width: 40px;
+export const Artist = styled.p<{ width: number }>`
+  ${(props) => `width: ${props.width + 8}px;`};
   height: 16px;
   border-radius: 4px;
   background: #dee9ff;
@@ -32,6 +32,10 @@ export const ItemName = styled.p`
   font-size: 15px;
   font-family: "Pretendard-Medium";
   color: #555;
+  overflow: hidden;
+  width: 81px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   margin-bottom: 6px;
 `;
 export const Bookmark = styled.img``;

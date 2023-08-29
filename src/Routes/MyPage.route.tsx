@@ -11,7 +11,7 @@ export const MyPageRouter = {
   element: <MyPageRoot />, //마이페이지 컴포넌트
   children: [
     { index: true, element: <MyPage /> },
-    { path: "/mypage/bucket", element: <MyBucket /> },
+    { path: "/mypage/bucket/:bucketId", element: <MyBucket /> },
     { path: "/mypage/request", element: <MyReqeust /> },
     { path: "/mypage/follow", element: <MyFollow /> },
     { path: "/mypage/follower", element: <MyFollower /> },

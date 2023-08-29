@@ -1,15 +1,80 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
 import MyBucketItem from "../../components/MyPage/MyBucketItem";
+import document from "../../assets/images/svg/ic-document.svg";
 import * as S from "./style/MyBucket.style";
+import { useParams } from "react-router-dom";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { useNavigate } from "react-router-dom";
+
+type ItemsType = {
+  id: number;
+  imgUrl: string;
+  title: string;
+  price: string;
+  feed: {
+    artistName: string;
+  };
+};
 
 const MyBucket: React.FC = () => {
+  const axiosPrivate = useAxiosPrivate();
+  let { bucketId } = useParams();
+  const navigation = useNavigate();
+
+  const [itemsdata, setItemsData] = useState<ItemsType[]>([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      //팔로우 팔로워 수
+      const response = await axiosPrivate.get(`/buckets/${bucketId}`);
+      setItemsData(response.data.data.items.map((item: any) => item.item));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const clickBucketDelete = async () => {
+    try {
+      const response = await axiosPrivate.delete(`/buckets/${bucketId}`);
+      navigation(`/mypage`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <S.Wrap>
-      <MyBucketItem />
-      <MyBucketItem />
-      <MyBucketItem />
-      <MyBucketItem />
-    </S.Wrap>
+    <>
+      <HeaderBar
+        BackButton={true}
+        color="#fff"
+        title="나의 버킷리스트"
+        items={[
+          <S.deleteBTN onClick={clickBucketDelete}>전체 삭제</S.deleteBTN>,
+        ]}
+      />
+      <S.Wrap>
+        {itemsdata.length === 0 ? (
+          <S.NoItems>
+            <S.NoItemIcon src={document} />
+            <S.NoItemDesc>새 아이템을 버킷리스트에 담아주세요!</S.NoItemDesc>
+          </S.NoItems>
+        ) : (
+          itemsdata.map((item) => (
+            <MyBucketItem
+              artistName={item.feed.artistName}
+              name={item.title}
+              price={item.price}
+              imgUrl={item.imgUrl}
+            />
+          ))
+        )}
+      </S.Wrap>
+    </>
   );
 };
 

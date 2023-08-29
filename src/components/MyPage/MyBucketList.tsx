@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "./style/MyBucketList.style";
 import x from "../../assets/images/svg/ic-x-red.svg";
+import { Link } from "react-router-dom";
 
 type BucketData = {
   id: number;
@@ -10,11 +11,12 @@ type BucketData = {
 
 const MyBucketList: React.FC<BucketData> = ({ id, bucketName, img }) => {
   return (
-    <S.UserBucketBox>
-      <S.UserBucketImg src={img} />
-      <S.UserBucketLabel>{bucketName}</S.UserBucketLabel>
-      {/* <S.UserBucketDelete src={x} /> */}
-    </S.UserBucketBox>
+    <Link to={`/mypage/bucket/${id}`}>
+      <S.UserBucketBox>
+        <S.UserBucketImg src={img} />
+        <S.UserBucketLabel>{bucketName}</S.UserBucketLabel>
+      </S.UserBucketBox>
+    </Link>
   );
 };
 

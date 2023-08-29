@@ -9,7 +9,6 @@ export const FollowerImg = styled.img`
   width: 56px;
   height: 56px;
   border-radius: 56px;
-  background: #ebeef2;
   margin-right: 15px;
 `;
 export const FollowerName = styled.p`
@@ -18,12 +17,12 @@ export const FollowerName = styled.p`
   font-family: "Pretendard-Bold";
   margin: 0 auto 0 0;
 `;
-export const FollowerBTN = styled.div`
+export const FollowerBTN = styled.div<{ state: boolean }>`
+  ${(props) => (props.state ? `background: #208df1;` : `background: #ebeef2;`)};
+  ${(props) => (props.state ? `color: #fff;` : `color: #83839f;`)};
   width: 103px;
   height: 30px;
   border-radius: 4px;
-  background: #208df1;
-  color: #fff;
   text-align: center;
   font-size: 14px;
   font-family: "Pretendard-Bold";

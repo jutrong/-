@@ -27,8 +27,13 @@ const MypageMenuModal: React.FC<ModalProps> = ({ setModalOpen }) => {
       <S.Overlay>
         <S.ModalContainer ref={modalRef}>
           <S.FandomMenu>마이 팬덤</S.FandomMenu>
-          <S.RequestMenu>나의 의뢰</S.RequestMenu>
-          <S.DeleteMenu>버킷리스트 수정</S.DeleteMenu>
+          <S.RequestMenu
+            onClick={() => {
+              navigation(`/mypage/request`);
+            }}
+          >
+            나의 의뢰
+          </S.RequestMenu>
         </S.ModalContainer>
       </S.Overlay>
     </>

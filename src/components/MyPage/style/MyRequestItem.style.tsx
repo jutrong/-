@@ -9,7 +9,6 @@ export const RequestImg = styled.img`
   width: 56px;
   height: 56px;
   border-radius: 8px;
-  background: #ebeef2;
 `;
 export const RequestInfo = styled.div`
   display: flex;

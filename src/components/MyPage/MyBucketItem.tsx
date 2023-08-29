@@ -1,17 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./style/MyBucketItem.style";
-import bookmark from "../../assets/images/svg/ic-bookmark.svg";
+import bookmarkon from "../../assets/images/svg/ic-bookmark.svg";
+import bookmarkoff from "../../assets/images/svg/ic-bookmark-off.svg";
+import { useParams } from "react-router-dom";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-const MyBucketItem: React.FC = () => {
+type ItemType = {
+  artistName: string;
+  name: string;
+  price: string;
+  imgUrl: string;
+};
+
+const MyBucketItem: React.FC<ItemType> = ({
+  artistName,
+  name,
+  price,
+  imgUrl,
+}) => {
+  const axiosPrivate = useAxiosPrivate();
+  let { bucketId } = useParams();
+
+  const [bookmarkValue, setBookMarkValue] = useState(true);
+
+  const clickBookMark = async () => {
+    setBookMarkValue((prev) => !prev);
+
+    try {
+      const response = await axiosPrivate.put(
+        `/sonminsu-items/118/buckets/${bucketId}`
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <S.Wrap>
-      <S.ItemImg />
-      <S.Artist>전정국</S.Artist>
+      <S.ItemImg src={imgUrl} />
+      <S.Artist width={artistName.length * 11}>{artistName}</S.Artist>
       <S.Box>
-        <S.ItemName>비행사 우주...</S.ItemName>
-        <S.Bookmark src={bookmark} />
+        <S.ItemName>{name}</S.ItemName>
+        <S.Bookmark
+          src={bookmarkValue ? bookmarkon : bookmarkoff}
+          onClick={clickBookMark}
+        />
       </S.Box>
-      <S.Price>12,000원</S.Price>
+      <S.Price>{price}</S.Price>
     </S.Wrap>
   );
 };
