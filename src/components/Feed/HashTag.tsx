@@ -6,7 +6,7 @@ const HashTag: React.FC<FeedHashTagProps> = ({ feedData }) => {
   const [hashTag, setHashTag] = useState<string[]>([]);
   useEffect(() => {
     if (feedData) {
-      setHashTag(feedData.hashTag);
+      setHashTag(feedData.tags);
     }
   }, []);
   return (

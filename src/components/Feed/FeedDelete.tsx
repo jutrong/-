@@ -1,13 +1,21 @@
 import { useEffect, useRef, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import * as S from "../Feed/style/FeedDelete.style";
 
 type FeedDeleteProps = {
   setIsFeedDelete: React.Dispatch<React.SetStateAction<boolean>>;
+  feedId: number | undefined;
+  onFeedDeleted: () => void;
 };
 
-const FeedDelete: React.FC<FeedDeleteProps> = ({ setIsFeedDelete }) => {
+const FeedDelete: React.FC<FeedDeleteProps> = ({
+  setIsFeedDelete,
+  feedId,
+  onFeedDeleted,
+}) => {
   const navigation = useNavigate();
+  const axiosPrivate = useAxiosPrivate();
 
   const modalRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -21,8 +29,21 @@ const FeedDelete: React.FC<FeedDeleteProps> = ({ setIsFeedDelete }) => {
       document.removeEventListener("mousedown", clickOutside);
     };
   }, []);
+
   const moveUpdate = () => {
     navigation("/feedwrite", { state: { isUpdate: true } });
+  };
+
+  const handleDeleteFeed = async () => {
+    if (!feedId) return;
+    try {
+      await axiosPrivate.delete(`/feeds/${feedId}`);
+      setIsFeedDelete(false);
+      onFeedDeleted();
+    } catch (error) {
+      console.log("error", error);
+      alert("삭제실패");
+    }
   };
   return (
     <>
@@ -35,7 +56,7 @@ const FeedDelete: React.FC<FeedDeleteProps> = ({ setIsFeedDelete }) => {
           >
             수정하기
           </S.UpdateFeed>
-          <S.DeleteFeed>삭제하기</S.DeleteFeed>
+          <S.DeleteFeed onClick={handleDeleteFeed}>삭제하기</S.DeleteFeed>
         </S.UpSlide>
       </S.Overlay>
     </>

@@ -1,12 +1,20 @@
 import React, { useState, useContext } from "react";
 import * as S from "./style/FeedWriteTarget.style";
+
 type FeedWriteProps = {
   $updatePage: boolean;
+  grouptInput: string;
+  setGroupInput: React.Dispatch<React.SetStateAction<string>>;
+  artistInput: string;
+  setArtistInput: React.Dispatch<React.SetStateAction<string>>;
 };
-const FeedWriteTarget: React.FC<FeedWriteProps> = ({ $updatePage }) => {
-  const [grouptLimit, setGroupLimit] = useState<string>("");
-  const [artistLimit, setArtistLimit] = useState<string>("");
-
+const FeedWriteTarget: React.FC<FeedWriteProps> = ({
+  $updatePage,
+  grouptInput,
+  setGroupInput,
+  artistInput,
+  setArtistInput,
+}) => {
   return (
     <S.TargetContainer>
       <S.Targeting>손민수 대상자</S.Targeting>
@@ -15,30 +23,30 @@ const FeedWriteTarget: React.FC<FeedWriteProps> = ({ $updatePage }) => {
           <S.TargetGroupInput
             placeholder="그룹명"
             readOnly={$updatePage}
-            value={grouptLimit}
+            value={grouptInput}
             onChange={(e) => {
-              setGroupLimit(e.target.value);
+              setGroupInput(e.target.value);
             }}
           />
           <S.GroupLimit>
-            <S.GroupLimitNum>{grouptLimit.length}</S.GroupLimitNum>/10자
+            <S.GroupLimitNum>{grouptInput.length}</S.GroupLimitNum>/10자
           </S.GroupLimit>
         </S.TargetingBox>
         <S.TargetingBox>
           <S.TargetArtistInput
             placeholder="아티스트 이름"
             readOnly={$updatePage}
-            value={artistLimit}
+            value={artistInput}
             onChange={(e) => {
-              setArtistLimit(e.target.value);
+              setArtistInput(e.target.value);
             }}
           />
           <S.ArtistLimit>
-            <S.ArtistLimitNum>{artistLimit.length}</S.ArtistLimitNum>/10자
+            <S.ArtistLimitNum>{artistInput.length}</S.ArtistLimitNum>/10자
           </S.ArtistLimit>
         </S.TargetingBox>
       </S.Target>
-      .<S.TargetLabel>작성하신 이름이 노출됩니다.</S.TargetLabel>
+      <S.TargetLabel>작성하신 이름이 노출됩니다.</S.TargetLabel>
     </S.TargetContainer>
   );
 };

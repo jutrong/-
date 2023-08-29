@@ -10,9 +10,21 @@ import pants from "../../assets/images/png/pants.png";
 
 type FeedWriteProps = {
   $updatePage: boolean;
+  setLinkModalClick: React.Dispatch<React.SetStateAction<boolean>>;
+  urlItem: itemtype[];
+};
+type itemtype = {
+  id: number;
+  imgUrl: string;
+  title: string;
+  price: string;
 };
 
-const FeedWriteLink: React.FC<FeedWriteProps> = ({ $updatePage }) => {
+const FeedWriteLink: React.FC<FeedWriteProps> = ({
+  $updatePage,
+  setLinkModalClick,
+  urlItem,
+}) => {
   const swiperParams = {
     slidesPerView: 3.5,
     spaceBetween: 12,
@@ -25,41 +37,28 @@ const FeedWriteLink: React.FC<FeedWriteProps> = ({ $updatePage }) => {
       <S.LinkItemBox>
         <Swiper {...swiperParams}>
           <SwiperSlide>
-            <S.LinkButton>
+            <S.LinkButton
+              onClick={() => {
+                setLinkModalClick(true);
+              }}
+            >
               <S.LinkImg src={Link} />
               <S.LinkText>링크 등록</S.LinkText>
             </S.LinkButton>
           </SwiperSlide>
-          <SwiperSlide>
-            <S.LinkItem>
-              <S.LinkItemImg src={clothes}></S.LinkItemImg>
-              <S.LinkItemName>비행사 우주곰우주곰</S.LinkItemName>
-              <S.LinkItemPrice>
-                12000<S.PriceWon>원</S.PriceWon>
-              </S.LinkItemPrice>
-              {$updatePage ? null : <S.LinkCloseBtn src={closeBtn} />}
-            </S.LinkItem>
-          </SwiperSlide>
-          <SwiperSlide>
-            <S.LinkItem>
-              <S.LinkItemImg src={pants}></S.LinkItemImg>
-              <S.LinkItemName>비행사 우주곰우주곰</S.LinkItemName>
-              <S.LinkItemPrice>
-                12000<S.PriceWon>원</S.PriceWon>
-              </S.LinkItemPrice>
-              {$updatePage ? null : <S.LinkCloseBtn src={closeBtn} />}
-            </S.LinkItem>
-          </SwiperSlide>
-          <SwiperSlide>
-            <S.LinkItem>
-              <S.LinkItemImg src={pants}></S.LinkItemImg>
-              <S.LinkItemName>비행사 우주곰우주곰</S.LinkItemName>
-              <S.LinkItemPrice>
-                12000<S.PriceWon>원</S.PriceWon>
-              </S.LinkItemPrice>
-              {$updatePage ? null : <S.LinkCloseBtn src={closeBtn} />}
-            </S.LinkItem>
-          </SwiperSlide>
+          {urlItem.map((item) => (
+            <SwiperSlide>
+              <S.LinkItem key={item.id}>
+                <S.LinkItemImg src={item.imgUrl}></S.LinkItemImg>
+                <S.LinkItemName>{item.title}</S.LinkItemName>
+                <S.LinkItemPrice>
+                  {item.price}
+                  <S.PriceWon>원</S.PriceWon>
+                </S.LinkItemPrice>
+                {$updatePage ? null : <S.LinkCloseBtn src={closeBtn} />}
+              </S.LinkItem>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </S.LinkItemBox>
     </S.FeedWriteLinkContainer>

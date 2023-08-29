@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const FeedHeaderBar = () => {
   const navigation = useNavigate();
+
   const fileInputRef = useRef<HTMLInputElement>(null);
   // 선택된 이미지의 URL을 저장하기 위한 상태
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -20,12 +21,15 @@ const FeedHeaderBar = () => {
     const file = event.target.files?.[0];
     // Non-null assertion operators
     const imageUrl = URL.createObjectURL(file!);
-
     if (file) {
       // 파일을 선택했을 때 수행할 작업
       setSelectedImage(imageUrl);
       navigation("/feedwrite", {
-        state: { isUpdate: false, selectedImage: imageUrl },
+        state: {
+          isUpdate: false,
+          selectedImage: imageUrl,
+          imageObject: fileInputRef.current?.files?.[0],
+        },
       });
     }
   };

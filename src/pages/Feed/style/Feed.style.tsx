@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const FeedContainer = styled.div`
+  font-family: "Pretendard-Light";
+
   width: 100%;
   box-sizing: border-box;
   margin: 0;

@@ -15,7 +15,7 @@ const ItemBox: React.FC<FeedItemProps> = ({ feedData }) => {
         {feedData.sonminsuItems &&
           feedData.sonminsuItems.map((item, itemIndex) => (
             <SwiperSlide key={`${itemIndex}`}>
-              <S.Item src={item.itemImg} />
+              <S.Item src={item.imageUrl} />
               <S.ProductName>{item.title}</S.ProductName>
               <S.Price>
                 {item.price}

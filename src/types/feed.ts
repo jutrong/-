@@ -1,48 +1,31 @@
-export type Feed = {
+export type Data = {
   id: number;
-  user: User;
-  feedImg: string;
   content: string;
-  hashTag: string[];
-  created_at: string;
-  sonminsuItems: SonminsuItem[];
-  comments: CommentType[];
+  createdAt: string;
+  author: {
+    id: number;
+    image: string;
+    nickName: string;
+  };
+  fandom: {
+    id: number;
+    fandomName: string;
+  };
+  sonminsuItems: any[];
+  image: string;
+  tags: string[];
+  comments: number;
 };
-
-export type User = {
-  id: number;
-  user_id: number;
-  profileImg: string;
-  user_name: string;
-  fandom_name: string;
-};
-
-export type SonminsuItem = {
-  id: number;
-  itemImg: string;
-  title: string;
-  price: number;
-  url: string;
-};
-export type CommentType = {
-  id: number;
-  feed_id: number;
-  user_id: number;
-  profileImg: string;
-  user_name: string;
-  content: string;
-  created_at: string;
-};
-export type FeedData = Feed[];
+export type DataArray = Data[];
 
 //props type
 export type FeedDataProps = {
-  feedData: Feed;
+  feedData: Data;
   setIsFeedDelete: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export type FeedItemProps = {
-  feedData: Feed;
+  feedData: Data;
 };
 
 export type FeedTextProps = {
@@ -53,12 +36,12 @@ export type FeedTextProps = {
 
 export type FeedHashTagProps = {
   feedData: {
-    hashTag: string[];
+    tags: string[];
   };
 };
 
 export type CommentBtnProps = {
   commentOpen: () => void;
   commentClicked: boolean;
-  feedData: Feed;
+  feedData: Data;
 };

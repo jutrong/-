@@ -2,33 +2,27 @@ import React, { useState, useRef, useEffect } from "react";
 import detailDate from "../../utils/time";
 import * as S from "./style/CommentItem.style";
 import commentmore from "../../assets/images/svg/ic-more-vertical-16.svg";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-type CommentData = {
+type CommentType = {
   id: number;
-  feed_id: number;
-  user_id: number;
-  profileImg: string;
-  user_name: string;
+  feedId: number;
+  createdAt: string;
   content: string;
-  created_at: string;
+  parent: number;
+  author: {
+    id: number;
+    image: string;
+    nickName: string;
+  };
 };
-type FeedCommentData = {
-  id: number;
-  user_id: number;
-  user_name: string;
-  profileImg: string;
-  feed_id: number;
-  content: string;
-  created_at: string;
-  comments?: CommentData[];
-};
-
 type CommentItemProps = {
-  comment: FeedCommentData;
-  showModal: () => void;
+  comment: CommentType;
+  showModal: (commentId: number) => void;
 };
 
 const CommentItem: React.FC<CommentItemProps> = ({ comment, showModal }) => {
+  const axiosPrivate = useAxiosPrivate();
   const [openedModalId, setOpenedModalId] = useState<number | null>(null);
   const modalRef = useRef<HTMLDivElement | null>(null);
 
@@ -58,15 +52,16 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment, showModal }) => {
   //   //   alert("댓글 삭제에 실패했습니다. 다시 시도해주세요.");
   //   // }
   // };
+
   return (
     <>
       <S.CommentContainer>
-        <S.CommentProfile src={comment.profileImg} />
+        <S.CommentProfile src={comment.author.image} />
         <S.CommentContent>
           <S.CommnetContentWrap>
             <S.UserContenWrap>
-              <S.CommentNickname>{comment.user_name}</S.CommentNickname>
-              <S.CommentTime>{detailDate(comment.created_at)}</S.CommentTime>
+              <S.CommentNickname>{comment.author.nickName}</S.CommentNickname>
+              <S.CommentTime>{detailDate(comment.createdAt)}</S.CommentTime>
             </S.UserContenWrap>
             <S.CommentMoreBtn
               src={commentmore}
@@ -77,7 +72,9 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment, showModal }) => {
             />
             {openedModalId === comment.id && (
               <S.ReplyBtn ref={modalRef}>
-                <S.Delete onClick={showModal}>삭제하기</S.Delete>
+                <S.Delete onClick={() => showModal(comment.id)}>
+                  삭제하기
+                </S.Delete>
               </S.ReplyBtn>
             )}
           </S.CommnetContentWrap>

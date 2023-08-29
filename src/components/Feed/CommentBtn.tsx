@@ -14,7 +14,7 @@ const CommentBtn: React.FC<CommentBtnProps> = ({
     <S.CommentBtnContainer>
       <S.CommentIcon $commentClicked={commentClicked} onClick={commentOpen} />
       <S.CommentNumber $commentClicked={commentClicked}>
-        {feedData?.comments?.length || 0}
+        {feedData?.comments}
       </S.CommentNumber>
     </S.CommentBtnContainer>
   );

@@ -22,7 +22,7 @@ export const MaxLinkText = styled.span`
   font-family: "Pretendard-Medium";
 `;
 export const LinkItemBox = styled.div`
-  display: flex;
+  // display: flex;
   width: 100%;
   overflow: hidden;
 `;

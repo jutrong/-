@@ -8,8 +8,12 @@ import { type } from "os";
 
 type FeedWriteProps = {
   $updatePage: boolean;
+  handleSubmitFeed: () => void;
 };
-const FeedWriteHeader: React.FC<FeedWriteProps> = ({ $updatePage }) => {
+const FeedWriteHeader: React.FC<FeedWriteProps> = ({
+  $updatePage,
+  handleSubmitFeed,
+}) => {
   const navigation = useNavigate();
 
   return (
@@ -25,7 +29,7 @@ const FeedWriteHeader: React.FC<FeedWriteProps> = ({ $updatePage }) => {
       ) : (
         <S.FeedHeaderText>새 피드 작성</S.FeedHeaderText>
       )}
-      <S.FeedHeaderCheck src={check} />
+      <S.FeedHeaderCheck src={check} onClick={handleSubmitFeed} />
     </S.NewFeedHeader>
   );
 };

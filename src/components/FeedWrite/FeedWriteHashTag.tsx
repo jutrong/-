@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import * as S from "./style/FeedWriteHashTag.style";
-import useInput from "../../hooks/useInput";
 
-const FeedWriteHashTag = () => {
-  //#넣어입력하면 배열로 변환
-  const [hashTagInput, handleHashTagChange] = useInput("");
-  const hashtagss = hashTagInput.match(/#\w+/g) || [];
+type FeedWriteHashTagProps = {
+  hashTagInput: string;
+  handleHashTagChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
+const FeedWriteHashTag: React.FC<FeedWriteHashTagProps> = ({
+  hashTagInput,
+  handleHashTagChange,
+}) => {
   return (
     <S.WriteForm>
       <S.FeedWriteTags
