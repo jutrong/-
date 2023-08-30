@@ -1,15 +1,8 @@
 import React, { useState } from "react";
 import * as S from "../style/RequestAnswerRegister.style";
 import link from "../../../assets/images/svg/ic-link.svg";
-import BTN from "../BTN";
-import LinkAttachItem from "../LinkAttachItem";
-import WhiteSpaceBTN from "../WhiteSpaceBTN";
 import RequestLinkRegister from "./RequestLinkRegister";
-
-type RequestAnswerRegisterType = {
-  groupName: string;
-  artistName: string;
-};
+import { RequestAnswerRegisterType } from "../../../types/request";
 
 const RequestAnswerRegister: React.FC<RequestAnswerRegisterType> = ({
   groupName,

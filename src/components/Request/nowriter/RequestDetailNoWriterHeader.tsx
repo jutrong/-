@@ -4,13 +4,9 @@ import question from "../../../assets/images/svg/ic-question.svg";
 import pushginoff from "../../../assets/images/svg/ic-pushpin.svg";
 import pushginon from "../../../assets/images/svg/ic-pushpin-on.svg";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
-
-type RequestTitleProps = {
-  title: string;
-  username: string;
-  date: string;
-  id: number;
-};
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RequestTitleProps } from "../../../types/request";
 
 const RequestDetaiNoWriterlHeader: React.FC<RequestTitleProps> = ({
   title,
@@ -18,9 +14,16 @@ const RequestDetaiNoWriterlHeader: React.FC<RequestTitleProps> = ({
   date,
   id,
 }) => {
+  const navigation = useNavigate();
+  const token = useSelector(({ auth }) => auth.accessToken);
+
   const [pushpinvalue, setPushPinValue] = useState(false);
   const axiosPrivate = useAxiosPrivate();
   const clickPushPin = async () => {
+    if (!token) {
+      navigation(`/login`);
+    }
+
     setPushPinValue((prev) => !prev);
 
     try {

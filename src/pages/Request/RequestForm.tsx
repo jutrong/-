@@ -119,7 +119,10 @@ const RequestForm: React.FC = () => {
         BackButton={true}
         title="새 의뢰 작성하기"
         items={[
-          <S.RequestRegisterBTN onClick={handelReuquestRegister}>
+          <S.RequestRegisterBTN
+            onClick={handelReuquestRegister}
+            key="requestform"
+          >
             의뢰 등록
           </S.RequestRegisterBTN>,
         ]}
@@ -131,7 +134,7 @@ const RequestForm: React.FC = () => {
           <S.QuestionTitleInput
             onChange={handleTitleInput}
             placeholder="의뢰 제목을 입력해 주세요."
-            maxLength={25}
+            maxLength={24}
           />
           <S.QuestionTitleLable color={titleColor}>
             {titleCount}/25자
@@ -142,7 +145,7 @@ const RequestForm: React.FC = () => {
             onChange={handleDescTextarea}
             rows={18}
             placeholder="의뢰 내용을 입력해 주세요."
-            maxLength={300}
+            maxLength={299}
           />
           <S.QuestionDescLabel color={descColor}>
             {descCount}/300자
@@ -180,7 +183,7 @@ const RequestForm: React.FC = () => {
               <S.QuestionGroupInput
                 onChange={handleGroupInput}
                 placeholder="그룹명"
-                maxLength={10}
+                maxLength={9}
               />
               {groupCount}/10자
             </S.QuestionGroupInputBox>
@@ -188,7 +191,7 @@ const RequestForm: React.FC = () => {
               <S.QuestionArtistInput
                 onChange={handleArtistInput}
                 placeholder="아티스트 이름"
-                maxLength={10}
+                maxLength={9}
               />
               {artistCount}/10자
             </S.QuestionArtistInputBox>

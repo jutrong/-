@@ -8,62 +8,7 @@ import axios from "../../../api/axios";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import detailDate from "../../../utils/time";
 import { useParams } from "react-router-dom";
-
-type RequestDescProps = {
-  image: string;
-  id: number;
-  title: string;
-  content: string;
-  answerCnt: number;
-  createdAt: string;
-  groupName: string;
-  artistName: string;
-  user: {
-    id: number;
-    nickName: string;
-    image: string;
-  };
-  answers: [
-    {
-      id: number;
-      createdAt: string;
-      isChoosed: boolean;
-      user: {
-        id: number;
-        image: string;
-        nickName: string;
-        choosedCnt: number;
-      };
-      items: [
-        {
-          id: number;
-          originUrl: string;
-          imgUrl: string;
-          price: string;
-          title: string;
-        }
-      ];
-    }
-  ];
-};
-
-type answerItmesType = {
-  id: number;
-  originUrl: string;
-  imgUrl: string;
-  price: string;
-  title: string;
-};
-
-type RequestAnswerProps = {
-  answerUsername: string;
-  answerUserimg: string;
-  answerUserclearNum: number;
-  answerDate: string;
-  answerItems: answerItmesType[];
-  answerId: number;
-  answerIsChoosed: boolean;
-};
+import { RequestAnswerProps, RequestDescType } from "../../../types/request";
 
 const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
   answerUsername,
@@ -80,7 +25,7 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
   const [moreClick, setMoreClick] = useState(false);
   const [selectClick, setSeleteClick] = useState(false);
   const [deleteClick, setDeleteClick] = useState(false);
-  const [requestdata, setRequestData] = useState<RequestDescProps>(Object);
+  const [requestdata, setRequestData] = useState<RequestDescType>(Object);
 
   const modalRef = useRef<HTMLDivElement>(null);
 

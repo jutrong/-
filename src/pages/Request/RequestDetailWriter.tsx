@@ -8,49 +8,12 @@ import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
 import { useParams } from "react-router-dom";
 import axios from "../../api/axios";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-
-type RequestDescProps = {
-  image: string;
-  id: number;
-  title: string;
-  content: string;
-  answerCnt: number;
-  createdAt: string;
-  groupName: string;
-  artistName: string;
-  user: {
-    id: number;
-    nickName: string;
-    image: string;
-  };
-  answers: [
-    {
-      id: number;
-      createdAt: string;
-      isChoosed: boolean;
-      user: {
-        id: number;
-        image: string;
-        nickName: string;
-        choosedCnt: number;
-      };
-      items: [
-        {
-          id: number;
-          originUrl: string;
-          imgUrl: string;
-          price: string;
-          title: string;
-        }
-      ];
-    }
-  ];
-};
+import { RequestDescType } from "../../types/request";
 
 const RequestDetailWriter: React.FC = () => {
   let { requestId } = useParams();
 
-  const [requestdata, setRequestData] = useState<RequestDescProps>(Object);
+  const [requestdata, setRequestData] = useState<RequestDescType>(Object);
 
   useEffect(() => {
     fetchData();

@@ -5,19 +5,7 @@ import LinkAttachItem from "../LinkAttachItem";
 import SkyBTN from "../SkyBTN";
 import { useParams } from "react-router-dom";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
-
-type RegisterModalProps = {
-  setClick: React.Dispatch<React.SetStateAction<boolean>>;
-  groupName: string;
-  artistName: string;
-};
-
-type itemtype = {
-  id: number;
-  imgUrl: string;
-  title: string;
-  price: string;
-};
+import { itemtype, RegisterModalProps } from "../../../types/request";
 
 const RequestLinkRegister: React.FC<RegisterModalProps> = ({
   setClick,
@@ -139,6 +127,7 @@ const RequestLinkRegister: React.FC<RegisterModalProps> = ({
               itemImg={item.imgUrl}
               itemName={item.title}
               itemPrice={item.price}
+              key={item.id}
             />
           ))}
         </S.LinkAttachItemBox>

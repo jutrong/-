@@ -1,14 +1,7 @@
 import React from "react";
 import * as S from "./style/LinkAttachItem.style";
 import x from "../../assets/images/svg/ic-x.svg";
-
-type LinkItemType = {
-  deletevalue?: boolean;
-  itemImg: string;
-  itemPrice: string;
-  itemName: string;
-  deleteclick?: () => void;
-};
+import { LinkItemType } from "../../types/request";
 
 const LinkAttachItem: React.FC<LinkItemType> = ({
   deletevalue,

@@ -7,13 +7,7 @@ import AppAlertModal from "../../common/AlertModal/AppAlertModal";
 import axios from "../../../api/axios";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import { useNavigate } from "react-router-dom";
-
-type RequestTitleProps = {
-  title: string;
-  username: string;
-  date: string;
-  id: number;
-};
+import { RequestTitleProps } from "../../../types/request";
 
 const RequestDetailWriterHeader: React.FC<RequestTitleProps> = ({
   title,

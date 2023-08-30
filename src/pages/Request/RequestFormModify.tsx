@@ -9,43 +9,7 @@ import axios from "../../api/axios";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-
-type RequestDescProps = {
-  image: string;
-  id: number;
-  title: string;
-  content: string;
-  answerCnt: number;
-  createdAt: string;
-  groupName: string;
-  artistName: string;
-  user: {
-    id: number;
-    nickName: string;
-    image: string;
-  };
-  answers: [
-    {
-      id: number;
-      createdAt: string;
-      user: {
-        id: number;
-        image: string;
-        nickName: string;
-        choosedCnt: number;
-      };
-      items: [
-        {
-          id: number;
-          originUrl: string;
-          imgUrl: string;
-          price: string;
-          title: string;
-        }
-      ];
-    }
-  ];
-};
+import { RequestDescType } from "../../types/request";
 
 const RequestFormModify: React.FC = () => {
   const axiosPrivate = useAxiosPrivate();
@@ -63,7 +27,7 @@ const RequestFormModify: React.FC = () => {
   const [artistCount, setArtistCount] = useState(0);
   const [artistColor, setArtistColor] = useState(true);
 
-  const [requestdata, setRequestData] = useState<RequestDescProps>(Object);
+  const [requestdata, setRequestData] = useState<RequestDescType>(Object);
 
   useEffect(() => {
     fetchData();
@@ -132,6 +96,7 @@ const RequestFormModify: React.FC = () => {
           </S.RequestRegisterBTN>,
         ]}
         color="#fff"
+        key="requestformmodify"
       />
       <S.QuestionForm>
         <S.QuestionTitle>

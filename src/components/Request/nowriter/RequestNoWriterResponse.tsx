@@ -3,25 +3,12 @@ import * as S from "../style/RequestNoWriterResponse.style";
 import LinkAttachItem from "../LinkAttachItem";
 import detailDate from "../../../utils/time";
 import select from "../../../assets/images/svg/ic-select.svg";
-
-type answerItmesType = {
-  id: number;
-  originUrl: string;
-  imgUrl: string;
-  price: string;
-  title: string;
-};
-
-type RequestAnswerProps = {
-  answerUsername: string;
-  answerUserimg: string;
-  answerUserclearNum: number;
-  answerDate: string;
-  answerItems: answerItmesType[];
-  answerIsChoosed: boolean;
-};
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { RequestAnswerProps } from "../../../types/request";
 
 const RequestNoWriterResponse: React.FC<RequestAnswerProps> = ({
+  answeruserid,
   answerUsername,
   answerUserimg,
   answerUserclearNum,
@@ -29,11 +16,22 @@ const RequestNoWriterResponse: React.FC<RequestAnswerProps> = ({
   answerItems,
   answerIsChoosed,
 }) => {
+  const navigation = useNavigate();
+  const token = useSelector(({ auth }) => auth.accessToken);
+
+  const clickProfile = () => {
+    if (token) {
+      navigation(`/mypage/${answeruserid}`);
+    } else {
+      navigation(`/login`);
+    }
+  };
+
   return (
     <>
       <S.Wrap>
         <S.ProfileBox>
-          <S.ProfileImg src={answerUserimg} />
+          <S.ProfileImg src={answerUserimg} onClick={clickProfile} />
           <S.ProfileInfo>
             <S.UserName>{answerUsername}</S.UserName>
             <S.ResponesInfo>

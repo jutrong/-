@@ -73,6 +73,7 @@ export const MoreModal = styled.div`
   background: #fff;
   width: 73px;
   height: 75px;
+  z-index: 9999;
 `;
 export const Selete = styled.p`
   height: 50%;

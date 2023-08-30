@@ -1,10 +1,6 @@
 import React from "react";
+import { RequestDescProps } from "../../types/request";
 import * as S from "./style/RequestDeatilDesc.style";
-
-type RequestDescProps = {
-  desc: string;
-  img: string;
-};
 
 const RequestDetailDesc: React.FC<RequestDescProps> = ({ desc, img }) => {
   return (

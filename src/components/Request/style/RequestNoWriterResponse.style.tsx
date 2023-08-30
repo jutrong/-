@@ -18,7 +18,6 @@ export const ProfileImg = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 40px;
-  background-color: gray;
 `;
 export const ProfileInfo = styled.div`
   display: flex;
@@ -51,8 +50,14 @@ export const SeleteImg = styled.img`
   right: 0;
 `;
 export const ImgsBox = styled.div`
+  width: 374px;
+  height: 145px;
   display: flex;
   gap: 10px;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 export const ImgItem = styled.div`
   display: flex;

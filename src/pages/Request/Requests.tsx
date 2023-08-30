@@ -5,24 +5,18 @@ import document from "../../assets/images/svg/ic-document.svg";
 import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
 import edit from "../../assets/images/svg/ic-edit.svg";
 import Icon from "../../elements/Icon";
-import { Link } from "react-router-dom";
 import axios from "../../api/axios";
 import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
 import detailDate from "../../utils/time";
-
-type Requests = {
-  title: string;
-  id: number;
-  image: string;
-  user: {
-    id: number;
-    nickName: string;
-  };
-  createdAt: string;
-};
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RequestsType } from "../../types/request";
 
 const Requests: React.FC = () => {
-  const [requestdata, setRequestData] = useState<Requests[]>([]);
+  const navigation = useNavigate();
+  const token = useSelector(({ auth }) => auth.accessToken);
+
+  const [requestdata, setRequestData] = useState<RequestsType[]>([]);
 
   useEffect(() => {
     fetchData();
@@ -38,17 +32,23 @@ const Requests: React.FC = () => {
     }
   };
 
-  //console.log("dd", requestdata);
-
   return (
     <>
       <HeaderBar
         BackButton={true}
         title="손민수템 의뢰"
         items={[
-          <Link to="/requests/form">
-            <Icon src={edit} />
-          </Link>,
+          <Icon
+            key="repuest"
+            src={edit}
+            onClick={() => {
+              if (!token) {
+                navigation(`/login`);
+              } else {
+                navigation(`/requests/form`);
+              }
+            }}
+          />,
         ]}
         color="#fff"
       />
@@ -67,6 +67,7 @@ const Requests: React.FC = () => {
               date={detailDate(request.createdAt)}
               userid={request.user.id}
               requestid={request.id}
+              key={request.id}
             />
           ))
         )}

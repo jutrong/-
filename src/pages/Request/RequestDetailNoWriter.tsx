@@ -11,50 +11,17 @@ import axios from "../../api/axios";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import RequestLinkRegister from "../../components/Request/nowriter/RequestLinkRegister";
 import { Button } from "../../elements/Button";
-
-type RequestDescProps = {
-  image: string;
-  id: number;
-  title: string;
-  content: string;
-  groupName: string;
-  artistName: string;
-  answerCnt: number;
-  createdAt: string;
-  user: {
-    id: number;
-    nickName: string;
-    image: string;
-  };
-  answers: [
-    {
-      id: number;
-      createdAt: string;
-      isChoosed: boolean;
-      user: {
-        id: number;
-        image: string;
-        nickName: string;
-        choosedCnt: number;
-      };
-      items: [
-        {
-          id: number;
-          originUrl: string;
-          imgUrl: string;
-          price: string;
-          title: string;
-        }
-      ];
-    }
-  ];
-};
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RequestDescType } from "../../types/request";
 
 const RequestDetailNoWriter: React.FC = () => {
+  const navigation = useNavigate();
+  const token = useSelector(({ auth }) => auth.accessToken);
   let { requestId } = useParams();
   const axiosPrivate = useAxiosPrivate();
 
-  const [requestdata, setRequestData] = useState<RequestDescProps>(Object);
+  const [requestdata, setRequestData] = useState<RequestDescType>(Object);
   const [click, setClick] = useState(false);
   const [isSeleted, setIsSeleted] = useState(true);
 
@@ -88,6 +55,7 @@ const RequestDetailNoWriter: React.FC = () => {
           requestdata.answers.map((answer) => (
             <RequestNoWriterResponse
               key={answer.id}
+              answeruserid={answer.user.id}
               answerUsername={answer.user.nickName}
               answerUserimg={answer.user.image}
               answerUserclearNum={answer.user.choosedCnt}
@@ -104,7 +72,11 @@ const RequestDetailNoWriter: React.FC = () => {
             background="#fff"
             border="1px solid #6138F8"
             color="#6138F8"
+            margin="0 auto 20px auto"
             onClick={() => {
+              if (!token) {
+                navigation(`/login`);
+              }
               setClick(true);
             }}
           >
