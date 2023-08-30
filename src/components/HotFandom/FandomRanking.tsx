@@ -1,85 +1,39 @@
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import * as S from "./style/FandomRanking.style";
 
-import { ReactComponent as UserIcon } from "../../assets/images/svg/hotFandom/hotPandomUserIcon.svg";
+type FandomRankData = {
+    fandomName: string;
+    id: number;
+    lastChatTime: null;
+    memberLength: number;
+    rank: number;
+    image: string;
+};
 
-const FandomRankingContainer = styled.div`
-    height: 70px;
+type FandomdataProps = {
+    item: FandomRankData;
+};
 
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    margin-left: 16px;
-    align-items: center;
-`;
+const FandomRanking: React.FC<FandomdataProps> = ({ item }) => {
+    const navigate = useNavigate();
+    const handleItemClick = () => {
+        navigate(`/fandom/${item.id}`);
+    };
 
-// 넘버 텍스트
-const RankingNumberText = styled.div`
-    font-size: 16px;
-
-    font-weight: 700;
-    color: #6138f8;
-`;
-// 이미지 서클
-const CircleImg = styled.div`
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background-color: black;
-    margin-left: 14px;
-`;
-//텍스트박스
-const RnakingTextBox = styled.div`
-    margin-left: 15px;
-`;
-//팬덤이름, 인원 박스
-const FandomNameMemberBox = styled.div`
-    display: flex;
-`;
-// 팬덤 이름 텍스트
-const FandomNameText = styled.div`
-    font-size: 16px;
-    color: #1d1b20;
-
-    font-weight: 700;
-`;
-//멤버아이콘
-const MamberIcon = styled(UserIcon)`
-    width: 16px;
-    height: 16px;
-    margin-left: 10px;
-`;
-
-//팬덤 명수
-const MemberQuantity = styled.div`
-    font-size: 13px;
-    color: #1d1b20;
-
-    font-weight: 500;
-`;
-
-//활동 시간
-const ActivityTime = styled.div`
-    margin-top: 9px;
-    color: #1d1b20;
-
-    font-size: 13px;
-
-    font-weight: 500;
-`;
-const FandomRanking = () => {
     return (
-        <FandomRankingContainer>
-            <RankingNumberText>2</RankingNumberText>
-            <CircleImg />
-            <RnakingTextBox>
-                <FandomNameMemberBox>
-                    <FandomNameText>꾹이의 모든것</FandomNameText>
-                    <MamberIcon />
-                    <MemberQuantity>22k</MemberQuantity>
-                </FandomNameMemberBox>
-                <ActivityTime>채팅활동 10분전</ActivityTime>
-            </RnakingTextBox>
-        </FandomRankingContainer>
+        <S.FandomRankingContainer key={item.id} onClick={handleItemClick}>
+            <S.RankingNumberText>{item.rank}</S.RankingNumberText>
+            <S.CircleImg src={item?.image} />
+            <S.RnakingTextBox>
+                <S.FandomNameMemberBox>
+                    <S.FandomNameText>{item.fandomName}</S.FandomNameText>
+                    <S.MamberIcon />
+                    <S.MemberQuantity>{item.memberLength}k</S.MemberQuantity>
+                </S.FandomNameMemberBox>
+                <S.ActivityTime>채팅활동 10분전</S.ActivityTime>
+            </S.RnakingTextBox>
+        </S.FandomRankingContainer>
     );
 };
+
 export default FandomRanking;

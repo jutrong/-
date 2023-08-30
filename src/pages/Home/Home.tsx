@@ -1,29 +1,30 @@
-import styled from "styled-components";
+import React from "react";
+
+import * as S from "./style/Home.style";
 
 import MyFandomBoard from "../../components/Home/MyFandomBoard";
 import SonminsooNewsBoard from "../../components/Home/SonminsooNewsBoard";
 import RecommendItemBoard from "../../components/Home/RecommendItemBoard";
 import PopularFandomBoard from "../../components/Home/PopularFandomBoard";
 import HomeHeader from "../../components/Home/HomeHeader";
+import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
 
-// 홈 컨테이너
-const Container = styled.div`
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 390px;
-`;
-
-const Home = () => {
+const Home: React.FC = () => {
     return (
-        <Container>
-            <HomeHeader />
-
-            <MyFandomBoard />
-            <SonminsooNewsBoard />
-            <RecommendItemBoard />
-            <PopularFandomBoard />
-        </Container>
+        <S.Container>
+            <FooterNavBar />
+            <S.HomeContainer>
+                <S.HomeBgContainer>
+                    <HomeHeader />
+                    <MyFandomBoard />
+                </S.HomeBgContainer>
+                <S.HomeBgFlowerContainer>
+                    <SonminsooNewsBoard />
+                    <RecommendItemBoard />
+                    <PopularFandomBoard />
+                </S.HomeBgFlowerContainer>
+            </S.HomeContainer>
+        </S.Container>
     );
 };
 export default Home;

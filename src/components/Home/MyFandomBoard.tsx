@@ -1,40 +1,48 @@
-import styled from "styled-components";
+import * as S from "./style/MyFandomBoard.style";
+import React, { useState, useEffect } from "react";
 import ContentHeader from "./ContentHeader";
 import FandomCircle from "./FandomCircle";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-// 팬덤 서클 리스트 컨테이너
-const MyFandomBoardContainer = styled.div`
-    height: 193px;
-`;
+type Fandom = {
+    fandomName: string;
+    id: number;
+    lastChatTime: null;
+    memberLength: number;
+    rank: number;
+    image: string;
+};
 
-// 서클 리스트 박스
-const FandomCircleListBox = styled.div`
-    height: 144px;
+type FandomData = Fandom[];
+const MyFandomBoard: React.FC = () => {
+    const axiosPrivate = useAxiosPrivate();
 
-    display: flex;
-    overflow: scroll;
-`;
+    const [data, setData] = useState<FandomData>([]);
 
-// PandomCircle 임포트
+    useEffect(() => {
+        initDataGet();
+    }, []);
 
-const MyFandomBoard = () => {
+    const initDataGet = async () => {
+        try {
+            const res = await axiosPrivate.get("/fandoms");
+
+            setData(res.data.data);
+            // console.log("get:", res.data.data);
+        } catch (error) {
+            console.error("Error", error);
+        }
+    };
+
     return (
-        <div>
-            <MyFandomBoardContainer>
-                <ContentHeader />
-                <FandomCircleListBox>
-                    <FandomCircle />
-
-                    <FandomCircle />
-
-                    <FandomCircle />
-
-                    <FandomCircle />
-
-                    <FandomCircle />
-                </FandomCircleListBox>
-            </MyFandomBoardContainer>
-        </div>
+        <S.MyFandomBoardContainer>
+            <ContentHeader nav={"/myfandom"} name={"마이팬덤"} />
+            <S.FandomCircleListBox>
+                {data.map((item) => (
+                    <FandomCircle key={item.id} item={item} />
+                ))}
+            </S.FandomCircleListBox>
+        </S.MyFandomBoardContainer>
     );
 };
 export default MyFandomBoard;

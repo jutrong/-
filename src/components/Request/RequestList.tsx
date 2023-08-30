@@ -1,59 +1,45 @@
 import React from "react";
-import styled from "styled-components";
+import * as S from "./style/RequestLink.style";
+import { useNavigate } from "react-router-dom";
 
-const Wrap = styled.div`
-  width: 100%;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  padding-left: 16px;
-  padding-top: 7px;
-  margin-top: 6px;
-`;
-const ListImg = styled.div`
-  width: 56px;
-  height: 56px;
-  border-radius: 8px;
-  background-color: gray;
-  margin-right: 15px;
-`;
-const LeftBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-`;
-const ListTitle = styled.p`
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-`;
-const ListInfo = styled.div`
-  display: flex;
-`;
-const ListUserName = styled.p`
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-  margin-right: 10px;
-`;
-const ListTime = styled.p`
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
-`;
+type RequestListProps = {
+  img: string;
+  title: string;
+  username: string;
+  date: string;
+  userid: number;
+  requestid: number;
+};
 
-const RequestList: React.FC = () => {
+const RequestList: React.FC<RequestListProps> = ({
+  img,
+  title,
+  username,
+  date,
+  userid,
+  requestid,
+}) => {
+  const navigation = useNavigate();
+
   return (
-    <Wrap>
-      <ListImg />
-      <LeftBox>
-        <ListTitle>제발 이것좀 찾아 주세요 ㅜㅜ</ListTitle>
-        <ListInfo>
-          <ListUserName>아마추어 손민수</ListUserName>
-          <ListTime>10분전</ListTime>
-        </ListInfo>
-      </LeftBox>
-    </Wrap>
+    <S.Wrap
+      onClick={() => {
+        if (userid === 2) {
+          navigation(`/requests/writer/${requestid}`);
+        } else {
+          navigation(`/requests/nowriter/${requestid}`);
+        }
+      }}
+    >
+      <S.ListImg src={img} />
+      <S.LeftBox>
+        <S.ListTitle>{title}</S.ListTitle>
+        <S.ListInfo>
+          <S.ListUserName>{username}</S.ListUserName>
+          <S.ListTime>{date}</S.ListTime>
+        </S.ListInfo>
+      </S.LeftBox>
+    </S.Wrap>
   );
 };
 

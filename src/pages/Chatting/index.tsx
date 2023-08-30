@@ -2,12 +2,8 @@ import styled from 'styled-components';
 import { Outlet } from 'react-router-dom';
 
 export const ChatWindow = styled.div`
-    border: 1px solid black;
-
-    width: 390px;
+    width: 100%;
     height: 844px;
-
-    box-sizing: border-box;
 `;
 
 

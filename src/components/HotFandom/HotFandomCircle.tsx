@@ -1,44 +1,32 @@
-import styled from "styled-components";
-import { ReactComponent as NumberOneIcon } from "../../assets/images/svg/hotFandom/hotPandomNumberOneIcon.svg";
+import { ifError } from "assert";
+import * as S from "./style/HotFandomCircle.style";
 
-const PandomCircleContainer = styled.div`
-    height: 115px;
+type FandomRankData = {
+    fandomName: string;
+    id: number;
+    lastChatTime: null;
+    memberLength: number;
+    rank: number;
+    image: string;
+};
 
-    margin-top: 30px;
-`;
+type HotFandomCircleProps = {
+    item: FandomRankData;
+};
 
-const NumberOne = styled(NumberOneIcon)`
-    width: 35px;
-    height: 35px;
-`;
+const HotFandomCircle: React.FC<HotFandomCircleProps> = ({ item }) => {
+    console.log("이미지", item?.image);
 
-const PandomShadowCircle = styled.div`
-    width: 80px;
-    height: 80px;
-    margin: auto;
-    border-radius: 50%;
-    border: solid black;
-    box-shadow: 5px 5px;
-    background-color: white;
-    box-sizing: border-box;
-`;
-
-const PandomCircleName = styled.p`
-    font-size: 20px;
-    text-align: center;
-    margin-top: 11px;
-    color: white;
-    font-weight: 700;
-`;
-
-const HotFandomCircle = () => {
     return (
-        <PandomCircleContainer>
-            <PandomShadowCircle>
-                <NumberOne />
-            </PandomShadowCircle>
-            <PandomCircleName>A.R.dfdfdfM.Y</PandomCircleName>
-        </PandomCircleContainer>
+        <S.PandomCircleContainer>
+            <S.ImgContainer>
+                <S.NumberOne />
+                <S.PandomShadowCircle src={item?.image} />
+                <S.PandomCircleName>
+                    {item && item.fandomName}
+                </S.PandomCircleName>
+            </S.ImgContainer>
+        </S.PandomCircleContainer>
     );
 };
 export default HotFandomCircle;

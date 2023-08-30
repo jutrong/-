@@ -1,21 +1,16 @@
 import ContentHeader from "./ContentHeader";
 import PopularFandomList from "./PopularFandomList";
-import styled from "styled-components";
 
-const PopularFandomBoarContainer = styled.div`
-    height: 365px;
-    width: 100%;
-    max-width: 390px;
-`;
+import React, { useState, useEffect } from "react";
 
-const PopularFandomBoard = () => {
+import * as S from "./style/PopularFandomBoard.style";
+
+const PopularFandomBoard: React.FC = () => {
     return (
-        <>
-            <PopularFandomBoarContainer>
-                <ContentHeader />
-                <PopularFandomList />
-            </PopularFandomBoarContainer>
-        </>
+        <S.PopularFandomBoarContainer>
+            <ContentHeader nav={"/hotfandom"} name={"❤️‍🔥 HOT 타오르는 팬덤"} />
+            <PopularFandomList />
+        </S.PopularFandomBoarContainer>
     );
 };
 export default PopularFandomBoard;

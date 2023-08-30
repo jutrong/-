@@ -1,31 +1,56 @@
-import styled from "styled-components";
+import * as S from "./style/SonminsooNewsBoard.style";
+import React, { useState, useEffect } from "react";
 import ContentHeader from "./ContentHeader";
 import SonminsooNewsContents from "./SonminsooNewsContents";
+import axios from "../../api/axios";
 
-const SonminsooNewsBoardContainer = styled.div`
-    height: 415px;
-    padding-top: 8px;
-`;
-const SonminsooNewsListBox = styled.div`
-    height: 360px;
-    margin-top: 8px;
-    width: 100%;
-    max-width: 390px;
-    display: inline-flex;
-    white-space: nowrap;
-    overflow-x: scroll;
-`;
+type NewsType = {
+    id: number;
+    content: string;
+    createdAt: string;
+    author: {
+        id: number;
+        image: string;
+        nickName: string;
+    };
+    fandom: {
+        id: 5;
+        fandomName: string;
+    };
+    sonminsuItems: [];
+    image: string;
+    tags: [];
+    comments: number;
+};
 
-const SonminsooNewsBoard = () => {
+type NewsTypeData = NewsType[];
+
+const SonminsooNewsBoard: React.FC = () => {
+    const [data, setData] = useState<NewsTypeData>([]);
+
+    useEffect(() => {
+        initDataGet();
+    }, []);
+
+    const initDataGet = async () => {
+        try {
+            const res = await axios.get("/feeds");
+
+            setData(res.data.data);
+        } catch (error) {
+            console.error("Error", error);
+        }
+    };
     return (
         <>
-            <SonminsooNewsBoardContainer>
-                <ContentHeader />
-                <SonminsooNewsListBox>
-                    <SonminsooNewsContents />
-                    <SonminsooNewsContents />
-                </SonminsooNewsListBox>
-            </SonminsooNewsBoardContainer>
+            <S.SonminsooNewsBoardContainer>
+                <ContentHeader nav={"/"} name={"📰 손민수 NEWS"} />
+                <S.SonminsooNewsListBox>
+                    {data.map((item) => (
+                        <SonminsooNewsContents key={item.id} item={item} />
+                    ))}
+                </S.SonminsooNewsListBox>
+            </S.SonminsooNewsBoardContainer>
         </>
     );
 };

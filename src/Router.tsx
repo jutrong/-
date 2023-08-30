@@ -1,6 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "./pages/Main";
+import Feed from "./pages/Feed/Feed";
 // import Login from "./pages/Login/Login";
+import Home from "./pages/Home/Home";
+import HotFandom from "./pages/HotFandom/HotFandom";
+import FandomDetail from "./pages/MyFandom/FandomDetail";
+import CreateNewFandom from "./pages/MyFandom/CreateNewFandom";
 
 import {
   SignupRouter,
@@ -10,6 +15,11 @@ import {
   MyPageRouter,
   SettingsRouter,
   RequestRouter,
+  FeedWriteRouter,
+  SearchItemRouter,
+  MyFandomRouter,
+  LoginRouter,
+  InitInfoRouter,
 } from "./Routes";
 import Requests from "./pages/Request/Requests";
 import Missing from "./pages/Missing";
@@ -17,7 +27,7 @@ import Missing from "./pages/Missing";
 const Router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />,
+    element: <Requests />,
   },
   {
     path: "*",
@@ -25,13 +35,17 @@ const Router = createBrowserRouter([
   },
   {
     path: "home",
-    element: <Main />, //홈 화면 컴포넌트
+    element: <Home />, //홈 화면 컴포넌트
   },
   {
     path: "hotFandom",
-    element: <Main />, //타오르는 팬덤 컴포넌트
+    element: <HotFandom />, //타오르는 팬덤 컴포넌트
   },
   // { path: "login", element: <Login /> }, //로그인 컴포넌트
+  {
+    path: "fandom/:fandomId",
+    element: <FandomDetail />, //팬덤 상세보기 컴포넌트
+  },
   {
     path: "fandom/:fandomId",
     element: <Main />, //팬덤 상세보기 컴포넌트
@@ -43,6 +57,11 @@ const Router = createBrowserRouter([
   MyPageRouter,
   SettingsRouter,
   RequestRouter,
+  FeedWriteRouter,
+  SearchItemRouter,
+  MyFandomRouter,
+  LoginRouter,
+  InitInfoRouter,
 ]);
 
 export default Router;

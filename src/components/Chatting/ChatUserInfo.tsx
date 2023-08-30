@@ -1,38 +1,30 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import * as S from './style/ChatUserInfo.style';
+    
 
-const ChatUserInfo = () => {
 
-    const UserWrapper = styled.div`
-        width: 100%;
-        height: 70px;
-        display: flex;
-        align-items: center;
-    `;
+type MemberProps = {
+    $ban: boolean;
+    userName: string;
+}
+    
+const ChatUserInfo = ({$ban, userName}:MemberProps) => {
 
-    const UserImage = styled.div`
-        background-color: gray;
+    const [banToggle, setBanToggle] = useState($ban);
+    const chatBanText: string = banToggle ? '채팅정지 취소' : '채팅정지';
 
-        width: 56px;
-        height: 56px;
-        
-        margin-right: 15px;
-        border-radius: 70%;
-    `;
-
-    const UserName = styled.p`
-        margin: 0;
-
-        font-size: 16px;
-        font-weight: bold;
-    `;
-
+    const banHandler = () => {
+        banToggle ? setBanToggle(false) : setBanToggle(true);
+    }
 
     return (
-        <UserWrapper>
-            <UserImage />
-            <UserName>아마추어 손민수</UserName>
-        </UserWrapper>
+        <S.UserInfoWrapper>
+            <S.UserWrapper>
+                <S.UserImage />
+                <S.UserName>{userName}</S.UserName>
+            </S.UserWrapper>
+            <S.BanButton $ban={banToggle} onClick={banHandler}>{chatBanText}</S.BanButton>
+        </S.UserInfoWrapper>
     )
 }
 

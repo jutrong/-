@@ -1,187 +1,101 @@
-import styled from "styled-components";
-import { ReactComponent as LikeIcon } from "../../assets/images/svg/home/likeIcon.svg";
-import { ReactComponent as CommentIcon } from "../../assets/images/svg/home/commentIcon.svg";
-// 손민수 뉴스 컨텐츠 컨테이너
-const SonminsooNewsContentsContainer = styled.div`
-    width: 258px;
-    height: 330px;
-    margin-left: 15px;
-    border-radius: 8px;
-    border: solid black;
+import * as S from "./style/SominsooNewsContents.style";
+import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import detailDate from "../../utils/time";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-    box-shadow: 5px 5px;
-`;
+type NewsType = {
+    id: number;
+    content: string;
+    createdAt: string;
+    author: {
+        id: number;
+        image: string;
+        nickName: string;
+    };
+    fandom: {
+        id: 5;
+        fandomName: string;
+    };
+    sonminsuItems: [];
+    image: string;
+    tags: [];
+    comments: number;
+};
 
-// 손민수 뉴스 컨텐츠 헤더 박스
-const SonminsooNewsContentsHeader = styled.div`
-    height: 66px;
-    display: flex;
-    align-items: center;
-`;
+type NewsProps = {
+    item: NewsType;
+};
 
-// 손민수 뉴스 컨텐츠 헤더 서클 이미지
-const SonminsooNewsProfileImg = styled.div`
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-left: 16px;
-    background-color: black;
-`;
+const SonminsooNewsContents: React.FC<NewsProps> = ({ item }) => {
+    const axiosPrivate = useAxiosPrivate();
+    // let { feedId } = useParams();
+    const [like, setLike] = useState(false);
 
-// 손민수 뉴스 텍스트들 박스
-const SonminsooNewsTextBox = styled.div`
-    height: 33px;
-    margin-left: 6px;
-`;
-// 손민수 뉴스 헤더 닉네임 텍스트
-const SonminsooNewsNickNameText = styled.p`
-    font-size: 14px;
-    font-weight: bold;
-    margin: 0;
-`;
+    const handleLikeClick = () => {
+        setLike(!like);
+        console.log("like state : ", like);
 
-// 팬던 네임, 시간 박스
-const TextBox = styled.div`
-    display: flex;
-    margin-top: 5px;
-`;
+        likePut();
+    };
 
-// 손민수 뉴스 헤더 팬덤네임 텍스트
-const SonminsooNewsFandomNameText = styled.p`
-    font-size: 13px;
-    opacity: 0.5;
-    margin: 0;
-`;
-// 손민수 뉴스 헤더 시간 텍스트
-const SonminsooNewsTimeText = styled.p`
-    font-size: 13px;
-    opacity: 0.5;
-    margin: 0;
-`;
-// 손민수 뉴스 이미지
-const SonminsooNewsImg = styled.div`
-    height: 153px;
-    width: 100%;
-    background-color: black;
-`;
-// 손민수 내용 전체 박스
-const SonminsooNewsArticleBox = styled.div`
-    height: 108px;
-    padding-left: 21px;
-`;
-
-// 손민수 내용 글 박스
-const SonminsooNewsArticleTextBox = styled.div`
-    display: flex;
-    margin-top: 12px;
-`;
-
-// 손민수 내용 텍스트
-const SonminsooNewsArticleText = styled.div`
-    font-size: 14px;
-`;
-// 손민수 내용 더보기 버튼
-const SonminsooNewsArticleViewAllBtn = styled.div`
-    font-size: 14px;
-    color: rgba(186, 186, 186, 1);
-`;
-
-// 손민수 해쉬태그 박스
-const SonminsooNewsArticleHashtagBox = styled.div`
-    display: flex;
-`;
-// 손민수 해쉬태그 텍스트
-const SonminsooNewsArticleHashtagText = styled.p`
-    color: #6138f8;
-    font-size: 14px;
-`;
-
-// 손민수 아이콘 박스
-const SonminsooNewsArticleIconBox = styled.div`
-    display: flex;
-`;
-// 하트 아이콘
-
-const LikeIconSvg = styled(LikeIcon)`
-    width: 16px;
-    height: 16px;
-
-    float: right;
-`;
-
-// 하트 갯수
-const LikeQuantity = styled.div`
-    font-size: 14px;
-    color: #6c7080;
-    margin-left: 3px;
-`;
-
-// 댓글 아이콘
-const CommentIconSvg = styled(CommentIcon)`
-    width: 16px;
-    height: 16px;
-    margin-left: 12px;
-    float: right;
-`;
-
-// 댓글 갯수
-const CommentQuantity = styled.div`
-    font-size: 14px;
-    color: #6c7080;
-    margin-left: 3px;
-`;
-
-const SonminsooNewsContents = () => {
+    // 하트 클릭하면 바로 통신해서 좋아요 수 수정
+    const likePut = async () => {
+        try {
+            const res = await axiosPrivate.put(`/feeds/${item.id}/like`);
+            console.log(res);
+        } catch (error) {
+            console.error("Error", error);
+        }
+    };
+    const navigate = useNavigate();
+    const handleItemClick = () => {
+        navigate("피드상세주소");
+    };
     return (
-        <>
-            <SonminsooNewsContentsContainer>
-                <SonminsooNewsContentsHeader>
-                    <SonminsooNewsProfileImg />
-                    <SonminsooNewsTextBox>
-                        <SonminsooNewsNickNameText>
-                            정의로운 손민수
-                        </SonminsooNewsNickNameText>
-                        <TextBox>
-                            <SonminsooNewsFandomNameText>
-                                꾹이의 모든 것
-                            </SonminsooNewsFandomNameText>
-                            <SonminsooNewsTimeText>
-                                10분전
-                            </SonminsooNewsTimeText>
-                        </TextBox>
-                    </SonminsooNewsTextBox>
-                </SonminsooNewsContentsHeader>
-                <SonminsooNewsImg />
-                <SonminsooNewsArticleBox>
-                    <SonminsooNewsArticleTextBox>
-                        <SonminsooNewsArticleText>
-                            럽셒 울쩡구기 리허설 영상ㅜ...
-                        </SonminsooNewsArticleText>
-                        <SonminsooNewsArticleViewAllBtn>
-                            더보기
-                        </SonminsooNewsArticleViewAllBtn>
-                    </SonminsooNewsArticleTextBox>
+        <S.SonminsooNewsContentsContainer key={item.id}>
+            <S.SonminsooNewsContentsHeader>
+                <S.SonminsooNewsProfileImg src={item?.author.image} />
+                <S.SonminsooNewsTextBox>
+                    <S.SonminsooNewsNickNameText>
+                        {item.author.nickName}
+                    </S.SonminsooNewsNickNameText>
+                    <S.TextBox>
+                        <S.SonminsooNewsFandomNameText>
+                            {item.fandom.fandomName}
+                        </S.SonminsooNewsFandomNameText>
+                        <S.SonminsooNewsTimeText>
+                            {item?.createdAt
+                                ? detailDate(item?.createdAt)
+                                : "시간 정보 없음"}
+                        </S.SonminsooNewsTimeText>
+                    </S.TextBox>
+                </S.SonminsooNewsTextBox>
+            </S.SonminsooNewsContentsHeader>
+            <S.SonminsooNewsImg src={item?.image} />
+            <S.SonminsooNewsArticleBox>
+                <S.SonminsooNewsArticleTextBox>
+                    <S.SonminsooNewsArticleText>
+                        {item.content}
+                    </S.SonminsooNewsArticleText>
+                    <S.SonminsooNewsArticleViewAllBtn onClick={handleItemClick}>
+                        더보기
+                    </S.SonminsooNewsArticleViewAllBtn>
+                </S.SonminsooNewsArticleTextBox>
 
-                    <SonminsooNewsArticleHashtagBox>
-                        <SonminsooNewsArticleHashtagText>
-                            #우리애들절대지켜
-                        </SonminsooNewsArticleHashtagText>
-                        <SonminsooNewsArticleHashtagText>
-                            #ARMY
-                        </SonminsooNewsArticleHashtagText>
-                        <SonminsooNewsArticleHashtagText>
-                            외 3개
-                        </SonminsooNewsArticleHashtagText>
-                    </SonminsooNewsArticleHashtagBox>
-                    <SonminsooNewsArticleIconBox>
-                        <LikeIconSvg />
-                        <LikeQuantity>23</LikeQuantity>
-                        <CommentIconSvg />
-                        <CommentQuantity>12</CommentQuantity>
-                    </SonminsooNewsArticleIconBox>
-                </SonminsooNewsArticleBox>
-            </SonminsooNewsContentsContainer>
-        </>
+                <S.SonminsooNewsArticleHashtagBox>
+                    <S.SonminsooNewsArticleHashtagText>
+                        {item.tags}
+                    </S.SonminsooNewsArticleHashtagText>
+                </S.SonminsooNewsArticleHashtagBox>
+                <S.SonminsooNewsArticleIconBox>
+                    <S.LikeIconSvg onClick={handleLikeClick} />
+                    <S.LikeQuantity>23 확인필요함</S.LikeQuantity>
+                    <S.CommentIconSvg />
+                    <S.CommentQuantity>{item.comments}</S.CommentQuantity>
+                </S.SonminsooNewsArticleIconBox>
+            </S.SonminsooNewsArticleBox>
+        </S.SonminsooNewsContentsContainer>
     );
 };
 export default SonminsooNewsContents;

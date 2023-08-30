@@ -7,7 +7,6 @@ import { setToken } from "./redux/config/rootReducer";
 import useAxiosPrivate from "./hooks/useAxiosPrivate";
 
 const App = () => {
-  useAxiosPrivate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,6 +18,7 @@ const App = () => {
       })
       .catch((err) => {
         // err.status==401 로그아웃
+        console.log(err, "auto sign-in failed");
       });
   }, []);
 

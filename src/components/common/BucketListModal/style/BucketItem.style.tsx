@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import checked from "../../../assets/images/svg/ic-check.svg";
+import checked from "../../../../assets/images/svg/ic-check.svg";
 
 export const BucketItemContainer = styled.div`
   width: 80px;

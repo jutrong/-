@@ -1,35 +1,29 @@
-import styled from "styled-components";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import * as S from "./style/FandomCircle.style";
 
-const FandomCircleContainer = styled.div`
-    width: 84px;
-    height: 110px;
-    margin-left: 16px;
-`;
+type FandomRankData = {
+    fandomName: string;
+    id: number;
+    lastChatTime: null;
+    memberLength: number;
+    rank: number;
+    image: string;
+};
 
-const FandomShadowCircle = styled.div`
-    width: 84px;
-    height: 84px;
-    border-radius: 50%;
-    border: solid black;
-    box-shadow: 5px 5px;
-    background-color: white;
-    box-sizing: border-box;
-`;
-
-const FandomCircleName = styled.p`
-    font-size: 15px;
-    text-align: center;
-    opacity: 0.5;
-`;
-
-const FandomCircle = () => {
+type FandomdataProps = {
+    item: FandomRankData;
+};
+const FandomCircle: React.FC<FandomdataProps> = ({ item }) => {
+    const navigate = useNavigate();
+    const handleItemClick = () => {
+        navigate(`/fandom/${item.id}`);
+    };
     return (
-        <>
-            <FandomCircleContainer>
-                <FandomShadowCircle />
-                <FandomCircleName>A.R.M.Y</FandomCircleName>
-            </FandomCircleContainer>
-        </>
+        <S.FandomCircleContainer>
+            <S.FandomShadowCircle src={item?.image} onClick={handleItemClick} />
+            <S.FandomCircleName>{item.fandomName}</S.FandomCircleName>
+        </S.FandomCircleContainer>
     );
 };
 export default FandomCircle;
