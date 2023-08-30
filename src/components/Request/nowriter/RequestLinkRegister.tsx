@@ -3,7 +3,6 @@ import * as S from "../style/RequestLinkRegister.style";
 import close from "../../../assets/images/svg/ic-x.svg";
 import LinkAttachItem from "../LinkAttachItem";
 import SkyBTN from "../SkyBTN";
-import axios, { axiosPrivate } from "../../../api/axios";
 import { useParams } from "react-router-dom";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 

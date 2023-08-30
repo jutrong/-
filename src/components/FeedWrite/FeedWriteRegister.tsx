@@ -3,9 +3,8 @@ import * as S from "./style/FeedWriteRegister.style";
 import close from "../../assets/images/svg/ic-x.svg";
 import LinkItem from "./LinkItem";
 import SkyBTN from "../Request/SkyBTN";
-import axios, { axiosPrivate } from "../../api/axios";
 import { useParams } from "react-router-dom";
-
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 type RegisterModalProps = {
   setClick: React.Dispatch<React.SetStateAction<boolean>>;
   groupName: string;
@@ -29,6 +28,7 @@ const FeedWriteRegister: React.FC<RegisterModalProps> = ({
   setUrlItem,
 }) => {
   let { requestId } = useParams();
+  const axiosPrivate = useAxiosPrivate();
 
   const [urlValue, setUrlValue] = useState("");
   const [urlVaild, setUrlVaild] = useState(false);

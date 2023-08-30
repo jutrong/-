@@ -47,8 +47,8 @@ const Router = createBrowserRouter([
     element: <FandomDetail />, //팬덤 상세보기 컴포넌트
   },
   {
-    path: "fandom/:fandomId",
-    element: <Main />, //팬덤 상세보기 컴포넌트
+    path: "createfandom",
+    element: <CreateNewFandom />, //팬덤 상세보기 컴포넌트
   },
   SignupRouter,
   ChattingRouter,

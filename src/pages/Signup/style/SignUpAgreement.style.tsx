@@ -1,16 +1,17 @@
 import { styled } from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4;
+  position: fixed;
+  width: 100%;
+  height: 844px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
 `;
 
 export const AgreementBox = styled.div`
-  border: 1px solid #ccc;
-  padding: 30px;
   border-radius: 8px;
   background-color: #fff;
   max-width: 800px;
@@ -28,6 +29,10 @@ export const AgreementHeader = styled.h1`
 export const AgreementText = styled.div`
   margin-top: 20px;
   line-height: 1.6;
+  border: 1px solid black;
+  margin: 0 16px;
+  padding: 16px;
+  font-size: 14px;
 `;
 
 export const Paragraph = styled.p`

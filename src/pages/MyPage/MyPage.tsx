@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import edit from "../../assets/images/svg/ic-edit.svg";
 import menu from "../../assets/images/svg/ic-menu.svg";
 import Icon from "../../elements/Icon";
-import axios, { axiosPrivate } from "../../api/axios";
+import axios from "../../api/axios";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";

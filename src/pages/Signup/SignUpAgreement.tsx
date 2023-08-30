@@ -1,6 +1,7 @@
 import * as S from "./style/SignUpAgreement.style";
+import { Button } from "../../elements/Button";
 
-const SignUpAgreement = () => {
+const SignUpAgreement = ({ onClick }: { onClick: any }) => {
   return (
     <S.Container>
       <S.AgreementBox>
@@ -38,6 +39,15 @@ const SignUpAgreement = () => {
           </S.Paragraph>
         </S.AgreementText>
       </S.AgreementBox>
+      <Button
+        background="#6138F8"
+        border="none"
+        onClick={onClick}
+        margin={"27px auto 0 auto"}
+        color="#FFF"
+      >
+        확인
+      </Button>
     </S.Container>
   );
 };

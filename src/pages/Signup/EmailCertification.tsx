@@ -1,13 +1,24 @@
 import React, { useState, useContext } from "react";
 import axios from "../../api/axios";
-import { signupContext } from "./Signup";
 import * as S from "./style/EmailCertification.style";
 import PageHeader from "./PageHeader";
-
+import { useOutletContext } from "react-router-dom";
+type userInfoType = {
+  password: string;
+  userName: string;
+  birthDate: string;
+  phoneNumber: string;
+  code: string;
+  email: string;
+};
 const EmailCertification = () => {
   const [authValid, setAuthValid] = useState("");
-  const { email, setEmail, setSignupStep, setEmailCode } =
-    useContext(signupContext);
+  const { email, setEmail, setSignupStep, setEmailCode } = useOutletContext<{
+    email: string;
+    setEmailCode: (value: string) => void;
+    setEmail: (value: string) => void;
+    setSignupStep: (value: string) => void;
+  }>();
   const handleEmailAuthClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     axios

@@ -6,7 +6,7 @@ import RequestDetailWriterHeader from "../../components/Request/writer/RequestDe
 import RequestWriterResponse from "../../components/Request/writer/RequestWriterResponse";
 import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
 import { useParams } from "react-router-dom";
-import axios, { axiosPrivate } from "../../api/axios";
+import axios from "../../api/axios";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
 type RequestDescProps = {

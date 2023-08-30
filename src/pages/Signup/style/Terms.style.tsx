@@ -2,6 +2,8 @@ import { styled } from "styled-components";
 import checkIcon from "../../../assets/images/svg/Exclude.svg";
 
 export const Container = styled.div`
+  width: 100%;
+  height: 100%;
   padding: 20px;
   font-family: "Arial", sans-serif;
 `;

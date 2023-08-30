@@ -23,10 +23,6 @@ type signupContextType = {
   userInfo: userInfoType;
 };
 
-export const signupContext = createContext<signupContextType>(
-  {} as signupContextType
-);
-
 const Signup = () => {
   const [signupStep, setSignupStep] = useState("terms");
   const [email, setEmail] = useState("");
@@ -40,22 +36,8 @@ const Signup = () => {
     email: "",
   });
   const navigation = useNavigate();
-
+  console.log(signupStep);
   const nextButton = () => {
-    if (signupStep === "terms")
-      return (
-        <Button
-          background="#6138F8"
-          border="none"
-          color="#fff"
-          onClick={() => {
-            navigation("emailCertification");
-            setSignupStep("emailCertification");
-          }}
-        >
-          다음
-        </Button>
-      );
     if (signupStep === "emailCertification")
       return (
         <Button
@@ -105,23 +87,33 @@ const Signup = () => {
   console.log(email, "indexemail");
   console.log(emailCode, "indexemailCode");
   return (
-    <signupContext.Provider
-      value={{
-        email,
-        emailCode,
-        setEmail,
-        setSignupStep,
-        setUserInfo,
-        setEmailCode,
-        userInfo,
-      }}
-    >
-      {/* outletcontext로 수정 */}
-      <S.Container>
-        <Outlet />
-        {nextButton()}
-      </S.Container>
-    </signupContext.Provider>
+    // <signupContext.Provider
+    //   value={{
+    //     email,
+    //     emailCode,
+    //     setEmail,
+    //     setSignupStep,
+    //     setUserInfo,
+    //     setEmailCode,
+    //     userInfo,
+    //   }}
+    // >
+
+    <S.Container>
+      <Outlet
+        context={{
+          email,
+          emailCode,
+          setEmail,
+          setSignupStep,
+          setUserInfo,
+          setEmailCode,
+          userInfo,
+        }}
+      />
+      {nextButton()}
+    </S.Container>
+    // </signupContext.Provider>
   );
 };
 export default Signup;

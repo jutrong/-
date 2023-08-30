@@ -10,21 +10,21 @@ import HomeHeader from "../../components/Home/HomeHeader";
 import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
 
 const Home: React.FC = () => {
-    return (
-        <S.Container>
-            <FooterNavBar />
-            <S.HomeContainer>
-                <S.HomeBgContainer>
-                    <HomeHeader />
-                    <MyFandomBoard />
-                </S.HomeBgContainer>
-                <S.HomeBgFlowerContainer>
-                    <SonminsooNewsBoard />
-                    <RecommendItemBoard />
-                    <PopularFandomBoard />
-                </S.HomeBgFlowerContainer>
-            </S.HomeContainer>
-        </S.Container>
-    );
+  return (
+    <S.Container>
+      <FooterNavBar />
+      <S.HomeContainer>
+        <S.HomeBgContainer>
+          <HomeHeader />
+          <MyFandomBoard />
+        </S.HomeBgContainer>
+        <S.HomeBgFlowerContainer>
+          <SonminsooNewsBoard />
+          <RecommendItemBoard />
+          <PopularFandomBoard />
+        </S.HomeBgFlowerContainer>
+      </S.HomeContainer>
+    </S.Container>
+  );
 };
 export default Home;

@@ -4,7 +4,7 @@ import more from "../../../assets/images/svg/ic-more-horizontal.svg";
 import select from "../../../assets/images/svg/ic-select.svg";
 import LinkAttachItem from "../LinkAttachItem";
 import AppAlertModal from "../../common/AlertModal/AppAlertModal";
-import axios, { axiosPrivate } from "../../../api/axios";
+import axios from "../../../api/axios";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import detailDate from "../../../utils/time";
 import { useParams } from "react-router-dom";

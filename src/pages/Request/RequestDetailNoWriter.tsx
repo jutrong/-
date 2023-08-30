@@ -7,7 +7,7 @@ import RequestDetailDesc from "../../components/Request/RequestDetailDesc";
 import RequestResponse from "../../components/Request/writer/RequestWriterResponse";
 import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
 import { useParams } from "react-router-dom";
-import axios, { axiosPrivate } from "../../api/axios";
+import axios from "../../api/axios";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import RequestLinkRegister from "../../components/Request/nowriter/RequestLinkRegister";
 import { Button } from "../../elements/Button";

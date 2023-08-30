@@ -1,9 +1,18 @@
-import { signupContext } from "./Signup";
 import React, { useState, useContext } from "react";
 import axios from "../../api/axios";
 import styled from "styled-components";
 import PageHeader from "./PageHeader";
 import * as S from "./style/EnterMembersInfo.style";
+import { useOutletContext } from "react-router-dom";
+
+type userInfoType = {
+  password: string;
+  userName: string;
+  birthDate: string;
+  phoneNumber: string;
+  code: string;
+  email: string;
+};
 
 const EnterMembersInfo = () => {
   // const navigation = useNavigate();
@@ -13,8 +22,12 @@ const EnterMembersInfo = () => {
   //   }
   // }, []);
   // const  useContext(signupContext);
-  const { email, setUserInfo, userInfo } = useContext(signupContext);
-
+  // const { email, setUserInfo, userInfo } = useContext(signupContext);
+  const { email, setUserInfo, userInfo } = useOutletContext<{
+    email: string;
+    setUserInfo: React.Dispatch<React.SetStateAction<userInfoType>>;
+    userInfo: userInfoType;
+  }>();
   const handleInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.id);
     console.log(e.target.value);

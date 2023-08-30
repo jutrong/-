@@ -4,7 +4,7 @@ import question from "../../../assets/images/svg/ic-question.svg";
 import more from "../../../assets/images/svg/ic-more-horizontal.svg";
 import RequestMoreModal from "./RequestMoreModal";
 import AppAlertModal from "../../common/AlertModal/AppAlertModal";
-import axios, { axiosPrivate } from "../../../api/axios";
+import axios from "../../../api/axios";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import { useNavigate } from "react-router-dom";
 

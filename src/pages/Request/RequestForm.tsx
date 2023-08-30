@@ -5,7 +5,7 @@ import img from "../../assets/images/svg/ic-image-gray.svg";
 import x from "../../assets/images/svg/ic-x.svg";
 import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
 import { Link } from "react-router-dom";
-import axios, { axiosPrivate } from "../../api/axios";
+import axios from "../../api/axios";
 import { useNavigate } from "react-router-dom";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 

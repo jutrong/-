@@ -74,6 +74,8 @@ const Login = () => {
                     navigation("/initInfo");
                   }
                   if (response.status === 201) {
+                    //TODO: setToken
+                    dispatch(setToken(response.headers.authorization));
                     navigation("/home");
                   }
                 })

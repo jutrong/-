@@ -1,11 +1,14 @@
 import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import { Button } from "../../elements/Button";
 import useInput from "../../hooks/useInput";
+import { setToken } from "../../redux/config/rootReducer";
 import * as S from "./style/InitInfo.style";
 
 const InitInfo = () => {
+  const dispatch = useDispatch();
   const navigation = useNavigate();
   const [nickName, setNickName] = useInput("");
   const [introduction, setIntroduction] = useInput("");
@@ -88,6 +91,7 @@ const InitInfo = () => {
               })
               .then((response) => {
                 console.log(response);
+                dispatch(setToken(response.headers.authorization));
                 navigation("/home");
               })
               .catch((err) => console.log(err));
