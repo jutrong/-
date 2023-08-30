@@ -1,9 +1,11 @@
 import { styled } from "styled-components";
 
 export const Container = styled.div`
+  width: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  padding: 2em;
+  align-items: center;
 `;
 
 export const Agreement = styled.h1`
@@ -22,42 +24,41 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 500px;
 `;
 
 export const InputEmail = styled.input`
-  padding: 0.5em;
-  width: 50%;
+  padding: 16px;
+  width: 100%;
+  height: 50px;
   border: 1px solid #ddd;
   border-radius: 4px;
   margin-bottom: 1em;
   font-size: 16px;
   outline: none;
+  box-sizing: border-box;
 `;
 
-export const InputNum = styled.input`
-  padding: 0.5em;
-  width: 60%;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 1em;
-  font-size: 16px;
-  outline: none;
-`;
+// export const InputNum = styled.input`
+//   padding: 0.5em;
+//   width: 60%;
+//   border: 1px solid #ddd;
+//   border-radius: 4px;
+//   margin-bottom: 1em;
+//   font-size: 16px;
+//   outline: none;
+// `;
 
 export const SendButton = styled.button`
   background-color: #208df1;
+  width: fit-content;
+  height: 50px;
   color: #fff;
-  padding: 0.5em 1em;
+  padding: 0 16px;
+  white-space: nowrap;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-bottom: 1em;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #0056b3;
-  }
+  box-sizing: border-box;
 `;
 
 export const TextWithLink = styled.p`
@@ -71,4 +72,17 @@ export const TextWithLink = styled.p`
       text-decoration: underline;
     }
   }
+`;
+export const EmailContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+`;
+
+export const ReSend = styled.span`
+  margin-left: 10px;
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
 `;

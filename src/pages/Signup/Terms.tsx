@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import * as S from "./style/Terms.style";
-import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PageHeader from "./PageHeader";
 import SignUpAgreement from "./SignUpAgreement";
 import { Button } from "../../elements/Button";
@@ -10,13 +10,11 @@ const Terms = () => {
   const [pledgeView, setPledgeView] = useState(false);
   const [checkList, setCheckList] = useState<string[]>([]);
   const navigation = useNavigate();
-  const { setSignupStep } = useOutletContext<{
-    setSignupStep: (value: string) => void;
-  }>();
+
   return (
     <>
       <S.Container>
-        {/* <PageHeader totalPages={3} currentPage={1} /> */}
+        <PageHeader totalPages={3} currentPage={1} />
         <S.Agreement>이용약관 동의</S.Agreement>
         <S.SubAgreement>
           정의로운 손민수 이용을 위해 <br /> 약관에 동의해주세요
@@ -77,17 +75,27 @@ const Terms = () => {
           />
         )}
       </S.Container>
-      <Button
-        background="#6138F8"
-        border="none"
-        color="#fff"
-        onClick={() => {
-          navigation("emailCertification");
-          setSignupStep("emailCertification");
-        }}
-      >
-        다음
-      </Button>
+      {checkList.length === 2 ? (
+        <Button
+          background="#6138F8"
+          border="none"
+          color="#fff"
+          onClick={() => {
+            navigation("emailCertification");
+          }}
+        >
+          다음
+        </Button>
+      ) : (
+        <Button
+          background="#EBEEF2"
+          border="none"
+          color="#6A6774"
+          onClick={() => {}}
+        >
+          다음
+        </Button>
+      )}
     </>
   );
 };

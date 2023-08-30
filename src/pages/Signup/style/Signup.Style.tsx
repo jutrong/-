@@ -1,10 +1,11 @@
 import { styled } from "styled-components";
 
 export const Container = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: #f9f9f9;
   font-family: "Arial", sans-serif;
+  min-height: 722px;
+  justify-content: space-between;
 `;

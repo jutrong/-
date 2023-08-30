@@ -1,10 +1,11 @@
 import { styled } from "styled-components";
 
 export const Container = styled.div`
+  width: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  padding: 2em;
-  font-family: "Arial", sans-serif;
+  gap: 15px;
 `;
 
 export const Agreement = styled.h1`
@@ -27,21 +28,29 @@ export const SubAgreement2 = styled.h1`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  gap: 12px;
 `;
 
 export const Input = styled.input`
   width: 100%;
-  padding: 8px;
-  margin-bottom: 15px;
+  height: 50px;
+  padding: 16px;
+  box-sizing: border-box;
   border: 1px solid #ccc;
   font-size: 14px;
 `;
 
 export const Label = styled.label`
   width: 100%;
-  padding: 8px;
-  margin-bottom: 15px;
+  height: 50px;
+  padding: 16px;
+  box-sizing: border-box;
   border: 1px solid #ccc;
   font-size: 14px;
+`;
+export const Warning = styled.label`
+  width: 100%;
+  color: red;
+  font-size: 14px;
+  margin-left: 10px;
 `;

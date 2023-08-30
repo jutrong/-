@@ -1,19 +1,29 @@
 import { styled } from "styled-components";
 
 export const Container = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4;
+  font-family: "Arial", sans-serif;
+  min-height: 722px;
+  gap: 16px;
+  justify-content: center;
 `;
 
 export const CompletionMessage = styled.div`
-  padding: 20px;
-  border-radius: 5px;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 24px;
-  color: #6138f8;
-  font-family: "Arial", sans-serif;
+회원가입이 완료되었습니다!
+Copy
+color: var(--grey-100-black, #1D1B20);
+text-align: center;
+font-family: Pretendard;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: 100%; /* 24px */
+`;
+export const Icon = styled.img`
+  cursor: pointer;
+  width: 82px;
+  height: 82px;
 `;

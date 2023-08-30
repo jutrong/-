@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Header = styled.div`
@@ -11,14 +11,13 @@ const Header = styled.div`
 `;
 
 interface PageNumberProps {
-  isActive: boolean;
-  checked: boolean;
+  $isActive: boolean;
 }
 
 const PageNumber = styled.span<PageNumberProps>`
   margin: 0 10px;
   cursor: pointer;
-  color: ${(props) => (props.isActive ? "purple" : "black")};
+  color: ${(props) => (props.$isActive ? "purple" : "black")};
 
   &:hover {
     text-decoration: underline;
@@ -30,32 +29,17 @@ interface PageHeaderProps {
   currentPage: number;
 }
 
-interface CheckedPages {
-  [key: number]: boolean;
-}
-
 const PageHeader: React.FC<PageHeaderProps> = ({ totalPages, currentPage }) => {
-  const [checkedPages, setCheckedPages] = useState<CheckedPages>({});
-
-  useEffect(() => {
-    if (currentPage > 1) {
-      setCheckedPages((prev) => ({ ...prev, [currentPage - 1]: true }));
-    }
-  }, [currentPage]);
-
+  const page = [1, 2, 3];
   return (
     <Header>
-      {Array.from({ length: totalPages }).map((_, index) => (
-        <PageNumber
-          key={index}
-          isActive={currentPage === index + 1}
-          checked={Boolean(checkedPages[index + 1])}
-        >
-          {checkedPages[index + 1] && currentPage !== index + 1
-            ? "✓"
-            : index + 1}
-        </PageNumber>
-      ))}
+      {page.map((_, index) => {
+        return (
+          <PageNumber key={index} $isActive={currentPage === index + 1}>
+            {currentPage <= index + 1 ? index + 1 : "✓"}
+          </PageNumber>
+        );
+      })}
     </Header>
   );
 };
