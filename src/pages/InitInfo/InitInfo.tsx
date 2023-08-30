@@ -83,11 +83,16 @@ const InitInfo = () => {
           color="#fff"
           margin="375px auto 0 auto"
           onClick={() => {
+            const formData = new FormData();
+            formData.append("nickName", nickName);
+            formData.append("introduction", introduction);
+            if (fileInputRef.current?.files?.[0]) {
+              formData.append("file", fileInputRef.current?.files?.[0]);
+            }
+            formData.forEach((value, key) => console.log(`${key}: ${value}`));
             axios
-              .post("/auth/init-info", {
-                nickName,
-                introduction,
-                file: selectedImage,
+              .post("/auth/init-info", formData, {
+                headers: { "Content-Type": "multipart/form-data" },
               })
               .then((response) => {
                 console.log(response);

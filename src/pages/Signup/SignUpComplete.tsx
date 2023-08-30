@@ -2,7 +2,7 @@ import { Button } from "../../elements/Button";
 import * as S from "./style/SignUpComplete.style";
 import complete from "../../assets/images/svg/complete.svg";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import axios from "axios";
+import axios from "../../api/axios";
 import { useDispatch } from "react-redux";
 import { setToken } from "../../redux/config/rootReducer";
 
@@ -26,6 +26,7 @@ const SignUpComplete = () => {
         color="#fff"
         onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
           e.preventDefault();
+
           axios
             .post("/auth/sign-in", {
               email,
