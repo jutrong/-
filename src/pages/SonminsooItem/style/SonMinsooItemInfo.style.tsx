@@ -22,6 +22,8 @@ export const ItemImage = styled.div<{ $url: string }>`
   border: 1px solid black;
   border-radius: 8px;
   background-image: url(${(props) => props.$url});
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 export const ArtistName = styled.div`
   width: max-content;

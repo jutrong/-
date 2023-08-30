@@ -14,15 +14,16 @@ import * as S from "./style/IconWithText.style";
 type IconWithTextProps = {
   text: string;
   pathname: string;
+  onClick?: any;
 };
 
-const IconWithText = ({ text, pathname }: IconWithTextProps) => {
+const IconWithText = ({ text, pathname, onClick }: IconWithTextProps) => {
   let $active: boolean = false;
   let $iconUrl: string = "";
 
   switch (text) {
     case "홈":
-      if (pathname === "/") {
+      if (pathname.includes("home")) {
         $iconUrl = iconHome;
         $active = true;
       } else {
@@ -73,7 +74,7 @@ const IconWithText = ({ text, pathname }: IconWithTextProps) => {
   }
 
   return (
-    <S.IconGroup>
+    <S.IconGroup onClick={onClick}>
       <S.TabIcon $iconUrl={$iconUrl} />
       <S.IconText $active={$active}>{text}</S.IconText>
     </S.IconGroup>

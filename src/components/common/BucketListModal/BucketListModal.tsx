@@ -2,18 +2,20 @@ import { styled } from "styled-components";
 import * as S from "./style/BucketListModal.style";
 import BucketItem from "./BucketItem";
 import { useEffect, useRef, useState } from "react";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
 type ModalProps = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  addClickHandler: React.MouseEventHandler<HTMLDivElement>;
+  itemId?: number;
   bucketList: { id: string; img: string; title: string }[];
 };
 
 const BucketListModal: React.FC<ModalProps> = ({
   bucketList,
   setModalOpen,
-  addClickHandler,
+  itemId,
 }) => {
+  const axiosPrivate = useAxiosPrivate();
   const modalRef = useRef<HTMLDivElement>(null);
   const [select, setSelect] = useState(bucketList[0].id);
 
@@ -48,10 +50,18 @@ const BucketListModal: React.FC<ModalProps> = ({
         </S.BucketListsContainer>
         <S.AddBucketList
           type="button"
-          onClick={() => {
-            console.log(
-              "TODO: addClickHandler ={axiosPrivate.then(()=>setModalOpen(false))}"
-            );
+          onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
+            e.preventDefault();
+
+            try {
+              const res = await axiosPrivate.put(
+                `/users/sonminsu-items/${itemId}/buckets/${select}`
+              );
+              console.log(res);
+              setModalOpen(false);
+            } catch (e) {
+              console.log(e, "err");
+            }
           }}
         >
           추가 하기

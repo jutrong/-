@@ -25,7 +25,7 @@ const SonminsooItem = () => {
         {modalView && (
           <BucketListModal
             setModalOpen={setModalView}
-            addClickHandler={() => {}}
+            // addClickHandler={() => {}}
             bucketList={bucketListData}
           />
         )}
