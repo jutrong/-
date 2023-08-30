@@ -40,7 +40,7 @@ const MyFandom = () => {
         <>
             <S.Container>
                 <S.MyFandomHeaderBox>
-                    <S.FandomImg />
+                    {/* <S.FandomImg /> */}
                     <HomeHeader />
                     <FandomMenu />
                 </S.MyFandomHeaderBox>

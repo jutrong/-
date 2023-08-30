@@ -2,6 +2,7 @@ import MyFandom from "../pages/MyFandom/MyFandom";
 import FandomSearch from "../pages/MyFandom/FandomSearch";
 import CreateNewFandom from "../pages/MyFandom/CreateNewFandom";
 import MyFamdomRoot from "../pages/MyFandom/MyFandomRoot";
+import UpdateFandom from "../pages/MyFandom/UpdateFandom";
 
 export const MyFandomRouter = {
     path: "myfandom",
