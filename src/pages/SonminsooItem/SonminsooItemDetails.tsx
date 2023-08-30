@@ -31,7 +31,8 @@ const SonminsooItemDetails = () => {
     return state.auth.accessToken;
   });
   const axiosPrivate = useAxiosPrivate();
-  const api = auth ? axiosPrivate : axios;
+  // const api = auth ? axiosPrivate : axios;
+  const api = axios;
 
   const { id } = useParams();
   const [modalView, setModalView] = useState(false);
@@ -67,7 +68,6 @@ const SonminsooItemDetails = () => {
             BackButton={true}
             items={[
               <Icon src={bookmark} key={"bookmark"} onClick={registBookMark} />,
-              <Icon src={report} key={"report"} />,
             ]}
           />
         );

@@ -56,9 +56,10 @@ const EmailCertification = () => {
         <S.Form>
           <S.EmailContainer>
             <S.InputEmail
-              type="text"
+              type="email"
               id="email"
               placeholder="이메일을 입력해 주세요."
+              required
               value={email}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setEmail(e.target.value);

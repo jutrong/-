@@ -32,7 +32,7 @@ const Signup = () => {
           email,
           emailCode,
           setEmail,
-
+          password: userInfo.password,
           setUserInfo,
           setEmailCode,
           userInfo,

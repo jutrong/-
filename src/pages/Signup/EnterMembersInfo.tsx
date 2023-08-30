@@ -20,6 +20,7 @@ const EnterMembersInfo = () => {
   const [passwordCheck, setPasswordCheck] = useState<string>("");
   useEffect(() => {
     if (email === "") {
+      alert("인증기간 만료! 다시 이메일 인증을 해주세요.");
       navigation("/signup");
     }
   }, []);
@@ -76,22 +77,24 @@ const EnterMembersInfo = () => {
             {email ? email : "다시 이메일 요청을 해주세요"}
           </S.Label>
           <S.Input
-            type="text"
+            type="password"
             id="password"
             placeholder="비밀번호를 입력해 주세요"
             value={userInfo.password}
             onChange={handleInfoChange}
-            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$"
+            pattern="^[a-zA-Z0-9]{8,16}$"
+            required
           />
           <S.Input
-            type="text"
+            type="password"
             id="passwordConfirm"
             placeholder="비밀번호를 다시 입력해 주세요"
             value={passwordCheck}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setPasswordCheck(e.target.value)
             }
-            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$"
+            pattern="^[a-zA-Z0-9]{8,16}$"
+            required
           />
           {userInfo.password !== passwordCheck && (
             <S.Warning>비밀번호가 일치하지 않습니다</S.Warning>
@@ -105,6 +108,7 @@ const EnterMembersInfo = () => {
             placeholder="이름을 입력해 주세요."
             onChange={handleInfoChange}
             value={userInfo.userName}
+            required
           />
           <S.Input
             type="text"
@@ -112,6 +116,8 @@ const EnterMembersInfo = () => {
             placeholder="생년월일을 입력해 주세요 &#40;ex 19991121&#41;"
             onChange={handleInfoChange}
             value={userInfo.birthDate}
+            required
+            pattern="^[0-9]{8}$"
           />
           <S.Input
             type="text"
@@ -119,6 +125,8 @@ const EnterMembersInfo = () => {
             placeholder="전화번호를 입력해 주세요 &#40;ex 01022222222&#41;"
             onChange={handleInfoChange}
             value={userInfo.phoneNumber}
+            required
+            pattern="^[0-9]{7,}$"
           />
         </S.Form>
       </S.Container>

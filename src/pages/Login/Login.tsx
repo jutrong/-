@@ -13,13 +13,11 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordType, setPasswordType] = useState(false);
-  const data = JSON.stringify({ email, password });
   const dispatch = useDispatch();
   const navigation = useNavigate();
   const auth = useSelector((state: any) => {
     return state.auth.accessToken;
   });
-  //TODO: 카카오 구글로그인 버튼 추가
   useEffect(() => {
     console.log("token!", auth);
     if (auth) navigation("/home");
@@ -34,11 +32,12 @@ const Login = () => {
       </S.Title>
       <S.StyledForm>
         <S.StyledInput
-          type="text"
+          type="email"
           id="email"
           placeholder="이메일을 입력해 주세요."
           autoComplete="off"
           value={email}
+          required
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setEmail(e.target.value)
           }
@@ -48,6 +47,8 @@ const Login = () => {
           id="password"
           placeholder="비밀번호를 입력해 주세요."
           value={password}
+          pattern="^[a-zA-Z0-9]{8,16}$"
+          required
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setPassword(e.target.value)
           }
@@ -57,35 +58,46 @@ const Login = () => {
           onClick={() => setPasswordType(!passwordType)}
         />
         <S.LinkContainer>
-          <Button
-            background="#EBEEF2"
-            border="none"
-            color="#6B6774"
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-              e.preventDefault();
-              axios
-                .post("/auth/sign-in", {
-                  email,
-                  password,
-                })
-                .then((response) => {
-                  console.log(response);
-                  if (response.status === 204) {
-                    navigation("/initInfo");
-                  }
-                  if (response.status === 201) {
-                    //TODO: setToken
-                    dispatch(setToken(response.headers.authorization));
-                    navigation("/home");
-                  }
-                })
-                .catch((error) => {
-                  console.log(error);
-                });
-            }}
-          >
-            로그인
-          </Button>
+          {email.length > 7 && password.length > 7 ? (
+            <Button
+              background="#6138F8"
+              border="none"
+              color="#fff"
+              onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                e.preventDefault();
+                axios
+                  .post("/auth/sign-in", {
+                    email,
+                    password,
+                  })
+                  .then((response) => {
+                    console.log(response);
+                    if (response.status === 204) {
+                      navigation("/initInfo");
+                    }
+                    if (response.status === 201) {
+                      //TODO: setToken
+                      dispatch(setToken(response.headers.authorization));
+                      navigation("/home");
+                    }
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+              }}
+            >
+              로그인
+            </Button>
+          ) : (
+            <Button
+              background="#EBEEF2"
+              border="none"
+              color="#6B6774"
+              onClick={() => {}}
+            >
+              로그인
+            </Button>
+          )}
 
           <S.P>
             <S.LinkTag to={"/signup"}>회원가입</S.LinkTag>
