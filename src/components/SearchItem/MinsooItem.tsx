@@ -1,22 +1,48 @@
 import * as S from "./style/MinsooItem.style";
 import item from "../../assets/images/png/item1.png";
-const MinsooItem = () => {
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+type minsooItemType = {
+  artistName: string;
+  groupName: string;
+  id: number;
+  imgUrl: string;
+  originUrl: string;
+  price: string | number;
+  title: string;
+};
+type minsooItemProps = {
+  minsooItem: minsooItemType[];
+};
+const MinsooItem: React.FC<minsooItemProps> = ({ minsooItem }) => {
+  const navigate = useNavigate();
+  const handleItemClick = (id: number) => {
+    navigate(`/minsooItem/details/${id}`);
+  };
   return (
-    <S.ListContainer>
-      <S.SearchItemImg src={item} />
-      <S.SearchItemContent>
-        <S.SearchItemTags>
-          <S.SearchItemTag>BTS</S.SearchItemTag>
-          <S.SearchItemTag>정전국</S.SearchItemTag>
-        </S.SearchItemTags>
-        <S.SearchItemProduct>
-          비행사 우주곰 우주냥 비행사 LED 비행사우주곰
-        </S.SearchItemProduct>
-        <S.SearchItemPrice>
-          12,000<S.SearchItemWon>원</S.SearchItemWon>
-        </S.SearchItemPrice>
-      </S.SearchItemContent>
-    </S.ListContainer>
+    <>
+      {minsooItem.map((item) => (
+        <S.ListContainer
+          key={item.id}
+          onClick={() => {
+            handleItemClick(item.id);
+          }}
+        >
+          <S.SearchItemImg src={item.imgUrl} />
+          <S.SearchItemContent>
+            <S.SearchItemTags>
+              <S.SearchItemTag>{item.groupName}</S.SearchItemTag>
+              <S.SearchItemTag>{item.artistName}</S.SearchItemTag>
+            </S.SearchItemTags>
+            <S.SearchItemProduct>{item.title}</S.SearchItemProduct>
+            <S.SearchItemPrice>
+              {item.price}
+              <S.SearchItemWon></S.SearchItemWon>
+            </S.SearchItemPrice>
+          </S.SearchItemContent>
+        </S.ListContainer>
+      ))}
+    </>
   );
 };
 export default MinsooItem;

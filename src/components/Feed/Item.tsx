@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./style/Item.style";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "swiper/css";
 // import { FeedItemProps } from "../../types/feed";
 export type Data = {
@@ -38,6 +38,7 @@ export type FeedItemProps = {
 };
 
 const ItemBox: React.FC<FeedItemProps> = ({ items }) => {
+  const navigate = useNavigate();
   const swiperParams = {
     slidesPerView: 3.5,
     spaceBetween: 10,
@@ -47,14 +48,17 @@ const ItemBox: React.FC<FeedItemProps> = ({ items }) => {
       <Swiper {...swiperParams}>
         {items &&
           items.map((item, itemIndex) => (
-            <SwiperSlide key={`${itemIndex}`}>
-              <Link to={item.originUrl}>
-                <S.Item src={item.imgUrl} />
-              </Link>
+            <SwiperSlide
+              key={`${itemIndex}`}
+              onClick={() => {
+                navigate(`/minsooItem/details/${item.id}`);
+              }}
+            >
+              <S.Item src={item.imgUrl} />
               <S.ProductName>{item.title}</S.ProductName>
               <S.Price>
                 {item.price}
-                <S.Won>원</S.Won>
+                <S.Won></S.Won>
               </S.Price>
             </SwiperSlide>
           ))}

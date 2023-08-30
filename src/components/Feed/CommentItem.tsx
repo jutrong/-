@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useSelector } from "react-redux";
 import detailDate from "../../utils/time";
 import * as S from "./style/CommentItem.style";
 import commentmore from "../../assets/images/svg/ic-more-vertical-16.svg";
@@ -24,6 +25,7 @@ type CommentItemProps = {
 const CommentItem: React.FC<CommentItemProps> = ({ comment, showModal }) => {
   const [openedModalId, setOpenedModalId] = useState<number | null>(null);
   const modalRef = useRef<HTMLDivElement | null>(null);
+  const token = useSelector(({ auth }) => auth.accessToken);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -49,13 +51,15 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment, showModal }) => {
               <S.CommentNickname>{comment.author.nickName}</S.CommentNickname>
               <S.CommentTime>{detailDate(comment.createdAt)}</S.CommentTime>
             </S.UserContenWrap>
-            <S.CommentMoreBtn
-              src={commentmore}
-              onClick={(e) => {
-                e.stopPropagation();
-                setOpenedModalId(comment.id);
-              }}
-            />
+            {token ? (
+              <S.CommentMoreBtn
+                src={commentmore}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpenedModalId(comment.id);
+                }}
+              />
+            ) : null}
             {openedModalId === comment.id && (
               <S.ReplyBtn ref={modalRef}>
                 <S.Delete onClick={() => showModal(comment.id)}>

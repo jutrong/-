@@ -12,7 +12,7 @@ const HashTag: React.FC<FeedHashTagProps> = ({ feedData }) => {
   return (
     <S.HashTags>
       {hashTag &&
-        hashTag.map((tag, index) => <S.Hash key={index}>{tag}</S.Hash>)}
+        hashTag.map((tag, index) => <S.Hash key={index}>#{tag}</S.Hash>)}
     </S.HashTags>
   );
 };

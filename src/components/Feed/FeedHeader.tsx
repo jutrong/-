@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import more from "../../assets/images/svg/ic-more-horizontal.svg";
 import detailDate from "../../utils/time";
 import * as S from "./style/FeedHeader.style";
+
 // import { FeedDataProps } from "../../types/feed";
 export type Data = {
   id: number;
@@ -43,15 +46,25 @@ const FeedHeader: React.FC<FeedDataProps> = ({
   setIsFeedDelete,
   setFeedId,
 }) => {
+  const navigate = useNavigate();
+  const token = useSelector(({ auth }) => auth.accessToken);
+
   const handleMoreClick = () => {
-    setIsFeedDelete(true);
-    setFeedId(feedData.id);
+    if (token) {
+      setIsFeedDelete(true);
+      setFeedId(feedData.id);
+    }
   };
   return (
     <S.FeedHeaderContainer>
       {feedData && feedData.author ? (
         <>
-          <S.Profile src={feedData.author.image} />
+          <S.Profile
+            src={feedData.author.image}
+            onClick={() => {
+              if (token) navigate(`/mypage/${feedData.id}`);
+            }}
+          />
           <S.HeaderContent>
             <S.Nickname>{feedData.author.nickName}</S.Nickname>
             <S.ContentWrap>

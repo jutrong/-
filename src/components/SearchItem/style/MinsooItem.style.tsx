@@ -28,6 +28,7 @@ export const SearchItemTag = styled.div`
   background-color: #dee9ff;
   padding: 2px 4px;
   border-radius: 4px;
+  margin-right: 5px;
 `;
 export const SearchItemProduct = styled.p`
   font-size: 15px;

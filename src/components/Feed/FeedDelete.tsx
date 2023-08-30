@@ -31,7 +31,7 @@ const FeedDelete: React.FC<FeedDeleteProps> = ({
   }, []);
 
   const moveUpdate = () => {
-    navigation("/feedwrite", { state: { isUpdate: true } });
+    navigation("/feedwrite", { state: { isUpdate: true, feedId: feedId } });
   };
 
   const handleDeleteFeed = async () => {

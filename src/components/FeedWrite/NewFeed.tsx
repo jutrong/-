@@ -11,7 +11,35 @@ import * as S from "./style/NewFeed.style";
 import useInput from "../../hooks/useInput";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import idol1 from "../../assets/images/png/idol1.png";
-
+export type Data = {
+  id: number;
+  content: string;
+  createdAt: string;
+  author: {
+    id: number;
+    image: string;
+    nickName: string;
+  };
+  fandom: {
+    id: number;
+    fandomName: string;
+  };
+  sonminsuItems: SonminsuItems[];
+  image: string;
+  tags: string[];
+  comments: number;
+  groupName: string;
+  artistName: string;
+};
+export type SonminsuItems = {
+  id: number;
+  originUrl: string;
+  title: string;
+  price: number;
+  imgUrl: string;
+  groupName: string;
+  artistName: string;
+};
 type OptionType = {
   value: string;
   label: string;
@@ -28,6 +56,7 @@ type itemtype = {
 const NewFeed = () => {
   const axiosPrivate = useAxiosPrivate();
   const navigation = useNavigate();
+  const [feedData, setFeedData] = useState<Data>();
   const [noticeChecked, setNoticeChecked] = useState<boolean>(false);
   const [contentInput, setContentInput] = useState<string>("");
   const [hashTagInput, handleHashTagChange] = useInput("");
@@ -44,11 +73,16 @@ const NewFeed = () => {
   const $updatePage = location.state?.isUpdate;
   const writeImg = location.state?.selectedImage;
   const selectImg = location.state?.imageObject;
+  const feedId = location.state?.feedId;
   // #넣어입력하면 배열로 변환
-  const hashtagss = hashTagInput.match(/#\w+/g) || [];
+  const hashtagss =
+    hashTagInput
+      .match(/#([\uAC00-\uD7A3a-zA-Z\u3131-\u3163\u314F-\uD7A3]+)/g)
+      ?.map((tag) => tag.slice(1)) || [];
 
   useEffect(() => {
     fetchFandom();
+    fetchFeedData();
   }, []);
 
   useEffect(() => {
@@ -90,8 +124,16 @@ const NewFeed = () => {
   const sonminsuItemArray = urlItem.map((item) => item.id);
   const handleContentInput = (e: any) => {
     setContentInput(e.target.value);
+    console.log(hashtagss);
   };
-
+  const fetchFeedData = async () => {
+    try {
+      const response = await axiosPrivate.get(`/feeds/${feedId}`);
+      setFeedData(response.data.data);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   const fetchFandom = async () => {
     try {
       const response = await axiosPrivate.get("/fandoms");
@@ -105,7 +147,11 @@ const NewFeed = () => {
       console.error("Errore", error);
     }
   };
-
+  const moveToFandom = () => {
+    if (fandomOptions.length === 0) {
+      navigation("/myfandom");
+    }
+  };
   const handleSubmitFeed = async () => {
     const formData = new FormData();
 
@@ -123,7 +169,7 @@ const NewFeed = () => {
       formData.append("image", selectImg);
     }
 
-    // formData.forEach((value, key) => console.log(`${key}: ${value}`));
+    formData.forEach((value, key) => console.log(`${key}: ${value}`));
     try {
       const response = await axiosPrivate.post("/feeds", formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -147,15 +193,30 @@ const NewFeed = () => {
     }
     navigation("/feed");
   };
+  const updateFeed = async () => {
+    let data = {
+      content: contentInput,
+      hashTags: hashtagss,
+    };
+    try {
+      const response = await axiosPrivate.patch(`/feeds/${feedId}`, data);
+      navigation("/feed");
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   return (
     <>
       <FeedHeaderWrite
         $updatePage={$updatePage}
         handleHeaderSubmit={handleHeaderSubmit}
         isFormValid={isFormValid}
+        updateFeed={updateFeed}
+        moveToFandom={moveToFandom}
       />
-      {$updatePage ? (
-        <S.FeedWriteImage src={idol1} />
+      {$updatePage && feedData ? (
+        <S.FeedWriteImage src={feedData.image} />
       ) : (
         <S.FeedWriteImage src={writeImg} />
       )}
@@ -179,13 +240,15 @@ const NewFeed = () => {
             $updatePage={$updatePage}
             setLinkModalClick={setLinkModalClick}
             urlItem={urlItem}
+            feedData={feedData}
           />
           <FeedWriteTarget
             $updatePage={$updatePage}
-            grouptInput={groupInput}
+            groupInput={groupInput}
             setGroupInput={setGroupInput}
             artistInput={artistInput}
             setArtistInput={setArtistInput}
+            feedData={feedData}
           />
         </>
       )}

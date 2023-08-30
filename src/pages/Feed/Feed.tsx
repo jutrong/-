@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 import axios from "../../api/axios";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import styled from "styled-components";
 import * as S from "./style/Feed.style";
 import FeedHeaderBar from "../../components/Feed/FeedHeaderBar";
 import FeedHeader from "../../components/Feed/FeedHeader";
@@ -13,7 +13,6 @@ import CommentBtn from "../../components/Feed/CommentBtn";
 import FeedText from "../../components/Feed/FeedText";
 import Comment from "../../components/Feed/Comment";
 import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
-import CloseModal from "../../components/Feed/CloseModal";
 import FeedDelete from "../../components/Feed/FeedDelete";
 import AppAlertModal from "../../components/common/AlertModal/AppAlertModal";
 export type Data = {
@@ -88,7 +87,13 @@ const FeedIndex = () => {
   useEffect(() => {
     fetchFeedData();
     fetchItem();
+    getLoggedInUserId();
   }, []);
+
+  const user = useSelector((state: any) => state.user);
+  const getLoggedInUserId = () => {
+    return user ? user.id : null;
+  };
 
   const fetchFeedData = async () => {
     try {
@@ -135,6 +140,7 @@ const FeedIndex = () => {
     setModalOpen(true);
   };
   const toggleComment = (id: number) => {
+    console.log(user.id);
     if (openComment === id) {
       setOpenComment(undefined);
     } else {
