@@ -1,9 +1,10 @@
 import * as S from "./style/SominsooNewsContents.style";
-import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import detailDate from "../../utils/time";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-
+import { useParams, useNavigate } from "react-router-dom";
+import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
 type NewsType = {
     id: number;
     content: string;
@@ -20,8 +21,11 @@ type NewsType = {
     sonminsuItems: [];
     image: string;
     tags: [];
+    // likes:number
+    // isLike:boolean
     comments: number;
 };
+type NewsTypeData = NewsType[];
 
 type NewsProps = {
     item: NewsType;
@@ -29,28 +33,42 @@ type NewsProps = {
 
 const SonminsooNewsContents: React.FC<NewsProps> = ({ item }) => {
     const axiosPrivate = useAxiosPrivate();
-    // let { feedId } = useParams();
-    const [like, setLike] = useState(false);
+    let { feedId } = useParams();
+    const [isLike, setIsLike] = useState(false);
+    const [likes, setLikes] = useState();
 
     const handleLikeClick = () => {
-        setLike(!like);
-        console.log("like state : ", like);
+        setIsLike(!isLike);
+        console.log("like state : ", isLike);
 
         likePut();
+    };
+
+    useEffect(() => {
+        initDataGet();
+    }, [isLike]);
+
+    const initDataGet = async () => {
+        try {
+            const res = await axiosPrivate.get(`/feeds/${item.id}`);
+
+            setLikes(res.data.data.likes);
+        } catch (error) {
+            console.error("Error", error);
+        }
     };
 
     // 하트 클릭하면 바로 통신해서 좋아요 수 수정
     const likePut = async () => {
         try {
             const res = await axiosPrivate.put(`/feeds/${item.id}/like`);
-            console.log(res);
         } catch (error) {
             console.error("Error", error);
         }
     };
     const navigate = useNavigate();
     const handleItemClick = () => {
-        navigate("피드상세주소");
+        navigate(`/feed/${item.id}`);
     };
     return (
         <S.SonminsooNewsContentsContainer key={item.id}>
@@ -90,7 +108,7 @@ const SonminsooNewsContents: React.FC<NewsProps> = ({ item }) => {
                 </S.SonminsooNewsArticleHashtagBox>
                 <S.SonminsooNewsArticleIconBox>
                     <S.LikeIconSvg onClick={handleLikeClick} />
-                    <S.LikeQuantity>23 확인필요함</S.LikeQuantity>
+                    <S.LikeQuantity>{likes}</S.LikeQuantity>
                     <S.CommentIconSvg />
                     <S.CommentQuantity>{item.comments}</S.CommentQuantity>
                 </S.SonminsooNewsArticleIconBox>

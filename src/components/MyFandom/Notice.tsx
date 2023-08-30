@@ -1,30 +1,33 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../api/axios";
 import detailDate from "../../utils/time";
-
+import { useParams } from "react-router-dom";
 import * as S from "./style/Notice.style";
-
-const Notice = () => {
-    type noticeDataType = {
-        data: {
-            id: 1;
-            author: noticeAuthor;
-            fandom: noticeFandom;
-            content: string;
-            createdAt: string;
-        };
+type noticeDataType = {
+    data: {
+        id: 1;
+        author: noticeAuthor;
+        fandom: noticeFandom;
+        content: string;
+        createdAt: string;
     };
+};
 
-    type noticeAuthor = {
-        id: number;
-        nickName: string;
-        image: string;
-    };
+type noticeAuthor = {
+    id: number;
+    nickName: string;
+    image: string;
+};
 
-    type noticeFandom = {
-        fandomName: string;
-    };
+type noticeFandom = {
+    fandomName: string;
+};
 
+type noticePropsType = {
+    noticeId?: string;
+};
+
+const Notice: React.FC<noticePropsType> = ({ noticeId }) => {
     const [data, setData] = useState<noticeDataType | null>(null);
 
     useEffect(() => {
@@ -33,9 +36,10 @@ const Notice = () => {
 
     const initDataGet = async () => {
         try {
-            const res = await axios.get("fandom-announcements/5");
+            const res = await axios.get(`fandom-announcements/${noticeId}`);
 
-            setData(res.data.data);
+            setData(res.data);
+            console.log("파람:", data);
         } catch (error) {
             console.error("Error", error);
         }

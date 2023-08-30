@@ -52,17 +52,21 @@ const NewFeed = () => {
   }, []);
 
   useEffect(() => {
-    if (
-      contentInput.trim() !== "" &&
-      hashTagInput.trim() !== "" &&
-      groupInput.trim() !== "" &&
-      artistInput.trim() !== "" &&
-      selectedFandom &&
-      urlItem.length > 0
-    ) {
-      setIsFormValid(true);
+    if (noticeChecked) {
+      setIsFormValid(contentInput.trim() !== "" && !!selectedFandom);
     } else {
-      setIsFormValid(false);
+      if (
+        contentInput.trim() !== "" &&
+        hashTagInput.trim() !== "" &&
+        groupInput.trim() !== "" &&
+        artistInput.trim() !== "" &&
+        selectedFandom &&
+        urlItem.length > 0
+      ) {
+        setIsFormValid(true);
+      } else {
+        setIsFormValid(false);
+      }
     }
   }, [
     contentInput,
@@ -71,6 +75,7 @@ const NewFeed = () => {
     artistInput,
     selectedFandom,
     urlItem,
+    noticeChecked,
   ]);
 
   const handleHeaderSubmit = () => {

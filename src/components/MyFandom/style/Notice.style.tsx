@@ -96,7 +96,7 @@ export const NoticeTextBox = styled.div`
     max-width: 346px;
     margin-top: 21px;
     display: flex;
-    justify-content: center;
+    margin-left: auto;
 `;
 
 // 공지 텍스트

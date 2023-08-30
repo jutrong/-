@@ -182,6 +182,7 @@ const FeedIndex = () => {
           <S.Line />
         </React.Fragment>
       ))}
+      <Outlet />
       {openComment === undefined && <FooterNavBar />}
       {modalOpen && (
         <AppAlertModal

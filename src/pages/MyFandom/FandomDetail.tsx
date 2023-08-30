@@ -23,7 +23,7 @@ type Fandom = {
     isSubscribe: boolean;
 };
 
-const FandomDetail = () => {
+const FandomDetail: React.FC = () => {
     const axiosPrivate = useAxiosPrivate();
 
     const { fandomId } = useParams();
@@ -110,7 +110,7 @@ const FandomDetail = () => {
                         {renderJoinButton()}
                     </S.FandomJoinBox>
                 </S.HeaderBox>
-                <Notice />
+                <Notice noticeId={fandomId} />
             </S.Container>
             <FooterNavBar />
         </>
