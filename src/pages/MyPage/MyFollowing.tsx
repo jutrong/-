@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
-import MyFollowItem from "../../components/MyPage/MyFollowItem";
 import * as S from "./style/MyFollow.style";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import MyFollowingItem from "../../components/MyPage/MyFollowingItem";
+import { useParams } from "react-router-dom";
 
 type MyFollowerAndFollowingType = {
   id: number;
@@ -11,7 +12,8 @@ type MyFollowerAndFollowingType = {
   isFollowing: boolean;
 };
 
-const MyFollow: React.FC = () => {
+const MyFollowing: React.FC = () => {
+  let { userId } = useParams() as { userId: any };
   const axiosPrivate = useAxiosPrivate();
   const [followingData, setFollowingData] = useState<
     MyFollowerAndFollowingType[]
@@ -23,7 +25,7 @@ const MyFollow: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axiosPrivate.get(`/follows/2`); //유저 아이디 받아서 적기
+      const response = await axiosPrivate.get(`/following/${userId}`); //유저 아이디 받아서 적기
       setFollowingData(response.data.data);
     } catch (err) {
       console.log(err);
@@ -36,7 +38,7 @@ const MyFollow: React.FC = () => {
       <S.Wrap>
         {followingData &&
           followingData.map((follower) => (
-            <MyFollowItem
+            <MyFollowingItem
               id={follower.id}
               nickName={follower.nickName}
               image={follower.image}
@@ -48,4 +50,4 @@ const MyFollow: React.FC = () => {
   );
 };
 
-export default MyFollow;
+export default MyFollowing;

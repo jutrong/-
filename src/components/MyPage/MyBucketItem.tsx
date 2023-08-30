@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
 type ItemType = {
+  id: number;
   artistName: string;
   name: string;
   price: string;
@@ -17,6 +18,7 @@ const MyBucketItem: React.FC<ItemType> = ({
   name,
   price,
   imgUrl,
+  id,
 }) => {
   const axiosPrivate = useAxiosPrivate();
   let { bucketId } = useParams();
@@ -28,7 +30,7 @@ const MyBucketItem: React.FC<ItemType> = ({
 
     try {
       const response = await axiosPrivate.put(
-        `/sonminsu-items/118/buckets/${bucketId}`
+        `/sonminsu-items/${id}/buckets/${bucketId}`
       );
     } catch (err) {
       console.log(err);

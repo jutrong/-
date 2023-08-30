@@ -12,14 +12,12 @@ type ItemsType = {
   imgUrl: string;
   title: string;
   price: string;
-  feed: {
-    artistName: string;
-  };
+  artistName: string;
 };
 
 const MyBucket: React.FC = () => {
   const axiosPrivate = useAxiosPrivate();
-  let { bucketId } = useParams();
+  let { userId, bucketId } = useParams();
   const navigation = useNavigate();
 
   const [itemsdata, setItemsData] = useState<ItemsType[]>([]);
@@ -30,9 +28,8 @@ const MyBucket: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      //팔로우 팔로워 수
       const response = await axiosPrivate.get(`/buckets/${bucketId}`);
-      setItemsData(response.data.data.items.map((item: any) => item.item));
+      setItemsData(response.data.data.items);
     } catch (err) {
       console.log(err);
     }
@@ -41,7 +38,7 @@ const MyBucket: React.FC = () => {
   const clickBucketDelete = async () => {
     try {
       const response = await axiosPrivate.delete(`/buckets/${bucketId}`);
-      navigation(`/mypage`);
+      navigation(`/mypage/${userId}`);
     } catch (err) {
       console.log(err);
     }
@@ -66,10 +63,11 @@ const MyBucket: React.FC = () => {
         ) : (
           itemsdata.map((item) => (
             <MyBucketItem
-              artistName={item.feed.artistName}
+              artistName={item.artistName}
               name={item.title}
               price={item.price}
               imgUrl={item.imgUrl}
+              id={item.id}
             />
           ))
         )}

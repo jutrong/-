@@ -3,6 +3,7 @@ import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
 import MyFollowerItem from "../../components/MyPage/MyFollowerItem";
 import * as S from "./style/MyFollow.style";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { useParams } from "react-router-dom";
 
 type MyFollowerAndFollowingType = {
   id: number;
@@ -12,6 +13,7 @@ type MyFollowerAndFollowingType = {
 };
 
 const MyFollower: React.FC = () => {
+  let { userId } = useParams() as { userId: any };
   const axiosPrivate = useAxiosPrivate();
   const [followerData, setFollowerData] = useState<
     MyFollowerAndFollowingType[]
@@ -23,7 +25,7 @@ const MyFollower: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axiosPrivate.get(`/followers/2`); //유저 아이디 받아서 적기
+      const response = await axiosPrivate.get(`/followers/${userId}`); //유저 아이디 받아서 적기
       setFollowerData(response.data.data);
     } catch (err) {
       console.log(err);

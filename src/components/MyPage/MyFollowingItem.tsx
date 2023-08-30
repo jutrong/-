@@ -9,7 +9,7 @@ type MyFollowerAndFollowingType = {
   isFollowing: boolean;
 };
 
-const MyFollowItem: React.FC<MyFollowerAndFollowingType> = ({
+const MyFollowingItem: React.FC<MyFollowerAndFollowingType> = ({
   id,
   nickName,
   image,
@@ -22,7 +22,7 @@ const MyFollowItem: React.FC<MyFollowerAndFollowingType> = ({
     setFollowValue(false);
 
     try {
-      const response = await axiosPrivate.put(`/follows/${id}`);
+      const response = await axiosPrivate.put(`/following/${id}`);
     } catch (err) {
       console.log(err);
     }
@@ -34,11 +34,11 @@ const MyFollowItem: React.FC<MyFollowerAndFollowingType> = ({
       {<S.FollowName>{nickName}</S.FollowName>}
       {isFollowing && (
         <S.FollowBTN state={followValue} onClick={clickFollowBTN}>
-          팔로잉
+          {followValue ? "팔로잉" : "팔로우"}
         </S.FollowBTN>
       )}
     </S.Wrap>
   );
 };
 
-export default MyFollowItem;
+export default MyFollowingItem;

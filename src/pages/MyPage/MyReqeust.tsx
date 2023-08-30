@@ -44,11 +44,11 @@ const MyReqeust: React.FC = () => {
       // );
       // setBookMarkData(responsebookmark.data.data);
       //완료된 의뢰
-      // const responseclear = await axiosPrivate.get(
-      //   `/sonminsu-requests??done=true`
-      // );
-      // setClearData(responseclear.data.data);
-      // console.log(responseclear.data.data);
+      const responseclear = await axiosPrivate.get(
+        `/sonminsu-requests?done=true`
+      );
+      setClearData(responseclear.data.data);
+      console.log(responseclear.data.data);
     } catch (err) {
       console.log(err);
     }
@@ -95,16 +95,16 @@ const MyReqeust: React.FC = () => {
                 mainimg={request.image}
               />
             ))}
-          {/* {bookmarkMenu && bookmarkdata.map((request) => <MyRequestItem />)}
+          {/* {bookmarkMenu && bookmarkdata.map((request) => <MyRequestItem />)} */}
           {clearMenu &&
             cleardata.map((request) => (
               <MyRequestItem
                 title={request.title}
                 userName={request.user.nickName}
                 date={request.createdAt}
-                img={request.image}
+                mainimg={request.image}
               />
-            ))} */}
+            ))}
         </S.RequestList>
       </S.Wrap>
     </>

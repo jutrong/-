@@ -22,7 +22,7 @@ const MyFollowerItem: React.FC<MyFollowerAndFollowingType> = ({
     setFollowValue(false);
 
     try {
-      const response = await axiosPrivate.put(`/follows/${id}`);
+      const response = await axiosPrivate.put(`/following/${id}`);
     } catch (err) {
       console.log(err);
     }
@@ -32,7 +32,7 @@ const MyFollowerItem: React.FC<MyFollowerAndFollowingType> = ({
     <S.Wrap>
       <S.FollowerImg src={image} />
       <S.FollowerName>{nickName}</S.FollowerName>
-      {!isFollowing && (
+      {!isFollowing && followValue && (
         <S.FollowerBTN state={followValue} onClick={clickFollowBTN}>
           팔로우
         </S.FollowerBTN>

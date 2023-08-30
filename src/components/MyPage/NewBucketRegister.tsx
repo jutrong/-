@@ -5,9 +5,10 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
 type ModalProps = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  id: number;
 };
 
-const NewBucketRegister: React.FC<ModalProps> = ({ setModalOpen }) => {
+const NewBucketRegister: React.FC<ModalProps> = ({ setModalOpen, id }) => {
   const axiosPrivate = useAxiosPrivate();
 
   const [bucketValue, setBucketValue] = useState("");
@@ -39,7 +40,7 @@ const NewBucketRegister: React.FC<ModalProps> = ({ setModalOpen }) => {
       const response = await axiosPrivate.post(`/buckets`, {
         bucketName: bucketValue,
       });
-      window.location.replace(`/mypage`);
+      window.location.replace(`/mypage/${id}`);
     } catch (err) {
       console.log(err);
     }

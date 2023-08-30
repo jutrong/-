@@ -1,5 +1,5 @@
 import MyBucket from "../pages/MyPage/MyBucket";
-import MyFollow from "../pages/MyPage/MyFollow";
+import MyFollowing from "../pages/MyPage/MyFollowing";
 import MyFollower from "../pages/MyPage/MyFollower";
 import MyPage from "../pages/MyPage/MyPage";
 import MyPageRoot from "../pages/MyPage/MyPageRoot";
@@ -10,11 +10,11 @@ export const MyPageRouter = {
   path: "/mypage",
   element: <MyPageRoot />, //마이페이지 컴포넌트
   children: [
-    { index: true, element: <MyPage /> },
-    { path: "/mypage/bucket/:bucketId", element: <MyBucket /> },
+    { path: "/mypage/:userId", element: <MyPage /> },
+    { path: "/mypage/:userId/bucket/:bucketId", element: <MyBucket /> },
     { path: "/mypage/request", element: <MyReqeust /> },
-    { path: "/mypage/follow", element: <MyFollow /> },
-    { path: "/mypage/follower", element: <MyFollower /> },
-    { path: "/mypage/profile", element: <MyProfile /> },
+    { path: "/mypage/following/:userId", element: <MyFollowing /> },
+    { path: "/mypage/follower/:userId", element: <MyFollower /> },
+    { path: "/mypage/profile/:userId", element: <MyProfile /> },
   ],
 };

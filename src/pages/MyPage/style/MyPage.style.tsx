@@ -10,7 +10,6 @@ export const Img = styled.img`
   width: 60px;
   height: 60px;
   border-radius: 60px;
-  background-color: gray;
   margin-right: 15px;
 `;
 export const Introduce = styled.div`
@@ -39,6 +38,26 @@ export const ProfileButton = styled.button`
   text-align: center;
   font-size: 14px;
   font-family: "Pretendard-Bold";
+`;
+export const FollowingButton = styled.button<{ state: boolean }>`
+  width: 103px;
+  height: 30px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Pretendard-Bold";
+  ${(props) => (props.state ? `background: #ebeef2;` : `background: #208df1;`)};
+  ${(props) => (props.state ? `color: #83839f;` : `color: #fff;`)};
+`;
+export const FollowButton = styled.button<{ state: boolean }>`
+  width: 103px;
+  height: 30px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Pretendard-Bold";
+  ${(props) => (props.state ? `background: #ebeef2;` : `background: #208df1;`)};
+  ${(props) => (props.state ? `color: #83839f;` : `color: #fff;`)};
 `;
 export const MyPageInfo = styled.div`
   width: 358px;
