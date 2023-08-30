@@ -25,7 +25,7 @@ const MyFollower: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axiosPrivate.get(`/followers/${userId}`); //유저 아이디 받아서 적기
+      const response = await axiosPrivate.get(`/followers/${userId}`);
       setFollowerData(response.data.data);
     } catch (err) {
       console.log(err);

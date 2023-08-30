@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as S from "./style/MyPage.style";
 import add from "../../assets/images/svg/ic-plus.svg";
 import NewBucketRegister from "../../components/MyPage/NewBucketRegister";
@@ -15,6 +15,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import MyBucketList from "../../components/MyPage/MyBucketList";
 import MypageMenuModal from "../../components/MyPage/MypageMenuModal";
+import { useSelector } from "react-redux";
 
 type UserData = {
   id: number;
@@ -42,9 +43,11 @@ const MyPage: React.FC = () => {
   let { userId } = useParams() as { userId: any };
   const axiosPrivate = useAxiosPrivate();
   const navigation = useNavigate();
+  const token = useSelector(({ auth }) => auth.accessToken);
 
   //get 데이터
   const [userdata, setUserData] = useState<UserData>();
+  const [otherdata, setOtherData] = useState<UserData>();
   const [followingdata, setFollowingData] = useState();
   const [bucketdata, setBucketData] = useState<BucketData[]>([]);
   const [profileNumdata, setProfileNumData] = useState<ProfileNumData>();
@@ -59,23 +62,29 @@ const MyPage: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [token]);
 
   const fetchData = async () => {
     try {
-      //유저 프로필
-      const responseuser = await axiosPrivate.get(`/profile`);
-      setUserData(responseuser.data.data);
-      //팔로잉
-      const responsefollowing = await axiosPrivate.get(
-        `/isfollowing/${userId}`
-      );
-      setFollowingData(responsefollowing.data.data);
+      if (token) {
+        // //유저 프로필
+        const responseuser = await axiosPrivate.get(`/profile`);
+        setUserData(responseuser.data.data);
+        //팔로잉
+        const responsefollowing = await axiosPrivate.get(
+          `/isfollowing/${userId}`
+        );
+        setFollowingData(responsefollowing.data.data);
+      }
+      //타인 프로필
+      const responseother = await axios.get(`users/profile/${userId}`);
+      setOtherData(responseother.data.data);
+
       //팔로우 팔로워 수
       const responsprofilenum = await axios.get(`/fesfosfos/${userId}`);
       setProfileNumData(responsprofilenum.data.data);
       //bucket
-      const responsebucket = await axiosPrivate.get(`/buckets`);
+      const responsebucket = await axios.get(`/buckets/${userId}`);
       setBucketData(responsebucket.data.data);
       //feed
       const responsefeed = await axios.get(`/feeds/users/${userId}`);
@@ -86,6 +95,9 @@ const MyPage: React.FC = () => {
   };
 
   const clickFollowToggle = async () => {
+    if (!token) {
+      navigation(`/login`);
+    }
     setFollowValue((prev) => !prev);
 
     try {
@@ -97,27 +109,40 @@ const MyPage: React.FC = () => {
 
   return (
     <>
-      <HeaderBar
-        BackButton={false}
-        color="#fff"
-        items={[
-          <Link to="/">
-            <Icon src={edit} />
-          </Link>,
-          <Icon
-            src={menu}
-            onClick={() => {
-              setMenuModalValue(true);
-            }}
-          />,
-        ]}
-      />
+      {userdata?.id == userId ? (
+        <HeaderBar
+          BackButton={false}
+          color="#fff"
+          items={[
+            <Icon
+              src={menu}
+              onClick={() => {
+                setMenuModalValue(true);
+              }}
+            />,
+          ]}
+        />
+      ) : (
+        <HeaderBar BackButton={false} color="#fff" />
+      )}
       <S.UserInfo>
-        <S.Img src={userdata?.image} />
-        <S.Introduce>
-          <S.UserName>{userdata?.nickName}</S.UserName>
-          <S.UserDesc>{userdata?.introduction}</S.UserDesc>
-        </S.Introduce>
+        {userdata?.id == userId ? (
+          <>
+            <S.Img src={userdata?.image} />
+            <S.Introduce>
+              <S.UserName>{userdata?.nickName}</S.UserName>
+              <S.UserDesc>{userdata?.introduction}</S.UserDesc>
+            </S.Introduce>
+          </>
+        ) : (
+          <>
+            <S.Img src={otherdata?.image} />
+            <S.Introduce>
+              <S.UserName>{otherdata?.nickName}</S.UserName>
+              <S.UserDesc>{otherdata?.introduction}</S.UserDesc>
+            </S.Introduce>
+          </>
+        )}
         {userdata?.id == userId ? (
           <S.ProfileButton
             onClick={() => {
@@ -143,7 +168,10 @@ const MyPage: React.FC = () => {
         </S.FeedInfo>
         <S.FollowerInfo
           onClick={() => {
-            navigation(`/mypage/follower/${userId}`);
+            if (token) {
+              navigation(`/mypage/follower/${userId}`);
+            }
+            return;
           }}
         >
           <S.FollowerTitle>팔로워</S.FollowerTitle>
@@ -151,7 +179,10 @@ const MyPage: React.FC = () => {
         </S.FollowerInfo>
         <S.FollowInfo
           onClick={() => {
-            navigation(`/mypage/following/${userId}`);
+            if (token) {
+              navigation(`/mypage/following/${userId}`);
+            }
+            return;
           }}
         >
           <S.FollowTitle>팔로잉</S.FollowTitle>
@@ -159,14 +190,18 @@ const MyPage: React.FC = () => {
         </S.FollowInfo>
       </S.MyPageInfo>
       <S.Bucket>
-        <S.BucketAddBox
-          onClick={() => {
-            setBucketModalValue(true);
-          }}
-        >
-          <S.AddIcon src={add} />
-          <S.BucketLabel>새 버킷 추가</S.BucketLabel>
-        </S.BucketAddBox>
+        {userdata?.id == userId ? (
+          <S.BucketAddBox
+            onClick={() => {
+              setBucketModalValue(true);
+            }}
+          >
+            <S.AddIcon src={add} />
+            <S.BucketLabel>새 버킷 추가</S.BucketLabel>
+          </S.BucketAddBox>
+        ) : (
+          ""
+        )}
         {bucketdata &&
           bucketdata.map((bucket) => (
             <MyBucketList
@@ -175,6 +210,7 @@ const MyPage: React.FC = () => {
               bucketName={bucket.bucketName}
               id={bucket.id}
               userid={userId}
+              state={userdata?.id == userId}
             />
           ))}
       </S.Bucket>

@@ -42,7 +42,9 @@ const MyProfile: React.FC = () => {
       //유저 프로필
       const responseuser = await axiosPrivate.get(`/profile`);
       setUserData(responseuser.data.data);
+      setTitleValue(responseuser.data.data.nickName);
       setTitleCount(responseuser.data.data.nickName.length);
+      setDescValue(responseuser.data.data.introduction);
       setDescCount(responseuser.data.data.introduction.length);
     } catch (err) {
       console.log(err);

@@ -93,6 +93,8 @@ const MyReqeust: React.FC = () => {
                 userName={request.user.nickName}
                 date={request.createdAt}
                 mainimg={request.image}
+                id={request.id}
+                userid={request.user.id}
               />
             ))}
           {/* {bookmarkMenu && bookmarkdata.map((request) => <MyRequestItem />)} */}
@@ -103,6 +105,8 @@ const MyReqeust: React.FC = () => {
                 userName={request.user.nickName}
                 date={request.createdAt}
                 mainimg={request.image}
+                id={request.id}
+                userid={request.user.id}
               />
             ))}
         </S.RequestList>

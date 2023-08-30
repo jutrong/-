@@ -4,6 +4,7 @@ import bookmarkon from "../../assets/images/svg/ic-bookmark.svg";
 import bookmarkoff from "../../assets/images/svg/ic-bookmark-off.svg";
 import { useParams } from "react-router-dom";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { useNavigate } from "react-router-dom";
 
 type ItemType = {
   id: number;
@@ -22,6 +23,7 @@ const MyBucketItem: React.FC<ItemType> = ({
 }) => {
   const axiosPrivate = useAxiosPrivate();
   let { bucketId } = useParams();
+  const navigation = useNavigate();
 
   const [bookmarkValue, setBookMarkValue] = useState(true);
 
@@ -39,7 +41,12 @@ const MyBucketItem: React.FC<ItemType> = ({
 
   return (
     <S.Wrap>
-      <S.ItemImg src={imgUrl} />
+      <S.ItemImg
+        src={imgUrl}
+        onClick={() => {
+          navigation(`/minsooItem/details/${id}`);
+        }}
+      />
       <S.Artist width={artistName.length * 11}>{artistName}</S.Artist>
       <S.Box>
         <S.ItemName>{name}</S.ItemName>
