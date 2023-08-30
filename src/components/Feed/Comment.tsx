@@ -22,12 +22,14 @@ type FeedCommentProps = {
   showModal: (commentId: number) => void;
   comments: CommentType[];
   feedId: number;
+  fetchFeedData: () => Promise<void>;
 };
 
 const Comment: React.FC<FeedCommentProps> = ({
   comments,
   showModal,
   feedId,
+  fetchFeedData,
 }) => {
   const axiosPrivate = useAxiosPrivate();
   const [commentInput, setCommentInput] = useState<string>("");
@@ -72,6 +74,7 @@ const Comment: React.FC<FeedCommentProps> = ({
           onClick={(e) => {
             e.preventDefault();
             submitComments(feedId);
+            fetchFeedData();
           }}
         />
       </S.CommentInput>

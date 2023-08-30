@@ -5,8 +5,6 @@ import "swiper/css";
 import Link from "../../assets/images/svg/ic-link.svg";
 import closeBtn from "../../assets/images/svg/x.svg";
 import * as S from "./style/FeedWriteLink.style";
-import clothes from "../../assets/images/png/clothes.png";
-import pants from "../../assets/images/png/pants.png";
 
 type FeedWriteProps = {
   $updatePage: boolean;
@@ -55,7 +53,6 @@ const FeedWriteLink: React.FC<FeedWriteProps> = ({
                   {item.price}
                   <S.PriceWon>원</S.PriceWon>
                 </S.LinkItemPrice>
-                {$updatePage ? null : <S.LinkCloseBtn src={closeBtn} />}
               </S.LinkItem>
             </SwiperSlide>
           ))}

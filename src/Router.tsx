@@ -20,6 +20,7 @@ import {
   MyFandomRouter,
   LoginRouter,
   InitInfoRouter,
+  FeedDetailRouter,
 } from "./Routes";
 import Requests from "./pages/Request/Requests";
 import Missing from "./pages/Missing";
@@ -62,6 +63,7 @@ const Router = createBrowserRouter([
   MyFandomRouter,
   LoginRouter,
   InitInfoRouter,
+  FeedDetailRouter,
 ]);
 
 export default Router;

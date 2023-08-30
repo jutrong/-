@@ -3,16 +3,19 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import arrow from "../../assets/images/svg/ic-arrow-left.svg";
 import check from "../../assets/images/svg/icon-check.svg";
+import allcheck from "../../assets/images/svg/ic-check.svg";
 import * as S from "./style/FeedWriteHeader.style";
 import { type } from "os";
 
 type FeedWriteProps = {
   $updatePage: boolean;
-  handleSubmitFeed: () => void;
+  handleHeaderSubmit: () => void;
+  isFormValid: boolean;
 };
 const FeedWriteHeader: React.FC<FeedWriteProps> = ({
   $updatePage,
-  handleSubmitFeed,
+  handleHeaderSubmit,
+  isFormValid,
 }) => {
   const navigation = useNavigate();
 
@@ -29,7 +32,10 @@ const FeedWriteHeader: React.FC<FeedWriteProps> = ({
       ) : (
         <S.FeedHeaderText>새 피드 작성</S.FeedHeaderText>
       )}
-      <S.FeedHeaderCheck src={check} onClick={handleSubmitFeed} />
+      <S.FeedHeaderCheck
+        src={isFormValid ? allcheck : check}
+        onClick={handleHeaderSubmit}
+      />
     </S.NewFeedHeader>
   );
 };

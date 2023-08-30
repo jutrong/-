@@ -22,7 +22,6 @@ type CommentItemProps = {
 };
 
 const CommentItem: React.FC<CommentItemProps> = ({ comment, showModal }) => {
-  const axiosPrivate = useAxiosPrivate();
   const [openedModalId, setOpenedModalId] = useState<number | null>(null);
   const modalRef = useRef<HTMLDivElement | null>(null);
 
@@ -38,20 +37,7 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment, showModal }) => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
-
-  // const handleDelete = async (feedId: number, commentId: number) => {
-  //   // try {
-  //   //   await axios.delete(
-  //   //     `http://localhost:5000/feed/${feedId}/comments/${commentId}`
-  //   //   );
-  //   //   alert("댓글이 삭제되었습니다.");
-  //   //   setOpenedModalId(null);
-  //   // } catch (error) {
-  //   //   console.error(error);
-  //   //   alert("댓글 삭제에 실패했습니다. 다시 시도해주세요.");
-  //   // }
-  // };
+  }, [comment]);
 
   return (
     <>

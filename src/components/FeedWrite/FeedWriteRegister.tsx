@@ -88,11 +88,7 @@ const FeedWriteRegister: React.FC<RegisterModalProps> = ({
     if (urlItem.length === 0) {
       return;
     }
-
     setClick(false);
-
-    console.log(urlItem.map((item) => item.id));
-    console.log("urlItem", urlItem);
   };
 
   return (
