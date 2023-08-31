@@ -4,6 +4,7 @@ import { styled } from "styled-components";
 export const FooterNavBarWrapper = styled.div`
   width: 100%;
   height: 83px;
+  max-width: 450px;
 
   border-top: 1px solid #a5a8b8;
   border-top-left-radius: 10px;

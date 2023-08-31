@@ -63,7 +63,7 @@ const IconWithText = ({ text, pathname, onClick }: IconWithTextProps) => {
       break;
 
     case "마이페이지":
-      if (pathname.includes("myPage")) {
+      if (pathname.includes("mypage")) {
         $iconUrl = iconMypage;
         $active = true;
       } else {
