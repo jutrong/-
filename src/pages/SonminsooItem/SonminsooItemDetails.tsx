@@ -77,6 +77,7 @@ const SonminsooItemDetails = () => {
                       console.log(res);
 
                       setModalView(false);
+                      window.location.reload();
                     })
                     .catch((err) => {
                       console.log(err, "bucket item popErr");

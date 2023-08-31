@@ -59,6 +59,7 @@ const BucketListModal: React.FC<ModalProps> = ({
               );
               console.log(res);
               setModalOpen(false);
+              window.location.reload();
             } catch (e) {
               console.log(e, "err");
             }

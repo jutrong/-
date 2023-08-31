@@ -2,9 +2,11 @@ import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
 import * as S from "./style/SettingList.style";
 import axios from "../../api/axios";
 import { useNavigate, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setToken } from "../../redux/config/rootReducer";
 const SettingList = () => {
   const navigation = useNavigate();
-
+  const dispatch = useDispatch();
   return (
     <>
       <HeaderBar BackButton={true} title={"설정"} />
@@ -24,7 +26,8 @@ const SettingList = () => {
               .delete(`/auth/sign-out`)
               .then((res) => {
                 console.log(res);
-                navigation("/home");
+                dispatch(setToken(""));
+                navigation("/login");
               })
               .catch((err) => {
                 console.log(err);

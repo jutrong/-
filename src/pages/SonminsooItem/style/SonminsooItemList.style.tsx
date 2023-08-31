@@ -17,6 +17,7 @@ export const LinkRequestList = styled(Link)`
   background-size: cover;
   align-items: center;
   justify-content: space-between;
+  border-radius: 8px;
 `;
 export const SonminsooItemListContainer = styled.div`
   width: 358px;
