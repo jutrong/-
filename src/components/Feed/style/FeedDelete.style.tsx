@@ -12,8 +12,9 @@ export const slideUp = keyframes`
 export const Overlay = styled.div`
   position: fixed;
   bottom: 0;
-  left: 0;
+  max-width: 450px;
   background: rgba(0, 0, 0, 0.8);
+  margin: 0 auto;
   width: 100%;
   height: 100%;
   z-index: 9999;
