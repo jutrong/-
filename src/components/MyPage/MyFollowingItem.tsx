@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./style/MyFollowItem.style";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { useNavigate } from "react-router-dom";
 
 type MyFollowerAndFollowingType = {
   id: number;
@@ -15,11 +16,12 @@ const MyFollowingItem: React.FC<MyFollowerAndFollowingType> = ({
   image,
   isFollowing,
 }) => {
+  const navigation = useNavigate();
   const axiosPrivate = useAxiosPrivate();
   const [followValue, setFollowValue] = useState(true);
 
   const clickFollowBTN = async () => {
-    setFollowValue(false);
+    setFollowValue((prev) => !prev);
 
     try {
       const response = await axiosPrivate.put(`/following/${id}`);
@@ -30,7 +32,12 @@ const MyFollowingItem: React.FC<MyFollowerAndFollowingType> = ({
 
   return (
     <S.Wrap>
-      <S.FollowImg src={image} />
+      <S.FollowImg
+        src={image}
+        onClick={() => {
+          navigation(`/mypage/${id}`);
+        }}
+      />
       {<S.FollowName>{nickName}</S.FollowName>}
       {isFollowing && (
         <S.FollowBTN state={followValue} onClick={clickFollowBTN}>

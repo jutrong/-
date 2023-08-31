@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import * as S from "./style/MyFollowerItem.style";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { useNavigate } from "react-router-dom";
 
 type MyFollowerAndFollowingType = {
   id: number;
   nickName: string;
   image: string;
   isFollowing: boolean;
+  isMe: boolean;
 };
 
 const MyFollowerItem: React.FC<MyFollowerAndFollowingType> = ({
@@ -14,7 +16,9 @@ const MyFollowerItem: React.FC<MyFollowerAndFollowingType> = ({
   nickName,
   image,
   isFollowing,
+  isMe,
 }) => {
+  const navigation = useNavigate();
   const axiosPrivate = useAxiosPrivate();
   const [followValue, setFollowValue] = useState(true);
 
@@ -28,11 +32,18 @@ const MyFollowerItem: React.FC<MyFollowerAndFollowingType> = ({
     }
   };
 
+  console.log(isMe);
+
   return (
     <S.Wrap>
-      <S.FollowerImg src={image} />
+      <S.FollowerImg
+        src={image}
+        onClick={() => {
+          navigation(`/mypage/${id}`);
+        }}
+      />
       <S.FollowerName>{nickName}</S.FollowerName>
-      {!isFollowing && followValue && (
+      {!isFollowing && followValue && isMe && (
         <S.FollowerBTN state={followValue} onClick={clickFollowBTN}>
           팔로우
         </S.FollowerBTN>

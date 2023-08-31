@@ -3,6 +3,7 @@ import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
 import MyRequestItem from "../../components/MyPage/MyRequestItem";
 import * as S from "./style/MyRequest.style";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { useSelector } from "react-redux";
 
 type MyRequestType = {
   image: string;
@@ -17,6 +18,7 @@ type MyRequestType = {
 
 const MyReqeust: React.FC = () => {
   const axiosPrivate = useAxiosPrivate();
+  const token = useSelector(({ auth }) => auth.accessToken);
 
   //메뉴 상태
   const [myMenu, setMyMenu] = useState(true);
@@ -25,12 +27,12 @@ const MyReqeust: React.FC = () => {
 
   //메뉴 상태에 따른 데이터
   const [mydata, setMyData] = useState<MyRequestType[]>([]);
-  const [bookmarkdata, setBookMarkData] = useState([]);
+  const [bookmarkdata, setBookMarkData] = useState<MyRequestType[]>([]);
   const [cleardata, setClearData] = useState<MyRequestType[]>([]);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [token]);
 
   const fetchData = async () => {
     try {
@@ -39,10 +41,11 @@ const MyReqeust: React.FC = () => {
       setMyData(responsemy.data.data);
       console.log(responsemy.data.data);
       //찜한 의뢰
-      // const responsebookmark = await axiosPrivate.get(
-      //   `/sonminsu-requests/bookmarks`
-      // );
-      // setBookMarkData(responsebookmark.data.data);
+      const responsebookmark = await axiosPrivate.get(
+        `/sonminsu-requests/bookmarks`
+      );
+      setBookMarkData(responsebookmark.data.data);
+      console.log(responsebookmark.data.data);
       //완료된 의뢰
       const responseclear = await axiosPrivate.get(
         `/sonminsu-requests?done=true`
@@ -97,7 +100,17 @@ const MyReqeust: React.FC = () => {
                 userid={request.user.id}
               />
             ))}
-          {/* {bookmarkMenu && bookmarkdata.map((request) => <MyRequestItem />)} */}
+          {bookmarkMenu &&
+            bookmarkdata.map((request) => (
+              <MyRequestItem
+                title={request.title}
+                userName={request.user.nickName}
+                date={request.createdAt}
+                mainimg={request.image}
+                id={request.id}
+                userid={request.user.id}
+              />
+            ))}
           {clearMenu &&
             cleardata.map((request) => (
               <MyRequestItem

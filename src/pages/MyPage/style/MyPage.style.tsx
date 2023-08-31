@@ -60,14 +60,13 @@ export const FollowButton = styled.button<{ state: boolean }>`
   ${(props) => (props.state ? `color: #83839f;` : `color: #fff;`)};
 `;
 export const MyPageInfo = styled.div`
-  width: 358px;
   height: 75px;
   border-radius: 8px;
   background: #f1f5fa;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
+  margin: 0 16px;
 `;
 export const FeedInfo = styled.div`
   margin: 0 auto;
@@ -86,7 +85,7 @@ export const FeedNum = styled.p`
   color: #1d1b20;
 `;
 export const FollowerInfo = styled.div`
-  width: 113px;
+  width: calc(100% / 3);
   border-left: 1px solid #ccd1d8;
   border-right: 1px solid #ccd1d8;
 `;
@@ -120,7 +119,7 @@ export const FollowNum = styled.p`
   color: #1d1b20;
 `;
 export const Bucket = styled.div`
-  width: 374px;
+  width: calc(100% - 16px);
   padding: 20px 0;
   margin-left: 16px;
   height: 140px;

@@ -43,6 +43,7 @@ const MyFollower: React.FC = () => {
               nickName={follower.nickName}
               image={follower.image}
               isFollowing={follower.isFollowing}
+              isMe={follower.id === userId}
             />
           ))}
       </S.Wrap>

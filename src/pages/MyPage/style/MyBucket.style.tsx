@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 
 export const Wrap = styled.div`
+  position: relative;
   padding: 12px 16px;
   display: grid;
   gap: 15px;
@@ -20,7 +21,10 @@ export const deleteBTN = styled.button`
 `;
 
 export const NoItems = styled.div`
-  margin-top: 140px;
+  position: absolute;
+  top: 1000%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 358px;
   height: 40%;
   display: flex;

@@ -26,7 +26,13 @@ const MypageMenuModal: React.FC<ModalProps> = ({ setModalOpen }) => {
     <>
       <S.Overlay>
         <S.ModalContainer ref={modalRef}>
-          <S.FandomMenu>마이 팬덤</S.FandomMenu>
+          <S.FandomMenu
+            onClick={() => {
+              navigation(`/myfandom`);
+            }}
+          >
+            마이 팬덤
+          </S.FandomMenu>
           <S.RequestMenu
             onClick={() => {
               navigation(`/mypage/request`);
