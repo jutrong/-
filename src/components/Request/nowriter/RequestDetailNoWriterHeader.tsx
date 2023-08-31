@@ -6,21 +6,22 @@ import pushginon from "../../../assets/images/svg/ic-pushpin-on.svg";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { RequestTitleProps } from "../../../types/request";
+import { RequestWriterTitleProps } from "../../../types/request";
 
-const RequestDetaiNoWriterlHeader: React.FC<RequestTitleProps> = ({
+const RequestDetaiNoWriterlHeader: React.FC<RequestWriterTitleProps> = ({
   title,
   username,
   date,
   id,
-  bookmarkstate,
+  setBookMarkData,
   userid,
+  bookmarkdata,
 }) => {
   const navigation = useNavigate();
   const token = useSelector(({ auth }) => auth.accessToken);
 
-  const [bookmarkdata, setBookMarkData] = useState("");
-  const [pushpinvalue, setPushPinValue] = useState(bookmarkstate);
+  //const [bookmarkdata, setBookMarkData] = useState("");
+  //const [pushpinvalue, setPushPinValue] = useState(bookmarkstate);
   const axiosPrivate = useAxiosPrivate();
 
   const clickPushPin = async () => {
@@ -28,7 +29,8 @@ const RequestDetaiNoWriterlHeader: React.FC<RequestTitleProps> = ({
       const response = await axiosPrivate.put(
         `/sonminsu-requests/${id}/bookmarks`
       );
-      setPushPinValue((prev) => !prev);
+      console.log("response", response);
+      setBookMarkData((prev) => !prev);
     } catch (err) {
       console.log(err);
     }
@@ -55,7 +57,7 @@ const RequestDetaiNoWriterlHeader: React.FC<RequestTitleProps> = ({
       {token && (
         <S.Right>
           <S.PushPin
-            src={pushpinvalue ? pushginon : pushginoff}
+            src={bookmarkdata ? pushginon : pushginoff}
             onClick={clickPushPin}
           />
         </S.Right>

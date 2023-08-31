@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const Wrap = styled.div`
-  padding: 16px;
+  width: 100%;
   height: 252px;
   border-bottom: 6px solid #e2e2e2;
   &:last-child {
@@ -10,6 +10,7 @@ export const Wrap = styled.div`
 `;
 export const ProfileBox = styled.div`
   position: relative;
+  padding: 16px;
   display: flex;
   gap: 7px;
   margin-bottom: 20px;
@@ -46,13 +47,14 @@ export const Date = styled.p`
 `;
 export const SeleteImg = styled.img`
   position: absolute;
-  top: -20px;
-  right: 0;
+  top: 10px;
+  right: 16px;
   transform: rotate(-30deg);
 `;
 export const ImgsBox = styled.div`
-  width: 374px;
+  width: 100%;
   height: 145px;
+  padding-left: 16px;
   display: flex;
   gap: 10px;
   overflow-x: auto;

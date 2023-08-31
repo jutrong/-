@@ -24,7 +24,7 @@ const RequestDetailNoWriter: React.FC = () => {
   const [requestdata, setRequestData] = useState<RequestDescType>(Object);
   const [click, setClick] = useState(false);
   const [isSeleted, setIsSeleted] = useState(true);
-  const [bookmarkdata, setBookMarkData] = useState<boolean | null>(null);
+  const [bookmarkdata, setBookMarkData] = useState<boolean>(false);
 
   useEffect(() => {
     fetchData();
@@ -40,7 +40,6 @@ const RequestDetailNoWriter: React.FC = () => {
         const responsebookmark = await axiosPrivate.get(
           `/sonminsu-requests/${requestId}`
         );
-        console.log(responsebookmark);
         setBookMarkData(responsebookmark.data.data.isBookmark);
         console.log(responsebookmark.data.data.isBookmark);
       }
@@ -58,7 +57,8 @@ const RequestDetailNoWriter: React.FC = () => {
         userid={requestdata.user?.id}
         date={requestdata.createdAt}
         id={requestdata.id}
-        bookmarkstate={bookmarkdata}
+        setBookMarkData={setBookMarkData}
+        bookmarkdata={bookmarkdata}
       />
       <RequestDetailDesc desc={requestdata.content} img={requestdata.image} />
       <S.AnswerNumber>답변 {requestdata.answers?.length}개</S.AnswerNumber>

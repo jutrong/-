@@ -52,12 +52,20 @@ export type RequestAnswerRegisterType = {
   artistName: string;
 };
 
+export type RequestWriterTitleProps = {
+  title: string;
+  username: string;
+  date: string;
+  id: number;
+  setBookMarkData: React.Dispatch<React.SetStateAction<boolean>>;
+  bookmarkdata: boolean;
+  userid?: number;
+};
 export type RequestTitleProps = {
   title: string;
   username: string;
   date: string;
   id: number;
-  bookmarkstate?: boolean | null;
   userid?: number;
 };
 
