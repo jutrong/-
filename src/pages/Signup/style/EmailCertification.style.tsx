@@ -6,17 +6,26 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 380px;
 `;
 
 export const Agreement = styled.h1`
+  width: 100%;
   font-size: 16px;
   color: #6138f8;
-  margin-bottom: 10px;
+  text-align: left;
+  margin-top: 28px;
+  margin-bottom: 12px;
+  font-family: "Pretendard-Bold";
 `;
 
 export const SubAgreement = styled.h2`
+  width: 100%;
+  text-align: left;
   font-size: 24px;
   color: #1d1b20;
+  font-family: "Pretendard-Medium";
+  line-height: 140%;
   margin-bottom: 20px;
 `;
 
@@ -36,6 +45,13 @@ export const InputEmail = styled.input`
   font-size: 16px;
   outline: none;
   box-sizing: border-box;
+  background: #f6f6f6;
+  &::placeholder {
+    text-align: left;
+    font-family: "Pretendard-Medium";
+    font-size: 16px;
+    color: #bdbdbd;
+  }
 `;
 
 // export const InputNum = styled.input`
@@ -80,9 +96,15 @@ export const EmailContainer = styled.div`
   gap: 16px;
 `;
 
+export const EmailVaildation = styled.p`
+  margin-top: -8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #fc1e6e;
+`;
+
 export const ReSend = styled.span`
   margin-left: 10px;
-  color: #007bff;
-  text-decoration: underline;
+  color: #a4a4a9;
   cursor: pointer;
 `;

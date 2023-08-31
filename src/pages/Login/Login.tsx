@@ -47,7 +47,6 @@ const Login = () => {
           id="password"
           placeholder="비밀번호를 입력해 주세요."
           value={password}
-          pattern="^[a-zA-Z0-9]{8,16}$"
           required
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setPassword(e.target.value)

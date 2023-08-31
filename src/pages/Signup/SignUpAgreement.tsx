@@ -9,7 +9,9 @@ const SignUpAgreement = ({ onClick }: { onClick: any }) => {
           당장 손민수 <br /> 개인정보 수집 이용 동의
         </S.AgreementHeader>
         <S.AgreementText>
-          <S.Paragraph>당장 손민수 개인정보 수집 이용 동의</S.Paragraph>
+          <S.Paragraphtitle>
+            당장 손민수 개인정보 수집 이용 동의
+          </S.Paragraphtitle>
           <S.Paragraph>
             개인정보보호법에 따라 당장 손민수에 회원가입 신청하시는 분께
             수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인 정보의

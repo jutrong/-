@@ -37,7 +37,7 @@ export const StyledInput = styled.input.attrs({
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #e8e8e8;
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: #f6f6f6;
   width: 100%;
   height: 50px;
@@ -48,6 +48,12 @@ export const StyledInput = styled.input.attrs({
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  &::placeholder {
+    text-align: left;
+    font-family: "Pretendard-Medium";
+    font-size: 16px;
+    color: #bdbdbd;
+  }
 `;
 
 export const StyledButton = styled.button`

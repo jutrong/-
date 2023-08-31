@@ -49,11 +49,18 @@ export const InputText = styled.input.attrs({ type: "text" })`
   border: 1px solid #e8e8e8;
   box-sizing: border-box;
   border-radius: 8px;
+  &::placeholder {
+    text-align: left;
+    font-family: "Pretendard-Medium";
+    font-size: 16px;
+    color: #bdbdbd;
+  }
 `;
 export const Warning = styled.div`
   width: 100%;
   height: 20px;
   text-align: left;
   color: red;
+  font-size: 14px;
   padding: 0 28px;
 `;

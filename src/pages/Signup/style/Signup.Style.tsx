@@ -7,5 +7,4 @@ export const Container = styled.div`
   align-items: center;
   font-family: "Arial", sans-serif;
   min-height: 722px;
-  justify-content: space-between;
 `;

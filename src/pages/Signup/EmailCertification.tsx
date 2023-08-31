@@ -4,10 +4,12 @@ import * as S from "./style/EmailCertification.style";
 import PageHeader from "./PageHeader";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { Button } from "../../elements/Button";
+import SignUpHeader2 from "../../components/SignUp/SignUpHeader2";
 
 const EmailCertification = () => {
   const [authValid, setAuthValid] = useState<string>("");
   const [sendValid, setSendValid] = useState<boolean>(false);
+  const [emailValid, setEmailValid] = useState<boolean>(true);
   const [isAuthValid, setIsAuthValid] = useState<boolean>(false);
   const navigation = useNavigate();
   const { email, setEmail, setEmailCode } = useOutletContext<{
@@ -16,20 +18,37 @@ const EmailCertification = () => {
     setEmail: (value: string) => void;
   }>();
 
-  const handleEmailAuthClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleEmailAuthClick = async (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
     e.preventDefault();
-    setSendValid(true);
-    axios
-      .get(`/auth/verification-code?email=${email}`)
-      .then((res) => {
-        console.log("email res", res);
-      })
-      .catch((e) => console.log(e));
+    if (
+      /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/.test(
+        email
+      ) === false
+    ) {
+      return setEmailValid(false);
+    }
+    setEmailValid(true);
+
+    //setSendValid(true);
+    try {
+      const reponse = await axios.get(`/auth/verification-code?email=${email}`);
+    } catch (err) {
+      console.log(err);
+    }
+    // axios
+    //   .get(`/auth/verification-code?email=${email}`)
+    //   .then((res) => {
+    //     console.log("email res", res);
+    //   })
+    //   .catch((e) => console.log(e));
   };
   const handleEmailAuthVaildClick = (
     e: React.MouseEvent<HTMLButtonElement>
   ) => {
     e.preventDefault();
+
     axios
       .post(`auth/verification-code`, {
         email: email,
@@ -46,11 +65,10 @@ const EmailCertification = () => {
   return (
     <>
       <S.Container>
-        <PageHeader totalPages={3} currentPage={2} />
-
+        <SignUpHeader2 />
         <S.Agreement>본인인증하기</S.Agreement>
         <S.SubAgreement>
-          정의로운 손민수 이용을 위해
+          당장 손민수 이용을 위해
           <br /> 이메일 인증을 해주세요
         </S.SubAgreement>
         <S.Form>
@@ -66,12 +84,13 @@ const EmailCertification = () => {
                 console.log(email);
               }}
             />
-            {sendValid || (
-              <S.SendButton onClick={handleEmailAuthClick}>
-                인증번호발송
-              </S.SendButton>
-            )}
+            <S.SendButton onClick={handleEmailAuthClick}>
+              인증번호발송
+            </S.SendButton>
           </S.EmailContainer>
+          {!emailValid && (
+            <S.EmailVaildation>이메일 형식에 맞지 않습니다.</S.EmailVaildation>
+          )}
           <S.EmailContainer>
             <S.InputEmail
               type="text"

@@ -6,25 +6,32 @@ export const Container = styled.div`
   height: 100%;
   padding: 20px;
   font-family: "Arial", sans-serif;
+  margin-bottom: 380px;
 `;
 
 export const Agreement = styled.h1`
   font-size: 16px;
   color: #6138f8;
+  margin-top: 31px;
   margin-bottom: 12px;
+  font-family: "Pretendard-Bold";
 `;
 
 export const SubAgreement = styled.h2`
   font-size: 24px;
   color: #1d1b20;
   margin-bottom: 37px;
+  font-family: "Pretendard-Medium";
+  line-height: 140%;
 `;
 
 export const CheckboxLabel = styled.span`
-  margin-left: 10px;
   font-size: 16px;
-  color: #666;
+  color: #1d1b20;
+  font-family: "Pretendard-Bold";
+  margin: 0 auto 0 10px;
 `;
+export const Icon = styled.img``;
 
 export const Checkbox = styled.input.attrs({ type: "checkbox" })`
   cursor: pointer;
