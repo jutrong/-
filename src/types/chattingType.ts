@@ -3,7 +3,10 @@ export type Fandom = {
     fandomName: string;
     memberLength: number;
     image: string;
-    lastCreateTime: string;
+    lastMessage: [{
+        content: string;
+        createdAt: string;
+    }]
 }
 
 export type Chat = {
@@ -12,7 +15,7 @@ export type Chat = {
     startSlideIndex?: number;
 }
 
-export type ChatMember = {
+export type ChatMemberType = {
     $ban: boolean;
     userName: string;
 }

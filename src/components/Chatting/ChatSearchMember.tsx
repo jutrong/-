@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import type {ChatMember} from '../../types/chattingType';
+import type {ChatMemberType} from '../../types/chattingType';
 import ChatUserInfo from './ChatUserInfo';
 import iconArrow from '../../assets/images/svg/ic-arrow-left.svg';
 import * as S from './style/ChatSearchMember.style';
@@ -10,7 +10,7 @@ type SearchMember = {
     setOpenSearch: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const memberMock:ChatMember[] = [
+const memberMock:ChatMemberType[] = [
     {
         $ban: false,
         userName: "아마추어 손민수1",

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
+import flowerBg from '../../../assets/images/png/flowerbg.png';
 
 
 export const ChatHeader = styled.div`
@@ -8,8 +8,8 @@ export const ChatHeader = styled.div`
     height: 50px;
     padding-left: 16px;
     padding-right: 16px;
-    background-color: white;
-
+    background: url(${flowerBg});
+    
     display: flex;
     align-items: center;
 
@@ -26,6 +26,7 @@ export const ChatListWindow = styled.div`
     height: 100%;
 
     padding: 56px 16px 80px;
+    background: url(${flowerBg});
 `;
 
 export const LinkItem = styled(Link)`

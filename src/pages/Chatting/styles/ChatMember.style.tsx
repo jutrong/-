@@ -28,12 +28,12 @@ export const MemberWindow = styled.div`
     width: 100%;
     height: 100%;
     padding: 82px 16px 0;
+    background: #fff;
 `;
 
 export const IconButton = styled.img`
     width: 24px;
     height: 24px;
 
-    border: 0;
     cursor: pointer;
 `;

@@ -5,20 +5,18 @@ import styled from 'styled-components';
 export const ChatFandomWrapper = styled.div`
     display: flex;
     align-items: center;
-    box-sizing: border-box;
 
-    width: 390px;
+    width: 100%;
     height: 70px;
 `;
 
 export const FandomImage = styled.img`
-    background-color: gray;
-
     width: 56px;
     height: 56px;
     
     margin-right: 15px;
     border-radius: 70%;
+    border: 1px solid #F6F6F6;
 `;
 
 export const ChatInfo = styled.div`

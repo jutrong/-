@@ -1,39 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './style/ChatBubble.style';
+import detailDate from '../../utils/time';
 
 
 export type ChatProps = {
-    id: number,
-    fandomId: number,
-    author: string,
-    content: string,
-    profileImage?: string,
-    readCount: number,
-    createAt: Date,
+    // id: number;
+    // fandomId: number;
+    // nickName: string;
+    // image: string;
+    // profileImage?: string;
+    author: {
+        id: number;
+        nickName: string;
+        image: string;
+    }
+    content: string;
+    readCount?: number;
+    createdAt: string;
+    $visibleProfile?: boolean;   
+    $visibleTime?: boolean;
+}
+
+const dateTime = (date: string) => {
+    // return date.slice(11, 16);
+    return date;
 }
 
 
-export const MyChat = ({id, fandomId, author, content, readCount, createAt}: ChatProps) => {
+export const MyChat = ({author, content, readCount, createdAt, $visibleTime}: ChatProps) => {
+    
     return (
         <S.MyChatWrapper>
             <S.MyChatBubble>{content}</S.MyChatBubble>
-            <S.ChatSubWrapper>
-                <S.ChatTime>10분전</S.ChatTime>
+            <S.ChatSubWrapper className={$visibleTime ? 'visible' : ''}>
+                <S.ChatTime>{dateTime(createdAt)}</S.ChatTime>
                 <S.ChatReadCount>{readCount}</S.ChatReadCount>
             </S.ChatSubWrapper>
         </S.MyChatWrapper>
     )
 }
 
-export const OtherChat = ({id, fandomId, author, content, profileImage, readCount, createAt}: ChatProps) => {
+export const OtherChat = ({author, content, readCount, createdAt, $visibleProfile, $visibleTime}: ChatProps) => {
+
     return (
         <S.ChatBubbleWrapper>
-            <S.ChatProfileImage />
+            <S.ChatProfileImage src={author?.image} className={$visibleProfile ? 'visible' : ''} />
             <S.ChatBubbleWrapped>
-                <S.ChatProfileName>{author}</S.ChatProfileName>
+                <S.ChatProfileName className={$visibleProfile ? 'visible' : ''}>{author?.nickName}</S.ChatProfileName>
                 <S.ChatBubble>{content}</S.ChatBubble>
-                <S.ChatSubWrapper>
-                    <S.ChatTime>10분전</S.ChatTime>
+                <S.ChatSubWrapper className={$visibleTime ? 'visible' : ''}>
+                    <S.ChatTime>{dateTime(createdAt)}</S.ChatTime>
                     <S.ChatReadCount>{readCount}</S.ChatReadCount>
                 </S.ChatSubWrapper>
             </S.ChatBubbleWrapped>

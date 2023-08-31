@@ -2,10 +2,11 @@ import React from 'react';
 import * as S from './style/ChatFamdom.style';
 import iconUser from '../../assets/images/svg/ic_user.svg';
 import type { Fandom } from '../../types/chattingType';
+import detailDate from '../../utils/time';
 
 
 
-const ChatFandom = ({id, fandomName, memberLength, image, lastCreateTime}: Fandom ) => {
+const ChatFandom = ({id, fandomName, memberLength, image, lastMessage}: Fandom ) => {
 
     return (
         <S.ChatFandomWrapper>
@@ -16,7 +17,7 @@ const ChatFandom = ({id, fandomName, memberLength, image, lastCreateTime}: Fando
                     <S.MemberIcon src={iconUser} />
                     <S.FandomMember>{memberLength}</S.FandomMember>       
                 </S.FandomWrapper>
-                <S.FandomActive>채팅활동<span>•</span>{lastCreateTime}</S.FandomActive>
+                <S.FandomActive>채팅활동<span>•</span>{detailDate(lastMessage[0].createdAt)}</S.FandomActive>
             </S.ChatInfo>
         </S.ChatFandomWrapper>
     )

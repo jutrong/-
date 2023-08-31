@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import flowerBg from '../../../assets/images/png/flowerbg.png';
 
 
 
@@ -8,7 +9,7 @@ export const ChatHeader = styled.div`
     height: 50px;
     padding-left: 16px;
     padding-right: 16px;
-    background-color: white;
+    background: url(${flowerBg});
 
     display: flex;
     align-items: center;
@@ -27,7 +28,7 @@ export const LinkItem = styled(Link)`
     }
 `
 
-export const ChatTitle = styled.div`
+export const ChatTitle = styled.p`
     width: 100%;
     height: 100%;
 
@@ -40,8 +41,9 @@ export const ChatTitle = styled.div`
 
 export const ChatRoomWindow = styled.div`
     width: 100%;
-    height: 100%;
     padding: 70px 16px 98px;
+    background-image: url(${flowerBg});
+    backbround-size: contain;
 `;
 
 export const IconButton = styled.img`

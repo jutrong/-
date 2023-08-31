@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { isBrowser } from 'react-device-detect';
 import iconImage from "../../assets/images/svg/ic-image.svg";
 import iconCamera from "../../assets/images/svg/ic-camera.svg";
 import * as S from './style/ChatInputBar.style';
 import WebAlertModal from './WebAlertModal';
 import AppAlertModal from './AppAlertModal';
+import { ChatProps } from './ChatBubble';
+import { Socket } from 'socket.io-client';
+import { SocketContext } from '../../App';
 
 type Props = {
     ban: boolean;
+    message: string;
+    setMessage: React.Dispatch<React.SetStateAction<string>>;
+    chatMessages: ChatProps[];
+    setChatMessages: React.Dispatch<React.SetStateAction<ChatProps[]>>;
 }
 
 type UploadImage = {
@@ -17,12 +24,11 @@ type UploadImage = {
 }
 
 
-const ChatInputBar = ({ban}:Props) => {
-
+const ChatInputBar = ({ban, message, setMessage, chatMessages, setChatMessages}:Props) => {
+    const socket = useContext<Socket | undefined>(SocketContext);
     const [imageFile, setImageFile] = useState<File[]>();
     const maxFileCount = 9;
     const [onAlert, setOnAlert] = useState<boolean>(false);
-
 
 
     const UploadFileHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,6 +50,26 @@ const ChatInputBar = ({ban}:Props) => {
             setImageFile(sendFileList);
         }
     }; 
+    
+    const messageHandler = (e:ChangeEvent<HTMLInputElement>) => {
+        setMessage(e.target.value);
+    }
+
+    const sendMessageHandler = () => {
+        const sendMessage = {
+            room: 8,
+            content: message,
+        };
+
+        if (socket) {
+            socket.emit("bias", sendMessage);
+            setMessage('');
+        }        
+    }
+
+    const sendMessageEnter = () => {
+        sendMessageHandler();
+    }
 
     
     return (
@@ -77,8 +103,16 @@ const ChatInputBar = ({ban}:Props) => {
                     <S.ChatInput 
                         placeholder={ban ? '채팅정지 상태입니다.' : '채팅을 입력해주세요'} 
                         disabled={ban} 
+                        onChange={messageHandler}
+                        onKeyDown={(e) => e.key === "Enter" ? sendMessageEnter() : null}
+                        value={message}
                     />
-                    <S.ChatInputButton disabled={ban} />
+                    <S.ChatInputButton 
+                        disabled={ban} 
+                        onClick={() => {
+                            sendMessageHandler();
+                        }}
+                    />
                 </S.ChatInputWrapper>
             </S.ChatBarWrapper>
             {onAlert ? 

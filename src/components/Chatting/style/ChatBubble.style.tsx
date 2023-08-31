@@ -5,16 +5,21 @@ import styled from 'styled-components';
 export const ChatBubbleWrapper = styled.div`
     width: 100%;
     display: flex;
-    margin-bottom: 30px;
 `;
 
 export const ChatProfileImage = styled.img`
-    background-color: gray;
+    border: 1px solid #F6F6F6;
 
     width: 40px;
     height: 40px;
     margin-right: 7px;
     border-radius: 70%;
+    opacity: 0;
+
+    &.visible {
+        opacity: 1;
+    }
+
 `;
 
 export const ChatBubbleWrapped = styled.div`
@@ -27,6 +32,11 @@ export const ChatProfileName = styled.p`
 
     font-size: 14px;
     font-weight: bold;
+    display: none;
+
+    &.visible {
+        display: block;
+    }
 `;
 
 export const ChatBubble = styled.p`
@@ -40,11 +50,17 @@ export const ChatBubble = styled.p`
 `;
 
 export const ChatSubWrapper = styled.div`
-    display: flex;
+    display: none;
+
+    &.visible {
+        display: flex;
+    }
+
 `;
 
 export const ChatTime = styled.p`
     margin-right: 7px;
+    margin-bottom: 30px;
 
     font-size: 13px;
     color: #1D1B20;
@@ -60,7 +76,6 @@ export const ChatReadCount = styled.p`
 
 export const MyChatWrapper = styled.div`
     width: 100%;
-    margin-bottom: 30px;
 
     display: flex;
     flex-direction: column;
