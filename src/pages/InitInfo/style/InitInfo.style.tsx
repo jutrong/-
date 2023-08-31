@@ -56,11 +56,11 @@ export const InputText = styled.input.attrs({ type: "text" })`
     color: #bdbdbd;
   }
 `;
-export const Warning = styled.div`
-  width: 100%;
+export const Warning = styled.p`
+  width: 358px;
   height: 20px;
   text-align: left;
   color: red;
   font-size: 14px;
-  padding: 0 28px;
+  padding: 0 16px;
 `;

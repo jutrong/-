@@ -5,17 +5,16 @@ export const Container = styled.div`
   width: 100%;
   height: 844px;
   top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
   z-index: 9999;
   background: #fff;
+  max-width: 450px;
 `;
 
 export const AgreementBox = styled.div`
-  border-radius: 8px;
   background-color: #fff;
-  max-width: 800px;
+  max-width: 450px;
 `;
 
 export const AgreementHeader = styled.h1`
@@ -42,11 +41,9 @@ export const AgreementText = styled.div`
 
 export const Paragraphtitle = styled.p`
   font-family: "Pretendard-Bold";
-  font-size: 14px;
   margin-bottom: 15px;
 `;
 export const Paragraph = styled.p`
   font-family: "Pretendard-Medium";
-  font-size: 14px;
   margin-bottom: 15px;
 `;

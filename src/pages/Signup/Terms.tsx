@@ -6,6 +6,7 @@ import SignUpAgreement from "./SignUpAgreement";
 import { Button } from "../../elements/Button";
 import arrow from "../../assets/images/svg/ic-arrow-right.svg";
 import SignUpHeader1 from "../../components/SignUp/SignUpHeader";
+import SignUpCommandment from "./SignUpCommandment";
 
 const Terms = () => {
   const [personalInfoView, setPersonalInfoView] = useState(false);
@@ -19,7 +20,7 @@ const Terms = () => {
         <SignUpHeader1 />
         <S.Agreement>이용약관 동의</S.Agreement>
         <S.SubAgreement>
-          정의로운 손민수 이용을 위해 <br /> 약관에 동의해주세요
+          당장 손민수 이용을 위해 <br /> 약관에 동의해주세요
         </S.SubAgreement>
         <S.CheckboxDiv>
           <S.Checkbox
@@ -57,7 +58,7 @@ const Terms = () => {
           <S.Icon src={arrow} />
         </S.CheckboxDiv>
         {pledgeView && (
-          <SignUpAgreement
+          <SignUpCommandment
             onClick={() => {
               setPledgeView(false);
               checkList.includes("pledge") ||

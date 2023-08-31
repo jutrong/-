@@ -21,6 +21,7 @@ const Number = styled.div<{ ative: boolean }>`
   line-height: 20px;
   color: ${(props) => (props.ative ? "#fff" : "#B0B0B0")};
   background: ${(props) => (props.ative ? "#6138F8" : "#EBEEF2")};
+  padding-top: 1px;
 `;
 const LineBlue = styled.div`
   width: 15px;
