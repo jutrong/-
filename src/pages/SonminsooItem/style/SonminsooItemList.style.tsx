@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import background from "../../../assets/images/svg/SonminsooItem/requsetButtonBackground.svg";
+import navImg from "../../../assets/images/svg/icon-chevron-right.svg";
 
 export const LinkRequestList = styled(Link)`
   display: flex;
@@ -44,4 +45,9 @@ export const SearchText = styled.input.attrs({ type: "text" })`
   border-radius: 1px;
   background-color: #f6f6f6;
   padding: 0 10px;
+`;
+
+export const NavImg = styled.img.attrs({ src: navImg })`
+  width: 24px;
+  height: 24px;
 `;

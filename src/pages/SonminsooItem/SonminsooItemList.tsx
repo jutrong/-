@@ -63,7 +63,9 @@ const SonminsooItemList = () => {
             />
             <S.LinkRequestList to="/requests">
               <span>손민수템 의뢰 리스트</span>
-              <span>&gt;</span>
+              <span>
+                <S.NavImg />
+              </span>
             </S.LinkRequestList>
           </>
         );
