@@ -11,6 +11,7 @@ import { SocketContext } from '../../App';
 
 type Props = {
     ban: boolean;
+    roomId: number;
     message: string;
     setMessage: React.Dispatch<React.SetStateAction<string>>;
     chatMessages: ChatProps[];
@@ -24,7 +25,7 @@ type UploadImage = {
 }
 
 
-const ChatInputBar = ({ban, message, setMessage, chatMessages, setChatMessages}:Props) => {
+const ChatInputBar = ({ban, roomId, message, setMessage, chatMessages, setChatMessages}:Props) => {
     const socket = useContext<Socket | undefined>(SocketContext);
     const [imageFile, setImageFile] = useState<File[]>();
     const maxFileCount = 9;
@@ -57,7 +58,7 @@ const ChatInputBar = ({ban, message, setMessage, chatMessages, setChatMessages}:
 
     const sendMessageHandler = () => {
         const sendMessage = {
-            room: 8,
+            room: roomId,
             content: message,
         };
 
