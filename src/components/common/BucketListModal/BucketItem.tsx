@@ -2,16 +2,16 @@ import * as S from "./style/BucketItem.style";
 import React from "react";
 
 type props = {
-  id: string;
-  img: string;
-  title: string;
+  id: number;
+  img?: string;
+  bucketName?: string;
   onClick: React.MouseEventHandler<HTMLElement>;
   selected: boolean;
 };
 const BucketItem: React.FC<props> = ({
   id,
   img,
-  title,
+  bucketName,
   onClick,
   selected = false,
 }) => {
@@ -19,7 +19,7 @@ const BucketItem: React.FC<props> = ({
   return (
     <S.BucketItemContainer key={id} onClick={onClick}>
       <S.BucketItemImage $url={img} selected={selected} />
-      <S.BucketItemTitle>{title}</S.BucketItemTitle>
+      <S.BucketItemTitle>{bucketName}</S.BucketItemTitle>
     </S.BucketItemContainer>
   );
 };

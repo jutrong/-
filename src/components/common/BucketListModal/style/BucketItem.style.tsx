@@ -5,7 +5,7 @@ export const BucketItemContainer = styled.div`
   width: 80px;
   margin-right: 10px;
 `;
-export const BucketItemImage = styled.div<{ $url: string; selected: boolean }>`
+export const BucketItemImage = styled.div<{ $url?: string; selected: boolean }>`
   width: 80px;
   height: 80px;
   border: 1px solid black;

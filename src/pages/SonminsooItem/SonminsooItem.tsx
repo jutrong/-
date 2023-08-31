@@ -5,14 +5,15 @@ import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
 import BucketListModal from "../../components/common/BucketListModal/BucketListModal";
 
 type bucketList = {
-  id: string;
-  img: string;
-  title: string;
+  id: number;
+  img?: string;
+  bucketName: string;
 }[];
 
 const SonminsooItem = () => {
   const [modalView, setModalView] = useState(false);
   const [bucketList, setBucketList] = useState<bucketList>([]);
+  const [selectItem, setSelectItem] = useState<number>();
 
   let bucketListData = useMemo(() => {
     return bucketList;
@@ -21,11 +22,11 @@ const SonminsooItem = () => {
   return (
     <>
       <S.SonminsooItemContainer>
-        <Outlet context={{ setModalView, setBucketList }} />
+        <Outlet context={{ setModalView, setBucketList, setSelectItem }} />
         {modalView && (
           <BucketListModal
             setModalOpen={setModalView}
-            // addClickHandler={() => {}}
+            itemId={selectItem}
             bucketList={bucketListData}
           />
         )}

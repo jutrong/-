@@ -12,21 +12,23 @@ transform: translateY(0);
 export const BucketListModalContainer = styled.div`
   width: 100%;
   height: 100%;
+  max-width: 450px;
   position: fixed;
   top: 0;
-  left: 0;
-  justify-content: center;
-  align-items: center;
+
   background: rgba(0, 0, 0, 0.5);
   z-index: 100;
+  margin: 0 auto;
 `;
 export const ModalContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
   background-color: #ffffff;
-  width: 390px;
+  width: 100%;
   height: 304px;
+  max-width: 450px;
+  margin: 0 auto;
   padding: 15px;
   bottom: 0;
   border-radius: 16px 16px 0px 0px;
@@ -45,6 +47,7 @@ export const BucketListsContainer = styled.div`
   display: flex;
   width: 100%;
   height: 116px;
+  overflow: scroll;
 `;
 export const AddBucketList = styled.button`
   width: 358px;

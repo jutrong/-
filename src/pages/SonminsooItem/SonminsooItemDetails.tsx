@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import * as S from "./style/SonminsooItemDetails.style";
 import HeaderBar from "../../components/common/HeaderBar/HeaderBar";
 import Icon from "../../elements/Icon";
@@ -10,7 +10,7 @@ import BucketListModal from "../../components/common/BucketListModal/BucketListM
 import axios from "../../api/axios";
 import { useSelector } from "react-redux";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-
+import useGetToken from "../../hooks/useGetToken";
 type bucketList = {
   id: string;
   img: string;
@@ -20,24 +20,29 @@ type bucketList = {
 type productType = {
   artistName: string;
   groupName: string;
-  id: 7;
+  id: number;
   imgUrl: string;
   originUrl: string;
   price: string;
   title: string;
+  isInMyBucket?: {
+    bucketId: number;
+  };
 };
 const SonminsooItemDetails = () => {
-  const auth = useSelector((state: any) => {
-    return state.auth.accessToken;
-  });
+  const token = useGetToken();
   const axiosPrivate = useAxiosPrivate();
-  // const api = auth ? axiosPrivate : axios;
-  const api = axios;
-
+  const api = token ? axiosPrivate : axios;
+  const { setModalView, setBucketList, setSelectItem } = useOutletContext<{
+    setModalView: React.Dispatch<React.SetStateAction<boolean>>;
+    setBucketList: React.Dispatch<React.SetStateAction<bucketList>>;
+    setSelectItem: React.Dispatch<React.SetStateAction<number>>;
+  }>();
   const { id } = useParams();
-  const [modalView, setModalView] = useState(false);
+  const navigation = useNavigate();
+
   const [productInfo, setProductInfo] = useState<productType>();
-  const [bucketList, setBucketList] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -49,29 +54,48 @@ const SonminsooItemDetails = () => {
       }
     };
     fetchData();
-  }, []);
-  const registBookMark = async () => {
-    try {
-      const { data } = await api.get("/users/buckets");
-      setModalView(() => true);
-      setBucketList(() => data.data);
-      console.log(data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  }, [token]);
+
   return (
     <S.DetailContainer>
-      {useMemo(() => {
-        return (
-          <HeaderBar
-            BackButton={true}
-            items={[
-              <Icon src={bookmark} key={"bookmark"} onClick={registBookMark} />,
-            ]}
-          />
-        );
-      }, [])}
+      <HeaderBar
+        BackButton={true}
+        items={[
+          <Icon
+            src={!!productInfo?.isInMyBucket ? activeBookmark : bookmark}
+            key={"bookmark"}
+            onClick={() => {
+              if (!token) {
+                navigation("/login");
+              }
+              !!productInfo?.isInMyBucket
+                ? axiosPrivate
+                    .put(
+                      `/sonminsu-items/${id}/buckets/${productInfo?.isInMyBucket.bucketId}`
+                    )
+                    .then((res) => {
+                      console.log(res);
+
+                      setModalView(false);
+                    })
+                    .catch((err) => {
+                      console.log(err, "bucket item popErr");
+                    })
+                : axiosPrivate
+                    .get(`/buckets`)
+                    .then(({ data }) => {
+                      console.log(data.data);
+                      setSelectItem(Number(id));
+                      setBucketList(data.data);
+                      setModalView(true);
+                    })
+                    .catch((err) => {
+                      console.log(err, "get buckets");
+                    });
+            }}
+          />,
+        ]}
+      />
       <S.Image src={productInfo?.imgUrl} />
       <S.ContentContainer>
         <S.TagContainer>
@@ -81,13 +105,6 @@ const SonminsooItemDetails = () => {
         <S.Title>{productInfo?.title}</S.Title>
         <S.Price>{productInfo?.price}</S.Price>
       </S.ContentContainer>
-      {modalView && (
-        <BucketListModal
-          setModalOpen={setModalView}
-          itemId={productInfo?.id}
-          bucketList={bucketList}
-        />
-      )}
     </S.DetailContainer>
   );
 };

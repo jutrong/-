@@ -7,7 +7,7 @@ import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 type ModalProps = {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   itemId?: number;
-  bucketList: { id: string; img: string; title: string }[];
+  bucketList: { id: number; img?: string; bucketName: string }[];
 };
 
 const BucketListModal: React.FC<ModalProps> = ({
@@ -42,7 +42,7 @@ const BucketListModal: React.FC<ModalProps> = ({
               key={item.id}
               id={item.id}
               img={item.img}
-              title={item.title}
+              bucketName={item.bucketName}
               onClick={() => setSelect(item.id)}
               selected={item.id === select}
             />
@@ -55,7 +55,7 @@ const BucketListModal: React.FC<ModalProps> = ({
 
             try {
               const res = await axiosPrivate.put(
-                `/users/sonminsu-items/${itemId}/buckets/${select}`
+                `/sonminsu-items/${itemId}/buckets/${select}`
               );
               console.log(res);
               setModalOpen(false);

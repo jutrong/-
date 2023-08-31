@@ -9,54 +9,41 @@ import settings from "../../assets/images/svg/SonminsooItem/ic-settings.svg";
 import useInput from "../../hooks/useInput";
 import axios from "../../api/axios";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import useGetToken from "../../hooks/useGetToken";
+import { Link } from "react-router-dom";
 
 type sonminsooItemInfo = {
-  artistName: string;
-  groupName: string;
   id: number;
-  imgUrl: string;
   originUrl: string;
+  imgUrl: string;
   price: string;
   title: string;
+  groupName: string;
+  artistName: string;
+  isInMyBucket?: {
+    bucketId: number;
+  };
 };
 
 const SonminsooItemList = () => {
   const [items, setItems] = useState<sonminsooItemInfo[]>([]);
-  const [searchView, setSearchView] = useState<boolean>(false);
-  const [keyword, setKeyword] = useInput();
   const axiosPrivate = useAxiosPrivate();
+  const token = useGetToken();
+  const api = token ? axiosPrivate : axios;
 
   useEffect(() => {
     const getSonminsooItemList = async () => {
       try {
-        const { data } = await axiosPrivate.get(
-          "/sonminsu-items?page=1&perPage=10"
-        );
+        const { data } = await api.get("/sonminsu-items?page=1&perPage=10");
         console.log(data.data);
         setItems(data.data);
       } catch (err) {
         console.log(err, "axios err");
       }
     };
-    getSonminsooItemList();
-  }, []);
 
-  console.log(keyword);
-  const handleSearch = async () => {
-    if (keyword.length === 0) {
-      setItems([]);
-      return;
-    }
-    try {
-      const { data } = await axios.get(
-        `sonminsu-items/search?page=1&perPage=10&search=${keyword}`
-      );
-      console.log({ data });
-      setItems(data.data);
-    } catch (err) {
-      console.log(err, "axios err");
-    }
-  };
+    getSonminsooItemList();
+  }, [token]);
 
   return (
     <>
@@ -66,25 +53,12 @@ const SonminsooItemList = () => {
             <HeaderBar
               BackButton={false}
               items={[
-                searchView && (
-                  <S.SearchText
-                    key={"keyword"}
-                    value={keyword}
-                    onChange={setKeyword}
-                  />
-                ),
-                <Icon
-                  key={"search"}
-                  src={search}
-                  onClick={
-                    searchView
-                      ? handleSearch
-                      : () => {
-                          setSearchView(!searchView);
-                        }
-                  }
-                />,
-                <Icon key={"settings"} src={settings} />,
+                <Icon key={"search"} src={search} />,
+                <>
+                  <Link to={"/settings"}>
+                    <Icon key={"settings"} src={settings} />
+                  </Link>
+                </>,
               ]}
             />
             <S.LinkRequestList to="/requests">
@@ -93,7 +67,7 @@ const SonminsooItemList = () => {
             </S.LinkRequestList>
           </>
         );
-      }, [searchView, keyword])}
+      }, [])}
       <S.SonminsooItemListContainer>
         <S.SonminsooItemTitle>손민수템</S.SonminsooItemTitle>
 
@@ -112,6 +86,7 @@ const SonminsooItemList = () => {
                   artistName={data.artistName}
                   title={data.title}
                   price={data.price}
+                  isInMyBucket={data?.isInMyBucket}
                 />
               );
             })
