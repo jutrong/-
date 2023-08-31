@@ -39,7 +39,6 @@ const Notice: React.FC<noticePropsType> = ({ noticeId }) => {
             const res = await axios.get(`fandom-announcements/${noticeId}`);
 
             setData(res.data);
-            console.log("파람:", data);
         } catch (error) {
             console.error("Error", error);
         }

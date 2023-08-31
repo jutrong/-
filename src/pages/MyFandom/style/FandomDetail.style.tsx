@@ -66,3 +66,29 @@ export const JoimBtn = styled.button`
     font-weight: 700;
 `;
 // 공지사항 임포트
+
+export const FeedContainer = styled.div`
+    font-family: "Pretendard-Light";
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 77px;
+`;
+export const FeedImage = styled.img`
+    width: 100%;
+    height: 390px;
+    cursor: pointer;
+`;
+export const BtnWrap = styled.div`
+    display: flex;
+    margin-top: 31px;
+    margin-bottom: 16px;
+`;
+export const Line = styled.div`
+    background-color: #e2e2e2;
+    width: 100%;
+    height: 6px;
+`;

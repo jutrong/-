@@ -114,12 +114,12 @@ export const SonminsooNewsArticleIconBox = styled.div`
 // 하트 아이콘
 
 export const LikeIconSvg = styled.img`
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
 `;
 // 하트 갯수
-export const LikeQuantity = styled.div`
+export const LikeQuantity = styled.p`
     font-size: 14px;
     color: #6c7080;
     margin-left: 3px;
@@ -134,7 +134,7 @@ export const CommentIconSvg = styled(CommentIcon)`
 `;
 
 // 댓글 갯수
-export const CommentQuantity = styled.div`
+export const CommentQuantity = styled.p`
     font-size: 14px;
     color: #6c7080;
     margin-left: 3px;

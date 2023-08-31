@@ -15,7 +15,7 @@ type FandomdataProps = {
 
 const MyFandomList: React.FC<FandomdataProps> = ({ item }) => {
     const navigate = useNavigate();
-
+    console.log("뭐가 문제야", item);
     const handleItemClick = () => {
         navigate(`/fandom/${item.id}`);
     };

@@ -29,7 +29,7 @@ type NewsTypeData = NewsType[];
 
 const SonminsooNewsBoard: React.FC = () => {
     const [data, setData] = useState<NewsTypeData>([]);
-    console.log("뉴스", data);
+
     useEffect(() => {
         initDataGet();
     }, []);
