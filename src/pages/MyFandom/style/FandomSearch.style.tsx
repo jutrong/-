@@ -20,15 +20,13 @@ export const HomeContainer = styled.div`
 `;
 
 export const HeaderBox = styled.div`
-    height: 97px;
+    height: 60px;
     background-color: white;
     box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.1);
 `;
 
 // 인풋 헤더 박스
-export const InputHeaderBox = styled.div`
-    padding-top: 40px;
-`;
+export const InputHeaderBox = styled.div``;
 // 인풋 아이콘 박스
 export const InputIconBox = styled.div`
     height: 50px;

@@ -47,12 +47,6 @@ export const CheckIconBtn = styled(CheckIcon)`
 export const Container = styled.div`
     width: 100%;
     height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: calc(100% - (50px + env(safe-area-inset-top)));
-    background-color: white;
 `;
 
 export const FandomContainer = styled.div`
@@ -77,7 +71,7 @@ export const UploadImg = styled.img`
 //이미지 박스
 export const ImgBox = styled.div`
     width: 100%;
-
+    max-width: 450px;
     height: 182px;
     background: rgba(0, 0, 0, 0.5);
     display: flex;

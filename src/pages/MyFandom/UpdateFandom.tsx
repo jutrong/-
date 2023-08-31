@@ -1,5 +1,5 @@
 import * as S from "./style/UpdateFandom.style";
-import { Outlet } from "react-router-dom";
+
 import React, { useState, useRef, useEffect } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useInput from "../../hooks/useInput";
@@ -9,10 +9,15 @@ import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
 
 type Fandom = {
     fandomName: string;
+    id: number;
+    lastChatTime: null;
+    memberLength: number;
     image: string;
+    isAdmin: boolean;
+    isSubscribe: boolean;
 };
 
-const UpdateFandom: React.FC<Fandom> = ({ fandomName, image }) => {
+const UpdateFandom: React.FC = () => {
     const axiosPrivate = useAxiosPrivate();
     const navigation = useNavigate();
     const { fandomId } = useParams();
@@ -20,6 +25,15 @@ const UpdateFandom: React.FC<Fandom> = ({ fandomName, image }) => {
 
     const [selectedImage, setSelectedImage] = useState<string>("");
     const [inputVal, setInputVal] = useInput("");
+    const [data, setData] = useState<Fandom>();
+    const initDataGet = async () => {
+        try {
+            const res = await axiosPrivate.get(`fandoms/${fandomId}`);
+            setData(res.data.data);
+        } catch (error) {
+            console.error("Error", error);
+        }
+    };
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -59,6 +73,10 @@ const UpdateFandom: React.FC<Fandom> = ({ fandomName, image }) => {
             }
         }
     };
+
+    useEffect(() => {
+        initDataGet();
+    }, []);
     return (
         <>
             <S.Container>
@@ -87,7 +105,7 @@ const UpdateFandom: React.FC<Fandom> = ({ fandomName, image }) => {
                                 <S.ImgIcon onClick={handleEditIconClick} />
                                 <S.ImgBoxText>이미지 추가</S.ImgBoxText>
                             </S.ImgIconTextBox>
-                            <S.Img src={image} alt="Fandom Image" />
+                            <S.Img src={data?.image} alt="Fandom Image" />
                             <input
                                 type="file"
                                 accept="image/*"
@@ -102,8 +120,9 @@ const UpdateFandom: React.FC<Fandom> = ({ fandomName, image }) => {
                             )}
                         </S.ImgBox>
                         <S.Input
+                            type="text"
                             onChange={setInputVal}
-                            placeholder={fandomName}
+                            defaultValue={data?.fandomName}
                             style={{ color: "gray" }}
                         />
                     </S.ImgContainer>

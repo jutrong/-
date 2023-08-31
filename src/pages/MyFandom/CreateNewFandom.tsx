@@ -1,5 +1,5 @@
 import * as S from "./style/CreateNewFandom.style";
-import { Outlet } from "react-router-dom";
+
 import React, { useState, useRef } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useInput from "../../hooks/useInput";

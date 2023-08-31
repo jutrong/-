@@ -71,7 +71,7 @@ export const UploadImg = styled.img`
 //이미지 박스
 export const ImgBox = styled.div`
     width: 100%;
-
+    max-width: 450px;
     height: 182px;
     background: #b8ddff;
     display: flex;
