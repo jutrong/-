@@ -50,6 +50,7 @@ export const SeleteImg = styled.img`
   position: absolute;
   top: -20px;
   right: 0;
+  transform: rotate(-30deg);
 `;
 export const ImgsBox = styled.div`
   width: 374px;

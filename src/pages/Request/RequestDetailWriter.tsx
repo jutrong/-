@@ -37,6 +37,7 @@ const RequestDetailWriter: React.FC = () => {
         username={requestdata.user?.nickName}
         date={requestdata.createdAt}
         id={requestdata.id}
+        userid={requestdata.user?.id}
       />
       <RequestDetailDesc desc={requestdata.content} img={requestdata.image} />
       <S.ResponseNumber>답변 {requestdata.answerCnt}개</S.ResponseNumber>
@@ -44,6 +45,7 @@ const RequestDetailWriter: React.FC = () => {
         requestdata.answers.map((answer) => (
           <RequestWriterResponse
             key={answer.id}
+            answeruserid={answer.user.id}
             answerUsername={answer.user.nickName}
             answerUserimg={answer.user.image}
             answerUserclearNum={answer.user.choosedCnt}

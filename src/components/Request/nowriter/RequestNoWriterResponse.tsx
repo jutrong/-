@@ -20,11 +20,7 @@ const RequestNoWriterResponse: React.FC<RequestAnswerProps> = ({
   const token = useSelector(({ auth }) => auth.accessToken);
 
   const clickProfile = () => {
-    if (token) {
-      navigation(`/mypage/${answeruserid}`);
-    } else {
-      navigation(`/login`);
-    }
+    navigation(`/mypage/${answeruserid}`);
   };
 
   return (

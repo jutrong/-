@@ -9,8 +9,10 @@ import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import detailDate from "../../../utils/time";
 import { useParams } from "react-router-dom";
 import { RequestAnswerProps, RequestDescType } from "../../../types/request";
+import { useNavigate } from "react-router-dom";
 
 const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
+  answeruserid,
   answerUsername,
   answerUserimg,
   answerUserclearNum,
@@ -21,6 +23,7 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
 }) => {
   const axiosPrivate = useAxiosPrivate();
   let { requestId } = useParams();
+  const navigation = useNavigate();
 
   const [moreClick, setMoreClick] = useState(false);
   const [selectClick, setSeleteClick] = useState(false);
@@ -86,7 +89,12 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
     <>
       <S.Wrap>
         <S.ProfileBox>
-          <S.ProfileImg src={answerUserimg} />
+          <S.ProfileImg
+            src={answerUserimg}
+            onClick={() => {
+              navigation(`/mypage/${answeruserid}`);
+            }}
+          />
           <S.ProfileInfo>
             <S.UserName>{answerUsername}</S.UserName>
             <S.ResponesInfo>

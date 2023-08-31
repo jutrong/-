@@ -14,12 +14,13 @@ const RequestDetaiNoWriterlHeader: React.FC<RequestTitleProps> = ({
   date,
   id,
   bookmarkstate,
+  userid,
 }) => {
   const navigation = useNavigate();
   const token = useSelector(({ auth }) => auth.accessToken);
 
   const [bookmarkdata, setBookMarkData] = useState("");
-  const [pushpinvalue, setPushPinValue] = useState(true);
+  const [pushpinvalue, setPushPinValue] = useState(bookmarkstate);
   const axiosPrivate = useAxiosPrivate();
 
   const clickPushPin = async () => {
@@ -33,8 +34,6 @@ const RequestDetaiNoWriterlHeader: React.FC<RequestTitleProps> = ({
     }
   };
 
-  console.log(bookmarkstate);
-
   return (
     <S.Wrap>
       <S.Left>
@@ -42,7 +41,13 @@ const RequestDetaiNoWriterlHeader: React.FC<RequestTitleProps> = ({
         <S.QuestionTitleBox>
           <S.QuestionTitle>{title}</S.QuestionTitle>
           <S.QuestionTitleInfo>
-            <S.QuestionUserName>{username}</S.QuestionUserName>
+            <S.QuestionUserName
+              onClick={() => {
+                navigation(`/mypage/${userid}`);
+              }}
+            >
+              {username}
+            </S.QuestionUserName>
             <S.QuestionDate>{(date + "").substring(0, 10)}</S.QuestionDate>
           </S.QuestionTitleInfo>
         </S.QuestionTitleBox>
@@ -50,7 +55,7 @@ const RequestDetaiNoWriterlHeader: React.FC<RequestTitleProps> = ({
       {token && (
         <S.Right>
           <S.PushPin
-            src={bookmarkstate && pushpinvalue ? pushginon : pushginoff}
+            src={pushpinvalue ? pushginon : pushginoff}
             onClick={clickPushPin}
           />
         </S.Right>

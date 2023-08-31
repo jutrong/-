@@ -14,6 +14,7 @@ const RequestDetailWriterHeader: React.FC<RequestTitleProps> = ({
   username,
   date,
   id,
+  userid,
 }) => {
   const axiosPrivate = useAxiosPrivate();
   const navigation = useNavigate();
@@ -45,7 +46,13 @@ const RequestDetailWriterHeader: React.FC<RequestTitleProps> = ({
           <S.QuestionTitleBox>
             <S.QuestionTitle>{title}</S.QuestionTitle>
             <S.QuestionTitleInfo>
-              <S.QuestionUserName>{username}</S.QuestionUserName>
+              <S.QuestionUserName
+                onClick={() => {
+                  navigation(`/mypage/${userid}`);
+                }}
+              >
+                {username}
+              </S.QuestionUserName>
               <S.QuestionDate>{(date + "").substring(0, 10)}</S.QuestionDate>
             </S.QuestionTitleInfo>
           </S.QuestionTitleBox>

@@ -58,6 +58,7 @@ export type RequestTitleProps = {
   date: string;
   id: number;
   bookmarkstate?: boolean | null;
+  userid?: number;
 };
 
 export type RegisterModalProps = {

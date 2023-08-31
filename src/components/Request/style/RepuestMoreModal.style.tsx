@@ -6,10 +6,9 @@ export const Overlay = styled.div`
   height: 100%;
   top: 0;
   bottom: 0;
-  left: 0;
-  right: 0;
   background: rgba(0, 0, 0, 0.6);
   z-index: 9999;
+  max-width: 450px;
 `;
 
 export const ModalContainer = styled.div`
@@ -26,6 +25,7 @@ export const ModalContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding-left: 42px;
+  max-width: 450px;
 `;
 
 export const ModifyMenu = styled.div`

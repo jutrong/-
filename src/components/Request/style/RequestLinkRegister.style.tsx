@@ -6,10 +6,9 @@ export const Overlay = styled.div`
   height: 100%;
   top: 0;
   bottom: 0;
-  left: 0;
-  right: 0;
   background: rgba(0, 0, 0, 0.6);
   z-index: 9999;
+  max-width: 450px;
 `;
 export const Content = styled.div`
   position: fixed;
@@ -22,6 +21,7 @@ export const Content = styled.div`
   border-radius: 8px;
   background: #fff;
   padding: 0 16px;
+  max-width: 450px;
 `;
 export const Close = styled.img`
   position: absolute;

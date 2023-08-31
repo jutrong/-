@@ -55,6 +55,7 @@ const RequestDetailNoWriter: React.FC = () => {
       <RequestDetaiNoWriterlHeader
         title={requestdata.title}
         username={requestdata.user?.nickName}
+        userid={requestdata.user?.id}
         date={requestdata.createdAt}
         id={requestdata.id}
         bookmarkstate={bookmarkdata}
