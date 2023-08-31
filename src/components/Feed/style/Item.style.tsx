@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Item = styled.img`
   width: 100px;
   height: 100px;
+  object-fit: cover;
   border: 1px solid black;
   border-radius: 8px;
   margin-top: 16px;

@@ -19,8 +19,8 @@ const SearchItem = () => {
 
   useEffect(() => {
     fetchItem();
-    console.log(minsooItem);
-  }, []);
+  }, [searchItem]);
+
   const fetchItem = async () => {
     try {
       const response = await axios.get(

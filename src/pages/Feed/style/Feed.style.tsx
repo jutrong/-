@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const FeedContainer = styled.div`
   font-family: "Pretendard-Light";
-
   width: 100%;
   box-sizing: border-box;
   margin: 0;
@@ -13,6 +12,7 @@ export const FeedImage = styled.img`
   width: 100%;
   height: 390px;
   cursor: pointer;
+  object-fit: fill;
 `;
 export const BtnWrap = styled.div`
   display: flex;

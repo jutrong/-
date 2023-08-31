@@ -11,8 +11,9 @@ export const FeedHeaderContainer = styled.div`
 export const Profile = styled.img`
   width: 40px;
   height: 40px;
-  border-radius: 40px;
-  background-color: lightgray;
+  object-fit: fill;
+  border-radius: 50%;
+  background-color: transparent;
   cursor: pointer;
 `;
 export const HeaderContent = styled.div`
@@ -26,7 +27,6 @@ export const Nickname = styled.div`
   font-size: 14px;
   display: inline-block;
   font-family: "Pretendard-Bold";
-
   margin-bottom: 6px;
   display: flex;
   cursor: pointer;

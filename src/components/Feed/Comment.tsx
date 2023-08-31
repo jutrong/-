@@ -47,6 +47,7 @@ const Comment: React.FC<FeedCommentProps> = ({
       });
       setCommentInput("");
       setCommentList([...commentList, response.data.data]);
+      fetchFeedData();
     } catch (error) {
       console.log("error", error);
     }

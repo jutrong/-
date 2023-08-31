@@ -62,7 +62,7 @@ const FeedHeader: React.FC<FeedDataProps> = ({
           <S.Profile
             src={feedData.author.image}
             onClick={() => {
-              if (token) navigate(`/mypage/${feedData.id}`);
+              if (token) navigate(`/mypage/${feedData.author.id}`);
             }}
           />
           <S.HeaderContent>

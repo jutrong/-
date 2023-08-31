@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import FeedHeaderBar from "../../components/Feed/FeedHeaderBar";
 import FeedHeader from "../../components/Feed/FeedHeader";
 import ItemBox from "../../components/Feed/Item";
 import HashTag from "../../components/Feed/HashTag";

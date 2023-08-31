@@ -18,12 +18,14 @@ const LikeBtn: React.FC<LikeBtnProps> = ({ feedId }) => {
     fetchLike();
   }, []);
   const fetchLike = async () => {
-    try {
-      const response = await axiosPrivate.get(`/feeds/${feedId}`);
-      setLikeCount(response.data.data.likes);
-      setLiked(response.data.data.isLike);
-    } catch (error) {
-      console.log("error", error);
+    if (token) {
+      try {
+        const response = await axiosPrivate.get(`/feeds/${feedId}`);
+        setLikeCount(response.data.data.likes);
+        setLiked(response.data.data.isLike);
+      } catch (error) {
+        console.log("error", error);
+      }
     }
   };
   const toggleLike = async (feedId: number) => {

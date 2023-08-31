@@ -1,6 +1,5 @@
 import React from "react";
 import * as S from "./style/CommentBtn.style";
-// import { CommentBtnProps } from "../../types/feed";
 export type Data = {
   id: number;
   content: string;

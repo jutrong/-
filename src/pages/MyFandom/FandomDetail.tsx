@@ -13,28 +13,24 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import UpdateFandom from "./UpdateFandom";
 
 type Fandom = {
-    fandomName: string;
-    id: number;
-    lastChatTime: null;
-    memberLength: number;
-    image: string;
-    isAdmin: boolean;
-    isSubscribe: boolean;
+  fandomName: string;
+  id: number;
+  lastChatTime: null;
+  memberLength: number;
+  image: string;
+  isAdmin: boolean;
+  isSubscribe: boolean;
 };
 
 const FandomDetail: React.FC = () => {
-    const axiosPrivate = useAxiosPrivate();
+  const axiosPrivate = useAxiosPrivate();
 
-    const { fandomId } = useParams();
+  const { fandomId } = useParams();
 
-    const [data, setData] = useState<Fandom>();
-    const [isAdmin, setIsAdmin] = useState(false);
-    const [isSubscribe, setIsSubscribe] = useState(false);
-    const [isEditingModalOpen, setIsEditingModalOpen] = useState(false);
-
-    useEffect(() => {
-        initDataGet();
-    }, []);
+  const [data, setData] = useState<Fandom>();
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isSubscribe, setIsSubscribe] = useState(false);
+  const [isEditingModalOpen, setIsEditingModalOpen] = useState(false);
 
     const initDataGet = async () => {
         try {
@@ -57,29 +53,34 @@ const FandomDetail: React.FC = () => {
         }
     };
 
-    const renderJoinButton = () => {
-        if (!isAdmin && !isSubscribe) {
-            return (
-                <S.JoimBtn onClick={handleJoinButtonClick}>팬덤 가입</S.JoimBtn>
-            );
-        } else if (!isAdmin && isSubscribe) {
-            return (
-                <S.JoimBtn onClick={handleJoinButtonClick}>
-                    팬덤 가입함
-                </S.JoimBtn>
-            );
-        } else if (isAdmin) {
-            return (
-                <S.JoimBtn onClick={handleUpdateButtonClick}>
-                    팬덤 편집
-                </S.JoimBtn>
-            );
-        }
-    };
+  const initDataGet = async () => {
+    try {
+      const res = await axiosPrivate.get(`fandoms/${fandomId}`);
+      setData(res.data.data);
+      setIsAdmin(res.data.data.isAdmin);
+      setIsSubscribe(res.data.data.isSubscribe);
+    } catch (error) {
+      console.error("Error", error);
+    }
+  };
+  const handleJoinButtonClick = async () => {
+    try {
+      const res = await axiosPrivate.put(`/fandoms/${fandomId}/subscribe`);
+      initDataGet();
+    } catch (error) {
+      console.error("Error", error);
+    }
+  };
 
-    const handleUpdateButtonClick = () => {
-        setIsEditingModalOpen(true);
-    };
+  const renderJoinButton = () => {
+    if (!isAdmin && !isSubscribe) {
+      return <S.JoimBtn onClick={handleJoinButtonClick}>팬덤 가입</S.JoimBtn>;
+    } else if (!isAdmin && isSubscribe) {
+      return <S.JoimBtn onClick={handleJoinButtonClick}>팬덤 가입함</S.JoimBtn>;
+    } else if (isAdmin) {
+      return <S.JoimBtn onClick={handleUpdateButtonClick}>팬덤 편집</S.JoimBtn>;
+    }
+  };
 
     const closeEditingModal = () => {
         setIsEditingModalOpen(false);

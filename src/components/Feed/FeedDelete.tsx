@@ -18,6 +18,7 @@ const FeedDelete: React.FC<FeedDeleteProps> = ({
   const axiosPrivate = useAxiosPrivate();
 
   const modalRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const clickOutside = (e: any) => {
       if (!modalRef.current?.contains(e.target)) {

@@ -20,8 +20,10 @@ type sonminsooItemInfo = {
 };
 const SonMinsooItemInfo = ({
   artistName,
+  groupName,
   id,
   imgUrl,
+  originUrl,
   price,
   title,
 }: sonminsooItemInfo) => {
@@ -37,6 +39,7 @@ const SonMinsooItemInfo = ({
       </Link>
       <S.TitleContainer>
         <Link to={`details/${id}`}>
+          {" "}
           <S.ItemTitle>{title}</S.ItemTitle>
         </Link>
         <S.bookMarkIcon
