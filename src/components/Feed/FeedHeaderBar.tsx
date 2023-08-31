@@ -53,7 +53,7 @@ const FeedHeaderBar = () => {
         />
 
         {token ? <S.Icon src={edit} onClick={handleEditIconClick} /> : null}
-        <S.Icon src={setting} />
+        <S.Icon src={setting} onClick={() => navigate("/settings")} />
       </S.Icons>
     </S.Container>
   );

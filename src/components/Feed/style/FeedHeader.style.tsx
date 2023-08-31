@@ -11,6 +11,7 @@ export const FeedHeaderContainer = styled.div`
 export const Profile = styled.img`
   width: 40px;
   height: 40px;
+  object-fit: cover;
   border-radius: 40px;
   background-color: lightgray;
   cursor: pointer;

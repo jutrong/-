@@ -9,6 +9,7 @@ type FeedWriteProps = {
   $updatePage: boolean;
   fandomOptions: OptionType[];
   setSelectedFandom: (option: OptionType) => void;
+  selectedFandom: OptionType | null | undefined;
 };
 type OptionType = {
   value: string;
@@ -19,6 +20,7 @@ const WriteFandom: React.FC<FeedWriteProps> = ({
   $updatePage,
   fandomOptions,
   setSelectedFandom,
+  selectedFandom,
 }) => {
   const [selectedOption, setSelectedOption] = useState<OptionType | null>(null);
 
@@ -33,11 +35,11 @@ const WriteFandom: React.FC<FeedWriteProps> = ({
       <S.WritingFandomText>작성 팬덤</S.WritingFandomText>
       <Select
         value={selectedOption}
-        onChange={handleOptionChange}
         options={fandomOptions}
         styles={S.FandomStyles($updatePage)}
-        placeholder="팬덤을 선택해주세요."
+        placeholder={$updatePage ? "팬덤" : "팬덤을 선택해주세요."}
         isDisabled={$updatePage}
+        onChange={handleOptionChange}
       />
     </S.WritingFandom>
   );

@@ -3,7 +3,6 @@ import axios from "../../api/axios";
 import CommentItem from "../Feed/CommentItem";
 import * as S from "./style/Comment.style";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import { constants } from "http2";
 
 type CommentType = {
   id: number;
@@ -40,6 +39,9 @@ const Comment: React.FC<FeedCommentProps> = ({
   };
 
   const submitComments = async (id: number) => {
+    if (!commentInput.trim()) {
+      return;
+    }
     try {
       const response = await axiosPrivate.post(`/comments/${id}`, {
         parentId: null,
@@ -51,6 +53,7 @@ const Comment: React.FC<FeedCommentProps> = ({
       console.log("error", error);
     }
   };
+
   return (
     <>
       {commentList &&

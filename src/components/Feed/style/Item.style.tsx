@@ -4,6 +4,7 @@ export const Item = styled.img`
   width: 100px;
   height: 100px;
   border: 1px solid black;
+  object-fit: cover;
   border-radius: 8px;
   margin-top: 16px;
   margin-right: 10px;

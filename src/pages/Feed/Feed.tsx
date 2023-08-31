@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
 import axios from "../../api/axios";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import * as S from "./style/Feed.style";
@@ -15,6 +14,7 @@ import Comment from "../../components/Feed/Comment";
 import FooterNavBar from "../../components/common/FooterNavBar/FooterNavBar";
 import FeedDelete from "../../components/Feed/FeedDelete";
 import AppAlertModal from "../../components/common/AlertModal/AppAlertModal";
+
 export type Data = {
   id: number;
   content: string;
@@ -160,6 +160,7 @@ const FeedIndex = () => {
       fetchComments(id);
     }
   };
+
   return (
     <S.FeedContainer>
       <FeedHeaderBar />

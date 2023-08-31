@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import styled from "styled-components";
 import FeedHeaderWrite from "./FeedWriteHeader";
 import WriteFandom from "./WriteFandom";
 import FeedWriteHashTag from "./FeedWriteHashTag";
@@ -10,7 +9,6 @@ import FeedWriteRegister from "./FeedWriteRegister";
 import * as S from "./style/NewFeed.style";
 import useInput from "../../hooks/useInput";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import idol1 from "../../assets/images/png/idol1.png";
 export type Data = {
   id: number;
   content: string;
@@ -56,6 +54,8 @@ type itemtype = {
 const NewFeed = () => {
   const axiosPrivate = useAxiosPrivate();
   const navigation = useNavigate();
+  const location = useLocation();
+
   const [feedData, setFeedData] = useState<Data>();
   const [noticeChecked, setNoticeChecked] = useState<boolean>(false);
   const [contentInput, setContentInput] = useState<string>("");
@@ -67,8 +67,7 @@ const NewFeed = () => {
   const [linkModalClick, setLinkModalClick] = useState<boolean>(false);
   const [urlItem, setUrlItem] = useState<itemtype[]>([]);
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
-
-  const location = useLocation();
+  const [isFandomJang, setIsFandomJang] = useState<boolean>();
 
   const $updatePage = location.state?.isUpdate;
   const writeImg = location.state?.selectedImage;
@@ -84,7 +83,11 @@ const NewFeed = () => {
     fetchFandom();
     fetchFeedData();
   }, []);
-
+  useEffect(() => {
+    if (selectedFandom?.id) {
+      isAdmin();
+    }
+  }, [selectedFandom]);
   useEffect(() => {
     if (noticeChecked) {
       setIsFormValid(contentInput.trim() !== "" && !!selectedFandom);
@@ -121,10 +124,10 @@ const NewFeed = () => {
       }
     }
   };
+
   const sonminsuItemArray = urlItem.map((item) => item.id);
   const handleContentInput = (e: any) => {
     setContentInput(e.target.value);
-    console.log(hashtagss);
   };
   const fetchFeedData = async () => {
     try {
@@ -145,6 +148,27 @@ const NewFeed = () => {
       setFandomOptions(fetchedFandoms);
     } catch (error) {
       console.error("Errore", error);
+    }
+  };
+
+  const isAdmin = async () => {
+    try {
+      const response = await axiosPrivate.get(`/fandoms/${selectedFandom?.id}`);
+      setIsFandomJang(response.data.isAdmin);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+  const updateFeed = async () => {
+    let data = {
+      content: contentInput,
+      hashTags: hashtagss,
+    };
+    try {
+      const response = await axiosPrivate.patch(`/feeds/${feedId}`, data);
+      navigation("/feed");
+    } catch (error) {
+      console.log("error", error);
     }
   };
   const moveToFandom = () => {
@@ -193,18 +217,6 @@ const NewFeed = () => {
     }
     navigation("/feed");
   };
-  const updateFeed = async () => {
-    let data = {
-      content: contentInput,
-      hashTags: hashtagss,
-    };
-    try {
-      const response = await axiosPrivate.patch(`/feeds/${feedId}`, data);
-      navigation("/feed");
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
 
   return (
     <>
@@ -224,6 +236,7 @@ const NewFeed = () => {
         $updatePage={$updatePage}
         fandomOptions={fandomOptions}
         setSelectedFandom={setSelectedFandom}
+        selectedFandom={selectedFandom}
       />
       <S.FeedWriteContent
         placeholder="작성할 내용을 입력해 주세요.&#13;(정의로운 손민수 주의사항 내용 필요해 보임)"
@@ -252,7 +265,7 @@ const NewFeed = () => {
           />
         </>
       )}
-      {$updatePage ? null : (
+      {$updatePage || isFandomJang ? null : (
         <S.NoticeText>
           <S.NoticeBtn
             type="checkbox"

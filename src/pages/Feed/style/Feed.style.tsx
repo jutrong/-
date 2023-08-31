@@ -11,6 +11,7 @@ export const FeedContainer = styled.div`
 `;
 export const FeedImage = styled.img`
   width: 100%;
+  object-fit: cover;
   height: 390px;
   cursor: pointer;
 `;
