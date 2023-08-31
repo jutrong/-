@@ -104,15 +104,12 @@ const FandomDetail: React.FC = () => {
                     {/* 가입 전에는 화살표만 */}
                     {/* <HeaderBar BackButton={true} items={} /> 가입후에는 글쓰기 */}
                     {/* <HeaderBar BackButton={true} items={} /> 어드민은 글쓰기 햄버거 */}
-
                     <S.Img src={data?.image} alt="API Img" />
-                    <S.FandomJoinBox>
-                        <S.FandomName>{data?.fandomName}</S.FandomName>
-                        <S.FandomMember>
-                            멤버 {data?.memberLength}
-                        </S.FandomMember>
-                        {renderJoinButton()}
-                    </S.FandomJoinBox>
+                    <S.FandomName>{data?.fandomName}</S.FandomName>
+                    <S.FandomMember>
+                        멤버 {data?.memberLength}
+                    </S.FandomMember>{" "}
+                    <S.FandomJoinBox>{renderJoinButton()}</S.FandomJoinBox>
                 </S.HeaderBox>
                 <Notice noticeId={fandomId} />
             </S.Container>

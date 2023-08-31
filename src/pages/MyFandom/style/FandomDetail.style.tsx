@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Item } from "../../../components/Feed/style/Item.style";
 
 // 홈 컨테이너
 export const Container = styled.div`
@@ -8,7 +9,7 @@ export const Container = styled.div`
     margin: 0 auto;
 
     width: 100%;
-    max-width: 390px;
+
     min-height: 844px;
     height: 100%;
     background-color: #f5f5f5;
@@ -28,7 +29,10 @@ export const Img = styled.img`
 `;
 
 export const FandomJoinBox = styled.div`
-    margin-left: 16px;
+    display: flex; /* Add this line */
+    flex-direction: column; /* Add this line */
+    align-items: center; /*Add this Line*/
+    margin-top: 16px; /*Add This Line*/
 `;
 
 // 팬덤이름
@@ -36,7 +40,7 @@ export const FandomName = styled.div`
     color: #1d1b20;
     margin-top: 16px;
     font-size: 20px;
-
+    margin-left: 20px;
     font-weight: 700;
 `;
 //팬덤이름 멤버수
@@ -44,13 +48,13 @@ export const FandomMember = styled.div`
     color: #1d1b20;
     margin-top: 8px;
     font-size: 14px;
-
+    margin-left: 23px;
     font-weight: 500;
 `;
 
 // 팬덤 가입 버튼
 export const JoimBtn = styled.button`
-    width: 358px;
+    width: 95%;
     height: 44px;
     color: white;
     background-color: #208df1;

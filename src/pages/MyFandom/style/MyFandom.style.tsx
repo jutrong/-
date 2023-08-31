@@ -7,10 +7,8 @@ export const Container = styled.div`
 
     align-items: center;
     margin: 0 auto;
-    max-width: 390px;
+
     width: 100%;
-    width: 100%;
-    max-width: 390px;
 `;
 
 export const FandomImg = styled.img``;

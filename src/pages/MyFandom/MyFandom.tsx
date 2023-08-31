@@ -43,9 +43,9 @@ const MyFandom = () => {
                     {/* <S.FandomImg /> */}
                     <HomeHeader />
                     <FandomMenu />
-                </S.MyFandomHeaderBox>
+                </S.MyFandomHeaderBox>{" "}
+                <ContentHeader />
                 <S.MyFandomListBox>
-                    <ContentHeader />
                     {data.map((item) => (
                         <MyFandomList key={item.id} item={item} />
                     ))}

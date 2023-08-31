@@ -3,7 +3,7 @@ import styled from "styled-components";
 // 공지 컨테이너
 export const NoticeContainer = styled.div`
     justify-content: space-between;
-    align-items: center;
+    //align-items: center;
     background-color: white;
     padding-bottom: 30px;
     margin-top: 16px;
@@ -90,10 +90,14 @@ export const ProfileIcon = styled.div``;
 //     float: right;
 // `;
 
+export const NoticeTextContainer = styled.div`
+    display: flex;
+    justify-content: flex-start;
+`;
 // 공지 텍스트박스
 export const NoticeTextBox = styled.div`
     width: 100%;
-    max-width: 346px;
+    padding-left: 22px;
     margin-top: 21px;
     display: flex;
     margin-left: auto;
@@ -106,4 +110,5 @@ export const NoticeText = styled.p`
     font-size: 15px;
     font-style: normal;
     font-weight: 500;
+    text-align: left;
 `;

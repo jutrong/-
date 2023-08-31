@@ -10,7 +10,7 @@ export const Container = styled.div`
 
 export const HomeContainer = styled.div`
     margin: 0 auto;
-    max-width: 390px;
+
     width: 100%;
     height: 60px;
     align-items: center;

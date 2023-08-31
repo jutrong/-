@@ -59,7 +59,7 @@ export const FandomContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 390px;
+
     margin: 0 auto;
 `;
 
@@ -77,7 +77,7 @@ export const UploadImg = styled.img`
 //이미지 박스
 export const ImgBox = styled.div`
     width: 100%;
-    max-width: 390px;
+
     height: 182px;
     background: rgba(0, 0, 0, 0.5);
     display: flex;

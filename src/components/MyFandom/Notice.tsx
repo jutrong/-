@@ -73,7 +73,9 @@ const Notice: React.FC<noticePropsType> = ({ noticeId }) => {
                     </S.NoticeHeaderBox>
 
                     <S.NoticeTextBox>
-                        <S.NoticeText>{data.data.content}</S.NoticeText>
+                        <S.NoticeTextContainer>
+                            <S.NoticeText>{data.data.content}</S.NoticeText>
+                        </S.NoticeTextContainer>
                     </S.NoticeTextBox>
                 </S.NoticeContainer>
             )}

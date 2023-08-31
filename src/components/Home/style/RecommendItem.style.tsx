@@ -5,14 +5,12 @@ import { ReactComponent as BookMarkIcon } from "../../../assets/images/svg/home/
 // 추천 아이템 컨테이너
 export const RecommendItemContainer = styled.div`
     height: 178px;
-    width: 109px;
 
     margin-bottom: 20px;
 `;
 
 // 추천 아이템 이미지
 export const RecommendItemImg = styled.img`
-    width: 109px;
     height: 109px;
     border-radius: 8px;
 `;
@@ -47,11 +45,11 @@ export const RecommendItemNameText = styled.div`
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    width: 109px;
+    width: 100px;
 `;
 // 추천 아이템 아이콘
 export const BookMarkIconSvg = styled(BookMarkIcon)`
-    margin-left: 10px;
+    margin-left: 3px;
 `;
 
 // 추천 아이템 가격
