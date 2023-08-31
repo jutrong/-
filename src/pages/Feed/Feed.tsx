@@ -80,6 +80,7 @@ const FeedIndex = () => {
   const [isLoadingComments, setIsLoadingComments] = useState(false);
   const [feedId, setFeedId] = useState<number | undefined>();
   const [sonminsuItem, setSonminsuItem] = useState<SonminsuItemType[]>([]);
+  const [page, setPage] = useState<number>(1);
   const [selectedCommentId, setSelectedCommentId] = useState<
     number | undefined
   >();
@@ -87,18 +88,30 @@ const FeedIndex = () => {
   useEffect(() => {
     fetchFeedData();
     fetchItem();
-    getLoggedInUserId();
-  }, []);
+  }, [page]);
+  // infinite scrolling
 
-  const user = useSelector((state: any) => state.user);
-  const getLoggedInUserId = () => {
-    return user ? user.id : null;
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop ===
+      document.documentElement.offsetHeight
+    )
+      return setPage((prev) => prev + 1);
   };
 
   const fetchFeedData = async () => {
+    const ITEMS_PER_PAGE = 10;
     try {
-      const response = await axios.get("/feeds");
-      setFeedData(response.data.data);
+      const response = await axios.get(
+        `/feeds?page=${page}&perPage=${ITEMS_PER_PAGE}`
+      );
+      setFeedData((prevData) => [...prevData, ...response.data.data]);
     } catch (error) {
       console.error("Error", error);
     }
@@ -140,7 +153,6 @@ const FeedIndex = () => {
     setModalOpen(true);
   };
   const toggleComment = (id: number) => {
-    console.log(user.id);
     if (openComment === id) {
       setOpenComment(undefined);
     } else {
@@ -151,8 +163,8 @@ const FeedIndex = () => {
   return (
     <S.FeedContainer>
       <FeedHeaderBar />
-      {feedData?.map((feed) => (
-        <React.Fragment key={feed.id}>
+      {feedData?.map((feed, index) => (
+        <React.Fragment key={`${feed.id}-${index}`}>
           <FeedHeader
             feedData={feed}
             setIsFeedDelete={setIsFeedDelete}
