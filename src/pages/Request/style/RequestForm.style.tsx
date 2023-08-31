@@ -208,5 +208,12 @@ export const QuestionSonLabel = styled.p`
   color: rgba(29, 27, 32, 0.5);
   font-size: 14px;
   text-align: right;
+  margin-bottom: 10px;
 `;
 export const QuestionArtistLabel = styled.p``;
+export const VaildAlert = styled.p`
+  font-family: "Pretendard-Medium";
+  color: #fc1e6e;
+  font-size: 14px;
+  text-align: right;
+`;

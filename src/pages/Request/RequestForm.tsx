@@ -28,6 +28,7 @@ const RequestForm: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | undefined>(
     undefined
   );
+  const [vaild, setVaild] = useState(true);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const navigation = useNavigate();
@@ -92,6 +93,16 @@ const RequestForm: React.FC = () => {
   };
 
   const handelReuquestRegister = async () => {
+    if (
+      titleValue.trim() === "" &&
+      descValue.trim() === "" &&
+      groupValue.trim() === "" &&
+      artistValue.trim() === "" &&
+      fileInputRef.current?.files?.[0] == null
+    ) {
+      return setVaild(false);
+    }
+
     const formData = new FormData();
     formData.append("title", titleValue);
     formData.append("content", descValue);
@@ -197,6 +208,7 @@ const RequestForm: React.FC = () => {
             </S.QuestionArtistInputBox>
           </S.QuestionSonBox>
           <S.QuestionSonLabel>작성하신 이름이 노출됩니다.</S.QuestionSonLabel>
+          {!vaild && <S.VaildAlert>빈칸을 모두 입력해주세요</S.VaildAlert>}
         </S.QuestionSon>
       </S.QuestionForm>
     </S.Wrap>

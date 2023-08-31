@@ -24,16 +24,26 @@ const RequestDetailNoWriter: React.FC = () => {
   const [requestdata, setRequestData] = useState<RequestDescType>(Object);
   const [click, setClick] = useState(false);
   const [isSeleted, setIsSeleted] = useState(true);
+  const [bookmarkdata, setBookMarkData] = useState<boolean | null>(null);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [token]);
 
   const fetchData = async () => {
     try {
       const response = await axios.get(`/sonminsu-requests/${requestId}`);
       setRequestData(response.data.data);
       //console.log(response.data.data);
+      if (token) {
+        //북마크 여부
+        const responsebookmark = await axiosPrivate.get(
+          `/sonminsu-requests/${requestId}`
+        );
+        console.log(responsebookmark);
+        setBookMarkData(responsebookmark.data.data.isBookmark);
+        console.log(responsebookmark.data.data.isBookmark);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -47,6 +57,7 @@ const RequestDetailNoWriter: React.FC = () => {
         username={requestdata.user?.nickName}
         date={requestdata.createdAt}
         id={requestdata.id}
+        bookmarkstate={bookmarkdata}
       />
       <RequestDetailDesc desc={requestdata.content} img={requestdata.image} />
       <S.AnswerNumber>답변 {requestdata.answers?.length}개</S.AnswerNumber>

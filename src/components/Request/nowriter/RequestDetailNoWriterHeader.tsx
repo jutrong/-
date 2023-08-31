@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "../style/RequestDatailNoWriterHeader.style";
 import question from "../../../assets/images/svg/ic-question.svg";
 import pushginoff from "../../../assets/images/svg/ic-pushpin.svg";
@@ -13,27 +13,27 @@ const RequestDetaiNoWriterlHeader: React.FC<RequestTitleProps> = ({
   username,
   date,
   id,
+  bookmarkstate,
 }) => {
   const navigation = useNavigate();
   const token = useSelector(({ auth }) => auth.accessToken);
 
-  const [pushpinvalue, setPushPinValue] = useState(false);
+  const [bookmarkdata, setBookMarkData] = useState("");
+  const [pushpinvalue, setPushPinValue] = useState(true);
   const axiosPrivate = useAxiosPrivate();
+
   const clickPushPin = async () => {
-    if (!token) {
-      navigation(`/login`);
-    }
-
-    setPushPinValue((prev) => !prev);
-
     try {
       const response = await axiosPrivate.put(
-        `/users/sonminsu-requests/${id}/bookmarks`
+        `/sonminsu-requests/${id}/bookmarks`
       );
+      setPushPinValue((prev) => !prev);
     } catch (err) {
       console.log(err);
     }
   };
+
+  console.log(bookmarkstate);
 
   return (
     <S.Wrap>
@@ -47,12 +47,14 @@ const RequestDetaiNoWriterlHeader: React.FC<RequestTitleProps> = ({
           </S.QuestionTitleInfo>
         </S.QuestionTitleBox>
       </S.Left>
-      <S.Right>
-        <S.PushPin
-          src={pushpinvalue ? pushginon : pushginoff}
-          onClick={clickPushPin}
-        />
-      </S.Right>
+      {token && (
+        <S.Right>
+          <S.PushPin
+            src={bookmarkstate && pushpinvalue ? pushginon : pushginoff}
+            onClick={clickPushPin}
+          />
+        </S.Right>
+      )}
     </S.Wrap>
   );
 };
