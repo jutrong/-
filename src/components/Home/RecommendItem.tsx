@@ -16,7 +16,7 @@ type RecommendItemProps = {
 const RecommendItem: React.FC<RecommendItemProps> = ({ item }) => {
     const navigate = useNavigate();
     const handleItemClick = () => {
-        navigate("상품 상세 링크");
+        navigate(`/minsooItem/details/${item.id} `);
     };
     return (
         <>

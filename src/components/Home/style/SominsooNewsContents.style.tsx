@@ -113,13 +113,11 @@ export const SonminsooNewsArticleIconBox = styled.div`
 `;
 // 하트 아이콘
 
-export const LikeIconSvg = styled(LikeIcon)`
-    width: 16px;
-    height: 16px;
-
-    float: right;
+export const LikeIconSvg = styled.img`
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 `;
-
 // 하트 갯수
 export const LikeQuantity = styled.div`
     font-size: 14px;

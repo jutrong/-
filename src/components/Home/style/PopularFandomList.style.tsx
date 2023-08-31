@@ -20,6 +20,7 @@ export const Img = styled.img`
     height: 95px;
     width: 100%;
     position: absolute;
+    border-radius: 8px 8px 0 0;
 `;
 
 export const NumberOneBox = styled.div`

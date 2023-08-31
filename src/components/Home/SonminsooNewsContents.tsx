@@ -1,10 +1,14 @@
 import * as S from "./style/SominsooNewsContents.style";
 
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import detailDate from "../../utils/time";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useParams, useNavigate } from "react-router-dom";
-import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
+import heart from "../../assets/images/svg/ic-heart.svg";
+import fillheart from "../../assets/images/svg/fillheart.svg";
+import { Item } from "../Feed/style/Item.style";
+
 type NewsType = {
     id: number;
     content: string;
@@ -21,8 +25,8 @@ type NewsType = {
     sonminsuItems: [];
     image: string;
     tags: [];
-    // likes:number
-    // isLike:boolean
+    likes: number;
+    isLike: boolean;
     comments: number;
 };
 type NewsTypeData = NewsType[];
@@ -33,47 +37,53 @@ type NewsProps = {
 
 const SonminsooNewsContents: React.FC<NewsProps> = ({ item }) => {
     const axiosPrivate = useAxiosPrivate();
-    let { feedId } = useParams();
-    const [isLike, setIsLike] = useState(false);
-    const [likes, setLikes] = useState();
 
-    const handleLikeClick = () => {
-        setIsLike(!isLike);
-        console.log("like state : ", isLike);
+    const [likeCount, setLikeCount] = useState<number>(0);
+    const [liked, setLiked] = useState(false);
 
-        likePut();
-    };
-
-    useEffect(() => {
-        initDataGet();
-    }, [isLike]);
-
-    const initDataGet = async () => {
+    const toggleLike = async (feedId: number) => {
+        setLiked(!liked);
+        setLikeCount((prev) => (!liked ? prev + 1 : prev - 1));
         try {
-            const res = await axiosPrivate.get(`/feeds/${item.id}`);
-
-            setLikes(res.data.data.likes);
+            const response = await axiosPrivate.put(`/feeds/${feedId}/like`);
+            setLiked(response.data.isLike);
+            setLikeCount(response.data.likes);
         } catch (error) {
-            console.error("Error", error);
+            console.log("error", error);
+        } finally {
+            fetchLike();
+        }
+    };
+    const fetchLike = async () => {
+        try {
+            const response = await axiosPrivate.get(`/feeds/${item.id}`);
+            setLikeCount(response.data.data.likes);
+            setLiked(response.data.data.isLike);
+        } catch (error) {
+            console.log("error", error);
         }
     };
 
-    // 하트 클릭하면 바로 통신해서 좋아요 수 수정
-    const likePut = async () => {
-        try {
-            const res = await axiosPrivate.put(`/feeds/${item.id}/like`);
-        } catch (error) {
-            console.error("Error", error);
-        }
-    };
     const navigate = useNavigate();
     const handleItemClick = () => {
         navigate(`/feed/${item.id}`);
     };
+
+    useEffect(() => {
+        fetchLike();
+    });
+
+    const clickProfile = () => {
+        navigate(`/mypage/${item.author.id}`);
+    };
+
     return (
         <S.SonminsooNewsContentsContainer key={item.id}>
             <S.SonminsooNewsContentsHeader>
-                <S.SonminsooNewsProfileImg src={item?.author.image} />
+                <S.SonminsooNewsProfileImg
+                    src={item?.author.image}
+                    onClick={clickProfile}
+                />
                 <S.SonminsooNewsTextBox>
                     <S.SonminsooNewsNickNameText>
                         {item.author.nickName}
@@ -107,8 +117,11 @@ const SonminsooNewsContents: React.FC<NewsProps> = ({ item }) => {
                     </S.SonminsooNewsArticleHashtagText>
                 </S.SonminsooNewsArticleHashtagBox>
                 <S.SonminsooNewsArticleIconBox>
-                    <S.LikeIconSvg onClick={handleLikeClick} />
-                    <S.LikeQuantity>{likes}</S.LikeQuantity>
+                    <S.LikeIconSvg
+                        src={liked ? fillheart : heart}
+                        onClick={() => toggleLike(item.id)}
+                    />
+                    <S.LikeQuantity>{likeCount}</S.LikeQuantity>
                     <S.CommentIconSvg />
                     <S.CommentQuantity>{item.comments}</S.CommentQuantity>
                 </S.SonminsooNewsArticleIconBox>

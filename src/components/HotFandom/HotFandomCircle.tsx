@@ -1,4 +1,4 @@
-import { ifError } from "assert";
+import { useNavigate } from "react-router-dom";
 import * as S from "./style/HotFandomCircle.style";
 
 type FandomRankData = {
@@ -15,10 +15,18 @@ type HotFandomCircleProps = {
 };
 
 const HotFandomCircle: React.FC<HotFandomCircleProps> = ({ item }) => {
-    console.log("이미지", item?.image);
+    const navigate = useNavigate();
+    const handleItemClick = () => {
+        if (item && item.id) {
+            navigate(`/fandom/${item.id}`);
+        }
+    };
 
+    if (!item || !item.id) {
+        return null; // item 또는 id가 없는 경우 렌더링하지 않음
+    }
     return (
-        <S.PandomCircleContainer>
+        <S.PandomCircleContainer key={item.id} onClick={handleItemClick}>
             <S.ImgContainer>
                 <S.NumberOne />
                 <S.PandomShadowCircle src={item?.image} />

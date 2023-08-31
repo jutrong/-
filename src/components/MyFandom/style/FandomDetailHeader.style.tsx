@@ -5,11 +5,14 @@ import { ReactComponent as LfetArrow } from "../../../assets/images/svg/ic-arrow
 
 // 팬덤 헤더 컨테이너
 export const ContentHeaderContainer = styled.div`
+    top: 0;
+    width: 100%;
     height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    //background-color: #f3f3b7;
+    margin-top: 0;
+    background-color: ${(props) => (props.color ? props.color : "transparent")};
 `;
 
 // 헤더 마이 팬덤 텍스트 박스

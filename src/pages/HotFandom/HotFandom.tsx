@@ -26,7 +26,7 @@ const HotFandom = () => {
 
     const initDataGet = async () => {
         try {
-            const res = await axios.get("fandoms/hot");
+            const res = await axios.get("fandoms");
             setData(res.data.data);
         } catch (error) {
             console.error("Error", error);
