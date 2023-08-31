@@ -183,3 +183,7 @@ export const NoFeed = styled.div`
   text-align: center;
   margin-top: 140px;
 `;
+export const Box = styled.div`
+  width: 100%;
+  height: 83px;
+`;

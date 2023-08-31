@@ -79,7 +79,6 @@ const MyPage: React.FC = () => {
       //타인 프로필
       const responseother = await axios.get(`users/profile/${userId}`);
       setOtherData(responseother.data.data);
-
       //팔로우 팔로워 수
       const responsprofilenum = await axios.get(`/fesfosfos/${userId}`);
       setProfileNumData(responsprofilenum.data.data);
@@ -234,6 +233,7 @@ const MyPage: React.FC = () => {
         <NewBucketRegister setModalOpen={setBucketModalValue} id={userId} />
       )}
       {menuModalValue && <MypageMenuModal setModalOpen={setMenuModalValue} />}
+      <S.Box></S.Box>
     </>
   );
 };
