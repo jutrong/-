@@ -40,7 +40,7 @@ export const InputEmail = styled.input`
   width: 100%;
   height: 50px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 8px;
   margin-bottom: 1em;
   font-size: 16px;
   outline: none;
@@ -72,7 +72,7 @@ export const SendButton = styled.button`
   padding: 0 16px;
   white-space: nowrap;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   box-sizing: border-box;
 `;

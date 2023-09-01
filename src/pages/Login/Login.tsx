@@ -92,7 +92,10 @@ const Login = () => {
               background="#EBEEF2"
               border="none"
               color="#6B6774"
-              onClick={() => {}}
+              onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                e.preventDefault();
+                alert("아이디 또는 비밀번호가 틀렸습니다!");
+              }}
             >
               로그인
             </Button>
