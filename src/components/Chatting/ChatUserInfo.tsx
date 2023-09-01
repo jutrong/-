@@ -42,8 +42,6 @@ const ChatUserInfo = ({id, isAdmin, nickName, image, isJail}:MemberType) => {
     }, [socket])
     
 
-    console.log(myInfo);
-
     return (
         <S.UserInfoWrapper>
             <S.UserWrapper>

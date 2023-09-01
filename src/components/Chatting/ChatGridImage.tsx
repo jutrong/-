@@ -10,11 +10,10 @@ const ChatGridImage = ({imageList}: ChatImageType) => {
     const [isViewerOpen, setIsViewerOpen] = useState(false);
     const [imageIndex, setImageIndex] = useState(0);
     const $imageCount = imageList.length;
-    const $isMe: boolean = false;
     const imageThumbs: string[] = $imageCount >= 3 ? imageList.slice(0, 3) : imageList;
 
     return (
-        <S.GridImageWrapper $isMe={$isMe}>
+        <S.GridImageWrapper>
             <S.GridImageContainer $imageCount={$imageCount} >
                 {imageThumbs.map((image, index) => (
                     <S.GridImage 
@@ -22,6 +21,7 @@ const ChatGridImage = ({imageList}: ChatImageType) => {
                         src={image} 
                         $imageCount={$imageCount} 
                         onClick={() => {
+                            document.body.style.overflow = "hidden";
                             setIsViewerOpen(true);
                             setImageIndex(index);
                         }}
@@ -30,6 +30,7 @@ const ChatGridImage = ({imageList}: ChatImageType) => {
                 {$imageCount > 3 && 
                     <S.ModalImage 
                         onClick={() => {
+                            document.body.style.overflow = "hidden";
                             setIsViewerOpen(true);
                             setImageIndex(2);
                         }}

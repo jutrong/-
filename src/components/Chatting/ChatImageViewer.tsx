@@ -45,7 +45,13 @@ const ChatImageViewer = ({imageList, setIsViewerOpen, startSlideIndex}: ChatImag
     return (
         <S.ImageViewerContainer>
             <S.ImageViewerHeader>
-                <S.ImageButton src={iconX} onClick={() => setIsViewerOpen && setIsViewerOpen(false)} />
+                <S.ImageButton 
+                    src={iconX} 
+                    onClick={() => {
+                        document.body.style.overflow = "unset";
+                        return setIsViewerOpen && setIsViewerOpen(false)
+                    }} 
+                />
                 <S.HeaderText>뷰어</S.HeaderText>
             </S.ImageViewerHeader>
             <S.Swiper {...SwiperParams}>
