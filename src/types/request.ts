@@ -106,6 +106,7 @@ export type LinkItemType = {
   itemImg: string;
   itemPrice: string;
   itemName: string;
+  itemUrl?: string;
   deleteclick?: () => void;
 };
 

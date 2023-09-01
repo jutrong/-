@@ -8,10 +8,15 @@ const LinkAttachItem: React.FC<LinkItemType> = ({
   itemImg,
   itemPrice,
   itemName,
+  itemUrl,
   deleteclick,
 }) => {
   return (
-    <S.Wrap>
+    <S.Wrap
+      onClick={() => {
+        window.open(itemUrl);
+      }}
+    >
       <S.AttachImg src={itemImg} />
       {deletevalue && <S.Delete src={x} onClick={deleteclick} />}
       <S.AttachTitle>{itemName}</S.AttachTitle>

@@ -143,6 +143,7 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
                 itemImg={item.imgUrl}
                 itemPrice={item.price}
                 itemName={item.title}
+                itemUrl={item.originUrl}
               />
             ))}
         </S.ImgsBox>
