@@ -116,6 +116,7 @@ const MyPage: React.FC = () => {
             <Icon
               src={menu}
               onClick={() => {
+                document.body.style.overflow = "hidden";
                 setMenuModalValue(true);
               }}
             />,
@@ -192,6 +193,7 @@ const MyPage: React.FC = () => {
         {userdata?.id == userId ? (
           <S.BucketAddBox
             onClick={() => {
+              document.body.style.overflow = "hidden";
               setBucketModalValue(true);
             }}
           >

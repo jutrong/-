@@ -18,6 +18,7 @@ const NewBucketRegister: React.FC<ModalProps> = ({ setModalOpen, id }) => {
   useEffect(() => {
     const clickOutside = (e: any) => {
       if (!modalRef.current?.contains(e.target)) {
+        document.body.style.overflow = "unset";
         setModalOpen(false);
       }
     };
@@ -52,6 +53,7 @@ const NewBucketRegister: React.FC<ModalProps> = ({ setModalOpen, id }) => {
         <S.CloseBTN
           src={x}
           onClick={() => {
+            document.body.style.overflow = "unset";
             setModalOpen(false);
           }}
         />

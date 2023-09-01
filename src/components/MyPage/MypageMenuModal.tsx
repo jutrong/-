@@ -13,6 +13,7 @@ const MypageMenuModal: React.FC<ModalProps> = ({ setModalOpen }) => {
   useEffect(() => {
     const clickOutside = (e: any) => {
       if (!modalRef.current?.contains(e.target)) {
+        document.body.style.overflow = "unset";
         setModalOpen(false);
       }
     };

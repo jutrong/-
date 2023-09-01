@@ -39,6 +39,7 @@ const FeedWriteRegister: React.FC<RegisterModalProps> = ({
   useEffect(() => {
     const clickOutside = (e: any) => {
       if (!modalRef.current?.contains(e.target)) {
+        document.body.style.overflow = "unset";
         setClick(false);
       }
     };
@@ -88,6 +89,7 @@ const FeedWriteRegister: React.FC<RegisterModalProps> = ({
     if (urlItem.length === 0) {
       return;
     }
+    document.body.style.overflow = "unset";
     setClick(false);
   };
 
@@ -97,6 +99,7 @@ const FeedWriteRegister: React.FC<RegisterModalProps> = ({
         <S.Close
           src={close}
           onClick={() => {
+            document.body.style.overflow = "unset";
             setClick(false);
           }}
         />

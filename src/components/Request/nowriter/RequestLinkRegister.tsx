@@ -25,6 +25,7 @@ const RequestLinkRegister: React.FC<RegisterModalProps> = ({
   useEffect(() => {
     const clickOutside = (e: any) => {
       if (!modalRef.current?.contains(e.target)) {
+        document.body.style.overflow = "unset";
         setClick(false);
       }
     };
@@ -82,6 +83,7 @@ const RequestLinkRegister: React.FC<RegisterModalProps> = ({
           itemIds: urlItem.map((item) => item.id),
         }
       );
+      document.body.style.overflow = "unset";
       setClick(false);
       window.location.replace(`/requests/nowriter/${requestId}`);
     } catch (err) {
@@ -96,6 +98,7 @@ const RequestLinkRegister: React.FC<RegisterModalProps> = ({
         <S.Close
           src={close}
           onClick={() => {
+            document.body.style.overflow = "unset";
             setClick(false);
           }}
         />

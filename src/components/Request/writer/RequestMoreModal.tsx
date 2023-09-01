@@ -19,6 +19,7 @@ const RequestMoreModal: React.FC<ModalProps> = ({
   useEffect(() => {
     const clickOutside = (e: any) => {
       if (!modalRef.current?.contains(e.target)) {
+        document.body.style.overflow = "unset";
         setModalOpen(false);
       }
     };
@@ -34,6 +35,7 @@ const RequestMoreModal: React.FC<ModalProps> = ({
         <S.ModalContainer ref={modalRef}>
           <S.ModifyMenu
             onClick={() => {
+              document.body.style.overflow = "unset";
               setModalOpen(false);
               navigation(`/requests/form/modify/${requestid}`);
             }}
@@ -42,6 +44,7 @@ const RequestMoreModal: React.FC<ModalProps> = ({
           </S.ModifyMenu>
           <S.DeleteMenu
             onClick={() => {
+              document.body.style.overflow = "unset";
               setModalOpen(false);
               deleteClick();
             }}

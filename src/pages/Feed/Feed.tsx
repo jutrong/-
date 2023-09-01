@@ -91,12 +91,12 @@ const FeedIndex = () => {
   }, [page]);
   // infinite scrolling
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
   const handleScroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop ===
@@ -151,6 +151,7 @@ const FeedIndex = () => {
   };
   const showModal = (commentId: number) => {
     setSelectedCommentId(commentId);
+    document.body.style.overflow = "hidden";
     setModalOpen(true);
   };
   const toggleComment = (id: number) => {
@@ -215,6 +216,7 @@ const FeedIndex = () => {
             if (selectedCommentId) {
               handleDelete(selectedCommentId);
               setSelectedCommentId(undefined);
+              document.body.style.overflow = "unset";
               setModalOpen(false);
             }
           }}

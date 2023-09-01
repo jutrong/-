@@ -22,6 +22,7 @@ const AppAlertModal: React.FC<ModalProps> = ({
   useEffect(() => {
     const clickOutside = (e: any) => {
       if (!modalRef.current?.contains(e.target)) {
+        document.body.style.overflow = "unset";
         setModalOpen(false);
       }
     };
@@ -41,6 +42,7 @@ const AppAlertModal: React.FC<ModalProps> = ({
         <S.ModalBtn>
           <S.ModalNo
             onClick={() => {
+              document.body.style.overflow = "unset";
               setModalOpen(false);
             }}
           >

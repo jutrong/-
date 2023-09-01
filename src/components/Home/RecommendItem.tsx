@@ -71,7 +71,7 @@ const RecommendItem: React.FC<RecommendItemProps> = ({
                     )
                     .then((res) => {
                       console.log(res);
-
+                      document.body.style.overflow = "unset";
                       setModalView(false);
                     })
                     .catch((err) => {
@@ -81,6 +81,7 @@ const RecommendItem: React.FC<RecommendItemProps> = ({
                     .get(`/buckets`)
                     .then(({ data }) => {
                       console.log(data.data);
+                      document.body.style.overflow = "hidden";
                       setSelectItem(item.id);
                       setBucketList(data.data);
                       setModalView(true);

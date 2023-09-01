@@ -24,10 +24,12 @@ const RequestDetailWriterHeader: React.FC<RequestTitleProps> = ({
   //const [deleteClick, setDeleteClick] = useState(false);
 
   const handleClickMore = () => {
+    document.body.style.overflow = "hidden";
     setMoreClick(true);
   };
 
   const deleteClick = async () => {
+    document.body.style.overflow = "unset";
     setDeleteAlert(false);
 
     try {
@@ -65,6 +67,7 @@ const RequestDetailWriterHeader: React.FC<RequestTitleProps> = ({
         <RequestMoreModal
           setModalOpen={setMoreClick}
           deleteClick={() => {
+            document.body.style.overflow = "hidden";
             setDeleteAlert(true);
           }}
           requestid={id}
