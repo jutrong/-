@@ -9,6 +9,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 
 const ChatImageViewer = ({imageList, setIsViewerOpen, startSlideIndex}: ChatImageType) => {
@@ -54,23 +55,30 @@ const ChatImageViewer = ({imageList, setIsViewerOpen, startSlideIndex}: ChatImag
                 />
                 <S.HeaderText>뷰어</S.HeaderText>
             </S.ImageViewerHeader>
-            <S.Swiper {...SwiperParams}>
-                {imageList.map((image, index) => (
-                    
-                    <S.SwiperSlide key={index}>
-                        <S.ImageView src={image} />
-                    </S.SwiperSlide>
-                ))}
-            </S.Swiper>
+            <S.SwiperWrapper>
+                <Swiper {...SwiperParams}>
+                    {imageList.map((image, index) => (
+                        <S.SwiperSlideWrapper>
+                            <SwiperSlide key={index}>
+                                <S.ImageView src={image} />
+                            </SwiperSlide>
+                        </S.SwiperSlideWrapper>
+                    ))}
+                </Swiper>
+            </S.SwiperWrapper>
             <S.ImageViewerThumbs>
                 <S.ImageThumbsList>
-                    <S.Swiper {...SwiperFooterParams}>
-                        {imageList.map((image, index) => (
-                            <S.SwiperSlide key={index}>
-                                <S.ImageThumbsItem src={image} />
-                            </S.SwiperSlide>
-                        ))}
-                    </S.Swiper>
+                    <S.SwiperWrapper>
+                        <Swiper {...SwiperFooterParams}>
+                            {imageList.map((image, index) => (
+                                <S.SwiperSlideWrapper>
+                                    <SwiperSlide key={index}>
+                                        <S.ImageThumbsItem src={image} />
+                                    </SwiperSlide>
+                                </S.SwiperSlideWrapper>
+                            ))}
+                        </Swiper>
+                    </S.SwiperWrapper>
                 </S.ImageThumbsList>
                 <S.ImageIndex>{totalIndex}<span>장 중</span> {imageIndex}<span>번</span></S.ImageIndex>
             </S.ImageViewerThumbs>

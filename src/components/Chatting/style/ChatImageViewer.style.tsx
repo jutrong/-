@@ -42,10 +42,10 @@ export const ImageButton = styled.img`
     cursor: pointer;
 `;
 
-export const Swiper = styled(OriginSwiper)`
+export const SwiperWrapper = styled.div`
     width: 100%;
 
-    &.mySwiper {
+    & .mySwiper {
         width: 100%;
         height: 53px;
         box-sizing: border-box;
@@ -53,6 +53,7 @@ export const Swiper = styled(OriginSwiper)`
         .swiper-wrapper {
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         .swiper-slide {
@@ -65,13 +66,22 @@ export const Swiper = styled(OriginSwiper)`
         }
     }
 
-    &.mySwiper2 {
+    & .mySwiper2 {
         --swiper-navigation-color: #fff;
         --swiper-pagination-color: #fff;
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+        }
+
+        .swiper-wrapper {
+            align-items: center;
+        }
     }
 `;
 
-export const SwiperSlide = styled(OriginSwiperSlide)`
+export const SwiperSlideWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
