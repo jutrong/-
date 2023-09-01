@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 
 // 추천 아이템 컨테이너
 export const RecommendItemContainer = styled.div`
+  width: 109px;
   height: 178px;
 
   margin-bottom: 20px;

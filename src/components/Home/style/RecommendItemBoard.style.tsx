@@ -6,6 +6,6 @@ export const RecommendItemBoardContainer = styled.div`
 export const RecommendItemListBox = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 0fr);
-  grid-column-gap: 14px;
+  grid-column-gap: 3%;
   justify-content: center;
 `;

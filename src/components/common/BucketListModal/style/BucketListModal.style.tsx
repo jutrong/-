@@ -50,10 +50,9 @@ export const BucketListsContainer = styled.div`
   overflow-y: hidden;
 `;
 export const AddBucketList = styled.button`
-  width: 358px;
+  width: 100%;
   height: 57px;
   flex-shrink: 0;
-  margin: 16px auto;
   border-radius: 8px;
   background: #6138f8;
   color: #fff;
