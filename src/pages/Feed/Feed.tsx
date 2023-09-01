@@ -143,6 +143,7 @@ const FeedIndex = () => {
       fetchFeedData();
     } catch (error) {
       console.log("error", error);
+      alert("댓글 작성자가 아닙니다.");
     }
   };
   const getItemFromResult = (sonIds: number[]): SonminsuItemType[] => {

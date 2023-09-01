@@ -28,13 +28,14 @@ export const ItemImage = styled.div<{ $url: string }>`
 export const ArtistName = styled.div`
   width: max-content;
   display: inline-flex;
-  padding: 2px 4px;
+  padding: 1px 4px 0 4px;
   margin: 8px 0;
   justify-content: center;
   align-items: center;
   gap: 10px;
   border-radius: 4px;
   background: #dee9ff;
+  line-height: 23px;
 `;
 
 export const ItemTitle = styled.div`
