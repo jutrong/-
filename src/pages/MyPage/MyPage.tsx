@@ -62,7 +62,7 @@ const MyPage: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-  }, [token]);
+  }, [token, userId]);
 
   const fetchData = async () => {
     try {

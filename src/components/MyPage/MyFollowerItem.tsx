@@ -32,7 +32,9 @@ const MyFollowerItem: React.FC<MyFollowerAndFollowingType> = ({
     }
   };
 
-  console.log(isMe);
+  // console.log(isMe);
+  // console.log(!isFollowing);
+  // console.log(followValue);
 
   return (
     <S.Wrap>
@@ -43,7 +45,7 @@ const MyFollowerItem: React.FC<MyFollowerAndFollowingType> = ({
         }}
       />
       <S.FollowerName>{nickName}</S.FollowerName>
-      {!isFollowing && followValue && isMe && (
+      {!isFollowing && followValue && !isMe && (
         <S.FollowerBTN state={followValue} onClick={clickFollowBTN}>
           팔로우
         </S.FollowerBTN>
