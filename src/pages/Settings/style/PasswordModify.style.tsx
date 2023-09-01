@@ -12,7 +12,6 @@ export const Container = styled.div`
 export const Content = styled.div`
   width: 100%;
   color: #1d1b20;
-  font-family: Pretendard;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -36,7 +35,6 @@ export const ContentContainer = styled.div`
 `;
 export const Valid = styled.div`
   color: #09ee65;
-  font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

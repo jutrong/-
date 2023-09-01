@@ -10,7 +10,6 @@ export const SettingContainer = styled.div`
 export const Menu = styled.button`
   width: 100%;
   color: #1d1b20;
-  font-family: Pretendard;
   font-size: 15px;
   font-style: normal;
   font-weight: 500;

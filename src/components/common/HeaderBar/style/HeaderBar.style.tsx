@@ -22,7 +22,6 @@ export const LogoContainer = styled.div`
 `;
 export const Title = styled.span`
   width: max-content;
-  font-family: Pretendard;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;

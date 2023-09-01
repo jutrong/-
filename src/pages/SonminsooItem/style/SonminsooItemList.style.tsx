@@ -3,11 +3,20 @@ import { styled } from "styled-components";
 import background from "../../../assets/images/svg/SonminsooItem/requsetButtonBackground.svg";
 import navImg from "../../../assets/images/svg/icon-chevron-right.svg";
 
+
+export const SonminsooListWrapper = styled.div`
+  width: 100%;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 14px;
+`;
+
 export const LinkRequestList = styled(Link)`
   display: flex;
-  margin: 0 auto;
+  // margin: 0 auto;
   padding: 0 14px;
-  width: 358px;
+  width: 100%;
   height: 60px;
   color: #fff;
   font-size: 16px;
@@ -20,9 +29,8 @@ export const LinkRequestList = styled(Link)`
   border-radius: 8px;
 `;
 export const SonminsooItemListContainer = styled.div`
-  width: 358px;
-  margin: 21px auto 0 auto;
-  padding: 0;
+  width: 100%;
+  margin-top: 21px;
 `;
 export const SonminsooItemsContainer = styled.div`
   width: 100%;
@@ -30,7 +38,7 @@ export const SonminsooItemsContainer = styled.div`
   display: flex;
   padding-bottom: 83px;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   overflow-y: scroll;
   overflow-x: hidden;
   gap: 15px;
@@ -38,6 +46,8 @@ export const SonminsooItemsContainer = styled.div`
 
 export const SonminsooItemTitle = styled.div`
   margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 20px;
 `;
 export const SearchText = styled.input.attrs({ type: "text" })`
   width: 100%;

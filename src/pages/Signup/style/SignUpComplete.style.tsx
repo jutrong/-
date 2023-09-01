@@ -16,7 +16,6 @@ export const CompletionMessage = styled.div`
 Copy
 color: var(--grey-100-black, #1D1B20);
 text-align: center;
-font-family: Pretendard;
 font-size: 24px;
 font-style: normal;
 font-weight: 500;

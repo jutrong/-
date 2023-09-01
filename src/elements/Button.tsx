@@ -10,7 +10,6 @@ export const Button = styled.button<{
   border-radius: 8px;
   text-align: center;
   margin: 0 auto;
-  font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;

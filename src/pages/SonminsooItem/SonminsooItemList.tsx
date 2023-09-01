@@ -49,56 +49,57 @@ const SonminsooItemList = () => {
     <>
       {useMemo(() => {
         return (
-          <>
-            <HeaderBar
-              BackButton={false}
-              items={[
-                <>
-                  <Link to={"/searchitem"}>
-                    <Icon key={"search"} src={search} />
-                  </Link>
-                </>,
-                <>
-                  <Link to={"/settings"}>
-                    <Icon key={"settings"} src={settings} />
-                  </Link>
-                </>,
-              ]}
-            />
-            <S.LinkRequestList to="/requests">
+          <HeaderBar
+            BackButton={false}
+            items={[
+              <>
+                <Link to={"/searchitem"}>
+                  <Icon key={"search"} src={search} />
+                </Link>
+              </>,
+              <>
+                <Link to={"/settings"}>
+                  <Icon key={"settings"} src={settings} />
+                </Link>
+              </>,
+            ]}
+          />
+        );
+      }, [])}
+      <S.SonminsooListWrapper>
+        <S.LinkRequestList to="/requests">
               <span>손민수템 의뢰 리스트</span>
               <span>
                 <S.NavImg />
               </span>
-            </S.LinkRequestList>
-          </>
-        );
-      }, [])}
-      <S.SonminsooItemListContainer>
-        <S.SonminsooItemTitle>손민수템</S.SonminsooItemTitle>
+        </S.LinkRequestList>
+        <S.SonminsooItemListContainer>
+          <S.SonminsooItemTitle>손민수템</S.SonminsooItemTitle>
 
-        <S.SonminsooItemsContainer>
-          {items.length === 0 ? (
-            <EmptyItem />
-          ) : (
-            items.map((data) => {
-              return (
-                <SonMinsooItemInfo
-                  key={data.id}
-                  groupName={data.groupName}
-                  id={data.id}
-                  originUrl={data.originUrl}
-                  imgUrl={data.imgUrl}
-                  artistName={data.artistName}
-                  title={data.title}
-                  price={data.price}
-                  isInMyBucket={data?.isInMyBucket}
-                />
-              );
-            })
-          )}
-        </S.SonminsooItemsContainer>
-      </S.SonminsooItemListContainer>
+          <S.SonminsooItemsContainer>
+            {items.length === 0 ? (
+              <EmptyItem />
+            ) : (
+              items.map((data) => {
+                return (
+                  <SonMinsooItemInfo
+                    key={data.id}
+                    groupName={data.groupName}
+                    id={data.id}
+                    originUrl={data.originUrl}
+                    imgUrl={data.imgUrl}
+                    artistName={data.artistName}
+                    title={data.title}
+                    price={data.price}
+                    isInMyBucket={data?.isInMyBucket}
+                  />
+                );
+              })
+            )}
+          </S.SonminsooItemsContainer>
+        </S.SonminsooItemListContainer>
+
+      </S.SonminsooListWrapper>
     </>
   );
 };

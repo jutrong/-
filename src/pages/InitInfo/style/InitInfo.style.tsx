@@ -25,7 +25,6 @@ export const CircleImg = styled.img`
 `;
 export const ImageRegistButton = styled.input.attrs({ type: "button" })`
   color: #208df1;
-  font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

@@ -14,7 +14,6 @@ export const Container = styled.div`
 
 export const Title = styled.h2`
   width: 100%;
-  font-family: Pretendard;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -43,7 +42,6 @@ export const StyledInput = styled.input.attrs({
   height: 50px;
   box-sizing: border-box;
   color: black;
-  font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -79,7 +77,6 @@ export const P = styled.p`
 export const LinkTag = styled(Link)`
   text-decoration: none;
   color: #a4a4a9;
-  font-family: Pretendard;
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
@@ -112,7 +109,6 @@ export const QuickLoginIcons = styled.div`
 `;
 export const LinkToHome = styled(Link)`
   color: #208df1;
-  font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

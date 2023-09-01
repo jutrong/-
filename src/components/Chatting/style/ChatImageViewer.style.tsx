@@ -4,6 +4,9 @@ import {Swiper as OriginSwiper, SwiperSlide as OriginSwiperSlide} from 'swiper/r
 
 
 export const ImageViewerContainer = styled.div`
+    width: 100%;
+    max-width: 450px;
+    height: 100vh;
     background: black;
     z-index: 100;
 
@@ -12,10 +15,9 @@ export const ImageViewerContainer = styled.div`
     justify-content: space-between;
 
     position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 `;
 
 export const ImageViewerHeader = styled.div`

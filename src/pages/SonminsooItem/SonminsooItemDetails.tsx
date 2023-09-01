@@ -97,7 +97,10 @@ const SonminsooItemDetails = () => {
           />,
         ]}
       />
-      <S.Image src={productInfo?.imgUrl} />
+      <S.Image 
+        src={productInfo?.imgUrl}
+        onClick={() => productInfo?.originUrl && window.open(productInfo.originUrl)} 
+      />
       <S.ContentContainer>
         <S.TagContainer>
           <S.Tag>{productInfo?.groupName}</S.Tag>

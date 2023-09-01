@@ -6,6 +6,7 @@ export const DetailContainer = styled.div`
 export const Image = styled.img`
   width: 100%;
   height: 390px;
+  cursor: pointer;
 `;
 export const ContentContainer = styled.div`
   width: 100%;
@@ -27,7 +28,6 @@ export const Tag = styled.span`
   border-radius: 4px;
   background: #dee9ff;
   color: #208df1;
-  font-family: Pretendard;
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
@@ -36,7 +36,6 @@ export const Tag = styled.span`
 export const Title = styled.span`
   width: 100%;
   color: #1d1b20;
-  font-family: Pretendard;
   font-size: 15px;
   font-style: normal;
   font-weight: 700;
@@ -46,7 +45,6 @@ export const Title = styled.span`
 export const Price = styled.span`
   width: 100%;
   color: #6138f8;
-  font-family: Pretendard;
   font-size: 12px;
   font-style: normal;
   font-weight: 700;

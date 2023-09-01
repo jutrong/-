@@ -49,7 +49,6 @@ export const ProfileTextBox = styled.div`
 // 닉네임 텍스트
 export const NicknameText = styled.div`
     color: #1d1b20;
-    font-family: Pretendard;
     font-size: 14px;
 
     font-weight: 700;
@@ -62,7 +61,6 @@ export const FandomNameTimeBox = styled.div`
 // 팬덤이름시간텍스트
 export const NameTimeText = styled.div`
     color: #666;
-    font-family: Pretendard;
     font-size: 13px;
 
     font-weight: 500;
@@ -106,7 +104,6 @@ export const NoticeTextBox = styled.div`
 // 공지 텍스트
 export const NoticeText = styled.p`
     color: #1d1b20;
-    font-family: Pretendard;
     font-size: 15px;
     font-style: normal;
     font-weight: 500;

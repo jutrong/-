@@ -4,7 +4,6 @@ export const Overlay = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
-  max-width: 450px;
   top: 0;
   left: 0;
   bottom: 0;

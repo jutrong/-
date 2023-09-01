@@ -39,7 +39,6 @@ export const BucketItemTitle = styled.div`
   width: 80px;
   color: rgba(29, 27, 32, 0.8);
   text-align: center;
-  font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

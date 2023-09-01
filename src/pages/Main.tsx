@@ -10,7 +10,7 @@ import styled from "styled-components";
 
 const MainView = styled.div`
   width: 100%;
-  height: 844px;
+  height: 100vh;
   background-image: url(${background});
   display: flex;
   flex-direction: column;

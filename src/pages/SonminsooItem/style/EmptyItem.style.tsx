@@ -5,7 +5,6 @@ export const EmptyItemContainer = styled.div`
   line-height: 500px;
   color: rgba(29, 27, 32, 0.5);
   text-align: center;
-  font-family: Pretendard;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

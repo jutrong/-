@@ -37,7 +37,6 @@ export const ModalContentContainer = styled.div`
 export const BucketListTitle = styled.div`
   margin: 30px auto;
   color: var(--grey-100-black, #1d1b20);
-  font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -59,7 +58,6 @@ export const AddBucketList = styled.button`
   background: #6138f8;
   color: #fff;
   text-align: center;
-  font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
