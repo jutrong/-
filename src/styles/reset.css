@@ -141,5 +141,11 @@ a {
 #root {
   width: 100%;
   max-width: 450px;
+  height: 100vh;
   margin: 0 auto;
+  background-color: white;
+}
+
+body {
+  background-color: #F6F6F6;
 }

@@ -8,7 +8,8 @@ export const Container = styled.div<{ color?: string }>`
   justify-content: space-between;
   align-items: center;
   margin-top: 0;
-  background-color: ${(props) => (props.color ? props.color : "transparent")};
+  background-color: ${(props) => (props.color ? props.color : "white")};
+  position: sticky;
 `;
 
 export const Logo = styled.img`
