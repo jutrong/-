@@ -6,8 +6,8 @@ const useAxiosPrivate = () => {
   const token = useSelector(({ auth }) => auth.accessToken);
 
   const axiosPrivate = axios.create({
-    // baseURL: `${process.env.REACT_APP_URL}/users`,
-    baseURL: "http://146.56.143.108/api/v1/users",
+    baseURL: `${process.env.REACT_APP_URL}/users`,
+    // baseURL: "http://146.56.143.108/api/v1/users",
     headers: { Authorization: "1", "Content-Type": "application/json" },
     withCredentials: true,
   });

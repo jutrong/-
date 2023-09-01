@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FeedContainer = styled.div`
   font-family: "Pretendard-Light";
-
+  //피드 백그라운드
   width: 100%;
   box-sizing: border-box;
   margin: 0;

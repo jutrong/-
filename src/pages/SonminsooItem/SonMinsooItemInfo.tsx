@@ -64,10 +64,10 @@ const SonMinsooItemInfo = ({
                     console.log(res);
                     document.body.style.overflow = "unset";
                     setModalView(false);
+                    window.location.reload();
                   })
-                  .catch((err) => {
-                    
-                  })
+
+                  .catch((err) => {})
               : api
                   .get(`/buckets`)
                   .then(({ data }) => {
@@ -76,9 +76,8 @@ const SonMinsooItemInfo = ({
                     document.body.style.overflow = "hidden";
                     setModalView(true);
                   })
-                  .catch((err) => {
-                    
-                  });
+
+                  .catch((err) => {});
           }}
         />
       </S.TitleContainer>

@@ -91,12 +91,12 @@ const FeedIndex = () => {
   }, [page]);
   // infinite scrolling
 
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const handleScroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop ===
@@ -122,7 +122,6 @@ const FeedIndex = () => {
       const response = await axios.get(`/comments/${id}`);
       setComments(response.data.data);
     } catch (error) {
-      
     } finally {
       setIsLoadingComments(false);
     }
@@ -131,9 +130,7 @@ const FeedIndex = () => {
     try {
       const response = await axiosPrivate.get(`/sonminsu-items`);
       setSonminsuItem(response.data.data);
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
 
   const handleDelete = async (id: number) => {
@@ -142,7 +139,6 @@ const FeedIndex = () => {
       fetchComments(openComment);
       fetchFeedData();
     } catch (error) {
-      
       alert("댓글 작성자가 아닙니다.");
     }
   };
