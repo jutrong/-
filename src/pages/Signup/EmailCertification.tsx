@@ -61,7 +61,7 @@ const EmailCertification = () => {
   };
 
   return (
-    <>
+    <S.ContainerWrapper>
       <S.Container>
         <SignUpHeader2 />
         <S.Agreement>본인인증하기</S.Agreement>
@@ -129,7 +129,7 @@ const EmailCertification = () => {
           다음
         </Button>
       )}
-    </>
+    </S.ContainerWrapper>
   );
 };
 export default EmailCertification;

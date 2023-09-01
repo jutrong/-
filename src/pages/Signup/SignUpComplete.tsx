@@ -15,7 +15,7 @@ const SignUpComplete = () => {
   const dispatch = useDispatch();
 
   return (
-    <>
+    <S.ContainerWrapper>
       <S.Container>
         <S.Icon src={complete} />
         <S.CompletionMessage>회원가입 완료되었습니다.</S.CompletionMessage>
@@ -49,7 +49,7 @@ const SignUpComplete = () => {
       >
         로그인 하러가기
       </Button>
-    </>
+    </S.ContainerWrapper>
   );
 };
 

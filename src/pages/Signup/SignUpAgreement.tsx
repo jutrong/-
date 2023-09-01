@@ -45,7 +45,6 @@ const SignUpAgreement = ({ onClick }: { onClick: any }) => {
         background="#6138F8"
         border="none"
         onClick={onClick}
-        margin={"27px auto 0 auto"}
         color="#FFF"
       >
         확인

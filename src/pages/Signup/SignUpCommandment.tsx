@@ -50,7 +50,7 @@ const SignUpCommandment = ({ onClick }: { onClick: any }) => {
           <S.SentenceBox>
             <S.Order src={six} />
             <S.Desc>
-              우리는 공유하고 공유하여 모두가 널리 이롭게 할 것 이다.
+              우리는 공유하고 공유하여 모두가 널리 이롭게 할 것이다.
             </S.Desc>
           </S.SentenceBox>
           <S.SentenceBox>

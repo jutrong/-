@@ -1,7 +1,17 @@
 import { styled } from "styled-components";
 
+export const ContainerWrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  padding: 0 16px 41px;
+  display: flex;
+  flex-direction: column;
+`;
+
+
 export const Container = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

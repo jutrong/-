@@ -64,6 +64,11 @@ export const SwiperWrapper = styled.div`
         .swiper-slide-thumb-active {
             opacity: 1;
         }
+
+        img {
+            display: block;
+            object-fit: cover;
+        }
     }
 
     & .mySwiper2 {
@@ -89,10 +94,6 @@ export const SwiperSlideWrapper = styled.div`
     background-size: cover;
     background-position: center;
 
-    img {
-        display: block;
-        object-fit: cover;
-    }
 `;
 
 export const ImageView = styled.img`

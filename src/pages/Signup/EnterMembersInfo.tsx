@@ -141,7 +141,7 @@ const EnterMembersInfo = () => {
   };
 
   return (
-    <>
+    <S.ContainerWrapper>
       <S.Container>
         <SignUpHeader3 />
         <S.Agreement>개인정보 입력하기</S.Agreement>
@@ -266,7 +266,7 @@ const EnterMembersInfo = () => {
         </Button>
       )}
       <S.Box></S.Box>
-    </>
+    </S.ContainerWrapper>
   );
 };
 export default EnterMembersInfo;

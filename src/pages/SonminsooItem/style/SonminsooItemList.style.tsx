@@ -14,7 +14,6 @@ export const SonminsooListWrapper = styled.div`
 
 export const LinkRequestList = styled(Link)`
   display: flex;
-  // margin: 0 auto;
   padding: 0 14px;
   width: 100%;
   height: 60px;
@@ -30,8 +29,10 @@ export const LinkRequestList = styled(Link)`
 `;
 export const SonminsooItemListContainer = styled.div`
   width: 100%;
+  max-width: 450px;
   margin-top: 21px;
 `;
+
 export const SonminsooItemsContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -41,7 +42,7 @@ export const SonminsooItemsContainer = styled.div`
   justify-content: space-evenly;
   overflow-y: scroll;
   overflow-x: hidden;
-  gap: 15px;
+  gap: 5px;
 `;
 
 export const SonminsooItemTitle = styled.div`

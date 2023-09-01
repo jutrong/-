@@ -1,18 +1,26 @@
 import { styled } from "styled-components";
 import checkIcon from "../../../assets/images/svg/Exclude.svg";
 
+
+
+export const ContainerWrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  padding: 57px 16px 41px 16px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
-  padding: 20px;
-  font-family: "Arial", sans-serif;
-  margin-bottom: 380px;
 `;
 
 export const Agreement = styled.h1`
   font-size: 16px;
   color: #6138f8;
-  margin-top: 31px;
+  margin-top: 28px;
   margin-bottom: 12px;
   font-family: "Pretendard-Bold";
 `;

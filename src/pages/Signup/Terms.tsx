@@ -16,6 +16,7 @@ const Terms = () => {
 
   return (
     <>
+      <S.ContainerWrapper>
       <S.Container>
         <SignUpHeader1 />
         <S.Agreement>이용약관 동의</S.Agreement>
@@ -76,27 +77,28 @@ const Terms = () => {
           />
         )}
       </S.Container>
-      {checkList.length === 2 ? (
-        <Button
-          background="#6138F8"
-          border="none"
-          color="#fff"
-          onClick={() => {
-            navigation("emailCertification");
-          }}
-        >
-          다음
-        </Button>
-      ) : (
-        <Button
-          background="#EBEEF2"
-          border="none"
-          color="#6A6774"
-          onClick={() => {}}
-        >
-          다음
-        </Button>
-      )}
+        {checkList.length === 2 ? (
+          <Button
+            background="#6138F8"
+            border="none"
+            color="#fff"
+            onClick={() => {
+              navigation("emailCertification");
+            }}
+          >
+            다음
+          </Button>
+        ) : (
+          <Button
+            background="#EBEEF2"
+            border="none"
+            color="#6A6774"
+            onClick={() => {}}
+          >
+            다음
+          </Button>
+        )}
+      </S.ContainerWrapper>
     </>
   );
 };

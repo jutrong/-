@@ -4,17 +4,24 @@ import bg from "../../../assets/images/svg/commandment/ic-commandment.svg";
 export const Wrap = styled.div`
   position: fixed;
   width: 100%;
-  height: 844px;
+  height: 100%;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 9999;
   background: #fff;
+  padding: 61px 16px 41px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 export const Container = styled.div`
   position: relative;
-  margin-bottom: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 export const TitleBox = styled.div`
   position: relative;
@@ -22,7 +29,7 @@ export const TitleBox = styled.div`
   height: 65px;
   background: url(${bg}) center center no-repeat;
   background-size: cover;
-  margin: 60px auto 68px auto;
+  margin: 0 auto 68px;
 `;
 export const Title = styled.img`
   position: absolute;
@@ -35,8 +42,6 @@ export const DescBox = styled.div`
   flex-direction: column;
   gap: 20px;
   width: 339px;
-  height: 380px;
-  margin: 0 auto;
 `;
 export const SentenceBox = styled.div`
   display: flex;

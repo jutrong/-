@@ -1,12 +1,22 @@
 import { styled } from "styled-components";
 
+
+export const ContainerWrapper = styled.div`
+  width: 100%;  
+  height: 100vh;
+  padding: 57px 16px 41px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
 export const Container = styled.div`
   width: 100%;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 380px;
+  
 `;
 
 export const Agreement = styled.h1`
