@@ -77,7 +77,7 @@ const FeedWriteRegister: React.FC<RegisterModalProps> = ({
       setUrlItem((oldArray) => [...oldArray, response.data.data]);
       setUrlValue("");
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

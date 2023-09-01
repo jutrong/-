@@ -23,8 +23,7 @@ const Signup = () => {
     email: "",
   });
 
-  console.log(email, "indexemail");
-  console.log(emailCode, "indexemailCode");
+  
   return (
     <S.Container>
       <Outlet

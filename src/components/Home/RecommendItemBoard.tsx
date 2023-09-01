@@ -44,9 +44,7 @@ const RecommendItemBoard = ({
   const initDataGet = async () => {
     try {
       const res = await api.get("/sonminsu-items");
-      console.log(res, "item");
       setData(res.data.data);
-      //  console.log("get:", res.data.data);
     } catch (error) {
       console.error("Error", error);
     }

@@ -40,9 +40,8 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
     try {
       const response = await axios.get(`/sonminsu-requests/${requestId}`);
       setRequestData(response.data.data);
-      console.log(response.data.data);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 
@@ -67,13 +66,12 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
       );
       window.location.replace(`/requests/writer/${requestId}`);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 
   const handledeleteClick = async () => {
     setDeleteClick(false);
-    //console.log(answerId);
 
     try {
       const response = await axiosPrivate.delete(
@@ -81,7 +79,7 @@ const RequestWriterResponse: React.FC<RequestAnswerProps> = ({
       );
       window.location.replace(`/requests/writer/${requestId}`);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

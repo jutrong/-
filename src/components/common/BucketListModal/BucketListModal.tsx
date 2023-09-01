@@ -31,7 +31,6 @@ const BucketListModal: React.FC<ModalProps> = ({
       document.removeEventListener("mousedown", clickOutside);
     };
   }, []);
-  console.log(select, "select");
 
   return (
     <S.BucketListModalContainer>
@@ -63,7 +62,7 @@ const BucketListModal: React.FC<ModalProps> = ({
               setModalOpen(false);
               window.location.reload();
             } catch (e) {
-              console.log(e, "err");
+
             }
           }}
         >

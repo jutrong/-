@@ -9,11 +9,9 @@ const Missing = () => {
           e.preventDefault();
           axiosPrivate
             .get("sonminsu-items?page=1&perPage=1")
-            .then((res) => console.log(res))
             .catch((err) => {
               console.error(err);
             });
-          console.log("test");
         }}
       >
         test

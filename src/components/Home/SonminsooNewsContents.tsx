@@ -49,7 +49,7 @@ const SonminsooNewsContents: React.FC<NewsProps> = ({ item }) => {
       setLiked(response.data.isLike);
       setLikeCount(response.data.likes);
     } catch (error) {
-      console.log("error", error);
+      
     } finally {
       fetchLike();
     }
@@ -60,7 +60,7 @@ const SonminsooNewsContents: React.FC<NewsProps> = ({ item }) => {
       setLikeCount(response.data.data.likes);
       setLiked(response.data.data.isLike);
     } catch (error) {
-      console.log("error", error);
+      
     }
   };
 

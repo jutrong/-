@@ -39,21 +39,18 @@ const MyReqeust: React.FC = () => {
       //나의 의뢰
       const responsemy = await axiosPrivate.get(`sonminsu-requests`);
       setMyData(responsemy.data.data);
-      console.log(responsemy.data.data);
       //찜한 의뢰
       const responsebookmark = await axiosPrivate.get(
         `/sonminsu-requests/bookmarks`
       );
       setBookMarkData(responsebookmark.data.data);
-      console.log(responsebookmark.data.data);
       //완료된 의뢰
       const responseclear = await axiosPrivate.get(
         `/sonminsu-requests?done=true`
       );
       setClearData(responseclear.data.data);
-      console.log(responseclear.data.data);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

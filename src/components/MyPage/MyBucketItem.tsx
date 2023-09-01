@@ -35,7 +35,7 @@ const MyBucketItem: React.FC<ItemType> = ({
         `/sonminsu-items/${id}/buckets/${bucketId}`
       );
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

@@ -59,7 +59,7 @@ const FeedHeader: React.FC<FeedDataProps> = ({
       const response = await axiosPrivate.get("/profile");
       setUserId(response.data.data.id);
     } catch (error) {
-      console.log("error", error);
+      
     }
   };
   const handleMoreClick = () => {

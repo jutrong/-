@@ -12,12 +12,10 @@ type userInfo = {
 const InfoModify = () => {
   const axiosPrivate = useAxiosPrivate();
   const [userInfo, setUserinfo] = useState<userInfo>();
-  console.log(userInfo);
   useEffect(() => {
     axiosPrivate
       .get(`authInfo`)
       .then(({ data }) => {
-        console.log(data);
         setUserinfo(data.data);
       })
       .catch((error) => {
@@ -41,11 +39,9 @@ const InfoModify = () => {
               axiosPrivate
                 .patch("authInfo", userInfo)
                 .then((res) => {
-                  console.log(res);
                   alert("개인정보 수정 완료!");
                 })
                 .catch((err) => {
-                  console.log(err);
                   alert("개인정보 수정 실패");
                 });
             }}

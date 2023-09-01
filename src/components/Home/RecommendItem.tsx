@@ -75,7 +75,7 @@ const RecommendItem: React.FC<RecommendItemProps> = ({
                       setModalView(false);
                     })
                     .catch((err) => {
-                      console.log(err, "bucket item popErr");
+                      
                     })
                 : api
                     .get(`/buckets`)
@@ -87,7 +87,7 @@ const RecommendItem: React.FC<RecommendItemProps> = ({
                       setModalView(true);
                     })
                     .catch((err) => {
-                      console.log(err, "get buckets");
+                      
                     });
             }}
           />

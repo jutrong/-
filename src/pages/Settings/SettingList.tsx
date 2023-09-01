@@ -25,12 +25,11 @@ const SettingList = () => {
             axios
               .delete(`/auth/sign-out`)
               .then((res) => {
-                console.log(res);
                 dispatch(setToken(""));
                 navigation("/login");
               })
               .catch((err) => {
-                console.log(err);
+                
               });
           }}
         >

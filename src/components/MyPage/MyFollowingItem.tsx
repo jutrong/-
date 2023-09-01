@@ -26,7 +26,7 @@ const MyFollowingItem: React.FC<MyFollowerAndFollowingType> = ({
     try {
       const response = await axiosPrivate.put(`/following/${id}`);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

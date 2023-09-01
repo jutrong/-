@@ -15,7 +15,6 @@ const BucketItem: React.FC<props> = ({
   onClick,
   selected = false,
 }) => {
-  console.log("Bucket", selected);
   return (
     <S.BucketItemContainer key={id} onClick={onClick}>
       <S.BucketItemImage $url={img} selected={selected} />

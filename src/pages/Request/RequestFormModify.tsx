@@ -45,9 +45,8 @@ const RequestFormModify: React.FC = () => {
       setDescCount(response.data.data.content.length);
       setGroupCount(response.data.data.groupName.length);
       setArtistCount(response.data.data.artistName.length);
-      //console.log(response.data.data);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 
@@ -81,7 +80,7 @@ const RequestFormModify: React.FC = () => {
       );
       navigation(`/requests/`);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

@@ -89,7 +89,7 @@ const MyPage: React.FC = () => {
       const responsefeed = await axios.get(`/feeds/users/${userId}`);
       setFeedData(responsefeed.data.data);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 
@@ -102,7 +102,7 @@ const MyPage: React.FC = () => {
     try {
       const response = await axiosPrivate.put(`/following/${userId}`);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

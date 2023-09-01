@@ -131,8 +131,7 @@ const EnterMembersInfo = () => {
   }, [userInfo.phoneNumber]);
 
   const handleInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.id);
-    console.log(e.target.value);
+
     setUserInfo((prev) => {
       return {
         ...prev,
@@ -250,10 +249,8 @@ const EnterMembersInfo = () => {
                 code: emailCode,
               })
               .then((res) => {
-                console.log(res);
                 navigation("/signup/signUpComplete");
               })
-              .catch((e) => console.log(e));
           }}
         >
           회원가입 완료

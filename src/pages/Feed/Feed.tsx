@@ -122,7 +122,7 @@ const FeedIndex = () => {
       const response = await axios.get(`/comments/${id}`);
       setComments(response.data.data);
     } catch (error) {
-      console.log("error", error);
+      
     } finally {
       setIsLoadingComments(false);
     }
@@ -132,7 +132,7 @@ const FeedIndex = () => {
       const response = await axiosPrivate.get(`/sonminsu-items`);
       setSonminsuItem(response.data.data);
     } catch (error) {
-      console.log("error", error);
+      
     }
   };
 
@@ -142,7 +142,7 @@ const FeedIndex = () => {
       fetchComments(openComment);
       fetchFeedData();
     } catch (error) {
-      console.log("error", error);
+      
       alert("댓글 작성자가 아닙니다.");
     }
   };

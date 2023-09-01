@@ -29,10 +29,9 @@ const RequestDetaiNoWriterlHeader: React.FC<RequestWriterTitleProps> = ({
       const response = await axiosPrivate.put(
         `/sonminsu-requests/${id}/bookmarks`
       );
-      console.log("response", response);
       setBookMarkData((prev) => !prev);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

@@ -35,7 +35,7 @@ const EmailCertification = () => {
     try {
       const reponse = await axios.get(`/auth/verification-code?email=${email}`);
     } catch (err) {
-      console.log(err);
+      
     }
     // axios
     //   .get(`/auth/verification-code?email=${email}`)
@@ -55,11 +55,9 @@ const EmailCertification = () => {
         code: authValid,
       })
       .then((res) => {
-        console.log("email res", res);
         setEmailCode(authValid);
         setIsAuthValid(true);
       })
-      .catch((e) => console.log(e));
   };
 
   return (
@@ -81,7 +79,6 @@ const EmailCertification = () => {
               value={email}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setEmail(e.target.value);
-                console.log(email);
               }}
             />
             <S.SendButton onClick={handleEmailAuthClick}>

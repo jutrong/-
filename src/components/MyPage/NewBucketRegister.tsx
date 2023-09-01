@@ -43,7 +43,7 @@ const NewBucketRegister: React.FC<ModalProps> = ({ setModalOpen, id }) => {
       });
       window.location.replace(`/mypage/${id}`);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

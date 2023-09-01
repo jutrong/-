@@ -28,13 +28,10 @@ const MyFollowerItem: React.FC<MyFollowerAndFollowingType> = ({
     try {
       const response = await axiosPrivate.put(`/following/${id}`);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 
-  // console.log(isMe);
-  // console.log(!isFollowing);
-  // console.log(followValue);
 
   return (
     <S.Wrap>

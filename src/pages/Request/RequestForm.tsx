@@ -112,15 +112,13 @@ const RequestForm: React.FC = () => {
       formData.append("image", fileInputRef.current?.files?.[0]);
     }
 
-    formData.forEach((value, key) => console.log(`${key}: ${value}`));
-
     try {
       const reponse = await axiosPrivate.post("/sonminsu-requests", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       navigation(`/requests/`);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

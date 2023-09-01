@@ -57,7 +57,6 @@ const Main = () => {
       axios
         .get("/auth/auto-sign-in")
         .then(({ headers }) => {
-          console.log(headers, "auto-sign-in");
           dispatch(setToken(headers.authorization));
           navigation("home");
         })
@@ -67,15 +66,12 @@ const Main = () => {
             axios
               .delete("/auth/sign-out")
               .then((response) => {
-                console.log(response, "로그아웃 완료");
                 dispatch(setToken(""));
               })
               .catch((error) => {
-                console.log(error, "로그아웃 실패");
                 navigation("login");
               });
           }
-          console.log(response.status, "auto sign-in failed");
         });
     }, 2000);
   }, []);

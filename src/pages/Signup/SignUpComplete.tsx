@@ -33,7 +33,6 @@ const SignUpComplete = () => {
               password,
             })
             .then((response) => {
-              console.log(response);
               if (response.status === 204) {
                 navigation("/initInfo");
               }
@@ -44,7 +43,7 @@ const SignUpComplete = () => {
               }
             })
             .catch((error) => {
-              console.log(error);
+              
             });
         }}
       >

@@ -20,7 +20,6 @@ const Login = () => {
     return state.auth.accessToken;
   });
   useEffect(() => {
-    console.log("token!", auth);
     if (auth) navigation("/home");
   }, []);
 
@@ -71,7 +70,6 @@ const Login = () => {
                     password,
                   })
                   .then((response) => {
-                    console.log(response);
                     if (response.status === 204) {
                       navigation("/initInfo");
                     }
@@ -82,7 +80,6 @@ const Login = () => {
                     }
                   })
                   .catch((error) => {
-                    console.log(error);
                     alert("아이디 혹은 비밀번호를 확인해 주세요");
                   });
               }}

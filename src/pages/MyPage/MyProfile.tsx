@@ -47,7 +47,7 @@ const MyProfile: React.FC = () => {
       setDescValue(responseuser.data.data.introduction);
       setDescCount(responseuser.data.data.introduction.length);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 
@@ -103,7 +103,7 @@ const MyProfile: React.FC = () => {
       });
       navigation(`/mypage/${userId}`);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

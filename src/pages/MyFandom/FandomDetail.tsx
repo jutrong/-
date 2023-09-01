@@ -171,8 +171,6 @@ const FandomDetail: React.FC = () => {
     try {
       const response = await axios.get(`/feeds/fandoms/${fandomId}`);
       setFeedData(response.data.data);
-      console.log("피드res:", response.data.data);
-      console.log("피드아이디찾기res:", response.data.data);
     } catch (error) {
       console.error("Error", error);
     }
@@ -182,9 +180,8 @@ const FandomDetail: React.FC = () => {
     try {
       const response = await axios.get(`/comments/${fandomId}`);
       setComments(response.data.data);
-      console.log("댓글res:", response.data.data);
     } catch (error) {
-      console.log("error", error);
+      
     } finally {
       setIsLoadingComments(false);
     }
@@ -193,9 +190,8 @@ const FandomDetail: React.FC = () => {
     try {
       const response = await axiosPrivate.get(`/sonminsu-items`);
       setSonminsuItem(response.data.data);
-      console.log("손민수아이템res:", response.data.data);
     } catch (error) {
-      console.log("error", error);
+      
     }
   };
 
@@ -226,7 +222,7 @@ const FandomDetail: React.FC = () => {
       fetchComments(openComment);
       fetchFeedData();
     } catch (error) {
-      console.log("error", error);
+      
     }
   };
   ////////////////// 피드 함수//////////////////
@@ -238,12 +234,9 @@ const FandomDetail: React.FC = () => {
     fetchItem();
   }, []);
 
-  console.log("팬덤아이디파람", fandomId);
 
   const renderFeedData = () => {
     return feedData?.map((feed) => {
-      console.log("피드데이터:", feed);
-      console.log("데이터팬덤아이디:", feed.fandom.id);
       if (feed.fandom.id === Number(fandomId)) {
         return (
           <React.Fragment key={feed.fandom.id}>

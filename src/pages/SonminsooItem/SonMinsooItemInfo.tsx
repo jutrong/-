@@ -66,19 +66,18 @@ const SonMinsooItemInfo = ({
                     setModalView(false);
                   })
                   .catch((err) => {
-                    console.log(err, "bucket item popErr");
+                    
                   })
               : api
                   .get(`/buckets`)
                   .then(({ data }) => {
-                    console.log(data.data);
                     setSelectItem(id);
                     setBucketList(data.data);
                     document.body.style.overflow = "hidden";
                     setModalView(true);
                   })
                   .catch((err) => {
-                    console.log(err, "get buckets");
+                    
                   });
           }}
         />

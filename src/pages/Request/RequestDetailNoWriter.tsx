@@ -34,17 +34,16 @@ const RequestDetailNoWriter: React.FC = () => {
     try {
       const response = await axios.get(`/sonminsu-requests/${requestId}`);
       setRequestData(response.data.data);
-      //console.log(response.data.data);
+
       if (token) {
         //북마크 여부
         const responsebookmark = await axiosPrivate.get(
           `/sonminsu-requests/${requestId}`
         );
         setBookMarkData(responsebookmark.data.data.isBookmark);
-        console.log(responsebookmark.data.data.isBookmark);
       }
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

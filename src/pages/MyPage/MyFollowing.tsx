@@ -30,7 +30,7 @@ const MyFollowing: React.FC = () => {
       const response = await axiosPrivate.get(`/following/${userId}`);
       setFollowingData(response.data.data);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

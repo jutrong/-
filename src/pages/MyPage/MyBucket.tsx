@@ -31,7 +31,7 @@ const MyBucket: React.FC = () => {
       const response = await axiosPrivate.get(`/buckets/${bucketId}`);
       setItemsData(response.data.data.items);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 
@@ -40,7 +40,7 @@ const MyBucket: React.FC = () => {
       const response = await axiosPrivate.delete(`/buckets/${bucketId}`);
       navigation(`/mypage/${userId}`);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 export const Container = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   border-radius: 10px;
   width: 100%;
-  margin-top: 83px;
   padding: 16px;
   gap: 20px;
 `;

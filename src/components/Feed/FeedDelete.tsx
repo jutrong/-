@@ -41,7 +41,6 @@ const FeedDelete: React.FC<FeedDeleteProps> = ({
       setIsFeedDelete(false);
       onFeedDeleted();
     } catch (error) {
-      console.log("error", error);
       alert("삭제실패");
     }
   };

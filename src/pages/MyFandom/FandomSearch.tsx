@@ -26,7 +26,6 @@ const FandomSearch = () => {
     const [inputVal, setInputVal] = useInput("");
     const [resVal, setResVal] = useState<FandomData>([]);
 
-    console.log(encodeURIComponent(inputVal));
     const onClickHandler = async () => {
         try {
             const res = await axios.get(

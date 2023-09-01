@@ -92,14 +92,13 @@ function FeedDetail() {
     fetchFeedDetail();
     fetchItem();
     fetchFeedData();
-    console.log(FeedId);
   }, []);
   const fetchFeedDetail = async () => {
     try {
       const response = await axios.get(`/feeds/${FeedId}`);
       setFeedItem(response.data.data);
     } catch (error) {
-      console.log("error", error);
+      
     }
   };
 
@@ -117,7 +116,7 @@ function FeedDetail() {
       const response = await axios.get(`/comments/${id}`);
       setComments(response.data.data);
     } catch (error) {
-      console.log("error", error);
+      
     } finally {
       setIsLoadingComments(false);
     }
@@ -127,7 +126,7 @@ function FeedDetail() {
       const response = await axiosPrivate.get(`/sonminsu-items`);
       setSonminsuItem(response.data.data);
     } catch (error) {
-      console.log("error", error);
+      
     }
   };
   const getItemFromResult = (sonIds: number[]): SonminsuItemType[] => {
@@ -148,7 +147,7 @@ function FeedDetail() {
         prevComments.filter((comment) => comment.id !== id)
       );
     } catch (error) {
-      console.log("error", error);
+      
     }
   };
   const showModal = (commentId: number) => {

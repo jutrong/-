@@ -29,9 +29,8 @@ const RequestList: React.FC<RequestListProps> = ({
     try {
       const response = await axiosPrivate.get("/profile");
       setUserData(response.data.data.id);
-      //return console.log(response.data.data);
     } catch (err) {
-      console.log(err);
+      
     }
   };
 

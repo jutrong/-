@@ -26,7 +26,6 @@ const PopularFandomList: React.FC = () => {
             const res = await axios.get("fandoms/hot");
 
             setData(res.data.data);
-            //  console.log("get:", res.data.data);
         } catch (error) {
             console.error("Error", error);
         }

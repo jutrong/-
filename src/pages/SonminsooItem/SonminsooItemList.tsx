@@ -34,11 +34,10 @@ const SonminsooItemList = () => {
   useEffect(() => {
     const getSonminsooItemList = async () => {
       try {
-        const { data } = await api.get("/sonminsu-items?page=1&perPage=10");
-        console.log(data.data);
+        const { data } = await api.get("/sonminsu-items?page=1&perPage=15");
         setItems(data.data);
       } catch (err) {
-        console.log(err, "axios err");
+        
       }
     };
 

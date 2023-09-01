@@ -136,7 +136,7 @@ const NewFeed = () => {
       const response = await axiosPrivate.get(`/feeds/${feedId}`);
       setFeedData(response.data.data);
     } catch (error) {
-      console.log("error", error);
+      
     }
   };
   const fetchFandom = async () => {
@@ -158,7 +158,7 @@ const NewFeed = () => {
       const response = await axiosPrivate.get(`/fandoms/${selectedFandom?.id}`);
       setIsFandomJang(response.data.isAdmin);
     } catch (error) {
-      console.log("error", error);
+      
     }
   };
   const updateFeed = async () => {
@@ -170,7 +170,7 @@ const NewFeed = () => {
       const response = await axiosPrivate.patch(`/feeds/${feedId}`, data);
       navigation("/feed");
     } catch (error) {
-      console.log("error", error);
+      
     }
   };
   const moveToFandom = () => {
@@ -195,13 +195,11 @@ const NewFeed = () => {
       formData.append("image", selectImg);
     }
 
-    formData.forEach((value, key) => console.log(`${key}: ${value}`));
     try {
       const response = await axiosPrivate.post("/feeds", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
     } catch (error) {
-      console.log("error", error);
       throw error;
     }
     navigation("/feed");
@@ -215,7 +213,7 @@ const NewFeed = () => {
         }
       );
     } catch (error) {
-      console.log("error", error);
+      
     }
     navigation("/feed");
   };

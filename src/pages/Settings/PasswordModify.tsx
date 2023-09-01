@@ -73,7 +73,6 @@ const PasswordModify = () => {
                   axiosPrivate
                     .post("password", { password: newPassword })
                     .then((res) => {
-                      console.log(res, "change password");
                       // axios
                       //   .delete(`/auth/sign-out`)
                       //   .then((res) => {
@@ -87,7 +86,7 @@ const PasswordModify = () => {
                       // });
                     })
                     .catch((err) => {
-                      console.log(err);
+                      
                     });
                 }}
               >
@@ -132,11 +131,10 @@ const PasswordModify = () => {
                 axiosPrivate
                   .post("password", { password })
                   .then((res) => {
-                    console.log(res);
                     setPassCheck(true);
                   })
                   .catch((err) => {
-                    console.log(err);
+                    
                   });
               }}
             >

@@ -29,7 +29,6 @@ const MyFandomBoard: React.FC = () => {
       const res = await axiosPrivate.get("/fandoms");
 
       setData(res.data.data);
-      // console.log("get:", res.data.data);
     } catch (error) {
       console.error("Error", error);
     }

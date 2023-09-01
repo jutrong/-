@@ -19,7 +19,6 @@ const SearchItem = () => {
 
   useEffect(() => {
     fetchItem();
-    console.log(minsooItem);
   }, []);
   const fetchItem = async () => {
     try {
@@ -28,7 +27,7 @@ const SearchItem = () => {
       );
       setMinsooItem(response.data.data);
     } catch (error) {
-      console.log("error", error);
+      
     }
   };
 

@@ -2,10 +2,13 @@ import { styled } from "styled-components";
 
 export const Wrap = styled.div`
   width: 100vw;
+  max-width: 450px;
   height: 100vh;
   background-image: url(${"../../../assets/images/png/flowerbg.png"});
 `;
 export const NoRequest = styled.div`
+  width: 100%;
+  max-width: 450px;
   height: 40%;
   display: flex;
   flex-direction: column;

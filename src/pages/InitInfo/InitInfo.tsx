@@ -89,17 +89,15 @@ const InitInfo = () => {
             if (fileInputRef.current?.files?.[0]) {
               formData.append("file", fileInputRef.current?.files?.[0]);
             }
-            formData.forEach((value, key) => console.log(`${key}: ${value}`));
+
             axios
               .post("/auth/init-info", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
               })
               .then((response) => {
-                console.log(response);
                 dispatch(setToken(response.headers.authorization));
                 navigation("/home");
               })
-              .catch((err) => console.log(err));
           }}
         >
           완료

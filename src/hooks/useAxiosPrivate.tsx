@@ -13,11 +13,7 @@ const useAxiosPrivate = () => {
   });
 
   axiosPrivate.interceptors.request.use((config) => {
-    console.log(token, "interceptingAuth");
-
     config.headers.Authorization = token;
-
-    console.log(config, "config");
 
     return config;
   });

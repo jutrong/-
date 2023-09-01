@@ -24,7 +24,7 @@ const LikeBtn: React.FC<LikeBtnProps> = ({ feedId }) => {
       setLikeCount(response.data.data.likes);
       setLiked(response.data.data.isLike);
     } catch (error) {
-      console.log("error", error);
+      
     }
   };
   const toggleLike = async (feedId: number) => {
@@ -36,7 +36,7 @@ const LikeBtn: React.FC<LikeBtnProps> = ({ feedId }) => {
         setLiked(response.data.isLike);
         setLikeCount(response.data.likes);
       } catch (error) {
-        console.log("error", error);
+        
       } finally {
         fetchLike();
       }
