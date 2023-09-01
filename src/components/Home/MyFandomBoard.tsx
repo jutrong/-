@@ -3,46 +3,47 @@ import React, { useState, useEffect } from "react";
 import ContentHeader from "./ContentHeader";
 import FandomCircle from "./FandomCircle";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import useGetToken from "../../hooks/useGetToken";
 
 type Fandom = {
-    fandomName: string;
-    id: number;
-    lastChatTime: null;
-    memberLength: number;
-    rank: number;
-    image: string;
+  fandomName: string;
+  id: number;
+  lastChatTime: null;
+  memberLength: number;
+  rank: number;
+  image: string;
 };
 
 type FandomData = Fandom[];
 const MyFandomBoard: React.FC = () => {
-    const axiosPrivate = useAxiosPrivate();
+  const axiosPrivate = useAxiosPrivate();
 
-    const [data, setData] = useState<FandomData>([]);
+  const [data, setData] = useState<FandomData>([]);
+  const token = useGetToken();
+  useEffect(() => {
+    initDataGet();
+  }, [token]);
 
-    useEffect(() => {
-        initDataGet();
-    }, []);
+  const initDataGet = async () => {
+    try {
+      const res = await axiosPrivate.get("/fandoms");
 
-    const initDataGet = async () => {
-        try {
-            const res = await axiosPrivate.get("/fandoms");
+      setData(res.data.data);
+      // console.log("get:", res.data.data);
+    } catch (error) {
+      console.error("Error", error);
+    }
+  };
 
-            setData(res.data.data);
-            // console.log("get:", res.data.data);
-        } catch (error) {
-            console.error("Error", error);
-        }
-    };
-
-    return (
-        <S.MyFandomBoardContainer>
-            <ContentHeader nav={"/myfandom"} name={"마이팬덤"} />
-            <S.FandomCircleListBox>
-                {data.map((item) => (
-                    <FandomCircle key={item.id} item={item} />
-                ))}
-            </S.FandomCircleListBox>
-        </S.MyFandomBoardContainer>
-    );
+  return (
+    <S.MyFandomBoardContainer>
+      <ContentHeader nav={"/myfandom"} name={"마이팬덤"} />
+      <S.FandomCircleListBox>
+        {data.map((item) => (
+          <FandomCircle key={item.id} item={item} />
+        ))}
+      </S.FandomCircleListBox>
+    </S.MyFandomBoardContainer>
+  );
 };
 export default MyFandomBoard;

@@ -28,7 +28,7 @@ const MyRequestItem: React.FC<MyRequestItemType> = ({
   useEffect(() => {
     fetchData();
   }, []);
-
+  //TODO: 유저 정보 새로고침 시 다시 받아와야 하는지 체크
   const fetchData = async () => {
     try {
       const response = await axiosPrivate.get("/profile");

@@ -83,6 +83,8 @@ const NewFeed = () => {
     fetchFandom();
     fetchFeedData();
   }, []);
+
+  //TODO: 유저 정보 새로고침 시 다시 받아와야 하는지 체크
   useEffect(() => {
     if (selectedFandom?.id) {
       isAdmin();

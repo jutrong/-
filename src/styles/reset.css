@@ -137,6 +137,7 @@ button {
 
 a {
   text-decoration: none;
+  color: unset;
 }
 #root {
   width: 100%;
@@ -148,5 +149,5 @@ a {
 }
 
 body {
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
 }
