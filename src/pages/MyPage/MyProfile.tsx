@@ -63,7 +63,7 @@ const MyProfile: React.FC = () => {
 
   const handleDescTextarea = (e: any) => {
     setDescCount(e.target.value.length);
-    if (e.target.value.length >= 20) {
+    if (e.target.value.length >= 10) {
       setDescColor(false);
     } else {
       setDescColor(true);
@@ -143,7 +143,7 @@ const MyProfile: React.FC = () => {
             onChange={handleDescTextarea}
             maxLength={10}
           />
-          {descCount}/20자
+          {descCount}/10자
         </S.IntroduceBox>
       </S.Wrap>
     </>

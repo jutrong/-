@@ -13,7 +13,7 @@ export const ProfileBox = styled.div`
   padding: 16px;
   display: flex;
   gap: 7px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 export const ProfileImg = styled.img`
   width: 40px;
@@ -66,7 +66,7 @@ export const ImgsBox = styled.div`
 export const MoreModal = styled.div`
   position: absolute;
   top: 0;
-  right: 0;
+  right: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

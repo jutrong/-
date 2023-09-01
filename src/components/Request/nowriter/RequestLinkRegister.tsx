@@ -109,9 +109,7 @@ const RequestLinkRegister: React.FC<RegisterModalProps> = ({
             placeholder="링크를 입력해주세요"
             value={urlValue}
           />
-          <S.LinkRegisterBTN onClick={registerUrlBTN}>
-            링크 등록
-          </S.LinkRegisterBTN>
+          <S.LinkRegisterBTN onClick={registerUrlBTN}>등록</S.LinkRegisterBTN>
         </S.LinkRegisterBox>
         {urlVaild && (
           <S.LinkRegisterAlert>올바른 링크가 아닙니다.</S.LinkRegisterAlert>

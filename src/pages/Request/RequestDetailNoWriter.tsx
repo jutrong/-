@@ -42,9 +42,7 @@ const RequestDetailNoWriter: React.FC = () => {
         );
         setBookMarkData(responsebookmark.data.data.isBookmark);
       }
-    } catch (err) {
-      
-    }
+    } catch (err) {}
   };
 
   return (

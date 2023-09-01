@@ -13,7 +13,7 @@ export const ProfileBox = styled.div`
   padding: 16px;
   display: flex;
   gap: 7px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 export const ProfileImg = styled.img`
   width: 40px;
