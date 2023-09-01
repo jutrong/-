@@ -78,9 +78,7 @@ const SonminsooItemDetails = () => {
                       setModalView(false);
                       window.location.reload();
                     })
-                    .catch((err) => {
-                      
-                    })
+                    .catch((err) => {})
                 : axiosPrivate
                     .get(`/buckets`)
                     .then(({ data }) => {
@@ -89,9 +87,7 @@ const SonminsooItemDetails = () => {
                       document.body.style.overflow = "hidden";
                       setModalView(true);
                     })
-                    .catch((err) => {
-                      
-                    });
+                    .catch((err) => {});
             }}
           />,
         ]}
