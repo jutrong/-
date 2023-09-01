@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { ChatProps, MyChat, OtherChat } from '../../components/Chatting/ChatBubble';
+import { MyChat, OtherChat } from '../../components/Chatting/ChatBubble';
 import BackButton from '../../components/Chatting/BackButton';
 import ChatInputBar from '../../components/Chatting/ChatInputBar';
 import iconMember from '../../assets/images/svg/ic-member.svg';
@@ -8,7 +8,7 @@ import * as S from './styles/ChatRoom.style';
 import { Socket } from 'socket.io-client';
 import { SocketContext } from '../../App';
 import { useLocation, useOutletContext } from "react-router-dom";
-import { Fandom } from '../../types/chattingType';
+import { ChatType, FandomType, UserInfoType } from '../../types/chattingType';
 
 
 const imageMock: string[] = [
@@ -23,28 +23,25 @@ const imageMock: string[] = [
     "https://play-lh.googleusercontent.com/4CyGC7CiaxkyDloyji4IMH07nTPUluhrlV1A0SJ-VkYbobIo--ndgJ1bikONNnr5zN0",
 ];
 
-type FandomData = Fandom[];
+
 
 const ChatRoom = () => {
     const { roomList, setRoomList } = 
         useOutletContext<{
-            roomList: FandomData;
-            setRoomList: React.Dispatch<React.SetStateAction<FandomData>>;
+            roomList: FandomType[];
+            setRoomList: React.Dispatch<React.SetStateAction<FandomType[]>>;
         }>();
 
     const socket = useContext<Socket | undefined>(SocketContext);
     const { pathname }  = useLocation();
     const roomId = Number(pathname.split("/chatting/chatroom/")[1]);
-    const roomName = roomList.find(item => item.id===roomId)?.fandomName;
+    const roomName = roomList.find(item => item.id === roomId)?.fandomName;
 
-    const [myId, setMyId] = useState<number>();
+    const [myInfo, setMyInfo] = useState<UserInfoType | undefined>(undefined);
     const [message, setMessage] = useState<string>('');
-    const [chatMessages, setChatMessages] = useState<ChatProps[]>([]);
+    const [chatMessages, setChatMessages] = useState<ChatType[]>([]);
     const scrollRef = useRef<HTMLDivElement | null>(null);
-
-    // const myId = 123;
-    const ban: boolean = false;
-
+    
     const dateTime = (date: string) => {
         const newDate = new Date(date).toLocaleString();
         const splitDate = newDate.split(" ");
@@ -54,14 +51,14 @@ const ChatRoom = () => {
 
     useEffect(() => {
         if(socket) {
-            const initMessage = (v: any) => setChatMessages(v);
+            const initMessage = (v: React.SetStateAction<ChatType[]>) => setChatMessages(v);
             const newMessage = (v: any) => setChatMessages((prev) => ([...prev, v]));
-            const getMyId = (v: any) => setMyId(v.userId);
+            const getMyInfo = (v: React.SetStateAction<UserInfoType | undefined>) => setMyInfo(v);
 
             socket.emit("joinRoom", roomId);
             socket.emit("myInfo", roomId);
             socket.on("joinRoom", initMessage);
-            socket.on("myInfo", getMyId);
+            socket.on("myInfo", getMyInfo);
             socket.on("bias", newMessage);
 
 
@@ -69,12 +66,11 @@ const ChatRoom = () => {
                 socket.emit("leaveRoom", roomId);
                 socket.emit("myInfo", roomId);
                 socket.off("bias", newMessage);
-                socket.off("myInfo", getMyId);
+                socket.off("myInfo", getMyInfo);
                 socket.off("joinRoom", initMessage);
             };
         }
     }, [socket]);
-
 
     useEffect(() => {
         scrollRef.current?.scrollIntoView({behavior: 'smooth'});
@@ -133,11 +129,12 @@ const ChatRoom = () => {
                             }
 
                             return  (
-                                message.author.id === myId ?
+                                message.author.id === myInfo?.userId ?
                                 <React.Fragment key={index}>
                                     <MyChat 
                                         author={message.author}
                                         content={message.content}
+                                        images={message.images}
                                         createdAt={dateTime(message.createdAt)}
                                         readCount={message.readCount}
                                         $visibleTime={visibleTime}
@@ -148,6 +145,7 @@ const ChatRoom = () => {
                                     <OtherChat
                                         author={message.author}
                                         content={message.content}
+                                        images={message.images}
                                         readCount={message.readCount}
                                         createdAt={dateTime(message.createdAt)}
                                         $visibleProfile={visibleProfile}
@@ -157,19 +155,16 @@ const ChatRoom = () => {
                             )
                         })
                     }
-                    <ChatGridImage imageList={imageMock} />
+                    {/* <ChatGridImage imageList={imageMock} /> */}
                     <div ref={scrollRef}></div>
                 </S.ChatRoomWindow>
                 <ChatInputBar 
-                    ban={ban} 
+                    ban={myInfo && myInfo.isJail ? true : false} 
                     roomId={roomId}
                     message={message}
                     setMessage={setMessage}
-                    chatMessages={chatMessages}
-                    setChatMessages={setChatMessages}
                 />
             </>
-            
     )
 }
 

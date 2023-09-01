@@ -1,12 +1,12 @@
 import React from 'react';
 import * as S from './style/ChatFamdom.style';
 import iconUser from '../../assets/images/svg/ic_user.svg';
-import type { Fandom } from '../../types/chattingType';
+import type { FandomType } from '../../types/chattingType';
 import detailDate from '../../utils/time';
 
 
 
-const ChatFandom = ({id, fandomName, memberLength, image, lastMessage}: Fandom ) => {
+const ChatFandom = ({id, fandomName, memberLength, image, lastMessage}: FandomType ) => {
 
     return (
         <S.ChatFandomWrapper>

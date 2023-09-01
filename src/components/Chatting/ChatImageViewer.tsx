@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as S from './style/ChatImageViewer.style';
 import iconX from '../../assets/images/svg/ic-x.svg';
-import { Chat } from '../../types/chattingType';
+import { ChatImageType } from '../../types/chattingType';
 
 import SwiperCore from 'swiper';
 import { Keyboard, FreeMode, Navigation, Thumbs } from 'swiper/modules';
@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
 
-const ChatImageViewer = ({imageList, setIsViewerOpen, startSlideIndex}: Chat) => {
+const ChatImageViewer = ({imageList, setIsViewerOpen, startSlideIndex}: ChatImageType) => {
 
     // 사용할 모듈 등록
     SwiperCore.use([Keyboard, FreeMode, Navigation, Thumbs]);

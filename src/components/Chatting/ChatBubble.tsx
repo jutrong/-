@@ -1,55 +1,57 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './style/ChatBubble.style';
-import detailDate from '../../utils/time';
+import { ChatType } from '../../types/chattingType';
+import { useNavigate } from 'react-router';
+import ChatGridImage from './ChatGridImage';
 
 
-export type ChatProps = {
-    // id: number;
-    // fandomId: number;
-    // nickName: string;
-    // image: string;
-    // profileImage?: string;
-    author: {
-        id: number;
-        nickName: string;
-        image: string;
-    }
-    content: string;
-    readCount?: number;
-    createdAt: string;
-    $visibleProfile?: boolean;   
-    $visibleTime?: boolean;
-}
 
-const dateTime = (date: string) => {
-    // return date.slice(11, 16);
-    return date;
-}
-
-
-export const MyChat = ({author, content, readCount, createdAt, $visibleTime}: ChatProps) => {
+export const MyChat = ({author, content, images, readCount, createdAt, $visibleTime}: ChatType) => {
     
     return (
         <S.MyChatWrapper>
-            <S.MyChatBubble>{content}</S.MyChatBubble>
+            { (content !== undefined && content !== "-") ?
+                <S.MyChatBubble>{content}</S.MyChatBubble>
+                : null
+            }
+            { images?.length ?
+                <ChatGridImage imageList={images} />
+                : null
+            }
             <S.ChatSubWrapper className={$visibleTime ? 'visible' : ''}>
-                <S.ChatTime>{dateTime(createdAt)}</S.ChatTime>
+                <S.ChatTime>{createdAt}</S.ChatTime>
                 <S.ChatReadCount>{readCount}</S.ChatReadCount>
             </S.ChatSubWrapper>
         </S.MyChatWrapper>
     )
 }
 
-export const OtherChat = ({author, content, readCount, createdAt, $visibleProfile, $visibleTime}: ChatProps) => {
+export const OtherChat = ({author, content, images, readCount, createdAt, $visibleProfile, $visibleTime}: ChatType) => {
+    
+    const navigate = useNavigate();
+    const clickMyPageHandler = () => {
+        navigate(`/mypage/${author.id}`);
+    }
 
     return (
         <S.ChatBubbleWrapper>
-            <S.ChatProfileImage src={author?.image} className={$visibleProfile ? 'visible' : ''} />
+            <S.ChatProfileImage 
+                src={author?.image} 
+                className={$visibleProfile ? 'visible' : ''} 
+                onClick={clickMyPageHandler}
+            />
             <S.ChatBubbleWrapped>
                 <S.ChatProfileName className={$visibleProfile ? 'visible' : ''}>{author?.nickName}</S.ChatProfileName>
-                <S.ChatBubble>{content}</S.ChatBubble>
+                { (content !== undefined && content !== "-") ?
+                    <S.ChatBubble>{content}</S.ChatBubble>
+                    : null
+                }
+                { images?.length ? 
+                    <ChatGridImage imageList={images} />
+                    : null
+                }
                 <S.ChatSubWrapper className={$visibleTime ? 'visible' : ''}>
-                    <S.ChatTime>{dateTime(createdAt)}</S.ChatTime>
+                    <S.ChatTime>{createdAt}</S.ChatTime>
                     <S.ChatReadCount>{readCount}</S.ChatReadCount>
                 </S.ChatSubWrapper>
             </S.ChatBubbleWrapped>

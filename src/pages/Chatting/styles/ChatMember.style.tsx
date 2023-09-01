@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 export const ChatHeader = styled.div`
     width: 100%;
+    max-width: 450px;
     height: 50px;
     padding-left: 16px;
     padding-right: 16px;

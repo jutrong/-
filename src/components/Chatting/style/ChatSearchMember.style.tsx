@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const SearchHeader = styled.div`
     width: 100%;
+    max-width: 450px;
     height: 50px;
     padding-left: 16px;
     padding-right: 16px;
@@ -50,10 +51,10 @@ export const SearchMemberContainer = styled.div`
 
 export const SearchMemberWrapper = styled.div`
     width: 100%;
+    max-width: 450px;
     height: 100%;
 
     position: fixed;
     top: 0;
-    left: 0;
     z-index: 1000;
 `;

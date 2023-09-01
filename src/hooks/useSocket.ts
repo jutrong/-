@@ -7,8 +7,9 @@ const useSocket = () => {
 
     const socket = useMemo(
         () =>
-            // io("http://localhost:5050/thief-sonminsu", {
-            io("http://146.56.143.108/thief-sonminsu", {
+            // io("http://localhost:5050/thief-sonminsu", {     // 로컬
+            io("http://146.56.143.108/thief-sonminsu", {        // 서버
+            // io("/thief-sonminsu", {          // 배포용
                 extraHeaders: {
                     Authorization: token,
                 },

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import * as S from './style/ChatGridImage.style';
-import { Chat } from '../../types/chattingType';
+import { ChatImageType } from '../../types/chattingType';
 import ChatImageViewer from './ChatImageViewer';
 
 
 
-const ChatGridImage = ({imageList}: Chat) => {
+const ChatGridImage = ({imageList}: ChatImageType) => {
 
     const [isViewerOpen, setIsViewerOpen] = useState(false);
     const [imageIndex, setImageIndex] = useState(0);

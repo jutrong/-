@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
-import { Fandom } from '../../types/chattingType';
+import { FandomType } from '../../types/chattingType';
 
 export const ChatWindow = styled.div`
     width: 100%;
@@ -10,10 +10,9 @@ export const ChatWindow = styled.div`
 `;
 
 
-type FandomData = Fandom[];
 
 const Chatting = () => {
-    const [roomList, setRoomList] = useState<FandomData>([]);
+    const [roomList, setRoomList] = useState<FandomType[]>([]);
     
     const props = { roomList, setRoomList };
     

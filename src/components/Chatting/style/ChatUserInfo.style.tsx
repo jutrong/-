@@ -14,14 +14,14 @@ export const UserWrapper = styled.div`
     align-items: center;
 `;
 
-export const UserImage = styled.div`
-    background-color: gray;
-    
+export const UserImage = styled.img`
     width: 56px;
     height: 56px;
     
     margin-right: 15px;
     border-radius: 70%;
+    border: 1px solid #F6F6F6;
+    
 `;
 
 export const UserName = styled.p`
@@ -42,4 +42,19 @@ export const BanButton = styled.button<{$ban: boolean}>`
     text-align: center;
 
     border-radius: 4px;
+`;
+
+
+export const AdminButton = styled.button`
+    width: 103px;
+    height: 30px;
+
+    background: #6138F8;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+
+    border-radius: 4px;
+    cursor: default;
 `;

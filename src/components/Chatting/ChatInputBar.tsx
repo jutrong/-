@@ -5,33 +5,36 @@ import iconCamera from "../../assets/images/svg/ic-camera.svg";
 import * as S from './style/ChatInputBar.style';
 import WebAlertModal from './WebAlertModal';
 import AppAlertModal from './AppAlertModal';
-import { ChatProps } from './ChatBubble';
 import { Socket } from 'socket.io-client';
 import { SocketContext } from '../../App';
-
-type Props = {
-    ban: boolean;
-    roomId: number;
-    message: string;
-    setMessage: React.Dispatch<React.SetStateAction<string>>;
-    chatMessages: ChatProps[];
-    setChatMessages: React.Dispatch<React.SetStateAction<ChatProps[]>>;
-}
-
-type UploadImage = {
-    file: File;
-    // thumbnail: string;
-    // type: string;
-}
+import { ChatInputType } from '../../types/chattingType';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 
 
-const ChatInputBar = ({ban, roomId, message, setMessage, chatMessages, setChatMessages}:Props) => {
+
+const ChatInputBar = ({ban, roomId, message, setMessage}:ChatInputType) => {
     const socket = useContext<Socket | undefined>(SocketContext);
-    const [imageFile, setImageFile] = useState<File[]>();
     const maxFileCount = 9;
     const [onAlert, setOnAlert] = useState<boolean>(false);
+    const axiosPrivate = useAxiosPrivate();
 
 
+    const imagePost = async (filelist: File[]) => {
+        const formData = new FormData();
+        formData.append("fandomId", String(roomId));
+        if (filelist.length) {
+            filelist.forEach((image) => {
+                formData.append("files", image);
+            });
+        }
+
+        const res = await axiosPrivate.post("/chats", formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+        });
+
+    };
+
+    
     const UploadFileHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         const fileList = e.target.files;
         
@@ -48,26 +51,32 @@ const ChatInputBar = ({ban, roomId, message, setMessage, chatMessages, setChatMe
                 sendFileList = sendFileList.slice(0, maxFileCount);
             } 
 
-            setImageFile(sendFileList);
+            imagePost(sendFileList);
         }
     }; 
     
+
     const messageHandler = (e:ChangeEvent<HTMLInputElement>) => {
         setMessage(e.target.value);
     }
 
-    const sendMessageHandler = () => {
-        const sendMessage = {
-            room: roomId,
-            content: message,
-        };
 
-        if (socket) {
-            socket.emit("bias", sendMessage);
-            setMessage('');
-        }        
+    // 메시지 전송
+    const sendMessageHandler = () => {
+        if (message.trimStart() !== "") {
+            const sendMessage = {
+                room: roomId,
+                content: message,
+            };
+    
+            if (socket) {
+                socket.emit("bias", sendMessage);
+                setMessage('');
+            }        
+        }
     }
 
+    // 엔터치면 메시지 전송
     const sendMessageEnter = () => {
         sendMessageHandler();
     }

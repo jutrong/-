@@ -6,6 +6,7 @@ import flowerBg from '../../../assets/images/png/flowerbg.png';
 
 export const ChatHeader = styled.div`
     width: 100%;
+    max-width: 450px;
     height: 50px;
     padding-left: 16px;
     padding-right: 16px;
@@ -41,6 +42,7 @@ export const ChatTitle = styled.p`
 
 export const ChatRoomWindow = styled.div`
     width: 100%;
+    min-height: 100%;
     padding: 70px 16px 98px;
     background-image: url(${flowerBg});
     backbround-size: contain;

@@ -6,6 +6,7 @@ import iconSend from '../../../assets/images/svg/ic-send.svg';
 
 export const ChatBarWrapper = styled.div`
     width: 100%;
+    max-width: 450px;
     height: 98px;
 
     border-top-left-radius: 4px;
@@ -40,7 +41,7 @@ export const ChatInputWrapper = styled.div`
 `;
 
 export const ChatInput = styled.input`
-    min-width: calc(100% - 50px);
+    width: calc(100% - 50px);
     height: 40px;
     
     margin-left: 3px;

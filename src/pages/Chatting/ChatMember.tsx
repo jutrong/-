@@ -1,37 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import BackButton from '../../components/Chatting/BackButton';
 import ChatUserInfo from '../../components/Chatting/ChatUserInfo';
 import iconSearch from '../../assets/images/svg/ic-search.svg';
 import * as S from './styles/ChatMember.style';
 import ChatSearchMember from '../../components/Chatting/ChatSearchMember';
-import { ChatMemberType } from '../../types/chattingType';
+import { MemberType } from '../../types/chattingType';
+import { useLocation } from 'react-router-dom';
+import { SocketContext } from '../../App';
+import { Socket } from 'socket.io-client';
 
 
-const memberMock:ChatMemberType[] = [
-    {
-        $ban: false,
-        userName: "아마추어 손민수1",
-    },
-    {
-        $ban: false,
-        userName: "나는야 손민수",
-    },
-    {
-        $ban: false,
-        userName: "손민수 하러 옴",
-    },
-    {
-        $ban: true,
-        userName: "룰라랄라",
-    },
-    {
-        $ban: true,
-        userName: "호에에엥",
-    },
-];
 
 const ChatMember = () => {
+
+    const socket = useContext<Socket | undefined>(SocketContext);
     const [openSearch, setOpenSearch] = useState<boolean>(false);
+    const [members, setMembers] = useState<MemberType[]>([]);
+    const { pathname } = useLocation();
+    const roomId = Number(pathname.split("/chatting/chatmember/")[1]);
+
+    useEffect(() => {
+        if (socket) {
+            const getMember = (v: React.SetStateAction<MemberType[]>) => setMembers(v);
+
+            socket.emit("members", {room: roomId});
+            socket.on("members", getMember);
+
+            return () => {
+                socket.emit("members", {room: roomId});
+                socket.off("members", getMember);
+            }
+        }
+    }, [socket]);
+
 
     return (
         <>
@@ -41,18 +42,27 @@ const ChatMember = () => {
                 <S.IconButton src={iconSearch} onClick={() => setOpenSearch(true)} />
             </S.ChatHeader>
             <S.MemberWindow>
-                { memberMock && memberMock.map((member, index) => (
-                    <React.Fragment key={index}>
-                        <ChatUserInfo
-                            $ban={member.$ban}
-                            userName={member.userName}
-                        />
-                    </React.Fragment>
-                ))}
+                { members && members.map((member, index) => {
+                    return (
+                        <React.Fragment key={index}>
+                            <ChatUserInfo
+                                id={member.id}
+                                isAdmin={member.isAdmin}
+                                nickName={member.nickName}
+                                image={member.image}
+                                isJail={member.isJail}
+                            />
+                        </React.Fragment>
+                    )}
+                )}
             </S.MemberWindow>
             {openSearch ? 
-                <ChatSearchMember setOpenSearch={setOpenSearch} /> 
-                : null}  
+                <ChatSearchMember 
+                    setOpenSearch={setOpenSearch} 
+                    members={members}
+                /> 
+                : null
+            }  
         </>
     )
 }
