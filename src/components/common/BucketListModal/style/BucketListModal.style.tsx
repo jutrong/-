@@ -26,7 +26,7 @@ export const ModalContentContainer = styled.div`
   position: absolute;
   background-color: #ffffff;
   width: 100%;
-  height: 304px;
+
   max-width: 450px;
   margin: 0 auto;
   padding: 15px;
@@ -46,8 +46,9 @@ export const BucketListTitle = styled.div`
 export const BucketListsContainer = styled.div`
   display: flex;
   width: 100%;
-  height: 116px;
-  overflow: scroll;
+  height: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
 `;
 export const AddBucketList = styled.button`
   width: 358px;
