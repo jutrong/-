@@ -181,7 +181,6 @@ const FandomDetail: React.FC = () => {
       const response = await axios.get(`/comments/${fandomId}`);
       setComments(response.data.data);
     } catch (error) {
-      
     } finally {
       setIsLoadingComments(false);
     }
@@ -190,9 +189,7 @@ const FandomDetail: React.FC = () => {
     try {
       const response = await axiosPrivate.get(`/sonminsu-items`);
       setSonminsuItem(response.data.data);
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
 
   ////////////////// 피드 통신 함수//////////////////
@@ -221,9 +218,7 @@ const FandomDetail: React.FC = () => {
       await axiosPrivate.delete(`/comments/${id}`);
       fetchComments(openComment);
       fetchFeedData();
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
   ////////////////// 피드 함수//////////////////
 
@@ -234,12 +229,14 @@ const FandomDetail: React.FC = () => {
     fetchItem();
   }, []);
 
-
   const renderFeedData = () => {
     return feedData?.map((feed) => {
       if (feed.fandom.id === Number(fandomId)) {
         return (
-          <React.Fragment key={feed.fandom.id}>
+          <div
+            key={feed.fandom.id}
+            style={{ background: "#fff", marginTop: 6 }}
+          >
             <FeedHeader
               feedData={feed}
               setIsFeedDelete={setIsFeedDelete}
@@ -274,7 +271,7 @@ const FandomDetail: React.FC = () => {
                 fetchFeedData={fetchFeedData}
               />
             )}
-          </React.Fragment>
+          </div>
         );
       } else {
         return null; // 해당 팬덤 아이디와 일치하지 않으면 null 반환하여 출력하지 않음

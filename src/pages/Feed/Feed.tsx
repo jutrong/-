@@ -200,7 +200,7 @@ const FeedIndex = () => {
         </React.Fragment>
       ))}
       <Outlet />
-      {openComment === undefined && <FooterNavBar />}
+      <FooterNavBar />
       {modalOpen && (
         <AppAlertModal
           setModalOpen={setModalOpen}

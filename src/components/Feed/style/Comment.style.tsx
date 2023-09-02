@@ -1,13 +1,10 @@
 import styled from "styled-components";
 import submit from "../../../assets/images/svg/ic-navigation.svg";
 
-
 export const CommentInput = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  bottom: 0;
   background-color: #fff;
   width: 100%;
   padding: 19px 16px;
