@@ -1,6 +1,6 @@
 # 당장 손민수
 
-<img width="228" alt="%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-10-09%20%EC%98%A4%ED%9B%84%203 09 54" src="https://github.com/jutrong/sonminsoo-project/assets/113658811/c40d939b-9b61-4c43-80c6-ba652d1f0cfd">
+<img width="300" alt="%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-10-09%20%EC%98%A4%ED%9B%84%203 09 54" src="https://github.com/jutrong/sonminsoo-project/assets/113658811/c40d939b-9b61-4c43-80c6-ba652d1f0cfd">
 
 ## 서비스 소개
 
@@ -19,8 +19,6 @@ ID : [cslzh4433@naver.com](mailto:cslzh4433@naver.com)
 PW : 12341234aa
 
 <img width="140" alt="%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-10-09%20%EC%98%A4%ED%9B%84%203 13 00" src="https://github.com/jutrong/sonminsoo-project/assets/113658811/da534a42-aa28-48f2-af3a-6969d71c307e">
-
-### 배포판과 현재 코드 불일치(이 부분 수정 해야함)
 
 ## 페르소나
 
@@ -108,18 +106,17 @@ PW : 12341234aa
 ### [ 사용 기술 ]
 
 - Front-end
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white">
+  <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
+  <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white">
 
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white">
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white">
-<img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
-<img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white">
-<img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white">
-<img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=PWA&logoColor=white">
-<img src="https://img.shields.io/badge/jsonwebtokens-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white">
+  <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white">
+  <img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=PWA&logoColor=white">
+  <img src="https://img.shields.io/badge/jsonwebtokens-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white">
 
 - 서비스 배포 환경
 
-  <img src="https://img.shields.io/badge/openssl-721412?style=for-the-badge&logo=openssl&logoColor=white"> ssl 이거 맞음?
   <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white">
   <img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
 
