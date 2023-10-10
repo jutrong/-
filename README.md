@@ -31,22 +31,23 @@ PW : 12341234aa
 
 ## 목차
 
-[1. 팀 소개(역할 분담)](https://www.notion.so/1-1a7113764ef34d5e953910ebd336ca69?pvs=21)
+[1. 팀 소개(역할 분담)](#1-팀-소개역할-분담)
 
-[2. 기술 및 개발 환경](https://www.notion.so/2-971d9ce35eed4218bb8f8b449c594e54?pvs=21)
+[2. 기술 및 개발 환경](#2-기술-및-개발-환경)
 
-[3. 주요 기능](https://www.notion.so/3-ed2a19e8704747168614e415fb1763ca?pvs=21)
+[3. 주요 기능](#3-주요-기능)
 
-[4. 프로젝트 구조(폴더 구조)](https://www.notion.so/4-7b42190f4e4e4d58a2fc972e531a08de?pvs=21)
+[4. 프로젝트 구조(폴더 구조)](#4-프로젝트-구조폴더-구조)
 
-[](https://www.notion.so/1bb4547425124c35902f2869c0e82187?pvs=21)
+[5. UI](#5-ui)
 
-[6. 페이지 기능](https://www.notion.so/6-d1594c516cb24ebb92aa25fcdb568ffd?pvs=21)
+[6. 페이지 기능](#6-페이지-기능)
 
-[7. 개선사항](https://www.notion.so/7-8f214e529cf24fdca2afb61cc016c001?pvs=21)
+[7. 개선사항](#7-개선사항)
 
-[8. 작업 관리(협업 방법)](https://www.notion.so/8-c424009ab7c3461fb9f90f37172abebd?pvs=21)
-[9. 팀 활동](https://www.notion.so/9-182c032691f7418fab075dacba1db36e?pvs=21)
+[8. 작업 관리(협업 방법)](#8-작업-관리협업-방법)
+
+[9. 팀 활동](#9-팀-활동)
 
 ## 1. 팀 소개(역할 분담)
 
@@ -430,4 +431,3 @@ return (
 ![Untitled-2](https://github.com/jutrong/sonminsoo-project/assets/113658811/279c8140-cbfa-4c19-98be-e312e6f9183c)
 
 ![Untitled-3](https://github.com/jutrong/sonminsoo-project/assets/113658811/0107488f-b694-43e3-8fd3-f5311a36c29c)
-test
