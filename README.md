@@ -89,9 +89,7 @@ PW : 12341234aa
 
 ### [ 프로젝트 목표 ]
 
-- 학습한 React와 여러 라이브러리를 활용해 PWA 기반 SPA 웹 어플리케이션 개발
-
-       (이미지 중심 소셜 네트워크 서비스)
+- 학습한 React와 여러 라이브러리를 활용해 PWA 기반 SPA 웹 어플리케이션 개발(이미지 중심 소셜 네트워크 서비스)
 
 - 애자일 방법론을 사용하여 협업 역량 강화
 
@@ -100,17 +98,11 @@ PW : 12341234aa
 - Front-end
 
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white">
-
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white">
-
 <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
-
 <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white">
-
 <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white">
-
 <img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=PWA&logoColor=white">
-
 <img src="https://img.shields.io/badge/jsonwebtokens-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white">
 
 - 서비스 배포 환경
@@ -344,15 +336,15 @@ return (
 
 ### 📔 피드
 
-| 🔗피드 작성 | 🔗피드 수정 | 🔗댓글 작성 삭제 |
-| ----------- | ----------- | ---------------- |
-| 완료        |             | 완료             |
+| 피드 작성 | 피드 수정 | 댓글 작성 삭제 |
+| --------- | --------- | -------------- |
+| 완료      |           | 완료           |
 
 ### 👗 손민수 아이템
 
-| 🔗손민수템                                                                                                             | 🔗의뢰 | 🔗   |
-| ---------------------------------------------------------------------------------------------------------------------- | ------ | ---- |
-| ![손민수템 (1)](https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/771cc046-32f8-4dfd-9e80-1995d48e5712) |        | 완료 |
+| 손민수템                                                                                                               | 의뢰 |      |
+| ---------------------------------------------------------------------------------------------------------------------- | ---- | ---- |
+| ![손민수템 (1)](https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/771cc046-32f8-4dfd-9e80-1995d48e5712) |      | 완료 |
 
 ### ⌨️ 채팅
 
