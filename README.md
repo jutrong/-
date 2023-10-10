@@ -31,55 +31,54 @@ PW : 12341234aa
 
 ## 목차
 
-[1. 팀 소개(역할 분담)](#1-팀-소개역할-분담)
+[1. 팀 소개(역할 분담)](https://www.notion.so/1-1a7113764ef34d5e953910ebd336ca69?pvs=21)
 
-[2. 기술 및 개발 환경](#2-기술-및-개발-환경)
+[2. 기술 및 개발 환경](https://www.notion.so/2-971d9ce35eed4218bb8f8b449c594e54?pvs=21)
 
-[3. 주요 기능](#3-주요-기능)
+[3. 주요 기능](https://www.notion.so/3-ed2a19e8704747168614e415fb1763ca?pvs=21)
 
-[4. 프로젝트 구조(폴더 구조)](#4-프로젝트-구조폴더-구조)
+[4. 프로젝트 구조(폴더 구조)](https://www.notion.so/4-7b42190f4e4e4d58a2fc972e531a08de?pvs=21)
 
-[5. UI](#5-ui)
+[](https://www.notion.so/1bb4547425124c35902f2869c0e82187?pvs=21)
 
-[6. 페이지 기능](#6-페이지-기능)
+[6. 페이지 기능](https://www.notion.so/6-d1594c516cb24ebb92aa25fcdb568ffd?pvs=21)
 
-[7. 개선사항](#7-개선사항)
+[7. 개선사항](https://www.notion.so/7-8f214e529cf24fdca2afb61cc016c001?pvs=21)
 
-[8. 작업 관리(협업 방법)](#8-작업-관리협업-방법)
-
-[9. 팀 활동](#9-팀-활동)
+[8. 작업 관리(협업 방법)](https://www.notion.so/8-c424009ab7c3461fb9f90f37172abebd?pvs=21)
+[9. 팀 활동](https://www.notion.so/9-182c032691f7418fab075dacba1db36e?pvs=21)
 
 ## 1. 팀 소개(역할 분담)
 
-1. 신혜정(팀장/FE)
+#### **1. 신혜정(팀장/FE)**
    - 프로젝트 기획
    - 홈 페이지
    - 마이 팬덤 페이지
    - 새 팬덤 만들기, 팬덤 검색
    - 팬덤 상세보기 페이지
    - 타오르는 팬덤 페이지
-2. 최재혁(프론트리더/FE)
+#### **2. 최재혁(프론트리더/FE)**
    - 전역 상태관리
    - 커스텀 훅, 공용 컴포넌트 분리 & 제작
    - 로그인 / 회원가입
    - 손민수템 리스트 페이지
    - 설정 페이지
-3. 이주현(팀원/FE)
+#### **3. 이주현(팀원/FE)**
    - 피드 페이지
    - 댓글 및 좋아요
    - 손민수 아이템 검색
-4. 용지은(팀원/FE)
+#### **4. 용지은(팀원/FE)**
    - 채팅 리스트 페이지
    - 채팅 페이지
    - 이미지 뷰어
    - footer nav
-5. 김라온(팀원/FE)
+#### **5. 김라온(팀원/FE)**
    - 의뢰 페이지
    - 마이 페이지
    - 회원가입 페이지
-6. 유종훈(팀원/FE)
+#### **6. 유종훈(팀원/FE)**
    - 로그인 / 회원가입 페이지
-7. 정충래(백엔드리더/BE)
+#### **7. 정충래(백엔드리더/BE)**
 
 ## 2. 기술 및 개발 환경
 
@@ -89,7 +88,9 @@ PW : 12341234aa
 
 ### [ 프로젝트 목표 ]
 
-- 학습한 React와 여러 라이브러리를 활용해 PWA 기반 SPA 웹 어플리케이션 개발(이미지 중심 소셜 네트워크 서비스)
+- 학습한 React와 여러 라이브러리를 활용해 PWA 기반 SPA 웹 어플리케이션 개발
+
+       (이미지 중심 소셜 네트워크 서비스)
 
 - 애자일 방법론을 사용하여 협업 역량 강화
 
@@ -98,11 +99,17 @@ PW : 12341234aa
 - Front-end
 
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white">
+
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white">
+
 <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
+
 <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white">
+
 <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white">
+
 <img src="https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=PWA&logoColor=white">
+
 <img src="https://img.shields.io/badge/jsonwebtokens-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white">
 
 - 서비스 배포 환경
@@ -120,25 +127,35 @@ PW : 12341234aa
 
 ### [ 컨벤션 ]
 
-- Git Commit Convention
-    <aside>
-    💡 Feat: 새로운 기능 추가
-    Design : CSS, 사용자 UI 디자인 변경
-    Style : 코드포맷, 세미콜론, 개행, 코드 구조, 형태
-    Test : 테스트
-    
-    Refactor: 코드 리팩토링
-    Fix : 버그 및 오류 수정
-    Remove : 불필요한 파일 삭제
-    
-    Rename : 파일 혹은 폴더명 수정하거나 옮기는 경우
-    Chore : 빌드 업무, 패키지매니저, 폴더트리, 세팅 수정
-    Comment : 필요한 주석 추가 및 변경
-    
-    </aside>
+<details>
+<summary> - Git Commit Convention</summary>
+<div markdown="1">
 
-- Code Convention
-    <aside>
+ <aside>
+ 
+    💡
+    - Feat: 새로운 기능 추가
+    - Design : CSS, 사용자 UI 디자인 변경
+    - Style : 코드포맷, 세미콜론, 개행, 코드 구조, 형태
+    - Test : 테스트
+    - Refactor: 코드 리팩토링
+    - Fix : 버그 및 오류 수정
+    - Remove : 불필요한 파일 삭제
+    - Rename : 파일 혹은 폴더명 수정하거나 옮기는 경우
+    - Chore : 빌드 업무, 패키지매니저, 폴더트리, 세팅 수정
+    - Comment : 필요한 주석 추가 및 변경
+    
+</aside>
+
+</div>
+</details>
+
+<details>
+<summary> - Code Convention</summary>
+<div markdown="1">
+
+ <aside>
+ 
     💡
     
     - 상수 ⇒ UpperCase+snake_case
@@ -150,7 +167,11 @@ PW : 12341234aa
     - Componenet ⇒ PascalCase
     - Non-Component ⇒ camelCase
     - 관련 파일 ⇒ Component명과 동일
-    </aside>
+    
+</aside>
+
+</div>
+</details>
 
 ### [ Git-flow 전략 ]
 
@@ -216,9 +237,12 @@ PW : 12341234aa
 
 ## 4. 프로젝트 구조(폴더 구조)
 
-- 폴더 구조(토글해주세요!)
 
-  ```jsx
+ <details>
+<summary> 프로젝트 구조</summary>
+<div markdown="1">
+
+ ```jsx
   📦src
    ┣ 📂Context
    ┣ 📂Routes
@@ -275,6 +299,9 @@ PW : 12341234aa
    ┗ 📜setupProxy.js
   ```
 
+</div>
+</details>
+
 - Git 충돌 방지를 위해 Routes 폴더를 두고 각자 맡은 페이지의 route를 수정할 수 있게 하였습니다.
 
 ```
@@ -328,7 +355,7 @@ return (
 
 | 로그인                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------ |
-| ![login (1)](https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/ffb699fc-4b24-4e41-af83-19bc94e8e6a9) |
+| ![login (1)](https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/cc04b37e-9b14-4fa4-bd18-4afc8dde11cb) |
 
 ### 🏠 **홈**
 
@@ -336,15 +363,15 @@ return (
 
 ### 📔 피드
 
-| 피드 작성 | 피드 수정 | 댓글 작성 삭제 |
-| --------- | --------- | -------------- |
-| 완료      |           | 완료           |
+| 🔗피드 작성 | 🔗피드 수정 | 🔗댓글 작성 삭제 |
+| ----------- | ----------- | ---------------- |
+| 완료        |             | 완료             |
 
 ### 👗 손민수 아이템
 
-| 손민수템                                                                                                               | 의뢰 |      |
-| ---------------------------------------------------------------------------------------------------------------------- | ---- | ---- |
-| ![손민수템 (1)](https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/02fa228b-3ccb-4e9f-95dd-d872eba0baa2) |      | 완료 |
+| 🔗손민수템                                                                                                             | 🔗의뢰 | 🔗   |
+| ---------------------------------------------------------------------------------------------------------------------- | ------ | ---- |
+| ![손민수템 (1)](https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/771cc046-32f8-4dfd-9e80-1995d48e5712) |        | 완료 |
 
 ### ⌨️ 채팅
 
@@ -423,3 +450,4 @@ return (
 ![Untitled-2](https://github.com/jutrong/sonminsoo-project/assets/113658811/279c8140-cbfa-4c19-98be-e312e6f9183c)
 
 ![Untitled-3](https://github.com/jutrong/sonminsoo-project/assets/113658811/0107488f-b694-43e3-8fd3-f5311a36c29c)
+test
