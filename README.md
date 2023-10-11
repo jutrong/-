@@ -1,6 +1,6 @@
 # 당장 손민수
 
-<img width="300" alt="%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-10-09%20%EC%98%A4%ED%9B%84%203 09 54" src="https://github.com/jutrong/sonminsoo-project/assets/113658811/c40d939b-9b61-4c43-80c6-ba652d1f0cfd">
+<img width="500" alt="%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-10-09%20%EC%98%A4%ED%9B%84%203 09 54" src="https://github.com/jutrong/sonminsoo-project/assets/113658811/1d4966bb-52a5-485a-a830-7673b2415bdb">
 
 ## 서비스 소개
 
@@ -106,6 +106,7 @@ PW : 12341234aa
 ### [ 사용 기술 ]
 
 - Front-end
+
   <br/>
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white">
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white">
@@ -413,9 +414,9 @@ return (
 - 손민수템 상세보기에서 이미지 클릭 시 해당 아이템 링크로 이동
 - 의뢰 페이지
   - 작성자와 비작성자 구분하여 의뢰 게시판 기능 사용
-  -> useRouter, Params 이용하여 작성자 유무 판단
+    -> useRouter, Params 이용하여 작성자 유무 판단
   - 작성자는 의뢰 폼을 작성, 수정, 답변 삭제 또는 채택
-  -> 답변 채택 유무 map 함수 순회하여 true 값이 하나라도 있다면 채택 옵션 제거
+    -> 답변 채택 유무 map 함수 순회하여 true 값이 하나라도 있다면 채택 옵션 제거
   - 비작성자는 의뢰 답변 작성 (링크 등록 최대 9개)
 
 ### ⌨️ 채팅
@@ -429,6 +430,7 @@ return (
   - 하단에 썸네일 이미지 구현, 클릭 시 이미지 전환
 
 ### 👩‍💻 마이페이지
+
 - 프로필 등록 및 편집
 - 팔로워, 팔로잉 목록 보기
 - 팔로우, 팔로잉 기능
