@@ -1,6 +1,6 @@
 # 당장 손민수
 
-<img width="500" alt="%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-10-09%20%EC%98%A4%ED%9B%84%203 09 54" src="https://github.com/jutrong/sonminsoo-project/assets/113658811/1d4966bb-52a5-485a-a830-7673b2415bdb">
+<img width="800" alt="%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-10-09%20%EC%98%A4%ED%9B%84%203 09 54" src="https://github.com/jutrong/sonminsoo-project/assets/113658811/1d4966bb-52a5-485a-a830-7673b2415bdb">
 
 ## 서비스 소개
 
@@ -354,41 +354,163 @@ return (
 
 ## 5. UI
 
-### 🔐 **계정**
+<details>
+<summary> 로그인 </summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/53a65863-d533-48a2-8b0e-7674d12660c2">
+</aside>
+</div>
+</details>
 
-| 로그인                                                                                                                 |
-| ---------------------------------------------------------------------------------------------------------------------- |
-| <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/ffb699fc-4b24-4e41-af83-19bc94e8e6a9"> |
+<details>
+<summary> 팬덤 생성 및 편집 </summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/f50f2e8d-cab7-44cf-b616-083bbf05dc24">
+</aside>
+</div>
+</details>
+<details>
+<summary> 팬덤 검색 및 가입 & 탈퇴 </summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/aea3f94b-901c-4b2e-b161-e85ba0942c4f">
+</aside>
+</div>
+</details>
 
-### 👩‍❤️‍👨 팬덤
+<details>
+<summary> 피드 작성 </summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/jutrong/sonminsoo-project/assets/113658811/6b3a6ee7-72fd-4c1e-ad38-fb320bb6e968">
+</aside>
+</div>
+</details>
+<details>
+<summary> 피드 수정 </summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/jutrong/sonminsoo-project/assets/113658811/3d2e0c7a-6040-4644-91da-82617461f335">
+</aside>
+</div>
+</details>
+<details>
+<summary> 댓글 작성 </summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/jutrong/sonminsoo-project/assets/113658811/a63d8b6b-cb1a-4fd6-af6a-c30312df17a8">
+</aside>
+</div>
+</details>
 
-| 팬덤                                                                                                                   |
-| ---------------------------------------------------------------------------------------------------------------------- |
-| <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/1ca0f369-7531-449e-b130-20b729b0856d"> |
+<details>
+<summary> 손민수템 검색  </summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/7b8e6da2-1c65-4516-9352-41ebffad295b">
+</aside>
+</div>
+</details>
+<details>
+<summary> 손민수템 상세보기  </summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/350d9cc8-f995-4fc8-b665-b6e8308fce99">
+</aside>
+</div>
+</details>
 
-### 📔 피드
+<details>
+<summary> 손민수템 의뢰 목록  </summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/97fc1c15-ef29-46f2-821b-7055e00fcf8e">
+</aside>
+</div>
+</details>
 
-| 피드 작성                                                                                                                  | 피드 수정                                                                                                                  | 댓글 작성                                                                                                                   |
-| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| <img width="200" src="https://github.com/jutrong/sonminsoo-project/assets/113658811/6b3a6ee7-72fd-4c1e-ad38-fb320bb6e968"> | <img width="200" src="https://github.com/jutrong/sonminsoo-project/assets/113658811/3d2e0c7a-6040-4644-91da-82617461f335"> | <img width="200" src="https://github.com/jutrong/sonminsoo-project/assets/113658811/a63d8b6b-cb1a-4fd6-af6a-c30312df17a8 "> |
+<details>
+<summary> 손민수템 의뢰 작성 및 수정  </summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/b61ad910-6106-4fa7-8477-21f8b3660aef">
+</aside>
+</div>
+</details>
 
-### 👗 손민수 아이템
+<details>
+<summary> 손민수템 의뢰 답변 및 채택  </summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/c3245aca-91d1-48c7-90f4-ce75eff6eb02">
+</aside>
+</div>
+</details>
 
-| 손민수템                                                                                                               | 의뢰                                                                                                                   |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/02fa228b-3ccb-4e9f-95dd-d872eba0baa2"> | <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/269b12c6-75db-47f9-ac91-4b8c669ac717"> |
+<details>
+<summary> 채팅 </summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/093b24aa-2450-4f24-b906-73d19458ee3c">
+</aside>
+</div>
+</details>
 
-### ⌨️ 채팅
+<details>
+<summary> 마이페이지 프로필 수정 </summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/2c78e4ae-b488-4e3d-bf98-04a9a34d2aa3"> 
+</aside>
+</div>
+</details>
 
-| 채팅                                                                                                                   |
-| ---------------------------------------------------------------------------------------------------------------------- |
-| <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/b7299db9-b3fe-4ed5-b32a-be79cb359fa6"> |
+<details>
+<summary> 마이페이지 팔로우/팔로잉 </summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/dd82181b-9711-4962-8cc4-4461a3483449"> 
+</aside>
+</div>
+</details>
 
-### 👩‍💻 마이페이지
+<details>
+<summary> 마이페이지 버킷리스트</summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/b94bac3b-3d8c-41ec-8e48-071b335aa007"> 
+</aside>
+</div>
+</details>
 
-| 마이페이지                                                                                                             |
-| ---------------------------------------------------------------------------------------------------------------------- |
-| <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/6d5be59e-f362-48fb-9af2-74b0e1499fda"> |
+<details>
+<summary> 마이페이지 피드</summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/7aeb6452-7feb-4fea-a396-dcfb468d3314"> 
+</aside>
+</div>
+</details>
+
+<details>
+<summary> 마이페이지 나의 의뢰</summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/4ff6f009-97e6-4103-81ae-70334b61d545"> 
+</aside>
+</div>
+</details>
+
+<details>
+<summary>설정</summary>
+<div markdown="1">
+ <aside>
+ <img width="200" src="https://github.com/hitzza/ThiefSonMinSoo/assets/103095794/cd219354-8315-4bc2-b7c4-c6125883c4f3"> 
+</aside>
+</div>
+</details>
 
 ## 6. 페이지 기능
 
