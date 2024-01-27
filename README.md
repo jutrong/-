@@ -8,9 +8,14 @@
 
 ## 배포 URL
 
-[당장 손민수](https://kdt-sw-5-2-team11.elicecoding.com/)
+현재 서버가 닫힌 상태입니다. 발표 영상으로 확인해 주시기 바랍니다.
 
-당장 손민수는 390x844 모바일 환경에 최적화되어 있습니다.
+[당장 손민수 시연 영상](https://www.youtube.com/watch?v=FJzvQ0aJ36w&t=20s)
+
+
+[당장 손민수 발표 영상](https://www.youtube.com/watch?v=vMHJ--E1egI)
+
+
 
 ## 계정
 
